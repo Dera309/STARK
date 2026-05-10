@@ -1,0 +1,50 @@
+# Render Deployment Configuration for STARK Application
+
+services:
+  # STARK API Server
+  - type: web
+    name: stark-api
+    runtime: node
+    plan: free
+    env: node
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    envVars:
+      - key: PORT
+        value: 3003
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        value: 587
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+
+  # STARK Client (React)
+  - type: web
+    name: stark-client
+    runtime: node
+    plan: free
+    env: node
+    buildCommand: cd client && npm install && npm run build
+    startCommand: cd client && npm run preview
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_SOCKET_URL
+        sync: false
+      - key: VITE_TAWK_PROPERTY_ID
+        sync: false
+      - key: VITE_TAWK_WIDGET_ID
+        sync: false
