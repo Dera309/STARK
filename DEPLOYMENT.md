@@ -7,7 +7,16 @@ For a complete pre-deployment check, run:
 ./scripts/pre-deploy-check.sh
 ```
 
-## GitHub Actions Secrets Configuration
+## Deployment Options
+
+### Option 1: Render (Recommended for quick deployment)
+See `docs/RENDER_DEPLOYMENT.md` for step-by-step Render deployment guide.
+
+### Option 2: Docker
+See "Docker Deployment" section below.
+
+### Option 3: Traditional (PM2/Node)
+See "Traditional Deployment" section below.
 
 To use the CI/CD pipeline, configure the following secrets in your GitHub repository settings:
 
