@@ -1,0 +1,65 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    environment:
+      name: staging
+      url: https://staging.your-domain.com
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build and push Docker images
+        run: |
+          echo "Building Docker images for staging"
+          # docker build -t stark-client:staging ./client
+          # docker build -t stark-server:staging ./server
+          # docker push stark-client:staging
+          # docker push stark-server:staging
+      
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment"
+          # kubectl apply -f k8s/staging/
+      
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/main'
+    
+    environment:
+      name: production
+      url: https://your-domain.com
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build and push Docker images
+        run: |
+          echo "Building Docker images for production"
+          # docker build -t stark-client:latest ./client
+          # docker build -t stark-server:latest ./server
+          # docker push stark-client:latest
+          # docker push stark-server:latest
+      
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production environment"
+          # kubectl apply -f k8s/production/
+      
+      - name: Run smoke tests
+        run: |
+          echo "Running smoke tests against production"
+          # curl -f https://your-domain.com/api/v1/health || exit 1

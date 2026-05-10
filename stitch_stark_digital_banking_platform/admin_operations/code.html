@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001b3d",
+                        "surface-variant": "#e1e3e4",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary-fixed": "#ffdea5",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed": "#001b3d",
+                        "secondary-container": "#fed488",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "on-primary-fixed-variant": "#39475f",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-primary-fixed": "#0d1c32",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "tertiary-fixed": "#d6e3ff",
+                        "inverse-primary": "#b9c7e4",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9fa",
+                        "secondary": "#775a19",
+                        "on-surface-variant": "#44474d",
+                        "on-secondary-fixed": "#261900",
+                        "on-secondary-container": "#785a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed-dim": "#aec7f7",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed-variant": "#2e476f",
+                        "on-tertiary-container": "#6c85b0",
+                        "surface-tint": "#515f78",
+                        "background": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#0d1c32",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#76849f",
+                        "primary": "#000000",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f4f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<div class="flex h-screen overflow-hidden">
+<!-- Navigation Drawer (Predicted Component) -->
+<aside class="hidden md:flex flex-col h-full p-4 w-80 bg-surface-container-low dark:bg-[#0d1c32] shadow-2xl z-20">
+<div class="flex items-center gap-4 mb-10 px-2">
+<img alt="Admin Avatar" class="w-12 h-12 rounded-xl object-cover" data-alt="close up professional headshot of a middle aged man in a navy blue suit with soft office lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBerDrFjXP3BdW_4AN1b8qmAqxVHHYys2SGG2IryBB1Vnp4P7NJFDE9KAolltWn9HYv-cbVMznNnJx4qNaPYpM6rKoaeyZa2kVWqguULcPEAATZgUQpC-FtVy7HvVaCCH2EMK-RXwvA7Pdw9-vLWRzAHjxorKesjQiKVIJsjxbSC-noliqNjfuI5FRLzL7sgT39Qj1VxB3F2Hc5D11CVM_lh46yW5WtrBHReal9rvgCsYB-Poms1zLg-eXoln_doXEZ1n6SElxt0oSH"/>
+<div>
+<h3 class="font-headline font-bold text-primary-container dark:text-surface leading-tight text-sm">System Admin</h3>
+<p class="text-xs text-on-surface-variant">Stark Oversight</p>
+<span class="text-[10px] px-1.5 py-0.5 bg-secondary-container text-on-secondary-container rounded font-bold mt-1 inline-block">Level 4 Access</span>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-[#1d3557] transition-colors duration-200 font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-[#1d3557] transition-colors duration-200 font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                    Pending Approvals
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container-lowest dark:bg-[#192c45] text-secondary font-bold rounded-lg transition-colors duration-200 font-['Manrope'] text-sm shadow-sm" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+                    Transaction Logs
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-[#1d3557] transition-colors duration-200 font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    User Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-[#1d3557] transition-colors duration-200 font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                    Support
+                </a>
+</nav>
+<div class="mt-auto p-4 bg-primary-container rounded-xl text-white">
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-2">System Status</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-semibold">Nodes Operational</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden relative">
+<!-- TopAppBar (Predicted Component) -->
+<header class="w-full top-0 sticky bg-surface dark:bg-[#0d1c32] flex justify-between items-center px-6 py-4 z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-xl font-black tracking-tighter text-primary-container dark:text-surface font-headline uppercase">STARK</h1>
+<div class="h-6 w-px bg-outline-variant opacity-30 mx-2"></div>
+<h2 class="font-headline font-bold text-on-surface-variant text-sm tracking-tight">Transaction Operations</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex bg-surface-container-high px-4 py-2 rounded-lg items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 placeholder:text-on-surface-variant" placeholder="Search Hash or ID..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-primary-container dark:text-surface hover:opacity-80 transition-opacity active:scale-95 duration-150">notifications</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="professional portrait of a person in high quality digital photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA81e3jmvP-Q93ILWjlMLiLDXvojzi2KU4iI19DgpvOwugfJkt8RZAfGYe7pYLCZY_sqKNIKn31llqU5LXLKP7xBTHU9bSoK49ueKRFE2oenqbswTvFhIq2DCDMAfldmEKABPp008XaI4zbboUvlcHfZCBJjNEP7uFvRNxBBRPa7sw5x5pRBrkXOu7RXhx_VmUP3wRxEE-jwOfCdksVVe-iAvlFbk2nR3fDTuEdNhjOBT1lQhxuwn2adahmt6hmiF1ziZHKgeodVIf9"/>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8 bg-surface">
+<!-- Financial Overview Stats (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="col-span-1 md:col-span-2 bg-primary-container p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-secondary opacity-10 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
+<p class="text-on-primary-container text-xs font-bold tracking-widest uppercase mb-4">Total Operations Volume</p>
+<h3 class="text-3xl md:text-4xl font-headline font-bold text-white tabular-nums tracking-tighter">$42,890,210.00</h3>
+<div class="mt-6 flex items-center gap-2 text-secondary-fixed text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +12.4% vs last period
+                        </div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_20px_40px_rgba(13,28,50,0.06)] flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase mb-1">Queue Status</p>
+<h4 class="text-2xl font-headline font-bold text-primary-container">8 Pending</h4>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4 rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_20px_40px_rgba(13,28,50,0.06)] flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase mb-1">Failed Rate</p>
+<h4 class="text-2xl font-headline font-bold text-error">0.42%</h4>
+</div>
+<p class="text-on-surface-variant text-[10px]">98.2% Auto-resolution success</p>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="bg-surface-container-low rounded-2xl overflow-hidden shadow-sm">
+<!-- Tabs -->
+<div class="px-6 pt-6 flex border-b border-outline-variant/10 gap-8">
+<button class="pb-4 border-b-2 border-secondary text-secondary font-bold text-sm transition-all">All Logs</button>
+<button class="pb-4 border-b-2 border-transparent text-on-surface-variant font-medium text-sm hover:text-primary transition-all">Manual Approvals</button>
+<button class="pb-4 border-b-2 border-transparent text-on-surface-variant font-medium text-sm hover:text-primary transition-all">Failed Transactions</button>
+</div>
+<!-- Filter/Action Bar -->
+<div class="p-6 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                                Filter
+                            </button>
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Last 24 Hours
+                            </button>
+</div>
+<button class="bg-primary text-white px-5 py-2.5 rounded-lg text-xs font-bold flex items-center gap-2 active:scale-95 transition-all shadow-lg">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Export Ledger
+                        </button>
+</div>
+<!-- Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">
+<th class="px-6 py-4">Transaction ID</th>
+<th class="px-6 py-4">Beneficiary</th>
+<th class="px-6 py-4">Type</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10 bg-surface-container-lowest">
+<!-- High Value Approval Row -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-secondary-container/5">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold tabular-nums">#STK-88219</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Oct 24, 2023 • 14:22</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-sm">corporate_fare</span>
+</div>
+<div>
+<p class="text-sm font-bold">Loomis Logistics Int.</p>
+<p class="text-[10px] text-on-surface-variant">Wells Fargo • **** 9912</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs font-medium px-2 py-1 bg-surface-container rounded text-on-surface">Payment</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-black tabular-nums">$42,000.00</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-[9px] font-bold text-secondary-container uppercase">Manual Required</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-secondary-container text-on-secondary-container">
+                                            PENDING
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="bg-secondary text-white px-3 py-1.5 rounded-lg text-[10px] font-bold hover:opacity-90 transition-all">APPROVE</button>
+<button class="bg-surface-container-highest text-error px-3 py-1.5 rounded-lg text-[10px] font-bold hover:bg-error/10 transition-all">FLAG</button>
+</div>
+</td>
+</tr>
+<!-- Standard Success Row -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold tabular-nums">#STK-88218</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Oct 24, 2023 • 14:15</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-sm">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">Helena Stark</p>
+<p class="text-[10px] text-on-surface-variant">Revolut • **** 0042</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs font-medium px-2 py-1 bg-surface-container rounded text-on-surface">Transfer</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-bold tabular-nums">$1,250.00</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700">
+                                            SUCCESS
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Failed Row -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold tabular-nums">#STK-88217</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Oct 24, 2023 • 13:58</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-sm">shopping_cart</span>
+</div>
+<div>
+<p class="text-sm font-bold">Global Merch Ltd.</p>
+<p class="text-[10px] text-on-surface-variant">IBAN • BE32 9901</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs font-medium px-2 py-1 bg-surface-container rounded text-on-surface">Refund</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-bold tabular-nums">$412.50</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-error-container text-on-error-container">
+                                            FAILED
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-secondary font-bold text-[10px] hover:underline">INVESTIGATE</button>
+</td>
+</tr>
+<!-- Regular Row -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold tabular-nums">#STK-88216</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Oct 24, 2023 • 13:40</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-sm">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">Arthur Sterling</p>
+<p class="text-[10px] text-on-surface-variant">Stark Wallet • AS990</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs font-medium px-2 py-1 bg-surface-container rounded text-on-surface">Transfer</span>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-bold tabular-nums">$9,800.00</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700">
+                                            SUCCESS
+                                        </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Pagination & Summary -->
+<div class="flex items-center justify-between pb-24">
+<p class="text-xs text-on-surface-variant">Showing <span class="font-bold text-primary">1-10</span> of 1,248 transactions</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors text-xs font-bold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors text-xs font-bold">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Predicted Component - Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/70 backdrop-blur-xl border-t border-outline-variant/15 md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Transfers</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Ops</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Invest</span>
+</div>
+</nav>
+</main>
+</div>
+</body></html>

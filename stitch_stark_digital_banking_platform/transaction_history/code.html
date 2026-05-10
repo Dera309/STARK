@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK - Transaction History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#b9c7e4",
+                        "inverse-primary": "#b9c7e4",
+                        "error": "#ba1a1a",
+                        "primary-container": "#0d1c32",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#775a19",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-tint": "#515f78",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed-variant": "#2e476f",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#44474d",
+                        "primary": "#000000",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-container": "#fed488",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#001b3d",
+                        "outline-variant": "#c5c6cd",
+                        "on-tertiary-container": "#6c85b0",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed-dim": "#aec7f7",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-variant": "#e1e3e4",
+                        "background": "#f8f9fa",
+                        "outline": "#75777e",
+                        "on-primary-fixed": "#0d1c32",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-bright": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary-container": "#785a1a",
+                        "surface-container": "#edeeef",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001b3d",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#ffdea5",
+                        "on-primary-container": "#76849f",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#39475f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#f8f9fa] dark:bg-[#0d1c32] shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<img alt="STARK Logo" class="h-8 w-8 object-contain" data-alt="Minimalist geometric gold and navy corporate logo for a premium fintech brand called STARK" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFzDkUp9D0w9rXcafey6DzMO9VD0sTiVUkVjFLaIpFtIfmgYJPcJimX0AINl80NmUBybIpSNoKibdRlD-XJKsTjhTakl9LTIrtYX1Wi3NQwp4Z2vS36-Wiulm83q2ppWzltFJQ6ArF2Ki4pkNsXHxCW-CFJt6gRA1HAMknXEIQHPo0kLOFBbLT7JEWp_1OhxdBMLWmmpSNStVMGQzXKP0wwPq1NthfEF6BHKRhRoO9APOCVytD66Ul15lPQPnQkVx3SCXrO0htqIGu"/>
+<span class="text-xl font-bold text-[#0A192F] dark:text-[#ffffff] font-['Manrope'] tracking-tight">STARK</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#44474d] dark:text-[#c5c6cd]">notifications</span>
+<div class="h-8 w-8 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional portrait of a business executive in a high-end corporate setting with soft ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT5kHaj_U0gb12Ns9YeCOfB8v_lLJQYrDyMmpHDO5ytYKrkn3d9h_r146c9NirhO37GLRUYTebDdZl7gBeIj_TLYyriogHEekcEmcDkzKVcATQLx5CuDEPqg0mdTqoVKGSlJi8e5EnCoxGxJXTwwqF04ij5eQETOV744Ok22IfM8AUYJ8qYMztg7hhqi9LZzzzH2gY1JfVHrV_PLdRsGKnnVKOYCfJTUy1bOHpsQXqEy3EOcMg-fjS3anKUCdXcBvyzyQ5QpJXjv6x"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-6 py-4 space-y-8">
+<!-- Search & Filters -->
+<section class="space-y-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-high border-none rounded-xl focus:ring-2 focus:ring-secondary transition-all font-body text-sm placeholder:text-outline-variant" placeholder="Search transactions..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full text-xs font-semibold whitespace-nowrap">All</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full text-xs font-medium whitespace-nowrap hover:bg-surface-container-high transition-colors">Incoming</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full text-xs font-medium whitespace-nowrap hover:bg-surface-container-high transition-colors">Outgoing</button>
+</div>
+</section>
+<!-- Statements Section -->
+<section class="bg-primary-container text-white p-6 rounded-xl space-y-4 shadow-lg overflow-hidden relative">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="text-lg font-bold tracking-tight">Download Statements</h2>
+<p class="text-xs text-on-primary-container">Securely export your history in PDF format</p>
+</div>
+<div class="grid grid-cols-1 gap-2">
+<button class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+<span class="text-sm font-medium">Last 3 Months</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim">download</span>
+</button>
+<button class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+<span class="text-sm font-medium">Last 6 Months</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim">download</span>
+</button>
+<button class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+<span class="text-sm font-medium">Full Year</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim">download</span>
+</button>
+</div>
+</section>
+<!-- Transactions List -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="text-xl font-extrabold tracking-tight">Recent Activity</h2>
+<span class="text-xs text-secondary font-bold uppercase tracking-widest">History</span>
+</div>
+<!-- Group: Today -->
+<div class="space-y-3">
+<p class="text-[10px] font-bold text-outline uppercase tracking-tighter px-1">Today</p>
+<div class="bg-surface-container-lowest rounded-xl p-1">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Apple Store Soho</h4>
+<p class="text-xs text-on-surface-variant">Electronics &amp; Tech</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-on-surface">- $2,499.00</p>
+<p class="text-[10px] text-on-surface-variant font-medium">14:32</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Deposit from Vault</h4>
+<p class="text-xs text-on-surface-variant">Savings Transfer</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-secondary">+ $5,000.00</p>
+<p class="text-[10px] text-on-surface-variant font-medium">09:15</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Group: Yesterday -->
+<div class="space-y-3">
+<p class="text-[10px] font-bold text-outline uppercase tracking-tighter px-1">Yesterday</p>
+<div class="bg-surface-container-lowest rounded-xl p-1">
+<!-- Item 3 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Eleven Madison Park</h4>
+<p class="text-xs text-on-surface-variant">Dining &amp; Lifestyle</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-on-surface">- $845.20</p>
+<p class="text-[10px] text-on-surface-variant font-medium">21:04</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">flight</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Emirates Airlines</h4>
+<p class="text-xs text-on-surface-variant">Travel</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-on-surface">- $4,200.00</p>
+<p class="text-[10px] text-on-surface-variant font-medium">16:45</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Stark Dividends</h4>
+<p class="text-xs text-on-surface-variant">Investment Income</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-secondary">+ $124.50</p>
+<p class="text-[10px] text-on-surface-variant font-medium">08:00</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Wealth Meter (Custom Primitive) -->
+<section class="p-6 bg-surface-container-low rounded-2xl">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Monthly Limit</span>
+<span class="text-xs font-bold text-primary">72% used</span>
+</div>
+<div class="w-full bg-surface-dim h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-fixed-dim to-secondary" style="width: 72%;"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-3 pb-safe bg-[#f8f9fa]/70 dark:bg-[#0d1c32]/70 backdrop-blur-xl z-50 rounded-t-xl border-t border-[#c5c6cd]/15 shadow-[0_-10px_20px_rgba(13,28,50,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#44474d] dark:text-[#c5c6cd] transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#44474d] dark:text-[#c5c6cd] transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-['Inter'] text-[10px] font-medium">Transfers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#775a19] dark:text-[#e9c176] font-semibold transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-['Inter'] text-[10px]">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#44474d] dark:text-[#c5c6cd] transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium">Loans</span>
+</a>
+</nav>
+</body></html>

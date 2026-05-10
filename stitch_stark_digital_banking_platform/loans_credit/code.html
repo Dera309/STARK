@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001b3d",
+                        "surface-variant": "#e1e3e4",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary-fixed": "#ffdea5",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed": "#001b3d",
+                        "secondary-container": "#fed488",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "on-primary-fixed-variant": "#39475f",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-primary-fixed": "#0d1c32",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "tertiary-fixed": "#d6e3ff",
+                        "inverse-primary": "#b9c7e4",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9fa",
+                        "secondary": "#775a19",
+                        "on-surface-variant": "#44474d",
+                        "on-secondary-fixed": "#261900",
+                        "on-secondary-container": "#785a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed-dim": "#aec7f7",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed-variant": "#2e476f",
+                        "on-tertiary-container": "#6c85b0",
+                        "surface-tint": "#515f78",
+                        "background": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#0d1c32",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#76849f",
+                        "primary": "#000000",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f4f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#f8f9fa] dark:bg-[#0d1c32] z-40">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<img alt="User profile photo" class="w-full h-full object-cover rounded-lg" data-alt="Professional headshot of a businessman in a suit against a neutral background, sharp focus, professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7vrgXXP8S8A2Vl-4WBEKrB4JTV3oEBfik20dA2fW0voO7yZKQ93Rlhm0lMsq21oGEW3HqyNI-_SHm86lcrnbc5-SH3QmuphTN12WF9B3KQAcHmi4LTx4xvJVcy0N8-y-dpwiVa-bVnS1r4q8DPLsIyPAw3hU4eTreFAHHAi6gt4nL6m6vSn16uPfgSlTyLwKoApgiCQFTnOp8qdKc7Qsf3AxQ2Vnw7LhsZsfBVTX-xiEZJThk8gI8dVKCx1Y73N7CAh0WmVCWJowQ"/>
+</div>
+<span class="text-xl font-black tracking-tighter text-[#0A192F] dark:text-[#f8f9fa]">STARK</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#44474d] hover:opacity-80 transition-opacity active:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="px-6 pt-6 space-y-8">
+<!-- Prominent Credit Limit Section -->
+<section class="relative overflow-hidden bg-primary-container rounded-xl p-8 shadow-2xl text-white">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div class="relative z-10">
+<p class="text-on-primary-container font-label text-xs uppercase tracking-[0.2em] mb-2">Sovereign Credit Limit</p>
+<h2 class="text-4xl font-headline font-extrabold tracking-tight mb-4">$125,000.00</h2>
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden mb-6">
+<div class="bg-secondary h-full w-2/3"></div>
+</div>
+<div class="flex justify-between items-center text-sm font-label">
+<span class="text-on-primary-container">Available: $82,450.00</span>
+<span class="text-secondary-fixed-dim">Tier: Platinum</span>
+</div>
+</div>
+</section>
+<!-- Calculator Widget -->
+<section class="bg-surface-container-low rounded-xl p-6 border-b-2 border-primary">
+<h3 class="text-lg font-headline font-bold mb-6">How much do you need?</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-4">
+<span class="text-sm font-medium text-on-surface-variant">Financing Amount</span>
+<span class="text-lg font-bold text-primary">$15,000</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="50000" min="1000" step="500" type="range"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-4 rounded-lg">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Monthly</p>
+<p class="text-lg font-bold">$425.50</p>
+</div>
+<div class="bg-surface-container-high p-4 rounded-lg">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Rate (APR)</p>
+<p class="text-lg font-bold text-secondary">4.2%</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Salary Advance -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-headline font-bold">Quick Salary Advance</h3>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase tracking-tighter">Instant</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_20px_40px_rgba(13,28,50,0.06)] group">
+<div class="flex items-start gap-4 mb-6">
+<div class="bg-surface-container rounded-lg p-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Up to 50% of your salary</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">Access your earned wages instantly without waiting for payday. No hidden interest.</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-bold text-sm tracking-wide transition-all active:scale-95 duration-150">
+                    Apply Now
+                </button>
+</div>
+</section>
+<!-- Device Financing -->
+<section class="space-y-4">
+<h3 class="text-xl font-headline font-bold">Device Financing</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_20px_40px_rgba(13,28,50,0.06)] flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-sm">smartphone</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-sm">laptop_mac</span>
+</div>
+</div>
+<div>
+<p class="font-bold">Next-Gen Tech</p>
+<p class="text-xs text-on-surface-variant">0% Interest up to 12 months</p>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest active:scale-95 transition-all">
+                        Apply Now
+                    </button>
+</div>
+</div>
+</section>
+<!-- Business Growth Loan -->
+<section class="space-y-4">
+<h3 class="text-xl font-headline font-bold">Business Growth Loan</h3>
+<div class="relative rounded-xl overflow-hidden min-h-[220px] flex flex-col justify-end p-8 group">
+<div class="absolute inset-0 z-0">
+<img alt="Business Growth" class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 transition-all duration-700" data-alt="Modern high-end glass office interior with natural lighting and minimalist professional furniture in a skyscraper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRKbOFQN7tJL0nWNT6uLaKPAlsJ3vC5XVZhaXjgcs6vppVq4NN9_qdKTgGJupVrgX5mBUSD9VeG353n0aiI2k5-3z5BYPjS0GcbDBJfmQQF3oRbNYAE9fE8CXoBUO5jCHv8aZiT4Yd9n9kMidoyrfrV4wwfI8lUgl94P6oQrqBY58eJZVRLFD0ASLyeUQq4_LcGxxAss4BIuWuo9WQkLC8Zau53_Atr4-7YgvF3NM1oxOO7oWyze6SE_tYn9YE8XUYrk-e6kZyFFE2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/60 to-transparent"></div>
+</div>
+<div class="relative z-10 text-white">
+<p class="font-headline text-2xl font-extrabold mb-2">Fuel Your Vision</p>
+<p class="text-sm text-on-primary-container mb-6 max-w-[200px]">Strategic capital for expansion, inventory, or operations.</p>
+<button class="bg-white text-primary py-3 px-8 rounded-lg font-bold text-sm inline-flex items-center gap-2 active:scale-95 transition-all">
+                        Apply Now
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#f8f9fa]/70 dark:bg-[#0d1c32]/70 backdrop-blur-xl border-t border-[#c5c6cd]/15 shadow-[0_-20px_40px_rgba(13,28,50,0.06)] flex justify-around items-center px-4 pb-6 pt-3">
+<a class="flex flex-col items-center justify-center text-[#44474d] opacity-60 hover:text-[#775a19] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#44474d] opacity-60 hover:text-[#775a19] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Transfers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#775a19] scale-110 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Loans</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#44474d] opacity-60 hover:text-[#775a19] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Invest</span>
+</a>
+</nav>
+</body></html>
