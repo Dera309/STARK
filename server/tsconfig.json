@@ -6,7 +6,9 @@
     "outDir": "./dist",
     "lib": ["ES2020"],
     "ignoreDeprecations": "6.0",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "composite": false
   },
   "include": ["src/**/*"],
   "exclude": ["src/tests/**/*"]
