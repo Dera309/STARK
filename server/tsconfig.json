@@ -3,9 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "moduleResolution": "node",
-    "outDir": "dist",
-
-    "lib": ["ES2020"]
+    "outDir": "./dist",
+    "lib": ["ES2020"],
+    "ignoreDeprecations": "5.0"
   },
   "include": ["src/**/*"]
 }

@@ -22,7 +22,7 @@ export interface Account {
     userId: string;
     accountNumber: string;
     type: 'SAVINGS' | 'CURRENT' | 'DOMICILIARY' | 'FIXED_DEPOSIT';
-    currency: 'USD' | 'GBP' | 'EUR';
+    currency: 'USD' | 'GBP' | 'EUR' | 'CAD' | 'AUD' | 'CHF' | 'JPY';
     balance: number;
     status: 'ACTIVE' | 'FROZEN' | 'CLOSED';
     createdAt: Date;
@@ -41,6 +41,7 @@ export interface Transaction {
     merchantName: string;
     counterpartyAccountId: string | null;
     counterpartyAccountNumber: string | null;
+    counterpartyName?: string;
     fee: number;
     failureReason: string | null;
     initiatedBy: 'CUSTOMER' | 'ADMIN' | 'SYSTEM';
