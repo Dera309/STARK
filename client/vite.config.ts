@@ -3,7 +3,15 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [],
+      },
+      // Use the new fast refresh instead of deprecated options
+      fastRefresh: true,
+    }),
+  ],
   resolve: {
     alias: {
       '@shared': path.resolve(__dirname, '../shared/src'),

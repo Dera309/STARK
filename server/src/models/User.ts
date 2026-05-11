@@ -2,7 +2,8 @@ import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { User as UserInterface } from '@shared/index';
 
-export interface UserDocument extends Omit<UserInterface, '_id' | 'createdAt' | 'updatedAt'>, Document {
+export interface UserDocument extends Omit<UserInterface, '_id' | 'createdAt' | 'updatedAt' | 'roleId'>, Document {
+  roleId: mongoose.Types.ObjectId | null;
   comparePassword(password: string): Promise<boolean>;
 }
 
@@ -41,13 +42,14 @@ const userSchema = new Schema<UserDocument>(
 
 // Hash password before saving
 userSchema.pre('save', async function (next) {
-  if (!this.isModified('passwordHash')) {
+  const user = this as UserDocument;
+  if (!user.isModified('passwordHash')) {
     return next();
   }
 
   try {
     const salt = await bcrypt.genSalt(10);
-    this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
+    user.passwordHash = await bcrypt.hash(user.passwordHash, salt);
     next();
   } catch (error: any) {
     next(error);
@@ -56,7 +58,8 @@ userSchema.pre('save', async function (next) {
 
 // Compare password method
 userSchema.methods.comparePassword = async function (password: string): Promise<boolean> {
-  return bcrypt.compare(password, this.passwordHash);
+  const user = this as UserDocument;
+  return bcrypt.compare(password, user.passwordHash);
 };
 
 export const User = mongoose.model<UserDocument>('User', userSchema);
