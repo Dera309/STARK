@@ -1,18 +1,14 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "node16",
     "outDir": "./dist",
     "lib": ["ES2020"],
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "composite": false,
-    "baseUrl": "../",
-    "paths": {
-      "@shared/*": ["shared/src/*"]
-    }
+    "composite": false
   },
   "include": ["src/**/*"],
   "exclude": ["src/tests/**/*", "src/scripts/**/*"]
