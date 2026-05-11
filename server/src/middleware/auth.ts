@@ -10,6 +10,10 @@ export interface AuthRequest extends Request {
     userId: string;
     jti: string;
   };
+  body: any;
+  params: any;
+  query: any;
+  headers: any;
 }
 
 /**

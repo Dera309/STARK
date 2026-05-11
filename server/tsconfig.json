@@ -9,9 +9,9 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "rootDir": "./src",
+    "rootDir": "../",
     "composite": false
   },
   "include": ["src/**/*"],
-  "exclude": ["src/tests/**/*", "src/scripts/**/*", "shared/**/*"]
+  "exclude": ["src/tests/**/*", "src/scripts/**/*"]
 }

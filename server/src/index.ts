@@ -12,7 +12,6 @@ import { validateBody, validateQuery, validateParams } from './middleware/valida
 import { monitoringMiddleware, getMetrics } from './middleware/monitoring';
 import { prometheusMiddleware, metricsEndpoint, updateActiveConnections } from './middleware/prometheusMetrics';
 import { seedRoles, seedAdminUser } from './seed';
-import { MongoMemoryServer } from 'mongodb-memory-server';
 import logger from './config/logger';
 
 validateEnv();
@@ -159,21 +158,8 @@ export const connectDB = async (): Promise<void> => {
     logger.info('MongoDB connected successfully');
   } catch (err) {
     logger.error('MongoDB connection error:', err);
-    if (process.env.NODE_ENV === 'production') {
-      logger.error('CRITICAL: MongoDB connection failed in production. Exiting...');
-      process.exit(1);
-    }
-    logger.warn('Primary MongoDB unreachable, starting in-memory database...');
-    // Increase timeout significantly for slow environments (e.g. Windows)
-    const mongod = await MongoMemoryServer.create({
-      instance: {
-        launchTimeout: 300000, // 5 minutes
-      }
-    });
-    const uri = mongod.getUri();
-    await mongoose.connect(uri);
-    logger.info(`MongoDB ready (In-Memory) at: ${uri}`);
-    logger.warn('⚠️ DATA WILL BE LOST ON RESTART');
+    logger.error('CRITICAL: MongoDB connection failed. Exiting...');
+    process.exit(1);
   }
 };
 
