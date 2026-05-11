@@ -5,12 +5,14 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "lib": ["ES2020"],
-    "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "rootDir": "../",
-    "composite": false
+    "composite": false,
+    "baseUrl": "../",
+    "paths": {
+      "@shared/*": ["shared/src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["src/tests/**/*", "src/scripts/**/*"]
