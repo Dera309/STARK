@@ -11,11 +11,7 @@
     "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": ["shared/src/*"]
-    }
+    "sourceMap": true
   },
   "exclude": ["node_modules", "dist", "build"]
 }

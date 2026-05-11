@@ -8,7 +8,12 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "composite": false
+    "rootDir": "../",
+    "composite": false,
+    "baseUrl": "../",
+    "paths": {
+      "@shared/*": ["shared/src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["src/tests/**/*", "src/scripts/**/*"]
