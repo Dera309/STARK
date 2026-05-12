@@ -37,10 +37,14 @@ const Login: React.FC = () => {
       const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || "/dashboard";
       navigate(from, { replace: true });
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error && 'response' in err 
-        ? (err as ApiError).response?.data?.message 
-        : "Login failed. Please check your credentials.";
-      setError(errorMessage || "Login failed. Please check your credentials.");
+      const errData = err instanceof Error && 'response' in err
+        ? (err as ApiError).response?.data
+        : null;
+      const errorMessage =
+        errData?.error?.message ||
+        errData?.message ||
+        "Login failed. Please check your credentials.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

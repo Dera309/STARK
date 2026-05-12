@@ -8,19 +8,24 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ adminOnly = false }) => {
-  const { isAuthenticated, isAdmin, isLoading } = useAuth();
+  const { isAuthenticated, isAdmin, isLoading, user } = useAuth();
   const location = useLocation();
 
+  // Wait for localStorage hydration before making any routing decision
   if (isLoading) return <AppSkeleton />;
 
   if (!isAuthenticated) {
-    // Redirect to login but save the current location to return to
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  if (adminOnly && !isAdmin) {
-    // Redirect to dashboard if not an admin but trying to access admin pages
+  // For admin routes: only redirect if user is fully loaded and confirmed non-admin
+  if (adminOnly && user && !isAdmin) {
     return <Navigate to="/dashboard" replace />;
+  }
+
+  // If adminOnly but user not yet loaded (shouldn't happen after isLoading=false, but guard anyway)
+  if (adminOnly && !user) {
+    return <AppSkeleton />;
   }
 
   return <Outlet />;

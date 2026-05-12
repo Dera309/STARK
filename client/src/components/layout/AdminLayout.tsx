@@ -24,7 +24,7 @@ const AdminLayout: React.FC = () => {
   return (
     <div className="min-h-screen bg-surface">
       {/* Mobile Header - hidden on desktop */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-surface-container-low border-b border-outline-variant flex items-center justify-between px-4 py-3">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-surface-container-low border-b border-outline-variant flex items-center justify-between px-4 h-14">
         <button
           onClick={() => setSidebarOpen(true)}
           className="p-2 rounded-lg hover:bg-surface-container-high"
@@ -126,7 +126,7 @@ const AdminLayout: React.FC = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="lg:ml-64 min-h-screen px-4 py-6 sm:p-8 bg-surface pt-16 lg:pt-8 overflow-x-hidden">
+      <main className="lg:ml-64 min-h-screen px-4 py-6 sm:p-8 bg-surface pt-14 lg:pt-8 overflow-x-hidden">
         <header className="hidden lg:flex justify-end items-center mb-8 gap-4">
           <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant bg-surface-container-high px-3 py-1.5 rounded-lg border border-outline-variant">
             Live Platform Feed

@@ -28,13 +28,22 @@ import notificationRoutes from './routes/notificationRoutes';
 const app = express();
 const httpServer = createServer(app);
 
+// Trust proxy so req.ip reflects the real client IP behind Render's load balancer
+app.set('trust proxy', 1);
+
 // Rate limiting configuration
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 500, // raised — Render proxies all traffic through shared IPs
   message: { error: { code: 'TOO_MANY_REQUESTS', message: 'Too many requests, please try again later.' } },
   standardHeaders: true,
   legacyHeaders: false,
+  keyGenerator: (req) => {
+    // Use real client IP from X-Forwarded-For, fall back to req.ip
+    const forwarded = req.headers['x-forwarded-for'];
+    const ip = (typeof forwarded === 'string' ? forwarded.split(',')[0] : req.ip) || 'unknown';
+    return ip.trim();
+  },
 });
 
 // Only initialize socket in non-test environments

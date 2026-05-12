@@ -33,11 +33,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     window.location.href = "/login";
   }, []);
 
-  const login = (userData: User, token: string) => {
-    localStorage.setItem("token", token);
+  const login = (userData: User, authToken: string) => {
+    localStorage.setItem("token", authToken);
     localStorage.setItem("user", JSON.stringify(userData));
-    setToken(token);
+    setToken(authToken);
     setUser(userData);
+    setIsLoading(false);
   };
 
   useEffect(() => {
