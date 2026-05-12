@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
-import Login from '../../pages/auth/Login';
+import Login from '../pages/auth/Login';
 
 // Mock API
 vi.mock('../../services/api', () => ({
