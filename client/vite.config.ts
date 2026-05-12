@@ -1,17 +1,9 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [
-    react({
-      babel: {
-        plugins: [],
-      },
-      // Use the new fast refresh instead of deprecated options
-      fastRefresh: true,
-    }),
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@shared': path.resolve(__dirname, '../shared/src'),
