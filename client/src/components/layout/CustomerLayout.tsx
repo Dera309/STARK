@@ -234,6 +234,18 @@ const CustomerLayout: React.FC = () => {
                 </p>
                 <p className="text-xs text-on-surface-variant">{user?.email}</p>
               </div>
+              {user?.role?.toUpperCase() === "ADMIN" && (
+                <button
+                  onClick={() => {
+                    navigate("/admin");
+                    setShowAccountMenu(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm text-secondary font-black hover:bg-secondary-container/20 transition-colors flex items-center gap-2"
+                >
+                  <span className="material-symbols-outlined text-sm">admin_panel_settings</span>
+                  Admin Panel
+                </button>
+              )}
               <button
                 onClick={() => {
                   navigate("/settings");
