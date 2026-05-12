@@ -21,7 +21,7 @@ services:
       - key: JWT_EXPIRES_IN
         value: 24h
       - key: CLIENT_URL
-        sync: false
+        value: https://stark-h310.onrender.com
 
   # STARK Client (React)
   - type: web

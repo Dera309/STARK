@@ -43,19 +43,12 @@ export const io = process.env.NODE_ENV === 'test' ? null : initSocket(httpServer
 // Basic middleware
 app.use((req, res, next) => {
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-  const isProduction = process.env.NODE_ENV === 'production';
-  
-  // In production, only allow requests from the configured client URL
-  if (isProduction && req.headers.origin) {
-    const allowedOrigins = [clientUrl];
-    if (allowedOrigins.includes(req.headers.origin)) {
-      res.header('Access-Control-Allow-Origin', req.headers.origin);
-    }
-  } else {
-    // In development, allow localhost
-    res.header('Access-Control-Allow-Origin', clientUrl);
+  const allowedOrigins = [clientUrl, 'http://localhost:5173', 'http://localhost:4173'];
+  const origin = req.headers.origin;
+
+  if (origin && allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
   }
-  
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
