@@ -58,8 +58,8 @@ const Register: React.FC = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full animate-pulse"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000"></div>
 
-      <div className="w-full max-w-md p-8 relative z-10">
-        <div className="bg-surface-container-low/60 backdrop-blur-3xl border border-outline-variant rounded-[2.5rem] shadow-2xl p-10">
+      <div className="w-full max-w-md p-4 sm:p-8 relative z-10">
+        <div className="bg-surface-container-low/60 backdrop-blur-3xl border border-outline-variant rounded-[2.5rem] shadow-2xl p-6 sm:p-10">
           <header className="text-center mb-10">
             <h1 className="text-4xl font-black tracking-tighter mb-2 bg-gradient-to-br from-primary to-primary-container bg-clip-text text-transparent italic">
               STARK
@@ -77,7 +77,7 @@ const Register: React.FC = () => {
 
           <form onSubmit={handleRegister} className="space-y-5">
             {/* Name Row */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-on-surface ml-2">
                   First Name

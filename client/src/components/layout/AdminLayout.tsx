@@ -126,7 +126,7 @@ const AdminLayout: React.FC = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="lg:ml-64 min-h-screen px-4 py-6 sm:p-8 bg-surface pt-20 lg:pt-8 overflow-x-hidden">
+      <main className="lg:ml-64 min-h-screen px-4 py-6 sm:p-8 bg-surface pt-16 lg:pt-8 overflow-x-hidden">
         <header className="hidden lg:flex justify-end items-center mb-8 gap-4">
           <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant bg-surface-container-high px-3 py-1.5 rounded-lg border border-outline-variant">
             Live Platform Feed

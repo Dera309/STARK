@@ -42,7 +42,7 @@ const AdminOverview: React.FC = () => {
   return (
     <div className="space-y-10 animate-fade-in">
       <header>
-        <h2 className="text-3xl font-black">Bank Executive Overview</h2>
+        <h2 className="text-2xl sm:text-3xl font-black">Bank Executive Overview</h2>
         <p className="text-on-surface-variant text-sm font-medium">
           Real-time health pulse of STARK Digital.
         </p>
@@ -97,9 +97,9 @@ const AdminOverview: React.FC = () => {
 
       {/* Activity and Liquidity Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <section className="lg:col-span-2 bg-surface-container-low p-8 rounded-[2.5rem] border border-outline-variant">
+        <section className="lg:col-span-2 bg-surface-container-low p-6 sm:p-8 rounded-[2.5rem] border border-outline-variant">
           <h4 className="text-lg font-black mb-6">Activity Snapshot (24h)</h4>
-          <div className="h-64 flex items-end gap-3 px-4">
+          <div className="h-48 sm:h-64 flex items-end gap-2 sm:gap-3 px-2 sm:px-4">
             {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
               <div key={i} className="flex-1 bg-primary/20 rounded-t-xl relative group">
                 <div
