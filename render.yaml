@@ -33,9 +33,9 @@ services:
     startCommand: cd client && npm run preview
     envVars:
       - key: VITE_API_URL
-        value: https://stark-api.onrender.com/api/v1
+        value: https://stark-api-04gm.onrender.com/api/v1
       - key: VITE_SOCKET_URL
-        value: https://stark-api.onrender.com
+        value: https://stark-api-04gm.onrender.com
       - key: VITE_TAWK_PROPERTY_ID
         value: 6a02f560d752791c35103528
       - key: VITE_TAWK_WIDGET_ID
