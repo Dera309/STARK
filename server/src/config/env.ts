@@ -24,8 +24,5 @@ export const validateEnv = (): void => {
   if (process.env.NODE_ENV === 'production') {
     required('MONGODB_URI');
     required('JWT_SECRET');
-    required('EMAIL_HOST');
-    required('EMAIL_USER');
-    required('EMAIL_PASS');
   }
 };
