@@ -32,8 +32,15 @@ export default defineConfig({
     // Enable CSS code splitting
     cssCodeSplit: true,
   },
-  // Optimize dependency pre-bundling
-  optimizeDeps: {
+  server: {
+    host: '0.0.0.0',
+    allowedHosts: ['stark-h310.onrender.com'],
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 4173,
+    allowedHosts: ['stark-h310.onrender.com'],
+  },
     include: ['react', 'react-dom', 'react-router-dom', 'axios', 'socket.io-client'],
   },
 });
