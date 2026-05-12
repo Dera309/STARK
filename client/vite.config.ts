@@ -10,26 +10,18 @@ export default defineConfig({
     },
   },
   build: {
-    // Enable code splitting for better performance
     rollupOptions: {
       output: {
         manualChunks: (id: string) => {
-          // Separate vendor chunks for better caching
           if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
             return 'react-vendor';
           }
-          if (id.includes('axios')) {
-            return 'axios-vendor';
-          }
-          if (id.includes('socket.io-client')) {
-            return 'socket-vendor';
-          }
+          if (id.includes('axios')) return 'axios-vendor';
+          if (id.includes('socket.io-client')) return 'socket-vendor';
         },
       },
     },
-    // Optimize chunk size warning threshold
     chunkSizeWarningLimit: 1000,
-    // Enable CSS code splitting
     cssCodeSplit: true,
   },
   server: {
@@ -40,7 +32,5 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 4173,
     allowedHosts: ['stark-h310.onrender.com'],
-  },
-    include: ['react', 'react-dom', 'react-router-dom', 'axios', 'socket.io-client'],
   },
 });
