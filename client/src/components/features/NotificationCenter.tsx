@@ -21,7 +21,7 @@ interface AppNotification {
   createdAt: Date;
 }
 
-const NotificationCenter: React.FC = () => {
+const NotificationCenter: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const { socket } = useSocket();
@@ -151,9 +151,12 @@ const NotificationCenter: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-3 rounded-2xl bg-surface-container-low border border-outline-variant hover:bg-surface-container-highest transition-all group"
+        className={compact
+          ? "relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high active:bg-surface-container-highest transition-colors"
+          : "relative p-3 rounded-2xl bg-surface-container-low border border-outline-variant hover:bg-surface-container-highest transition-all group"
+        }
       >
-        <span className="text-xl">🔔</span>
+        <span className={compact ? "text-lg" : "text-xl"}>🔔</span>
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface animate-pulse">
             {unreadCount}

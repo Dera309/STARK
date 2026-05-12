@@ -5,39 +5,44 @@ import socketService from "../../services/socket";
 import { useAuth } from "../../contexts/AuthContext";
 
 const AdminLayout: React.FC = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      socketService.connect(parsedUser._id);
+    if (user?._id) {
+      socketService.connect(user._id);
     }
     return () => {
       socketService.disconnect();
     };
-  }, []);
+  }, [user?._id]);
 
   const closeSidebar = () => setSidebarOpen(false);
 
   return (
     <div className="min-h-screen bg-surface">
-      {/* Mobile Header - hidden on desktop */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-surface-container-low border-b border-outline-variant flex items-center justify-between px-4 h-14">
+      {/* Mobile Header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-surface-container-low border-b border-outline-variant h-14 flex items-center justify-between px-3">
+        {/* Hamburger — explicit size so it never gets crowded out */}
         <button
           onClick={() => setSidebarOpen(true)}
-          className="p-2 rounded-lg hover:bg-surface-container-high"
+          aria-label="Open menu"
+          className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high active:bg-surface-container-highest transition-colors"
         >
-          <span className="material-symbols-outlined">menu</span>
+          <span className="material-symbols-outlined text-[22px]">menu</span>
         </button>
+
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-black italic text-sm">
+          <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center text-white font-black italic text-xs">
             S
           </div>
-          <span className="text-sm font-black tracking-tighter uppercase">STARK</span>
+          <span className="text-sm font-black tracking-tighter uppercase">STARK Admin</span>
         </div>
-        <NotificationCenter />
+
+        {/* Compact bell — no border/padding bloat */}
+        <div className="flex-shrink-0">
+          <NotificationCenter compact />
+        </div>
       </header>
 
       {/* Mobile Sidebar Overlay */}
