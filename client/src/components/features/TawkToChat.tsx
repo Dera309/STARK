@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 import { useAuth } from "../../contexts/AuthContext";
 
 const TawkToChat: React.FC = () => {
   const tawkRef = useRef<any>(null);
   const { user } = useAuth();
+  const userRef = useRef(user);
+
+  useEffect(() => {
+    userRef.current = user;
+  }, [user]);
 
   const propertyId = import.meta.env.VITE_TAWK_PROPERTY_ID || "";
   const widgetId = import.meta.env.VITE_TAWK_WIDGET_ID || "";
@@ -12,12 +17,13 @@ const TawkToChat: React.FC = () => {
   if (!propertyId || !widgetId) return null;
 
   const handleLoad = () => {
-    if (user && tawkRef.current && user.email) {
+    const currentUser = userRef.current;
+    if (currentUser?._id && currentUser?.email && tawkRef.current) {
       tawkRef.current.setAttributes(
         {
-          name: `${user.firstName} ${user.lastName}`.trim(),
-          email: user.email,
-          userId: user._id,
+          name: `${currentUser.firstName} ${currentUser.lastName}`.trim(),
+          email: currentUser.email,
+          userId: currentUser._id,
         },
         (error: Error | null) => {
           if (error) console.error("Tawk.to setAttributes error:", error);
