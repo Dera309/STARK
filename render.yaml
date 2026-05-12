@@ -30,7 +30,7 @@ services:
     plan: free
     env: node
     buildCommand: cd client && npm install && npm run build
-    startCommand: cd client && npm run preview -- --host 0.0.0.0 --port 4173
+    startCommand: cd client && npm run preview
     envVars:
       - key: VITE_API_URL
         value: https://stark-api-04gm.onrender.com/api/v1
