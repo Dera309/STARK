@@ -12,10 +12,10 @@ const TawkToChat: React.FC = () => {
   if (!propertyId || !widgetId) return null;
 
   const handleLoad = () => {
-    if (user && tawkRef.current) {
+    if (user && tawkRef.current && user.email) {
       tawkRef.current.setAttributes(
         {
-          name: `${user.firstName} ${user.lastName}`,
+          name: `${user.firstName} ${user.lastName}`.trim(),
           email: user.email,
           userId: user._id,
         },

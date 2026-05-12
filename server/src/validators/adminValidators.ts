@@ -60,8 +60,11 @@ export const debitAccountSchema = Joi.object({
 });
 
 export const listUsersQuerySchema = Joi.object({
-  search: Joi.string().max(100).optional().messages({
+  search: Joi.string().max(100).allow('').optional().messages({
     'string.max': 'Search term must not exceed 100 characters'
+  }),
+  kycStatus: Joi.string().valid('PENDING', 'VERIFIED', 'REJECTED', 'NOT_SUBMITTED').optional().messages({
+    'any.only': 'kycStatus must be PENDING, VERIFIED, REJECTED, or NOT_SUBMITTED'
   }),
   status: Joi.string().valid('ACTIVE', 'SUSPENDED', 'PENDING_KYC').optional().messages({
     'any.only': 'Status must be ACTIVE, SUSPENDED, or PENDING_KYC'
