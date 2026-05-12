@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 import { useSocket } from "../../hooks/useSocket";
 
-// Define Notification interface locally to avoid import issues
-interface Notification {
+// Define AppNotification interface locally to avoid shadowing the global Notification API
+interface AppNotification {
   _id: string;
   userId: string;
   type:
@@ -22,7 +22,7 @@ interface Notification {
 }
 
 const NotificationCenter: React.FC = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const { socket } = useSocket();
 
@@ -30,30 +30,40 @@ const NotificationCenter: React.FC = () => {
     try {
       const res = await api.get("/notifications");
       setNotifications(res.data);
-    } catch (err) {
-      console.error("Failed to fetch notifications");
+    } catch {
+      // silently ignore
+    }
+  };
+
+  const showBrowserNotification = (title: string, body: string) => {
+    try {
+      if (typeof window !== "undefined" && "Notification" in window && window.Notification.permission === "granted") {
+        new window.Notification(title, { body, icon: "/favicon.ico" });
+      }
+    } catch {
+      // Notification API not supported on this device
     }
   };
 
   useEffect(() => {
     fetchNotifications();
 
+    try {
+      if (typeof window !== "undefined" && "Notification" in window && window.Notification.permission === "default") {
+        window.Notification.requestPermission();
+      }
+    } catch {
+      // ignore
+    }
+
     if (socket) {
-      // Listen for new notifications
-      socket.on("notification:new", (newNotif: Notification) => {
+      socket.on("notification:new", (newNotif: AppNotification) => {
         setNotifications((prev) => [newNotif, ...prev]);
-        // Browser notification if permission granted
-        if (Notification.permission === "granted") {
-          new Notification(newNotif.title, {
-            body: newNotif.body,
-            icon: "/favicon.ico",
-          });
-        }
+        showBrowserNotification(newNotif.title, newNotif.body);
       });
 
-      // Listen for transaction events
       socket.on("transaction:completed", (transaction) => {
-        const notif: Notification = {
+        const notif: AppNotification = {
           _id: "tx-" + transaction._id,
           userId: transaction.userId,
           type: "TRANSACTION",
@@ -66,9 +76,8 @@ const NotificationCenter: React.FC = () => {
         setNotifications((prev) => [notif, ...prev]);
       });
 
-      // Listen for loan events
       socket.on("loan:approved", (loan) => {
-        const notif: Notification = {
+        const notif: AppNotification = {
           _id: "loan-" + loan._id,
           userId: loan.userId,
           type: "SYSTEM",
@@ -81,9 +90,8 @@ const NotificationCenter: React.FC = () => {
         setNotifications((prev) => [notif, ...prev]);
       });
 
-      // Listen for investment events
       socket.on("investment:created", (deposit) => {
-        const notif: Notification = {
+        const notif: AppNotification = {
           _id: "fd-" + deposit._id,
           userId: deposit.userId,
           type: "FD_MATURITY",
@@ -96,10 +104,6 @@ const NotificationCenter: React.FC = () => {
         setNotifications((prev) => [notif, ...prev]);
       });
 
-      // Request notification permission
-      if (Notification.permission === "default") {
-        Notification.requestPermission();
-      }
     }
 
     return () => {
@@ -125,7 +129,7 @@ const NotificationCenter: React.FC = () => {
     try {
       // Create a test notification by calling a test endpoint
       // For now, we'll simulate it by adding a local notification
-      const testNotif: Notification = {
+      const testNotif: AppNotification = {
         _id: "test-" + Date.now(),
         userId: "current-user",
         type: "SYSTEM",

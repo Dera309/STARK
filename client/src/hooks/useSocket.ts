@@ -6,19 +6,18 @@ export const useSocket = () => {
   const [socket, setSocket] = useState<Socket | null>(socketService.getSocket());
 
   useEffect(() => {
-    // The socket might be connected/disconnected elsewhere
-    // We poll for its state here or could implement an event emitter in socketService
-    // For now, simple polling or just returning the current instance is fine
-    // since connect() is called in Layout components.
-    const interval = setInterval(() => {
-      const currentSocket = socketService.getSocket();
-      if (currentSocket !== socket) {
-        setSocket(currentSocket);
-      }
-    }, 1000);
+    // Sync once on mount in case socket was connected before this hook ran
+    setSocket(socketService.getSocket());
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [socket]);
+  // Expose a setter so CustomerLayout can notify this hook when socket changes
+  useEffect(() => {
+    const id = setInterval(() => {
+      const current = socketService.getSocket();
+      setSocket((prev) => (prev !== current ? current : prev));
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
 
   return { socket };
 };

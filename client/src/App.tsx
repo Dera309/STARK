@@ -4,6 +4,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { UserPreferencesProvider } from "./contexts/UserPreferencesContext";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AppSkeleton from "./components/ui/AppSkeleton";
+import { ErrorBoundary } from "./components/ui/ErrorBoundary";
 
 // Lazy load all components for better performance
 const CustomerLayout = lazy(() => import("./components/layout/CustomerLayout"));
@@ -29,10 +30,11 @@ export default function App() {
   };
 
   return (
-    <UserPreferencesProvider>
-      <AuthProvider>
-        <BrowserRouter future={routerFuture}>
-          <Suspense fallback={<AppSkeleton />}>
+    <ErrorBoundary>
+      <UserPreferencesProvider>
+        <AuthProvider>
+          <BrowserRouter future={routerFuture}>
+            <Suspense fallback={<AppSkeleton />}>
             <Routes>
               {/* Public Routes */}
               <Route path="/login" element={<Login />} />
@@ -66,9 +68,10 @@ export default function App() {
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </AuthProvider>
-    </UserPreferencesProvider>
+            </Suspense>
+          </BrowserRouter>
+        </AuthProvider>
+      </UserPreferencesProvider>
+    </ErrorBoundary>
   );
 }
