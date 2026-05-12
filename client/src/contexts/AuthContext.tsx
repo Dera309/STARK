@@ -62,7 +62,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     login,
     logout,
     isAuthenticated: !!token,
-    isAdmin: user?.role === "ADMIN",
+    isAdmin: user?.role?.toUpperCase() === "ADMIN",
     isLoading,
   };
 

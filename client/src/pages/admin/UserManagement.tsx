@@ -175,7 +175,8 @@ const AdminUserManagement: React.FC = () => {
       </header>
 
       <div className="bg-surface-container-low rounded-[2.5rem] border border-outline-variant overflow-hidden shadow-sm">
-        <table className="w-full text-left">
+        <div className="overflow-x-auto">
+        <table className="w-full text-left min-w-[600px]">
           <thead className="bg-surface-container-highest border-b border-outline-variant">
             <tr>
               <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
@@ -221,6 +222,7 @@ const AdminUserManagement: React.FC = () => {
             ))}
           </tbody>
         </table>
+        </div>
         {isLoading && (
           <div className="p-8 text-center text-on-surface-variant font-medium">
             Loading user directory...
