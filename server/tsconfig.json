@@ -4,17 +4,17 @@
     "module": "Node16",
     "moduleResolution": "node16",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "..",
     "lib": ["ES2020"],
     "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "baseUrl": "./src",
+    "baseUrl": "../",
     "paths": {
-      "@shared/*": ["../../shared/src/*"]
+      "@shared/*": ["shared/src/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../shared/src/**/*"],
   "exclude": ["src/tests/**/*", "src/scripts/**/*"]
 }
