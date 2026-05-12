@@ -5,6 +5,8 @@
      "moduleResolution": "node16",
      "outDir": "./dist",
      "lib": ["ES2020"],
+     "rootDir": "..",
+     "ignoreDeprecations": "6.0",
      "skipLibCheck": true,
      "noImplicitAny": false,
      "strict": false,
