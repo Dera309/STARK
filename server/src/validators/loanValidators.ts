@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
 export const applyLoanSchema = Joi.object({
-  productType: Joi.string().valid('PERSONAL', 'BUSINESS', 'EDUCATION').required().messages({
-    'any.only': 'Product type must be PERSONAL, BUSINESS, or EDUCATION',
+  productType: Joi.string().valid('QUICK_LOAN', 'SALARY_ADVANCE', 'DEVICE_FINANCING').required().messages({
+    'any.only': 'Product type must be QUICK_LOAN, SALARY_ADVANCE, or DEVICE_FINANCING',
     'any.required': 'Product type is required'
   }),
   amount: Joi.number().integer().min(10000).max(100000000).required().messages({
@@ -27,8 +27,8 @@ export const repayLoanSchema = Joi.object({
   loanId: Joi.string().required().messages({
     'any.required': 'Loan ID is required'
   }),
-  accountId: Joi.string().required().messages({
-    'any.required': 'Account ID is required'
+  accountId: Joi.string().optional().messages({
+    'string.base': 'Account ID must be a string'
   }),
   amount: Joi.number().integer().min(1).max(100000000).required().messages({
     'number.base': 'Amount must be a number',

@@ -31,7 +31,7 @@ export const useInvestmentData = () => {
   }, [fetchDeposits]);
 
   const refresh = useCallback(() => {
-    clearCache("/investments");
+    clearCache("/investments/fixed-deposit");
     fetchDeposits(false); // Force refresh without cache
   }, [fetchDeposits]);
 

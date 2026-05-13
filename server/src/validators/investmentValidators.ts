@@ -1,12 +1,16 @@
 import Joi from 'joi';
 
 export const placeFixedDepositSchema = Joi.object({
-  amount: Joi.number().integer().min(10000).max(1000000000).required().messages({
+  principalAmount: Joi.number().integer().min(100000).max(1000000000).required().messages({
     'number.base': 'Amount must be a number',
     'number.integer': 'Amount must be an integer (in cents)',
-    'number.min': 'Amount must be at least 10000 cents ($100)',
+    'number.min': 'Minimum deposit is 1,000.00',
     'number.max': 'Amount cannot exceed 1,000,000,000 cents',
     'any.required': 'Amount is required'
+  }),
+  interestRate: Joi.number().valid(12, 15, 18).required().messages({
+    'any.only': 'Interest rate must be 12, 15, or 18',
+    'any.required': 'Interest rate is required'
   }),
   tenureMonths: Joi.number().integer().valid(3, 6, 12).required().messages({
     'number.base': 'Tenure must be a number',
