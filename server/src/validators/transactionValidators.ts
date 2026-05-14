@@ -4,8 +4,8 @@ export const createTransactionSchema = Joi.object({
   sourceAccountId: Joi.string().required().messages({
     'any.required': 'Source account ID is required'
   }),
-  destinationAccountId: Joi.string().required().messages({
-    'any.required': 'Destination account ID is required'
+  targetAccountNumber: Joi.string().required().messages({
+    'any.required': 'Target account number is required'
   }),
   amount: Joi.number().integer().min(1).max(1000000000).required().messages({
     'number.base': 'Amount must be a number',
@@ -14,8 +14,8 @@ export const createTransactionSchema = Joi.object({
     'number.max': 'Amount cannot exceed 1,000,000,000 cents',
     'any.required': 'Amount is required'
   }),
-  currency: Joi.string().valid('USD', 'EUR', 'GBP').default('USD').messages({
-    'any.only': 'Currency must be USD, EUR, or GBP'
+  currency: Joi.string().valid('USD', 'EUR', 'GBP', 'CAD', 'AUD', 'CHF', 'JPY').default('USD').messages({
+    'any.only': 'Currency must be a supported currency'
   }),
   category: Joi.string().valid('TRANSFER', 'PAYMENT', 'DEPOSIT', 'WITHDRAWAL').default('TRANSFER').messages({
     'any.only': 'Category must be TRANSFER, PAYMENT, DEPOSIT, or WITHDRAWAL'
