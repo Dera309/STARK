@@ -71,7 +71,7 @@ const Login: React.FC = () => {
         </div>
 
         {/* Form Card */}
-        <div className="glass-card rounded-lg p-8 relative overflow-hidden">
+        <div className="glass-card rounded-lg p-6 sm:p-8 relative overflow-hidden">
           <div className="glass-top-glow" />
 
           {error && (
@@ -80,10 +80,10 @@ const Login: React.FC = () => {
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-8">
+          <form onSubmit={handleLogin} className="space-y-6 sm:space-y-8">
             {/* Email */}
             <div className="input-glass pb-2 pt-5 relative">
-              <label className="absolute top-0 left-0 text-label-caps text-on-surface-variant uppercase tracking-widest">
+              <label className="absolute top-0 left-0 text-label-caps text-on-surface-variant uppercase tracking-widest z-10">
                 Email
               </label>
               <input
@@ -92,17 +92,18 @@ const Login: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                className="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg text-primary outline-none placeholder-transparent"
+                className="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg sm:text-body-lg text-primary outline-none placeholder-transparent relative z-0"
                 placeholder="email"
+                style={{ minHeight: '32px', color: 'var(--color-primary)' }}
               />
-              <span className="material-symbols-outlined absolute right-0 bottom-2 text-on-surface-variant text-sm">
+              <span className="material-symbols-outlined absolute right-0 bottom-2 text-on-surface-variant text-sm z-10">
                 mail
               </span>
             </div>
 
             {/* Password */}
             <div className="input-glass pb-2 pt-5 relative">
-              <label className="absolute top-0 left-0 text-label-caps text-on-surface-variant uppercase tracking-widest">
+              <label className="absolute top-0 left-0 text-label-caps text-on-surface-variant uppercase tracking-widest z-10">
                 Password
               </label>
               <input
@@ -111,13 +112,14 @@ const Login: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete="current-password"
-                className="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg text-primary outline-none placeholder-transparent pr-8"
+                className="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg sm:text-body-lg text-primary outline-none placeholder-transparent pr-8 relative z-0"
                 placeholder="password"
+                style={{ minHeight: '32px', color: 'var(--color-primary)' }}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-0 bottom-2 text-on-surface-variant hover:text-primary transition-colors duration-300"
+                className="absolute right-0 bottom-2 text-on-surface-variant hover:text-primary transition-colors duration-300 z-10"
               >
                 <span className="material-symbols-outlined text-sm">
                   {showPassword ? "visibility" : "visibility_off"}
