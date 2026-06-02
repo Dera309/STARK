@@ -35,14 +35,30 @@ const TawkToChat: React.FC = () => {
   // Configure Tawk.to widget position before it loads
   useEffect(() => {
     (window as any).Tawk_API = (window as any).Tawk_API || {};
+    (window as any).Tawk_API.customStyle = {
+      visibility: {
+        desktop: {
+          position: 'cr',
+          xOffset: 20,
+          yOffset: 100
+        },
+        mobile: {
+          position: 'cr',
+          xOffset: 20,
+          yOffset: 100
+        }
+      }
+    };
+
     (window as any).Tawk_API.onLoad = function() {
-      // Try to reposition the widget after it loads
+      // Try to reposition the widget after it loads as backup
       setTimeout(() => {
         const widgetContainer = document.querySelector('[class*="tawk"]');
         if (widgetContainer) {
-          (widgetContainer as HTMLElement).style.top = '80px';
+          (widgetContainer as HTMLElement).style.top = '100px';
           (widgetContainer as HTMLElement).style.bottom = 'auto';
           (widgetContainer as HTMLElement).style.right = '20px';
+          (widgetContainer as HTMLElement).style.zIndex = '9999';
         }
       }, 2000);
     };

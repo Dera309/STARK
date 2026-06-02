@@ -182,6 +182,13 @@ const PremiumLogin: React.FC = () => {
             </Link>
           </p>
         </div>
+
+        {/* FDIC Notice */}
+        <div className="mt-stack-lg text-center">
+          <p className="text-label-caps text-on-surface-variant uppercase tracking-widest text-xs">
+            N.A. Member. FDIC
+          </p>
+        </div>
       </main>
     </div>
   );

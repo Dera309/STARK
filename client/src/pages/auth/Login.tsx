@@ -171,6 +171,13 @@ const Login: React.FC = () => {
             </Link>
           </p>
         </div>
+
+        {/* FDIC Notice */}
+        <div className="mt-8 text-center">
+          <p className="text-label-caps text-on-surface-variant uppercase tracking-widest text-xs">
+            N.A. Member. FDIC
+          </p>
+        </div>
       </main>
     </div>
   );

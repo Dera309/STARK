@@ -71,13 +71,13 @@ const AppSkeleton: React.FC = () => {
         </div>
 
         {/* Quick Actions Skeleton */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          {[...Array(3)].map((_, i) => (
+        <div className="grid grid-cols-4 gap-4 md:flex md:justify-center md:gap-8">
+          {[...Array(4)].map((_, i) => (
             <div
               key={i}
-              className="flex flex-col items-center justify-center p-3 sm:p-4 bg-surface-container-low rounded-xl gap-2 sm:gap-3"
+              className="flex flex-col items-center justify-center gap-3"
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-surface-container-high animate-pulse"></div>
+              <div className="w-14 h-14 rounded-full bg-surface-container-high animate-pulse"></div>
               <div className="w-12 h-3 bg-surface-container-high rounded animate-pulse"></div>
             </div>
           ))}
