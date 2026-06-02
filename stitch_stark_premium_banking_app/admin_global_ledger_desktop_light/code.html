@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK OS | Global Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-background": "#1a1c1c",
+                    "inverse-on-surface": "#f0f1f1",
+                    "surface-container-low": "#f3f3f4",
+                    "outline": "#7f7663",
+                    "on-surface-variant": "#4d4635",
+                    "tertiary-container": "#b2b3b3",
+                    "primary-fixed-dim": "#e9c349",
+                    "tertiary": "#5d5f5f",
+                    "on-primary-fixed": "#241a00",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "surface-dim": "#dadada",
+                    "surface-tint": "#735c00",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e2e2e2",
+                    "inverse-primary": "#e9c349",
+                    "background": "#f9f9f9",
+                    "on-tertiary-container": "#434546",
+                    "surface-container-high": "#e8e8e8",
+                    "primary-fixed": "#ffe088",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#554300",
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-error-container": "#93000a",
+                    "primary": "#735c00",
+                    "inverse-surface": "#2f3131",
+                    "on-secondary-fixed-variant": "#474646",
+                    "on-primary-fixed-variant": "#574500",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#d0c5af",
+                    "surface": "#f9f9f9",
+                    "secondary-container": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary-container": "#d4af37",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-secondary-container": "#656464",
+                    "on-primary": "#ffffff",
+                    "secondary": "#5f5e5e",
+                    "surface-variant": "#e2e2e2",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary-fixed": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "unit": "8px",
+                    "stack-lg": "48px",
+                    "container-padding-desktop": "64px",
+                    "stack-sm": "12px",
+                    "gutter": "24px",
+                    "container-padding-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Libre Caslon Text"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Libre Caslon Text"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "label-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(127, 118, 99, 0.2);
+        }
+        .ambient-shadow {
+            box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.03);
+        }
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-72 fixed left-0 top-0 flex flex-col bg-surface border-r border-outline-variant/10 backdrop-blur-2xl shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="flex flex-col gap-unit h-full p-gutter">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary">STARK</h1>
+<p class="font-label-md text-on-surface-variant tracking-widest uppercase">Elite Operations</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<!-- Intelligence Active -->
+<a class="flex items-center gap-4 px-4 py-3 rounded text-tertiary-fixed bg-surface-container-high border-r-2 border-tertiary-fixed font-body-lg text-body-lg tracking-wide transition-all duration-500 ease-[0.2,0.8,0.2,1] scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    Intelligence
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-lg text-body-lg tracking-wide hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+                    Capital
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-lg text-body-lg tracking-wide hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+                    Nexus
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-lg text-body-lg tracking-wide hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+                    Protocols
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-lg text-body-lg tracking-wide hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                    Audit
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-lg text-body-lg tracking-wide hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    System
+                </a>
+</nav>
+<div class="mt-auto pt-gutter border-t border-outline-variant/10">
+<div class="flex items-center gap-3 mb-stack-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiw_JV_CJIMEh35J60XeL47a5mF5mIpsQ_d2wiKA-xZl8_p0pbL9WS2lexgKQPf3s9g2hPOxlV0WZyOQdj-B8MHoFH_El_CIaqdERK-SEhl0Wtzq-Nmh2RjjgG3PSBiqwwJY_PcaRoM_uoDptfVxq60UT7mwjHeTJj4wH9vcAj4zMQyutFKu_WFbckOW5KjfzgNwSdIEaZBNevkvluSJWi2PMp5RtDDNgXIZad2CC1jHt1IX-jClOhamuc84uT-_wOMYqIdb4F0rY"/>
+</div>
+<div>
+<p class="font-label-lg text-on-surface">Director Stark</p>
+<p class="text-[10px] uppercase text-outline">Clearance Level 9</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 rounded border border-outline-variant text-on-surface hover:bg-error/5 hover:text-error transition-all font-label-lg">Terminate Session</button>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-72 h-20 bg-surface/80 backdrop-blur-3xl border-b border-outline-variant/10 z-40">
+<div class="flex justify-between items-center px-container-padding-desktop w-full h-full">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-lg text-headline-lg font-black text-primary tracking-tighter">STARK OS</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-xs font-label-md w-64 focus:ring-1 focus:ring-primary-container transition-all" placeholder="QUERY LEDGER..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed cursor-pointer transition-colors" data-icon="wifi_tethering">wifi_tethering</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed cursor-pointer transition-colors" data-icon="notifications_active">notifications_active</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed cursor-pointer transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant/30"></div>
+<div class="text-right">
+<p class="font-label-md text-[10px] text-outline uppercase tracking-widest">Global Status</p>
+<p class="font-label-lg text-primary">OPERATIONAL</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-20 pb-20 min-h-screen">
+<div class="p-container-padding-desktop max-w-[1600px] mx-auto">
+<!-- Page Header -->
+<header class="mb-stack-lg flex justify-between items-end">
+<div>
+<nav class="flex gap-2 mb-2">
+<span class="font-label-md text-outline uppercase">Global Ledger</span>
+<span class="font-label-md text-outline">/</span>
+<span class="font-label-md text-primary uppercase">Intelligence</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Capital Flow Surveillance</h2>
+</div>
+<div class="flex gap-stack-sm">
+<button class="px-6 py-2 rounded-full border border-outline-variant font-label-lg hover:bg-surface-container transition-colors">Export Report</button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-on-primary-container font-label-lg shadow-sm hover:opacity-90 transition-opacity">Execute Settlement</button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="col-span-3">
+<div class="bg-white rounded p-stack-md hairline-border ambient-shadow space-y-stack-lg">
+<section>
+<h3 class="font-label-lg text-on-surface-variant uppercase mb-stack-sm tracking-widest">Filter Parameters</h3>
+<div class="space-y-4">
+<div>
+<label class="block font-label-md text-outline mb-1">CURRENCY PAIR</label>
+<select class="w-full bg-transparent border-b border-outline-variant py-2 focus:border-primary-container focus:ring-0 text-body-md">
+<option>XAU / USD</option>
+<option>BTC / USD</option>
+<option>EUR / GBP</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-outline mb-1">VOLUME THRESHOLD (USD)</label>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary-container" type="range"/>
+<div class="flex justify-between mt-2 font-label-md text-on-surface-variant">
+<span>100K</span>
+<span>50M+</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="font-label-lg text-on-surface-variant uppercase mb-stack-sm tracking-widest">Asset Integrity</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox"/>
+<span class="font-body-md text-on-surface">Verified Sources Only</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox"/>
+<span class="font-body-md text-on-surface">Flagged Entities</span>
+</label>
+</div>
+</section>
+<section>
+<h3 class="font-label-lg text-on-surface-variant uppercase mb-stack-sm tracking-widest">Live Spatial</h3>
+<div class="h-48 w-full bg-surface-container-low rounded-lg overflow-hidden relative border border-outline-variant/10">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A sophisticated dark-mode world map visualization with golden nodes and lines representing global capital movement. The aesthetic is clean and high-end, utilizing a minimal ivory and gold palette with soft lighting. Thin glowing lines connect major financial hubs like London, New York, and Singapore against a pristine light grey background." data-location="London" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLvBnfGxthnyV_9sk4ptkAQcGovFfLApCG_c1yGvATxAd697Hi2ARegjpAc7pnizzlqjEf9G5Qfuw7ND6aeRa4BL_XE1Dkhvd3cHTUIzi2qlIOGD6zPG5ZySAY-FcKjfExCFUHK31f6mflHQUn0fht7HmZUfJ6CJZUXCk7l5Lh2tJd-K2PScmosoC0dd7KKyijvDYDkB-Wuy_caDgqLxav45XCa1u6mW9qjnLbyc2VyRr79VQx7FMRfyOo4CTmO_QcQ5yFHcbPoGw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-md text-[10px] text-primary-container font-bold uppercase">Active Stream</span>
+</div>
+</div>
+</section>
+</div>
+</aside>
+<!-- Data Grid -->
+<div class="col-span-9">
+<div class="bg-white rounded hairline-border ambient-shadow overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant/10">
+<th class="px-6 py-4 font-label-lg text-outline uppercase tracking-widest">TX Hash</th>
+<th class="px-6 py-4 font-label-lg text-outline uppercase tracking-widest">Timestamp</th>
+<th class="px-6 py-4 font-label-lg text-outline uppercase tracking-widest">Asset Flow</th>
+<th class="px-6 py-4 font-label-lg text-outline uppercase tracking-widest">Volume (USD)</th>
+<th class="px-6 py-4 font-label-lg text-outline uppercase tracking-widest">Risk Score</th>
+<th class="px-6 py-4"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-xs text-primary">0x7f...8e21</td>
+<td class="px-6 py-5 font-body-md text-on-surface-variant">14:22:08.002</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="font-label-lg">XAU → USD</span>
+</div>
+</td>
+<td class="px-6 py-5 font-headline-md text-on-surface">$12,450,000.00</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[15%]"></div>
+</div>
+<span class="font-label-md text-primary">LOW</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-xs text-primary">0x9a...3c55</td>
+<td class="px-6 py-5 font-body-md text-on-surface-variant">14:21:45.112</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+<span class="font-label-lg">BTC → XAU</span>
+</div>
+</td>
+<td class="px-6 py-5 font-headline-md text-on-surface">$8,122,500.00</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error w-[82%]"></div>
+</div>
+<span class="font-label-md text-error">HIGH</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-xs text-primary">0x42...d110</td>
+<td class="px-6 py-5 font-body-md text-on-surface-variant">14:20:12.990</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-label-lg">GBP → USD</span>
+</div>
+</td>
+<td class="px-6 py-5 font-headline-md text-on-surface">$45,000,000.00</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[45%]"></div>
+</div>
+<span class="font-label-md text-on-surface-variant">MED</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-xs text-primary">0x1b...f429</td>
+<td class="px-6 py-5 font-body-md text-on-surface-variant">14:19:55.003</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="font-label-lg">ETH → USDT</span>
+</div>
+</td>
+<td class="px-6 py-5 font-headline-md text-on-surface">$2,300,450.00</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[12%]"></div>
+</div>
+<span class="font-label-md text-primary">LOW</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-xs text-primary">0xdd...6671</td>
+<td class="px-6 py-5 font-body-md text-on-surface-variant">14:18:32.441</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-label-lg">EUR → USD</span>
+</div>
+</td>
+<td class="px-6 py-5 font-headline-md text-on-surface">$115,800,000.00</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[8%]"></div>
+</div>
+<span class="font-label-md text-primary">LOW</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-surface-container-lowest border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-outline">DISPLAYING 5 OF 12,842 ENTRIES</span>
+<div class="flex gap-2">
+<button class="p-2 rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-2 rounded bg-primary-container/20 text-primary-container font-bold px-4 text-xs">1</button>
+<button class="p-2 rounded hover:bg-surface-container transition-colors text-xs px-4">2</button>
+<button class="p-2 rounded hover:bg-surface-container transition-colors text-xs px-4">3</button>
+<button class="p-2 rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="absolute bottom-0 right-0 left-72 py-stack-md bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="flex justify-between items-center px-container-padding-desktop w-full">
+<div class="flex items-center gap-gutter">
+<p class="font-label-caps text-label-caps font-bold text-tertiary-fixed tracking-widest uppercase">STARK</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-60">© 2024 STARK INDUSTRIES. ELITE PRECISION ENFORCED.</p>
+</div>
+<div class="flex items-center gap-gutter">
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Security Protocols</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">System Status</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Privacy Vault</a>
+</div>
+</div>
+</footer>
+</body></html>

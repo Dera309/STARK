@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK OS | Institutional Approval Workflow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#353534",
+                        "surface-container": "#201f1f",
+                        "on-tertiary": "#3c2f00",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-primary-fixed-variant": "#454747",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#b8b8b8",
+                        "surface-dim": "#131313",
+                        "primary-container": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#464747",
+                        "background": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-bright": "#393939",
+                        "tertiary": "#ffffff",
+                        "secondary": "#c6c6c6",
+                        "on-background": "#e5e2e1",
+                        "tertiary-fixed": "#ffe088",
+                        "tertiary-container": "#ffe088",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "outline": "#8e9192",
+                        "error-container": "#93000a",
+                        "surface-variant": "#353534",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "inverse-primary": "#5d5f5f",
+                        "on-primary-fixed": "#1a1c1c",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-primary": "#2f3131",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#e5e2e1",
+                        "primary": "#ffffff",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary": "#2f3131",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#c6c6c7",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#484949",
+                        "on-tertiary-container": "#7b6100",
+                        "on-primary-container": "#636565",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline-variant": "#444748",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "24px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "40px",
+                        "stack-md": "24px",
+                        "gutter": "16px",
+                        "stack-sm": "12px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-lg min-h-screen">
+<!-- Side Navigation Shell -->
+<aside class="h-full w-72 fixed left-0 top-0 border-r border-outline-variant/10 bg-surface-container-low dark:bg-surface-container-low backdrop-blur-xl flex flex-col py-stack-lg z-50">
+<div class="px-8 mb-10">
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary dark:text-primary">STARK OS</h1>
+<p class="font-label-caps text-label-caps opacity-50 uppercase tracking-widest mt-1">Institutional Suite</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="text-on-surface-variant dark:text-on-surface-variant flex items-center gap-3 px-4 py-3 opacity-60 hover:bg-surface-container-highest/30 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps">Intelligence</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant flex items-center gap-3 px-4 py-3 opacity-60 hover:bg-surface-container-highest/30 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-caps text-label-caps">Capital</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant flex items-center gap-3 px-4 py-3 opacity-60 hover:bg-surface-container-highest/30 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-caps text-label-caps">Nexus</span>
+</a>
+<a class="text-tertiary-container dark:text-tertiary-container font-bold border-l-2 border-tertiary-container pl-4 flex items-center gap-3 py-3 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Protocols</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant flex items-center gap-3 px-4 py-3 opacity-60 hover:bg-surface-container-highest/30 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-caps text-label-caps">Audit</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant flex items-center gap-3 px-4 py-3 opacity-60 hover:bg-surface-container-highest/30 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">System</span>
+</a>
+</nav>
+<div class="px-8 mt-auto pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+<img alt="STARK Executive User" data-alt="A professional headshot of a mature, authoritative male executive with graying hair, wearing a high-end charcoal tailored suit. The lighting is dramatic and moody, with cool blue and silver highlights typical of a futuristic corporate environment. The background is a blurred high-tech office with minimalist architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpXhiXFL7EDCXj2oMzDPCaNtLs7Ee7J6Wo0MDyOnejyCm3sj7lbsY4gUX0ZXUhiUOubNggmr1W5zUhI9r4zn8xkTnbE8ymwoSIeWPkRYktB0TvIgHfyIluoNdwkVyfJc_ZWeAZPg9UuKOzrb12Rm0Qbgz1wktnoZVqTvY8KcqGnXiGsq96lhO3fM5B6EmIvZkHR8T9VXbkqbJ_LfYVOeDmK4dS-V9vLRJX3oX166uFotB8c-hVOqK6GR1wKmh-4Whf3rKAzqqSDSg"/>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-tertiary-container uppercase tracking-tighter">Chief Officer</p>
+<p class="font-body-sm text-body-sm font-bold">A. J. Stark</p>
+</div>
+</div>
+<button class="w-full py-3 text-left font-label-caps text-label-caps text-error opacity-70 hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">logout</span>
+                Terminate Session
+            </button>
+</div>
+</aside>
+<!-- Top App Bar Shell -->
+<header class="fixed top-0 right-0 left-72 h-20 bg-surface-dim/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/10 flex items-center justify-between px-container-padding-desktop z-40 shadow-sm">
+<div class="flex items-center gap-8">
+<span class="font-title-md text-title-md font-bold text-primary tracking-tight">Approval Workflow: Transaction TXN-9928-XA</span>
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary-container/10 border border-tertiary-container/30 rounded-full">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="font-label-caps text-[10px] text-tertiary-container uppercase">High Priority Deployment</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">dns</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors relative">
+                    notifications
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-20 pb-32 px-container-padding-desktop">
+<!-- Workflow Progress Banner -->
+<div class="my-stack-md flex items-center justify-between gap-4 py-8 px-10 glass-panel rounded-lg shadow-[0px_10px_30px_rgba(192,192,192,0.05)]">
+<div class="flex-1 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-2 border-tertiary-container/50 flex items-center justify-center bg-tertiary-container/5">
+<span class="material-symbols-outlined text-tertiary-container">payments</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg tracking-tight">Institutional Capital Deployment</h2>
+<p class="font-body-sm text-on-surface-variant">Asset Class: Tier 1 Sovereign Debt Cluster | Total Amount: $450,000,000.00 USD</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-label-caps text-[10px] opacity-40 uppercase">Phase</p>
+<p class="font-title-md text-title-md text-tertiary-container">Final Authorization</p>
+</div>
+<div class="w-[1px] h-12 bg-outline-variant/30"></div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] opacity-40 uppercase">Status</p>
+<p class="font-title-md text-title-md">Awaiting Sign-off</p>
+</div>
+</div>
+</div>
+<!-- Central Workspace: Split View -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Panel: Compliance Review -->
+<section class="col-span-5 flex flex-col gap-gutter">
+<div class="glass-panel p-stack-md rounded-lg h-full border-l-2 border-tertiary-container/20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-title-md text-title-md font-bold tracking-tight">Compliance Review</h3>
+<span class="material-symbols-outlined text-tertiary-container">verified_user</span>
+</div>
+<div class="space-y-6">
+<!-- Condition 1 -->
+<div class="p-4 border border-outline-variant/10 bg-white/5 rounded-lg flex items-start gap-4 transition-all hover:bg-white/[0.08]">
+<div class="mt-1 w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center shadow-[0_0_15px_rgba(255,224,136,0.3)]">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps font-bold">AML Cleared</p>
+<p class="font-body-sm text-on-surface-variant text-xs mt-1">Anti-Money Laundering verification executed via Nexus Node-7. No flags identified in the last 24-hour cycle.</p>
+<p class="text-[10px] text-tertiary-container mt-2 opacity-80 italic">Verified by AI Oracle: 09:42 UTC</p>
+</div>
+</div>
+<!-- Condition 2 -->
+<div class="p-4 border border-outline-variant/10 bg-white/5 rounded-lg flex items-start gap-4 transition-all hover:bg-white/[0.08]">
+<div class="mt-1 w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center shadow-[0_0_15px_rgba(255,224,136,0.3)]">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps font-bold">KYC Current</p>
+<p class="font-body-sm text-on-surface-variant text-xs mt-1">Institutional Know Your Customer profile is fully updated. Biometric and legal residency status confirmed for all beneficiaries.</p>
+<p class="text-[10px] text-tertiary-container mt-2 opacity-80 italic">Vault Hash: STARK-KYC-992-XA</p>
+</div>
+</div>
+<!-- Condition 3 -->
+<div class="p-4 border border-outline-variant/10 bg-white/5 rounded-lg flex items-start gap-4 transition-all hover:bg-white/[0.08]">
+<div class="mt-1 w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center shadow-[0_0_15px_rgba(255,224,136,0.3)]">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps font-bold">Liquidity Verified</p>
+<p class="font-body-sm text-on-surface-variant text-xs mt-1">Reserve assets validated in real-time. Slippage impact for $450M deployment calculated at &lt; 0.002%.</p>
+<p class="text-[10px] text-tertiary-container mt-2 opacity-80 italic">Reserve Ratio: 142%</p>
+</div>
+</div>
+</div>
+<div class="mt-12 p-6 rounded-lg border border-dashed border-outline-variant/30 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-4xl opacity-20 mb-2">description</span>
+<p class="font-label-caps text-label-caps opacity-40">Drop additional compliance documentation here</p>
+</div>
+</div>
+</section>
+<!-- Right Panel: Executive Authorization -->
+<section class="col-span-7 flex flex-col gap-gutter">
+<!-- Signature Area -->
+<div class="glass-panel p-stack-md rounded-lg flex flex-col gap-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-9xl">contract</span>
+</div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md font-bold tracking-tight">Executive Authorization</h3>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-[10px] opacity-40">Role:</span>
+<span class="font-label-caps text-label-caps text-tertiary-container">Chief Investment Officer</span>
+</div>
+</div>
+<div class="space-y-4">
+<label class="font-label-caps text-label-caps opacity-60">Annotation Note</label>
+<textarea class="w-full bg-surface-container-highest/20 border-b border-outline-variant/30 focus:border-tertiary-container focus:ring-0 text-on-surface transition-all py-4 min-h-[120px] placeholder:opacity-20" placeholder="Provide final deployment context or restrictive covenants..."></textarea>
+</div>
+<div class="mt-4 p-10 bg-black/40 border border-outline-variant/10 rounded-lg flex flex-col items-center justify-center relative group cursor-pointer hover:border-tertiary-container/30 transition-all">
+<div class="absolute top-4 left-4 font-label-caps text-[10px] opacity-30">SECURE SIGNATURE FIELD</div>
+<div class="w-full max-w-sm h-32 border-b border-outline-variant/20 flex flex-col items-center justify-center gap-4 group-hover:border-tertiary-container/50 transition-all">
+<span class="material-symbols-outlined text-4xl opacity-10 group-hover:opacity-30 transition-opacity">draw</span>
+<p class="font-body-sm text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">Biometric signature required to unlock 'Authorize'</p>
+</div>
+<div class="mt-4 flex items-center gap-3">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high border border-background flex items-center justify-center text-[10px] font-bold">S</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-high border border-background flex items-center justify-center text-[10px] font-bold">O</div>
+</div>
+<span class="text-[10px] font-label-caps opacity-40">SIGNATORY CONSENSUS: 2/3 REQUIRED</span>
+</div>
+</div>
+</div>
+<!-- Governance Audit Feed -->
+<div class="glass-panel p-stack-md rounded-lg flex flex-col gap-6">
+<h4 class="font-label-caps text-label-caps font-bold text-on-surface-variant tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+                        GOVERNANCE AUDIT FEED
+                    </h4>
+<div class="space-y-4">
+<div class="flex items-start gap-4 pb-4 border-b border-outline-variant/10">
+<div class="w-1 h-10 bg-tertiary-container rounded-full"></div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<p class="font-body-sm font-bold">Step 2: Risk Committee Approval</p>
+<span class="text-[10px] opacity-40">Today, 08:15 UTC</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Approved by M. Sterling (CRO). Risk score 1.2 confirmed within tolerances.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 pb-4 border-b border-outline-variant/10">
+<div class="w-1 h-10 bg-tertiary-container/40 rounded-full"></div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<p class="font-body-sm font-bold">Step 1: Department Initiation</p>
+<span class="text-[10px] opacity-40">Today, 06:30 UTC</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Initiated by Treasury Desk. Automated pre-check 100% pass rate.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Action Bar: Fixed Bottom Bar -->
+<footer class="fixed bottom-0 left-72 right-0 h-24 bg-surface-container-lowest/90 backdrop-blur-xl border-t border-outline-variant/10 flex items-center justify-between px-container-padding-desktop z-50">
+<div class="flex flex-col">
+<p class="font-label-caps text-[10px] opacity-40 uppercase">Pending Deployment</p>
+<p class="font-title-md text-title-md font-bold tracking-tighter">$450,000,000.00 USD <span class="text-sm opacity-50 font-normal ml-2">to Sovereign-Cluster-Alpha</span></p>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-8 py-3 rounded-full border border-outline-variant/30 font-label-caps text-label-caps hover:bg-surface-container-highest/50 transition-all duration-300">
+                Request Revision
+            </button>
+<button class="px-10 py-3 rounded-full bg-primary text-on-primary font-label-caps text-label-caps font-bold shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] active:scale-95 flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                Authorize Deployment
+            </button>
+</div>
+</footer>
+<!-- Subtle footer text in background corner -->
+<div class="fixed bottom-4 left-4 z-50 pointer-events-none opacity-20">
+<p class="font-label-caps text-[10px]">© 2024 STARK Institutional Banking. Level 5 Clearance Required.</p>
+</div>
+</body></html>

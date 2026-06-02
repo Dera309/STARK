@@ -14,100 +14,90 @@ const ForgotPassword: React.FC = () => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
     try {
       await api.post("/auth/reset-password/request", { email });
       setStep("success");
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error && 'response' in err 
-        ? (err as ApiError).response?.data?.message 
-        : "Something went wrong. Please try again.";
-      setError(errorMessage || "Something went wrong. Please try again.");
+      const apiErr = err as ApiError;
+      setError(
+        apiErr.response?.data?.error?.message ||
+        apiErr.response?.data?.message ||
+        "Something went wrong. Please try again."
+      );
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface relative overflow-hidden font-sans">
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full animate-pulse"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 blur-[120px] rounded-full animate-pulse delay-1000"></div>
+    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden p-container-padding-mobile md:p-container-padding-desktop">
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-tertiary-fixed-dim/5 rounded-full blur-[120px]" />
+      </div>
 
-      <div className="w-full max-w-md p-8 relative z-10">
-        <div className="bg-surface-container-low/60 backdrop-blur-3xl border border-outline-variant rounded-[2.5rem] shadow-2xl p-10">
-          <header className="text-center mb-10">
-            <h1 className="text-4xl font-black tracking-tighter mb-2 bg-gradient-to-br from-primary to-primary-container bg-clip-text text-transparent italic">
-              STARK
-            </h1>
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-on-surface-variant">
-              Wealth Management
-            </p>
-          </header>
+      <main className="w-full max-w-md mx-auto relative z-10 animate-fade-in">
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-stack-lg">
+          <div className="w-32 h-32 mb-stack-md rounded-full overflow-hidden glass-card p-1 shadow-gold-glow">
+            <img
+              alt="STARK Premium Fintech Logo"
+              className="w-full h-full object-cover rounded-full mix-blend-screen"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuADYglUMRdg1ayEM7LOA-iM21MY1blqfgG0RTV8UoeYuoBNZwB1Jix0mjMtlCAJIqT0cWCOZDPubwsDWV8OZYB0NCXJpybfzNJd_W9gjAygRWh8e5deDTdn-X8qJLIx4tIkCx6a5BVXucCY0FIl5kbgtA-QwjPMn9i6_SRaaULPLNcz3lYzVwuMLEM_DqvRwdVp2l-ZcFE2ti384kmdwxKfMY6NmhIBIr82xYDtrXz94gqTWipmJIZuODIAhndUXtYkTlkQ2sTn9Os"
+            />
+          </div>
+          <h1 className="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary tracking-[0.2em] uppercase">
+            STARK
+          </h1>
+          <p className="text-label-caps text-on-surface-variant mt-unit tracking-widest uppercase">
+            {step === "form" ? "Reset Access" : "Check Inbox"}
+          </p>
+        </div>
+
+        <div className="glass-card rounded-lg p-stack-md relative overflow-hidden">
+          <div className="glass-top-glow" />
 
           {step === "form" ? (
             <>
-              {/* Icon */}
-              <div className="flex justify-center mb-8">
-                <div className="w-16 h-16 rounded-[1.5rem] bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-8 h-8 text-primary"
-                  >
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                </div>
-              </div>
-
-              <div className="text-center mb-8">
-                <h2 className="text-xl font-black text-on-surface mb-2">Reset Your Password</h2>
-                <p className="text-xs font-bold text-on-surface-variant leading-relaxed">
-                  Enter the email address linked to your account and we&apos;ll send you a secure reset
-                  link.
+              <div className="mb-stack-md text-center">
+                <p className="text-body-sm text-on-surface-variant leading-relaxed">
+                  Enter the email address linked to your account and we'll send you a secure reset link.
                 </p>
               </div>
 
               {error && (
-                <div className="mb-6 p-4 bg-error-container text-on-error-container rounded-2xl text-xs font-black uppercase text-center border border-error/20 animate-shake">
+                <div className="mb-6 p-4 rounded-md bg-error-container/20 border border-error/20 text-error text-body-sm text-center animate-fade-in">
                   {error}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label
-                    htmlFor="forgot-email"
-                    className="text-[10px] font-black uppercase tracking-widest text-on-surface ml-2"
-                  >
+              <form onSubmit={handleSubmit} className="space-y-stack-md">
+                <div className="relative input-glass pb-2 pt-5">
+                  <label className="absolute top-0 left-0 text-label-caps text-on-surface-variant uppercase tracking-widest">
                     Email Address
                   </label>
                   <input
-                    id="forgot-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     autoFocus
-                    className="w-full h-14 px-6 rounded-2xl bg-surface-container-highest border border-outline-variant focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none font-bold placeholder:text-outline/50"
-                    placeholder="john@example.com"
+                    autoComplete="email"
+                    className="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg text-primary outline-none placeholder-transparent"
+                    placeholder="email"
                   />
+                  <span className="material-symbols-outlined absolute right-0 bottom-2 text-on-surface-variant text-sm">
+                    mail
+                  </span>
                 </div>
 
                 <button
-                  id="send-reset-link-btn"
                   type="submit"
                   disabled={loading}
-                  className="w-full h-16 bg-primary text-on-primary rounded-2xl font-black uppercase tracking-widest hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-50"
+                  className="w-full btn-gold flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
-                    <div className="w-6 h-6 border-4 border-on-primary/30 border-t-on-primary rounded-full animate-spin"></div>
+                    <div className="w-4 h-4 border-2 border-on-tertiary-fixed/30 border-t-on-tertiary-fixed rounded-full animate-spin" />
                   ) : (
                     "Send Reset Link"
                   )}
@@ -116,57 +106,36 @@ const ForgotPassword: React.FC = () => {
             </>
           ) : (
             /* Success State */
-            <div className="text-center">
-              <div className="flex justify-center mb-8">
-                <div className="w-16 h-16 rounded-[1.5rem] bg-tertiary/10 border border-tertiary/20 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-8 h-8 text-tertiary"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </div>
+            <div className="text-center py-stack-sm">
+              <div className="w-16 h-16 mx-auto mb-stack-md rounded-full bg-tertiary-fixed/10 border border-tertiary-fixed/30 flex items-center justify-center">
+                <span className="material-symbols-outlined text-3xl text-tertiary-fixed-dim" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  mark_email_read
+                </span>
               </div>
-              <h2 className="text-xl font-black text-on-surface mb-3">Check Your Inbox</h2>
-              <p className="text-xs font-bold text-on-surface-variant leading-relaxed mb-2">
-                If an account exists for <span className="text-primary font-black">{email}</span>, a
-                secure password reset link has been sent.
+              <h2 className="font-title-md text-title-md text-primary mb-unit">Check Your Inbox</h2>
+              <p className="text-body-sm text-on-surface-variant leading-relaxed mb-unit">
+                If an account exists for{" "}
+                <span className="text-primary font-semibold">{email}</span>, a secure reset link has been sent.
               </p>
-              <p className="text-xs font-bold text-on-surface-variant leading-relaxed">
-                The link expires in <span className="text-on-surface font-black">24 hours</span>.
-                Check your spam folder if you don&apos;t see it.
+              <p className="text-body-sm text-on-surface-variant leading-relaxed">
+                The link expires in <span className="text-primary font-semibold">24 hours</span>. Check your spam folder if you don't see it.
               </p>
             </div>
           )}
-
-          <footer className="mt-10 text-center space-y-4">
-            <p className="text-xs font-bold text-on-surface-variant">
-              Remembered your password?{" "}
-              <Link
-                to="/login"
-                id="back-to-login-link"
-                className="text-primary font-black hover:underline"
-              >
-                Back to Login
-              </Link>
-            </p>
-            <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
-              Encrypted &amp; Protected by STARK Core
-            </p>
-            <div className="flex justify-center gap-6">
-              <span className="w-8 h-[1px] bg-outline-variant"></span>
-              <span className="w-8 h-[1px] bg-outline-variant"></span>
-            </div>
-          </footer>
         </div>
-      </div>
+
+        <div className="mt-stack-lg text-center">
+          <p className="text-body-sm text-on-surface-variant">
+            Remembered your password?{" "}
+            <Link
+              to="/login"
+              className="text-label-caps text-tertiary-fixed hover:text-primary transition-colors duration-300 uppercase tracking-widest ml-unit"
+            >
+              Back to Login
+            </Link>
+          </p>
+        </div>
+      </main>
     </div>
   );
 };

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Libre+Caslon+Text:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "primary-container": "#d4af37",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "surface-dim": "#dadada",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#554300",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-error-container": "#93000a",
+                    "primary": "#735c00",
+                    "error": "#ba1a1a",
+                    "surface": "#f9f9f9",
+                    "outline": "#7f7663",
+                    "on-background": "#1a1c1c",
+                    "inverse-surface": "#2f3131",
+                    "background": "#f9f9f9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-secondary-fixed-variant": "#474646",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-surface": "#1a1c1c",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary-container": "#434546",
+                    "on-surface-variant": "#4d4635",
+                    "surface-container-low": "#f3f3f4",
+                    "secondary": "#5f5e5e",
+                    "surface-tint": "#735c00",
+                    "primary-fixed": "#ffe088",
+                    "tertiary-container": "#b2b3b3",
+                    "surface-container-high": "#e8e8e8",
+                    "outline-variant": "#d0c5af",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "surface-bright": "#f9f9f9",
+                    "inverse-on-surface": "#f0f1f1",
+                    "on-secondary-container": "#656464",
+                    "inverse-primary": "#e9c349",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "tertiary-fixed": "#e2e2e2",
+                    "tertiary": "#5d5f5f",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-primary-fixed": "#241a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "gutter": "24px",
+                    "container-padding-mobile": "24px",
+                    "stack-lg": "48px",
+                    "container-padding-desktop": "64px",
+                    "unit": "8px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Libre Caslon Text"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Libre Caslon Text"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .donut-segment {
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 border-b border-white/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)]">
+<div class="flex justify-between items-center h-20 px-container-padding-mobile w-full">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a high-net-worth individual in a tailored charcoal suit, set against a blurred minimalist architectural background with soft natural lighting. The image maintains a high-end luxury aesthetic with a neutral color palette and sharp focus on the subject's composed expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIoQgpf-X_EylrrEOMJkqhEY23tA1aYQj2QwhCZHrAq-MdhjYA57qhRZ5KFJoyw-kNJdgzuxKJLe9y2si8dzCRMaTrq68dRiFtLR3UCA1268d4mu2Kr521Et41DpDuJfyKo2W0CKHs-RqoOsaLgjj90qiWTQNjjwaqc6YmVdFIOva9BUL24hekCuJH_T65ymzjsudRT38P7wwXUrCGJLdKoO_jE97WZuYDNJMP_PqQ1UMJ1ZosFE6jgpZWeFvps5CD08ayfo1k29Q"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-[0.2em] text-primary uppercase">STARK</h1>
+<button class="text-primary hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="mt-28 px-container-padding-mobile">
+<!-- Screen Title Section -->
+<section class="mb-stack-lg">
+<p class="font-label-caps text-label-caps text-primary mb-2">PORTFOLIO INSIGHTS</p>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Asset Allocation</h2>
+<div class="mt-4 h-px w-12 bg-primary"></div>
+</section>
+<!-- Bento Grid Visualization Section -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Donut Chart Card -->
+<div class="bg-surface-container-lowest border border-black/5 rounded-lg p-stack-md shadow-[0px_20px_50px_rgba(0,0,0,0.03)] flex flex-col items-center">
+<div class="relative w-64 h-64 flex items-center justify-center mb-8">
+<!-- SVG Donut Chart -->
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<!-- Private Equity (45%) -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#d4af37" stroke-dasharray="113.1 138.2" stroke-width="8"></circle>
+<!-- Real Estate (30%) -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#5f5e5e" stroke-dasharray="75.4 175.9" stroke-dashoffset="-113.1" stroke-width="8"></circle>
+<!-- Digital Assets (15%) -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#735c00" stroke-dasharray="37.7 213.6" stroke-dashoffset="-188.5" stroke-width="8"></circle>
+<!-- Fixed Income (10%) -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#dadada" stroke-dasharray="25.1 226.2" stroke-dashoffset="-226.2" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant/60">TOTAL AUM</span>
+<span class="font-headline-md text-headline-md text-on-surface">$8.42M</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="grid grid-cols-2 gap-x-8 gap-y-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">PRIVATE EQUITY</p>
+<p class="font-body-md font-bold">45%</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">REAL ESTATE</p>
+<p class="font-body-md font-bold">30%</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">DIGITAL ASSETS</p>
+<p class="font-body-md font-bold">15%</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-surface-dim"></div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">FIXED INCOME</p>
+<p class="font-body-md font-bold">10%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Asset Performance Table Section -->
+<div class="mt-stack-md">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-headline-md">Active Deployment</h3>
+<p class="font-label-md text-primary">View Report</p>
+</div>
+<div class="space-y-4">
+<!-- Asset Row 1 -->
+<div class="bg-surface-container-lowest border border-black/5 rounded-lg p-5 shadow-[0px_10px_30px_rgba(0,0,0,0.02)] flex items-center justify-between">
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Stark Alpha Fund</p>
+<p class="font-label-md text-on-surface-variant/60">Equities • H2 2023</p>
+</div>
+<div class="w-16 h-8 mx-4">
+<!-- Micro-sparkline -->
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,30 Q10,10 20,25 T40,15 T60,35 T80,5 T100,20" fill="none" stroke="#d4af37" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">+12.4%</p>
+<p class="font-label-md text-primary">Growing</p>
+</div>
+</div>
+<!-- Asset Row 2 -->
+<div class="bg-surface-container-lowest border border-black/5 rounded-lg p-5 shadow-[0px_10px_30px_rgba(0,0,0,0.02)] flex items-center justify-between">
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Nexus Real Estate</p>
+<p class="font-label-md text-on-surface-variant/60">Property • Core+</p>
+</div>
+<div class="w-16 h-8 mx-4">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,20 Q20,15 40,22 T70,18 T100,10" fill="none" stroke="#5f5e5e" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">+4.2%</p>
+<p class="font-label-md text-secondary">Stable</p>
+</div>
+</div>
+<!-- Asset Row 3 -->
+<div class="bg-surface-container-lowest border border-black/5 rounded-lg p-5 shadow-[0px_10px_30px_rgba(0,0,0,0.02)] flex items-center justify-between">
+<div class="flex-1">
+<p class="font-body-md font-bold text-on-surface">Vanguard Tech III</p>
+<p class="font-label-md text-on-surface-variant/60">Venture • Early Stage</p>
+</div>
+<div class="w-16 h-8 mx-4">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,35 L20,30 L40,32 L60,10 L80,5 L100,2" fill="none" stroke="#d4af37" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface">+28.1%</p>
+<p class="font-label-md text-primary">Exceptional</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action / Call Section -->
+<section class="mt-stack-lg mb-8">
+<div class="relative overflow-hidden bg-on-background rounded-lg p-gutter text-on-primary">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-white mb-2">Investment Committee</h4>
+<p class="font-body-md text-white/70 mb-6 max-w-[80%]">Join the exclusive quarterly deployment briefing with our senior strategists.</p>
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all active:scale-95 shadow-lg flex items-center gap-3">
+<span class="material-symbols-outlined" data-weight="fill">call</span>
+                        PARTICIPATE IN CALL
+                    </button>
+</div>
+<!-- Abstract Background Element -->
+<div class="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-2xl border-t border-white/5 shadow-[0px_-10px_40px_rgba(0,0,0,0.05)] rounded-t-lg">
+<div class="flex justify-around items-center h-24 pb-safe px-4 w-full">
+<div class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-caps text-label-caps mt-1">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-label-caps text-label-caps mt-1">TRANSFER</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="font-label-caps text-label-caps mt-1">CARDS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps mt-1">WEALTH</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">PROFILE</span>
+</div>
+</div>
+</nav>
+</body></html>

@@ -83,34 +83,45 @@ const LoansPage: React.FC = () => {
     <div className="space-y-8 animate-fade-in pb-12">
       {/* Page Header */}
       <div>
-        <h1 className="text-3xl font-black tracking-tight">Loans &amp; Credit</h1>
-        <p className="text-on-surface-variant text-sm font-medium">
+        <h1 className="text-3xl font-black tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Loans &amp; Credit</h1>
+        <p className="text-white/80 text-sm font-medium">
           Smart borrowing for your big moves.
         </p>
       </div>
-      {/* Credit Limit Hero */}
-      <section className="bg-primary shadow-2xl rounded-[2.5rem] p-8 text-white card-gradient from-primary to-primary-container relative overflow-hidden">
+      {/* Credit Limit Hero — matches realistic card design */}
+      <section className="rounded-xl p-8 md:p-10 flex flex-col gap-6 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-700" style={{
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+      }}>
+        {/* Card Texture Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
+        }}></div>
+        
+        {/* Holographic Sheen Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        {/* Decorative Glow */}
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-stark-gold rounded-full blur-[80px] opacity-10 group-hover:opacity-20 transition-opacity duration-700" />
+        
         <div className="relative z-10">
-          <p className="text-xs font-black uppercase tracking-[0.3em] opacity-80 mb-2">
+          <p className="font-label-caps text-label-caps text-white/80 uppercase tracking-widest mb-2" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
             Available Credit Limit
           </p>
-          <h2 className="text-5xl font-black mb-4">$1,250,000</h2>
-          <div className="flex gap-4">
-            <span className="px-3 py-1 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-widest backdrop-blur-md">
-              Tier 3 Verified
-            </span>
-            <span className="px-3 py-1 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-widest backdrop-blur-md">
-              Prime Rate
-            </span>
+          <h2 className="font-display-lg text-display-lg text-white tracking-tight tabular-nums mb-4" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+            $1,250,000
+          </h2>
+          <div className="flex gap-3 flex-wrap">
+            <span className="elite-badge">Tier 3 Verified</span>
+            <span className="elite-badge">Prime Rate</span>
           </div>
         </div>
-        <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
       </section>
 
       {/* Active Loans */}
       {loans.length > 0 && (
         <section>
-          <h3 className="text-xl font-black uppercase tracking-tight text-on-surface-variant mb-4 sm:mb-6">
+          <h3 className="text-xl font-black uppercase tracking-tight text-white mb-4 sm:mb-6" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
             Your Active Facilities
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
@@ -135,7 +146,7 @@ const LoansPage: React.FC = () => {
 
       {/* Loan Marketplace */}
       <section>
-        <h3 className="text-xl font-black uppercase tracking-tight text-on-surface-variant mb-4 sm:mb-6">
+        <h3 className="text-xl font-black uppercase tracking-tight text-white mb-4 sm:mb-6" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
           Loan Marketplace
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK Admin Security &amp; Health</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-high": "#e8e8e8",
+                "on-secondary-container": "#656464",
+                "on-error-container": "#93000a",
+                "surface-tint": "#735c00",
+                "surface-container": "#eeeeee",
+                "on-secondary-fixed-variant": "#474646",
+                "tertiary-fixed": "#e2e2e2",
+                "surface-container-highest": "#e2e2e2",
+                "surface-dim": "#dadada",
+                "error": "#ba1a1a",
+                "secondary": "#5f5e5e",
+                "inverse-on-surface": "#f0f1f1",
+                "surface-variant": "#e2e2e2",
+                "on-secondary-fixed": "#1c1b1b",
+                "surface-container-low": "#f3f3f4",
+                "surface-bright": "#f9f9f9",
+                "tertiary-container": "#b2b3b3",
+                "tertiary-fixed-dim": "#c6c6c7",
+                "on-primary-container": "#554300",
+                "on-secondary": "#ffffff",
+                "secondary-fixed-dim": "#c8c6c5",
+                "primary-container": "#d4af37",
+                "on-tertiary-fixed": "#1a1c1c",
+                "inverse-surface": "#2f3131",
+                "inverse-primary": "#e9c349",
+                "on-primary-fixed": "#241a00",
+                "outline": "#7f7663",
+                "on-surface": "#1a1c1c",
+                "on-tertiary-container": "#434546",
+                "error-container": "#ffdad6",
+                "outline-variant": "#d0c5af",
+                "primary-fixed-dim": "#e9c349",
+                "surface": "#f9f9f9",
+                "secondary-fixed": "#e5e2e1",
+                "primary": "#735c00",
+                "on-primary-fixed-variant": "#574500",
+                "on-tertiary-fixed-variant": "#454747",
+                "on-background": "#1a1c1c",
+                "primary-fixed": "#ffe088",
+                "on-surface-variant": "#4d4635",
+                "tertiary": "#5d5f5f",
+                "secondary-container": "#e5e2e1",
+                "on-tertiary": "#ffffff",
+                "background": "#f9f9f9",
+                "surface-container-lowest": "#ffffff",
+                "on-primary": "#ffffff",
+                "on-error": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "unit": "8px",
+                "gutter": "24px",
+                "container-padding-desktop": "64px",
+                "container-padding-mobile": "24px",
+                "stack-sm": "12px",
+                "stack-md": "24px",
+                "stack-lg": "48px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Libre Caslon Text"
+                ],
+                "display-lg-mobile": [
+                        "Libre Caslon Text"
+                ],
+                "label-md": [
+                        "Hanken Grotesk"
+                ],
+                "headline-lg": [
+                        "Libre Caslon Text"
+                ],
+                "body-lg": [
+                        "Hanken Grotesk"
+                ],
+                "display-lg": [
+                        "Libre Caslon Text"
+                ],
+                "body-md": [
+                        "Hanken Grotesk"
+                ],
+                "label-lg": [
+                        "Hanken Grotesk"
+                ]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "36px",
+                        {
+                                "lineHeight": "44px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-lg": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .glass-panel {
+            background-color: #ffffff;
+            border: 1px solid rgba(115, 92, 0, 0.1);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .text-glow-silver {
+            text-shadow: 0 0 10px rgba(115, 92, 0, 0.2);
+        }
+        .text-glow-error {
+            text-shadow: 0 0 15px rgba(186, 26, 26, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-32">
+<!-- TopAppBar (Mobile & Web) -->
+<header class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0px_4px_20px_rgba(0,0,0,0.03)] ease-[cubic-bezier(0.2,0.8,0.2,1)] duration-500">
+<div class="flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg tracking-tighter text-primary">STARK</h1>
+</div>
+<!-- Web Navigation (Hidden on Mobile) -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Overview</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Users</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Ledger</a>
+<a class="font-label-lg text-label-lg text-primary transition-colors duration-300" href="#">Security</a>
+<div class="ml-4 flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<div class="h-10 w-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant/50">
+<span class="font-label-md text-label-md text-primary">AU</span>
+</div>
+</div>
+</nav>
+<!-- Mobile Avatar (Visible only on mobile) -->
+<div class="md:hidden h-10 w-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant/50">
+<span class="font-label-md text-label-md text-primary">AU</span>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="pt-28 px-container-padding-mobile md:px-container-padding-desktop max-w-[1440px] mx-auto flex flex-col md:flex-row gap-stack-lg">
+<!-- NavigationDrawer (Web Only) -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-8rem)] w-80 bg-background border-r border-outline-variant/30 p-container-padding-mobile sticky top-28 ease-[cubic-bezier(0.2,0.8,0.2,1)] rounded-DEFAULT">
+<div class="flex items-center gap-4 mb-stack-md">
+<div class="h-12 w-12 rounded-full bg-primary-container/20 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">STARK Command</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Level 5 Clearance</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4 flex-1">
+<a class="flex items-center gap-4 px-4 py-3 text-primary font-bold bg-primary/5 border-l-2 border-primary transition-colors" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span class="font-body-md text-body-md">System Health</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-md text-body-md">KYC Verification</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined">error</span>
+<span class="font-body-md text-body-md">Fraud Alerts</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined">speed</span>
+<span class="font-body-md text-body-md">Global Limits</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-black/5 transition-colors" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-body-md text-body-md">Audit Logs</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-outline-variant/30">
+<p class="font-label-md text-label-md text-on-surface-variant/70">v2.4.0</p>
+</div>
+</aside>
+<!-- Canvas -->
+<main class="flex-1 flex flex-col gap-stack-md">
+<!-- Page Header -->
+<div class="flex flex-col gap-2 mb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">Security &amp; Health</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Real-time infrastructure monitoring and active threat assessment.</p>
+</div>
+<!-- Bento Grid - Top Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-sm md:gap-stack-md">
+<!-- Threat Level Gauge -->
+<div class="glass-panel rounded-DEFAULT p-container-padding-mobile flex flex-col items-center justify-center relative overflow-hidden h-64 md:col-span-1 border-error/30 shadow-[0px_4px_20px_rgba(186,26,26,0.1)]">
+<div class="absolute inset-0 bg-gradient-to-b from-error/10 to-transparent pointer-events-none"></div>
+<span class="material-symbols-outlined text-error text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-2">THREAT LEVEL</h3>
+<div class="font-display-lg text-display-lg text-error text-glow-error tracking-tighter">ELEVATED</div>
+<p class="font-body-md text-body-md text-error/80 mt-2 font-medium">Multiple auth failures detected</p>
+</div>
+<!-- Global Uptime Vis -->
+<div class="glass-panel rounded-DEFAULT p-container-padding-mobile flex flex-col h-64 md:col-span-2 relative overflow-hidden">
+<div class="flex justify-between items-start z-10 mb-6">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant">GLOBAL UPTIME</h3>
+<div class="font-headline-md text-headline-md text-primary mt-1">99.998%</div>
+</div>
+<span class="material-symbols-outlined text-primary/70">public</span>
+</div>
+<div class="flex-1 flex items-end justify-between gap-2 z-10">
+<!-- Simulated Chart Bars -->
+<div class="w-full bg-surface-container/80 rounded-t-sm h-[80%] border-t border-primary/30 relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-label-md text-label-md text-primary bg-surface px-2 py-1 border border-outline-variant/50 rounded shadow-sm">NA</div>
+</div>
+<div class="w-full bg-surface-container/80 rounded-t-sm h-[95%] border-t border-primary/30 relative group"></div>
+<div class="w-full bg-surface-container/80 rounded-t-sm h-[100%] border-t border-primary/60 relative group"></div>
+<div class="w-full bg-surface-container/80 rounded-t-sm h-[85%] border-t border-primary/30 relative group"></div>
+<div class="w-full bg-error-container/50 rounded-t-sm h-[60%] border-t border-error/60 relative group bg-gradient-to-t from-transparent to-error/10"></div>
+<div class="w-full bg-surface-container/80 rounded-t-sm h-[90%] border-t border-primary/30 relative group"></div>
+<div class="w-full bg-surface-container/80 rounded-t-sm h-[98%] border-t border-primary/30 relative group"></div>
+</div>
+<!-- Decorative bottom line -->
+<div class="h-1 w-full bg-outline-variant/30 mt-2 z-10 rounded-full"></div>
+</div>
+</div>
+<!-- Bento Grid - Bottom Row -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-sm md:gap-stack-md">
+<!-- Performance Metrics -->
+<div class="glass-panel rounded-DEFAULT p-container-padding-mobile flex flex-col gap-6">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-4">
+<h3 class="font-headline-md text-headline-md text-primary">System Metrics</h3>
+<span class="material-symbols-outlined text-on-surface-variant">memory</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">API Response Time</p>
+<p class="font-display-lg-mobile text-display-lg-mobile text-primary mt-1">42<span class="text-headline-md text-on-surface-variant ml-1">ms</span></p>
+</div>
+<div class="h-12 w-24 bg-gradient-to-r from-transparent via-primary/5 to-transparent flex items-center justify-center rounded-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+</div>
+<div class="h-px w-full bg-outline-variant/30"></div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Server Load (Avg)</p>
+<p class="font-display-lg-mobile text-display-lg-mobile text-primary mt-1">68<span class="text-headline-md text-on-surface-variant ml-1">%</span></p>
+</div>
+<div class="h-12 w-24 bg-gradient-to-r from-transparent via-tertiary-container/30 to-transparent flex items-center justify-center rounded-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">dns</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Security Events Log -->
+<div class="glass-panel rounded-DEFAULT p-container-padding-mobile flex flex-col">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-4 mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Security Events</h3>
+<button class="font-label-md text-label-md text-primary border border-outline-variant/50 px-3 py-1 rounded-sm hover:bg-black/5 transition-colors">VIEW ALL</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Log Item 1 -->
+<div class="flex gap-4 items-start p-3 rounded bg-error-container/30 border border-error/30">
+<span class="material-symbols-outlined text-error text-xl mt-0.5">gpp_bad</span>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="font-body-md text-body-md font-semibold text-primary">Multiple Auth Failures</p>
+<span class="font-label-md text-label-md text-on-surface-variant/70">JUST NOW</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">IP: 192.168.1.104 attempting root access. Triggered auto-block protocol.</p>
+</div>
+</div>
+<!-- Log Item 2 -->
+<div class="flex gap-4 items-start p-3 rounded bg-primary-container/20 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">vpn_key</span>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="font-body-md text-body-md font-semibold text-primary">Unrecognized Device Login</p>
+<span class="font-label-md text-label-md text-on-surface-variant/70">2M AGO</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Admin User (ID: 4092) logged in from new device in Singapore.</p>
+</div>
+</div>
+<!-- Log Item 3 -->
+<div class="flex gap-4 items-start p-3 rounded bg-surface border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-xl mt-0.5">security_update_good</span>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="font-body-md text-body-md font-semibold text-primary">Firewall Rule Updated</p>
+<span class="font-label-md text-label-md text-on-surface-variant/70">14M AGO</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Automated rule applied for incoming traffic on port 443.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-lg bg-surface/90 backdrop-blur-2xl border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(0,0,0,0.05)] flex justify-around items-center px-gutter py-4 active:scale-95 ease-[cubic-bezier(0.2,0.8,0.2,1)] duration-500">
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 px-4 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 px-4 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 px-4 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Ledger</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/5 rounded-xl py-2 px-4 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Security</span>
+</a>
+</nav>
+</body></html>

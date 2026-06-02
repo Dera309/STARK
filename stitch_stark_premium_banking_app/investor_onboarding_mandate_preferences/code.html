@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK | Investor Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(26, 28, 28, 0.1);
+        }
+        .gold-glow:focus-within {
+            border-bottom-color: #d4af37;
+            box-shadow: 0 4px 12px -6px rgba(212, 175, 55, 0.2);
+        }
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#e9c349",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-secondary-fixed-variant": "#474646",
+                      "on-primary-fixed": "#241a00",
+                      "surface-container": "#eeeeee",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "secondary": "#5f5e5e",
+                      "on-secondary-container": "#656464",
+                      "on-background": "#1a1c1c",
+                      "tertiary-container": "#b2b3b3",
+                      "tertiary": "#5d5f5f",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "on-primary-container": "#554300",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "primary-fixed": "#ffe088",
+                      "surface-tint": "#735c00",
+                      "outline-variant": "#d0c5af",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#4d4635",
+                      "surface": "#f9f9f9",
+                      "on-primary-fixed-variant": "#574500",
+                      "secondary-fixed": "#e5e2e1",
+                      "surface-container-low": "#f3f3f4",
+                      "primary-container": "#d4af37",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#434546",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f0f1f1",
+                      "surface-bright": "#f9f9f9",
+                      "surface-variant": "#e2e2e2",
+                      "surface-container-high": "#e8e8e8",
+                      "outline": "#7f7663",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-dim": "#dadada",
+                      "background": "#f9f9f9",
+                      "secondary-container": "#e5e2e1",
+                      "on-surface": "#1a1c1c",
+                      "primary-fixed-dim": "#e9c349",
+                      "on-primary": "#ffffff",
+                      "primary": "#735c00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "12px",
+                      "unit": "8px",
+                      "stack-md": "24px",
+                      "container-padding-mobile": "24px",
+                      "stack-lg": "48px",
+                      "gutter": "24px",
+                      "container-padding-desktop": "64px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-lg": ["Hanken Grotesk"],
+                      "headline-md": ["Libre Caslon Text"],
+                      "headline-lg": ["Libre Caslon Text"],
+                      "display-lg": ["Libre Caslon Text"],
+                      "label-md": ["Hanken Grotesk"],
+                      "display-lg-mobile": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar: Fixed for Transactional flow but suppressed per "Shell Visibility" logic as it's an onboarding stage. Instead, a minimal progress-header is used. -->
+<nav class="w-full h-20 bg-surface/95 sticky top-0 z-50 flex justify-between items-center px-container-padding-desktop border-b border-outline-variant/30 shadow-sm">
+<div class="font-headline-lg text-headline-lg tracking-widest text-primary">STARK</div>
+<div class="flex items-center gap-stack-md">
+<span class="font-label-lg text-label-lg text-secondary uppercase tracking-widest">Stage 02 — Accreditation</span>
+<div class="w-32 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-primary-container"></div>
+</div>
+</div>
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-secondary" data-icon="close">close</span>
+</div>
+</nav>
+<main class="flex-grow max-w-5xl mx-auto w-full px-container-padding-mobile md:px-container-padding-desktop py-stack-lg">
+<!-- Header Section -->
+<header class="mb-stack-lg space-y-unit">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Mandate Configuration</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">Define your institutional status and investment boundaries. This curation ensures your portfolio remains aligned with Stark’s exclusive liquidity pools.</p>
+</header>
+<div class="grid grid-cols-1 gap-stack-lg">
+<!-- 1. Accreditation Form -->
+<section class="space-y-stack-md">
+<div class="flex items-center gap-stack-sm mb-unit">
+<span class="w-8 h-[1px] bg-primary"></span>
+<h2 class="font-label-lg text-label-lg text-primary uppercase tracking-widest">01 / Accreditation &amp; Status</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Net Worth Card -->
+<div class="bg-surface-container-lowest hairline-border p-stack-md rounded-DEFAULT shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_-15px_rgba(212,175,55,0.08)] transition-all group">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Qualified Wealth</h3>
+<p class="font-label-md text-label-md text-secondary">Threshold: $5M+ Liquid Assets</p>
+</div>
+<span class="material-symbols-outlined text-primary-container group-hover:scale-110 transition-transform" data-icon="verified" data-weight="fill">verified</span>
+</div>
+<div class="flex items-center gap-stack-sm border-b border-outline-variant/30 pb-unit gold-glow">
+<span class="text-primary font-body-lg">$</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-on-surface placeholder:text-outline/50" placeholder="Specify net liquid value" type="text"/>
+</div>
+</div>
+<!-- Institutional Toggle -->
+<div class="bg-surface-container-lowest hairline-border p-stack-md rounded-DEFAULT shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Institutional Entity</h3>
+<p class="font-body-md text-body-md text-secondary mt-2">Are you representing a sovereign fund, family office, or endowment?</p>
+</div>
+<div class="flex items-center gap-unit mt-stack-md">
+<button class="flex-1 py-unit px-stack-sm rounded-full hairline-border font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">Individual</button>
+<button class="flex-1 py-unit px-stack-sm rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg shadow-sm">Institutional</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Investment Mandate -->
+<section class="space-y-stack-md">
+<div class="flex items-center gap-stack-sm mb-unit">
+<span class="w-8 h-[1px] bg-primary"></span>
+<h2 class="font-label-lg text-label-lg text-primary uppercase tracking-widest">02 / Sector Focus</h2>
+</div>
+<div class="bg-surface-container-lowest hairline-border p-stack-lg rounded-DEFAULT shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)]">
+<div class="mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">High-Alpha Verticals</h3>
+<p class="font-body-md text-body-md text-secondary">Select your priority sectors for automated deal-flow curation.</p>
+</div>
+<div class="flex flex-wrap gap-stack-sm">
+<!-- Tag Cloud -->
+<div class="px-stack-md py-unit rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center gap-unit cursor-pointer shadow-sm">
+                            Sovereign Digital Debt <span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<div class="px-stack-md py-unit rounded-full hairline-border text-on-surface font-label-md text-label-md hover:border-primary-container transition-all cursor-pointer">
+                            Nexus Infrastructure
+                        </div>
+<div class="px-stack-md py-unit rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center gap-unit cursor-pointer shadow-sm">
+                            Quantum Computing <span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<div class="px-stack-md py-unit rounded-full hairline-border text-on-surface font-label-md text-label-md hover:border-primary-container transition-all cursor-pointer">
+                            Biomedical Arbitrage
+                        </div>
+<div class="px-stack-md py-unit rounded-full hairline-border text-on-surface font-label-md text-label-md hover:border-primary-container transition-all cursor-pointer">
+                            Orbital Logistics
+                        </div>
+<div class="px-stack-md py-unit rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center gap-unit cursor-pointer shadow-sm">
+                            Sub-Zero Energy <span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<div class="px-stack-md py-unit rounded-full hairline-border text-on-surface font-label-md text-label-md hover:border-primary-container transition-all cursor-pointer">
+                            Rare Earth Tokenization
+                        </div>
+</div>
+<div class="mt-stack-lg pt-stack-lg border-t border-outline-variant/30 flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-lg text-label-lg text-on-surface">Risk Tolerance Profile</span>
+<div class="flex gap-1">
+<div class="w-12 h-1 bg-primary-container"></div>
+<div class="w-12 h-1 bg-primary-container"></div>
+<div class="w-12 h-1 bg-primary-container"></div>
+<div class="w-12 h-1 bg-surface-container"></div>
+</div>
+</div>
+<span class="font-headline-md text-headline-md text-primary">Dynamic / Growth</span>
+</div>
+</div>
+</section>
+<!-- 3. Governance Toggles -->
+<section class="space-y-stack-md">
+<div class="flex items-center gap-stack-sm mb-unit">
+<span class="w-8 h-[1px] bg-primary"></span>
+<h2 class="font-label-lg text-label-lg text-primary uppercase tracking-widest">03 / Governance Participation</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between bg-surface-container-lowest hairline-border p-stack-md rounded-DEFAULT">
+<div class="pr-stack-sm">
+<p class="font-label-lg text-label-lg text-on-surface">Ecosystem Voting</p>
+<p class="font-label-md text-label-md text-secondary">Active participation</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-1"></div>
+</div>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between bg-surface-container-lowest hairline-border p-stack-md rounded-DEFAULT">
+<div class="pr-stack-sm">
+<p class="font-label-lg text-label-lg text-on-surface">Proxy Assignment</p>
+<p class="font-label-md text-label-md text-secondary">Delegate authority</p>
+</div>
+<div class="w-12 h-6 bg-surface-container rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full absolute left-1"></div>
+</div>
+</div>
+<!-- Toggle 3 -->
+<div class="flex items-center justify-between bg-surface-container-lowest hairline-border p-stack-md rounded-DEFAULT">
+<div class="pr-stack-sm">
+<p class="font-label-lg text-label-lg text-on-surface">Liquidity Staking</p>
+<p class="font-label-md text-label-md text-secondary">Protocol yield</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-1"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Action Section -->
+<section class="pt-stack-lg flex flex-col md:flex-row items-center justify-end gap-gutter">
+<button class="w-full md:w-auto px-stack-lg py-stack-sm font-label-lg text-label-lg text-secondary hover:text-on-surface transition-all cursor-pointer">
+                    Save for Later
+                </button>
+<button class="w-full md:w-64 py-stack-sm px-stack-lg rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg tracking-widest uppercase shadow-xl hover:translate-y-[-2px] active:scale-95 transition-all">
+                    Confirm Mandate
+                </button>
+</section>
+</div>
+</main>
+<!-- Contextual Aesthetic Element: "Gallery Style" Side Illustration (Suppressed for focused form, but used as Background texture) -->
+<div class="fixed bottom-0 right-0 p-container-padding-desktop opacity-10 pointer-events-none select-none">
+<div class="font-display-lg text-[120px] leading-none text-primary transform rotate-90 origin-bottom-right">
+            CURATE
+        </div>
+</div>
+<!-- Footer Component -->
+<footer class="w-full py-stack-lg bg-surface border-t border-outline-variant/40 mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding-desktop max-w-7xl mx-auto w-full gap-stack-md">
+<div class="flex flex-col gap-unit">
+<div class="font-headline-md text-headline-md text-primary">STARK</div>
+<p class="font-body-md text-body-md text-on-secondary-fixed-variant opacity-80">© 2024 STARK Investment Group. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Regulatory Disclosures</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Institutional Compliance</a>
+</div>
+</div>
+</footer>
+<!-- Imagery Integration for Narrative Context -->
+<div class="max-w-7xl mx-auto px-container-padding-desktop mb-stack-lg">
+<div class="relative w-full h-64 rounded-lg overflow-hidden hairline-border">
+<img alt="Premium Architecture" class="w-full h-full object-cover grayscale opacity-20" data-alt="A grand, ultra-modern architectural hallway with towering white walls and floor-to-ceiling glass panels overlooking a serene cityscape at twilight. The scene is captured in a high-key, minimalist light-mode aesthetic, emphasizing clean lines and expansive space. The lighting is soft and atmospheric, highlighting subtle gold metallic accents on the doorframes. The mood is one of quiet institutional power and absolute transparency, perfectly reflecting a high-end financial gallery environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFt3bKnja1F5Z5LY1aa2MHZJBgccNJHW1QjmPstx0bl1XeEGbLGoBJeVampPbukxGENFTVewQyigURVerSDMIc4URE5Om81G6moFEjG_tCpWMfgO6dhzmn1qlVj1gRVB11ihPNsWDjt-cZHulmDLJK5TXb-llHp8gZWPvA0r1A0HBKo8a1p8VgIlqKqG8zgSlcZjYE1aEe2cz1I9cIuppDhv0CqXMEhHVwsldKkS0xD_RggCU14dUINV2Fgd2kOEvNslcW-dWSb0Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+</div>
+</body></html>

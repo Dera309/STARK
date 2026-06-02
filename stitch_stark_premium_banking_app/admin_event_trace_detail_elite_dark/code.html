@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#444748",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-primary-fixed-variant": "#454747",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "primary": "#ffffff",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-container": "#636565",
+                    "surface-container": "#201f1f",
+                    "surface-variant": "#353534",
+                    "secondary-fixed": "#e3e2e2",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-primary": "#2f3131",
+                    "secondary": "#c6c6c6",
+                    "surface-bright": "#393939",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-secondary-container": "#b8b8b8",
+                    "on-error": "#690005",
+                    "surface": "#131313",
+                    "secondary-container": "#484949",
+                    "primary-container": "#e2e2e2",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed": "#1a1c1c",
+                    "tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "tertiary-container": "#ffe088",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "surface-container-low": "#1c1b1b",
+                    "outline": "#8e9192",
+                    "on-surface-variant": "#c4c7c8",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-on-surface": "#313030",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#3c2f00",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed": "#e2e2e2",
+                    "on-secondary": "#2f3131",
+                    "on-tertiary-container": "#7b6100",
+                    "inverse-primary": "#5d5f5f",
+                    "background": "#131313",
+                    "surface-tint": "#c6c6c7",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error-container": "#93000a",
+                    "surface-dim": "#131313",
+                    "tertiary-fixed": "#ffe088"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding-mobile": "24px",
+                    "stack-sm": "12px",
+                    "container-padding-desktop": "40px",
+                    "unit": "8px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .protocol-border {
+            border-image: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1)) 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col bg-surface/90 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0px_0px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="flex flex-col h-full py-stack-lg px-gutter">
+<div class="mb-stack-lg px-2">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">STARK</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Institutional Grade</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 px-2 group" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="font-label-caps text-label-caps">Terminal</span>
+</a>
+<a class="text-tertiary-fixed font-bold border-r-2 border-tertiary-fixed flex items-center gap-stack-sm py-4 transition-all duration-500 px-2 bg-surface-variant/30" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Asset Matrix</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 px-2" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span class="font-label-caps text-label-caps">Liquidity Pool</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 px-2" href="#">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<span class="font-label-caps text-label-caps">Security Shield</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 px-2" href="#">
+<span class="material-symbols-outlined text-[20px]">settings_input_component</span>
+<span class="font-label-caps text-label-caps">System Config</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2 pt-stack-md border-t border-outline-variant/10">
+<button class="w-full bg-primary text-on-primary py-3 rounded-DEFAULT font-label-caps text-label-caps hover:opacity-90 transition-opacity mb-4">
+                    New Protocol
+                </button>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-2 hover:text-primary transition-all duration-300 px-2" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-2 hover:text-primary transition-all duration-300 px-2" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-20 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm z-40">
+<div class="flex justify-between items-center px-container-padding-desktop h-full">
+<div class="flex items-center gap-4">
+<span class="font-title-md text-title-md font-bold text-primary tracking-widest">STARK TERMINAL</span>
+<span class="h-4 w-px bg-outline-variant/30"></span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed">FORENSIC: TRACE_ID_8829-X</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">wifi_tethering</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">verified_user</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors relative">
+                        notifications_active
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-tertiary-fixed rounded-full"></span>
+</span>
+</div>
+<button class="bg-error-container text-on-error-container px-4 py-2 rounded-DEFAULT font-label-caps text-label-caps hover:opacity-90 transition-opacity">
+                    Emergency Lock
+                </button>
+<div class="w-10 h-10 rounded-full border border-outline-variant/20 overflow-hidden">
+<img alt="Chief Executive Admin" data-alt="A sophisticated portrait of a senior executive in a high-tech environment. The individual is wearing a dark, tailored suit with a minimalist silver lapel pin. The background is a softly blurred command center with faint blue holographic interfaces. The lighting is dramatic, high-contrast, conveying power and elite status." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsyanK3sbV75eUxCEWfqriP0-bE7y_1zRslIUQ7DHXO4Bw7cDbgGHXFsGcs0GjYhGTyk4rYfNKbLdcKJvDG9rMztpbYFdYjnP4vCjLAbp7DWCwd7huOuhQr9J6GShLAQDOwmJ0CcQLY5Zj96-8BqVcTQYobf9e4ezj2KnYK2ncV2DTtJ5Qh9Ieo1_IdpvNDb2YTrqXPDTtmxHbQZKk-xEVcp-JJFloKhxVA-rxRtpfVb85uQVq9PPyzwjjnzu76dQYSFchspVMAIE"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 pl-64 min-h-screen">
+<div class="p-container-padding-desktop max-w-[1400px] mx-auto space-y-stack-md pb-stack-lg">
+<!-- Header Section -->
+<section class="flex justify-between items-end">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Event Trace Detail</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Deep forensic analysis of Action: <span class="text-primary">Ledger_Override_Alpha</span></p>
+</div>
+<div class="flex gap-4">
+<button class="glass-card px-6 py-3 rounded-DEFAULT flex items-center gap-2 group hover:bg-surface-variant/40 transition-all">
+<span class="material-symbols-outlined text-tertiary-fixed">replay</span>
+<span class="font-label-caps text-label-caps">Replay Event</span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-DEFAULT flex items-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">file_download</span>
+<span class="font-label-caps text-label-caps text-on-primary">Export Evidence</span>
+</button>
+</div>
+</section>
+<!-- Top Grid: Metadata & Authorizing Admin -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Metadata Card -->
+<div class="col-span-12 lg:col-span-8 glass-card p-stack-md rounded-lg flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-tertiary-fixed/10 border border-tertiary-fixed/30 text-tertiary-fixed text-[10px] font-bold rounded uppercase tracking-tighter">Class 4 Alert</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Timestamp: 2024.10.12 | 14:02:44.009 UTC</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary">Protocol: Ledger Discrepancy Reconciliation</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">Status</p>
+<p class="text-tertiary-fixed font-bold text-title-md">COMMITTED</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 mt-stack-md pt-stack-md border-t border-outline-variant/10">
+<div>
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-2 opacity-60">Auth Level</p>
+<p class="text-primary font-medium">L7-EXECUTIVE-CLEARANCE</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-2 opacity-60">System Context</p>
+<p class="text-primary font-medium">STARK-CORE-NODE-01</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-2 opacity-60">Network Protocol</p>
+<p class="text-primary font-medium">QUANTUM-RESISTANT-TLS</p>
+</div>
+</div>
+</div>
+<!-- Admin & Hardware Token -->
+<div class="col-span-12 lg:col-span-4 glass-card p-stack-md rounded-lg space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">Authorizing Admin</h4>
+<p class="text-primary font-bold">V. Sterling [ID: 9920]</p>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest/50 rounded border border-outline-variant/20 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-label-caps text-[11px]">Hardware Token</span>
+<span class="text-tertiary-fixed text-[10px] font-bold">ACTIVE</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">key_visualizer</span>
+<div>
+<p class="text-on-surface text-[12px] font-mono tracking-wider">YUBI-ENT-004-X99</p>
+<p class="text-on-surface-variant text-[10px]">RSA-4096 Physical HSM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Content Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Vertical Timeline -->
+<div class="col-span-12 lg:col-span-4 glass-card p-stack-md rounded-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-9xl">timeline</span>
+</div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-stack-md border-b border-outline-variant/10 pb-4">Event Sequence</h3>
+<div class="relative pl-8 space-y-10">
+<!-- Timeline Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[1px] bg-outline-variant/30"></div>
+<!-- Trigger -->
+<div class="relative">
+<div class="absolute -left-[26px] top-0 w-3 h-3 rounded-full bg-outline-variant border-2 border-background"></div>
+<p class="text-on-surface-variant font-label-caps text-label-caps text-[10px] mb-1">T-180ms [TRIGGER]</p>
+<p class="text-on-surface text-body-sm font-medium">Anomalous Ledger Delta detected in Node-A</p>
+</div>
+<!-- System Check -->
+<div class="relative">
+<div class="absolute -left-[26px] top-0 w-3 h-3 rounded-full bg-outline-variant border-2 border-background"></div>
+<p class="text-on-surface-variant font-label-caps text-label-caps text-[10px] mb-1">T-45ms [SYSTEM]</p>
+<p class="text-on-surface text-body-sm font-medium">Automatic verification against secondary shards</p>
+</div>
+<!-- Admin Input -->
+<div class="relative">
+<div class="absolute -left-[26px] top-0 w-3 h-3 rounded-full bg-primary border-2 border-background shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+<p class="text-primary font-label-caps text-label-caps text-[10px] mb-1">T-0ms [ACTION]</p>
+<p class="text-primary text-body-sm font-bold">Manual override executed by L7 Admin</p>
+</div>
+<!-- System Response -->
+<div class="relative">
+<div class="absolute -left-[26px] top-0 w-3 h-3 rounded-full bg-tertiary-fixed border-2 border-background"></div>
+<p class="text-tertiary-fixed font-label-caps text-label-caps text-[10px] mb-1">T+120ms [RESPONSE]</p>
+<p class="text-on-surface text-body-sm font-medium">Balance synchronized across 4 nodes</p>
+</div>
+<!-- Confirmation -->
+<div class="relative">
+<div class="absolute -left-[26px] top-0 w-3 h-3 rounded-full bg-outline-variant border-2 border-background"></div>
+<p class="text-on-surface-variant font-label-caps text-label-caps text-[10px] mb-1">T+340ms [LOGGED]</p>
+<p class="text-on-surface text-body-sm font-medium">Encrypted trace finalized and distributed</p>
+</div>
+</div>
+</div>
+<!-- State Snapshot Compare -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-gutter">
+<div class="grid grid-cols-2 gap-gutter flex-1">
+<!-- Before Card -->
+<div class="glass-card p-stack-md rounded-lg border-l-4 border-l-error/30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-caps text-label-caps text-error opacity-80">Before State</h3>
+<span class="material-symbols-outlined text-error/40">history</span>
+</div>
+<div class="space-y-4 font-mono text-[13px]">
+<div class="flex justify-between border-b border-outline-variant/10 py-2">
+<span class="text-on-surface-variant">Asset Balance</span>
+<span class="text-error">1,402,291.12 STK</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 py-2">
+<span class="text-on-surface-variant">Validation Status</span>
+<span class="text-error">FLAG_MISMATCH</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 py-2">
+<span class="text-on-surface-variant">Lock State</span>
+<span class="text-on-surface">READ_ONLY</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant font-label-caps text-label-caps text-[10px] mb-2 uppercase">Raw Snapshot (Fragment)</p>
+<div class="bg-surface-container-lowest p-3 rounded text-[11px] text-error/70 leading-relaxed overflow-hidden">
+                                        { "delta_v": -4.012, "shards": ["S01", "S02", "ERR:S03"], "integrity": 0.44 }
+                                    </div>
+</div>
+</div>
+</div>
+<!-- After Card -->
+<div class="glass-card p-stack-md rounded-lg border-l-4 border-l-tertiary-fixed/30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-caps text-label-caps text-tertiary-fixed">After State</h3>
+<span class="material-symbols-outlined text-tertiary-fixed/40">update</span>
+</div>
+<div class="space-y-4 font-mono text-[13px]">
+<div class="flex justify-between border-b border-outline-variant/10 py-2">
+<span class="text-on-surface-variant">Asset Balance</span>
+<span class="text-tertiary-fixed">1,402,300.00 STK</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 py-2">
+<span class="text-on-surface-variant">Validation Status</span>
+<span class="text-tertiary-fixed">FLAG_VERIFIED</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 py-2">
+<span class="text-on-surface-variant">Lock State</span>
+<span class="text-on-surface">UNLOCKED</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant font-label-caps text-label-caps text-[10px] mb-2 uppercase">Raw Snapshot (Fragment)</p>
+<div class="bg-surface-container-lowest p-3 rounded text-[11px] text-tertiary-fixed/70 leading-relaxed overflow-hidden">
+                                        { "delta_v": 0.000, "shards": ["S01", "S02", "S03"], "integrity": 1.00 }
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Asset Profile -->
+<div class="glass-card p-stack-md rounded-lg flex items-center gap-8">
+<div class="relative w-24 h-24 rounded-full border border-outline-variant/30 p-1">
+<div class="w-full h-full rounded-full overflow-hidden grayscale">
+<img alt="Affected Entity" data-alt="A macro close-up of a sophisticated architectural model with glowing white geometric lines. The image is monochrome with deep blacks and bright silver highlights, suggesting high-end technological precision and a luxury corporate identity. The lighting is cold and clinical, emphasizing safety and order." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMcaXWkd2MOoODZq-aLOx7RlmyWY7YWpeCwaTR2rlEt1fd3UdWmsf1fyiuAuhxsHEqwYJrUU5pk3CnxWd72ONLWjNELv1GzQ65CuJbLXjWLsOBRtBf-9giEqL_6MPQtS0oznRLd4CyDF4nzx8rmUuGBH0c7W299CHWBdnxM0y4-8GXveeQw15tG6H9RkW_LKXjlxrqk8puk2oU7nxSueCA6CEF-6S6_--wqd1hBgT_OGmEKzbRCahr9ZlcYjH6VjpHWekhfp7W7Qo"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 bg-tertiary-fixed rounded-full flex items-center justify-center border-2 border-background">
+<span class="material-symbols-outlined text-[12px] text-background font-bold">check</span>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">Affected Entity Profile</h4>
+<p class="text-primary font-bold text-title-md">Corporate Ledger: OMNI-RESERVE-09</p>
+<p class="text-on-surface-variant text-body-sm">Global custodial vault for high-frequency institutional trade settling. Primary owner: Stark Asset Management GMBH.</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-primary border border-outline-variant/30 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
+                                HEALTHY
+                            </span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-on-surface-variant border border-outline-variant/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">vpn_key</span>
+                                SECURE
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-16rem)] py-4 bg-surface-container-lowest border-t border-outline-variant/5 shadow-none z-40">
+<div class="flex justify-between items-center px-container-padding-desktop">
+<p class="font-label-caps text-label-caps text-on-surface-variant">© 2024 STARK ASSET MANAGEMENT. ALL PROTOCOLS ENCRYPTED.</p>
+<div class="flex gap-stack-md">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Compliance</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Audit Logs</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</body></html>

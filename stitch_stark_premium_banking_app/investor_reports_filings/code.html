@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#e9c349",
+                        "on-secondary-container": "#656464",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-fixed": "#241a00",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary": "#5d5f5f",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#5f5e5e",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#434546",
+                        "on-surface": "#1a1c1c",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#d0c5af",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#735c00",
+                        "primary-fixed": "#ffe088",
+                        "surface": "#f9f9f9",
+                        "outline": "#7f7663",
+                        "on-background": "#1a1c1c",
+                        "inverse-surface": "#2f3131",
+                        "primary": "#735c00",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#474646",
+                        "background": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "primary-container": "#d4af37"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "container-padding-mobile": "24px",
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "container-padding-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #f9f9f9; color: #1a1c1c; }
+        .hairline-border { border: 0.5px solid rgba(26, 28, 28, 0.1); }
+        .ambient-shadow { box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.03); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-background">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface dark:bg-inverse-surface border-r border-outline-variant/30 dark:border-outline/20 flex flex-col py-stack-lg gap-stack-md z-50 hidden md:flex">
+<div class="px-8 mb-10">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">STARK PORTAL</h1>
+<p class="font-label-md text-label-md uppercase tracking-widest text-on-secondary-container mt-1">Premium Investor Relations</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim pl-5 hover:text-on-surface transition-colors font-label-lg text-label-lg uppercase tracking-widest py-3 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim pl-5 hover:text-on-surface transition-colors font-label-lg text-label-lg uppercase tracking-widest py-3 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+                Portfolio
+            </a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-l-4 border-primary pl-4 font-label-lg text-label-lg uppercase tracking-widest py-3 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                Reports
+            </a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim pl-5 hover:text-on-surface transition-colors font-label-lg text-label-lg uppercase tracking-widest py-3 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+                News Feed
+            </a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim pl-5 hover:text-on-surface transition-colors font-label-lg text-label-lg uppercase tracking-widest py-3 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+                Messages
+            </a>
+</nav>
+<div class="mt-auto px-8 flex flex-col gap-6">
+<button class="bg-primary-container text-on-primary-container font-label-lg text-label-lg py-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                Download Annual Report
+            </button>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant font-label-md text-label-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                    Support
+                </a>
+<a class="text-on-surface-variant font-label-md text-label-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+                    Compliance
+                </a>
+</div>
+</div>
+</aside>
+<div class="md:ml-72 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 w-full bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant/30 dark:border-outline/20 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-center w-full px-container-padding-desktop py-4">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg tracking-tight text-primary dark:text-primary-fixed-dim">STARK</span>
+<nav class="hidden lg:flex items-center gap-6 mt-1">
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-lg text-label-lg" href="#">OVERVIEW</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-label-lg text-label-lg" href="#">REPORTS &amp; FILINGS</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-lg text-label-lg" href="#">GOVERNANCE</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 font-body-md text-body-md focus:ring-1 focus:ring-primary w-64" placeholder="Search reports..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="settings">settings</button>
+<img alt="Investor profile avatar" class="w-10 h-10 rounded-full object-cover hairline-border" data-alt="A professional headshot of a middle-aged businessman in a sharp navy suit, looking confident and serene against a minimalist light grey background. The lighting is soft and even, highlighting a sophisticated and premium corporate identity consistent with high-end financial services." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy6cOOWDWwNtf266XfHJNdJVKzxq0ZcL0ZUZQyV47Y4g8wb6bIA4y86GqfXhlOypYLLIerCUbS_GRKAMTBWrPAES7hJiGcLde8rYck4WW5CHt7Qpyhyc_ofagwh-z5_DlQXAs16DC-jlvHDGSF17H9UnBsDN9ShY8UabnSAfciA36uFDD6tEh92XBwI68uqZhzAFcbP6rwkr3J4jhfxfBPNcVbkjZFWdjdDDIWjJfDd-G0OV0BfekPaaPjCPWSl35IBUMnL0sykLE"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow p-container-padding-desktop max-w-7xl mx-auto w-full">
+<!-- Hero Featured Report -->
+<section class="mb-stack-lg">
+<div class="relative w-full h-[400px] rounded-lg overflow-hidden ambient-shadow hairline-border flex items-center">
+<img alt="Featured Report Background" class="absolute inset-0 w-full h-full object-cover" data-alt="A high-end minimalist abstract background featuring flowing liquid gold ribbons weaving through a pristine white marble landscape. The lighting is cinematic with soft glows and deep shadows, creating a sense of luxury, precision, and wealth. The overall aesthetic is clean, modern, and aligned with a premium banking gallery style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSiRCQ8b60Gg_e2kwOIDrIHHXq4l_VUozNJmfuR2AdWZglCcoYJvNDxgmjRC8XAfdB-v-C_sXjKjeqzqftwgJfznRaB-8JFEKlrZHeDKu3cdS1Mt0JKjDq4dIxvPHbe-E9reBQ0wFKJUzwKRjlzeQgg4CSf4cxE6cBBaKW6DHRMPrunX4bS4rplzsLwYZVURfquP-osQwVO8STuDj3FxTOMXu6PyOaIMjXev6UgijbEqjIu3U3QoiqUr7-YdFcDAXRjh7mO_3JNCc"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+<div class="relative z-10 px-16 max-w-2xl">
+<span class="inline-block px-3 py-1 bg-primary text-on-primary font-label-md text-label-md rounded-full mb-6">FEATURED REPORT</span>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-4">Annual Report 2024: A New Era of Growth</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">An in-depth analysis of our strategic expansion into emerging digital asset markets and our commitment to sustainable capital growth.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-lg text-label-lg flex items-center gap-2 hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+                                Read Online
+                            </button>
+<button class="border border-on-surface text-on-surface px-8 py-4 rounded-full font-label-lg text-label-lg flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                                Download PDF
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Library Header & Filters -->
+<section class="mb-stack-md flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Reports Library</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Access and download all regulatory and performance documents.</p>
+</div>
+<div class="flex gap-4">
+<select class="bg-surface border-none hairline-border rounded-full px-6 py-2 font-label-lg text-label-lg text-on-surface focus:ring-1 focus:ring-primary">
+<option>All Years</option>
+<option>2024</option>
+<option>2023</option>
+<option>2022</option>
+</select>
+<select class="bg-surface border-none hairline-border rounded-full px-6 py-2 font-label-lg text-label-lg text-on-surface focus:ring-1 focus:ring-primary">
+<option>All Categories</option>
+<option>Performance</option>
+<option>ESG</option>
+<option>Regulatory</option>
+</select>
+</div>
+</section>
+<!-- Reports Bento/Grid Layout -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest hairline-border ambient-shadow p-8 rounded-lg group hover:translate-y-[-4px] transition-all flex flex-col h-full">
+<div class="flex justify-between items-start mb-10">
+<div class="w-12 h-16 bg-surface-container-low rounded border border-outline-variant/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="description">description</span>
+</div>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full">PERFORMANCE</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Q3 Performance Review</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-8">Quarterly analysis of portfolio yields and market volatility impact across global equities.</p>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-md text-label-md text-outline">OCT 15, 2024 • 4.2 MB</span>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container transition-colors rounded-full" data-icon="share">share</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary/10 transition-colors rounded-full" data-icon="download">download</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest hairline-border ambient-shadow p-8 rounded-lg group hover:translate-y-[-4px] transition-all flex flex-col h-full">
+<div class="flex justify-between items-start mb-10">
+<div class="w-12 h-16 bg-surface-container-low rounded border border-outline-variant/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="eco">eco</span>
+</div>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full">ESG IMPACT</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">ESG Impact Report</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-8">Our bi-annual disclosure on environmental stewardship and social responsibility initiatives.</p>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-md text-label-md text-outline">SEP 30, 2024 • 6.8 MB</span>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container transition-colors rounded-full" data-icon="share">share</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary/10 transition-colors rounded-full" data-icon="download">download</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest hairline-border ambient-shadow p-8 rounded-lg group hover:translate-y-[-4px] transition-all flex flex-col h-full">
+<div class="flex justify-between items-start mb-10">
+<div class="w-12 h-16 bg-surface-container-low rounded border border-outline-variant/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="gavel">gavel</span>
+</div>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full">REGULATORY</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Regulatory Disclosures</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-8">Updated compliance filings including Form ADV and standard risk disclosure statements.</p>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-md text-label-md text-outline">AUG 12, 2024 • 1.1 MB</span>
+<div class="flex gap-2">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container transition-colors rounded-full" data-icon="share">share</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary/10 transition-colors rounded-full" data-icon="download">download</button>
+</div>
+</div>
+</div>
+<!-- Card 4 (Horizontal/Wide) -->
+<div class="lg:col-span-2 bg-surface-container-lowest hairline-border ambient-shadow p-8 rounded-lg group hover:translate-y-[-4px] transition-all flex items-center gap-8">
+<div class="shrink-0 w-24 h-32 bg-primary/5 rounded border border-primary/20 flex flex-col items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[48px] text-primary" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-label-md text-primary">2023 FY</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface">Full Year Audited Financials</h4>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full">AUDIT</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Complete audited balance sheet and cash flow statements for the fiscal year ending 2023.</p>
+<div class="flex items-center gap-4">
+<button class="text-primary font-label-lg text-label-lg hover:underline flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span> Interactive Viewer
+                             </button>
+<button class="text-on-surface-variant font-label-lg text-label-lg hover:text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="download">download</span> PDF (12.4 MB)
+                             </button>
+</div>
+</div>
+</div>
+<!-- Card 5 (Small/News Style) -->
+<div class="bg-surface-container-lowest hairline-border ambient-shadow p-8 rounded-lg group hover:translate-y-[-4px] transition-all flex flex-col h-full border-l-4 border-primary">
+<span class="font-label-md text-label-md text-primary mb-4">LATEST UPDATE</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Portfolio Strategy: 2025 Outlook</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">Preliminary strategic roadmap for the upcoming year.</p>
+<button class="w-full py-3 bg-surface-container-low rounded-lg font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors">Request Early Access</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/30 dark:border-outline/20">
+<div class="max-w-7xl mx-auto px-container-padding-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed-dim">STARK CAPITAL</span>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">Compliance</a>
+<a class="font-label-md text-label-md text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">Regulatory Disclosures</a>
+</div>
+<span class="font-label-md text-label-md text-on-surface opacity-60">© 2024 STARK CAPITAL MANAGEMENT. ALL RIGHTS RESERVED.</span>
+</div>
+</footer>
+</div>
+</body></html>

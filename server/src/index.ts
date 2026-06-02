@@ -24,6 +24,7 @@ import loanRoutes from './routes/loanRoutes';
 import investmentRoutes from './routes/investmentRoutes';
 import adminRoutes from './routes/adminRoutes';
 import notificationRoutes from './routes/notificationRoutes';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 const httpServer = createServer(app);
@@ -109,6 +110,7 @@ app.use('/api/v1/loans', loanRoutes);
 app.use('/api/v1/investments', investmentRoutes);
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/notifications', notificationRoutes);
+app.use('/api/v1/users', userRoutes);
 
 // Export validation middleware for use in routes
 export { validateBody, validateQuery, validateParams };

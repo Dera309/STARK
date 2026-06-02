@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#e9c349",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-primary-fixed": "#241a00",
+                        "surface-container": "#eeeeee",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "secondary": "#5f5e5e",
+                        "on-secondary-container": "#656464",
+                        "on-background": "#1a1c1c",
+                        "tertiary-container": "#b2b3b3",
+                        "tertiary": "#5d5f5f",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-container": "#554300",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "primary-fixed": "#ffe088",
+                        "surface-tint": "#735c00",
+                        "outline-variant": "#d0c5af",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#4d4635",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed-variant": "#574500",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-low": "#f3f3f4",
+                        "primary-container": "#d4af37",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#434546",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "outline": "#7f7663",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-dim": "#dadada",
+                        "background": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "on-surface": "#1a1c1c",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary": "#ffffff",
+                        "primary": "#735c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "container-padding-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(26, 28, 28, 0.1);
+        }
+        .ambient-lift {
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation (STARK Branding) -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm opacity-95 w-full h-20 border-b border-outline-variant/30 sticky top-0 z-50 flex justify-between items-center px-container-padding-desktop">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-lg text-headline-lg tracking-widest text-primary dark:text-primary-fixed-dim">STARK</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-primary cursor-pointer transition-transform active:scale-95" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer transition-transform active:scale-95" data-icon="settings">settings</span>
+<div class="w-10 h-10 rounded-full overflow-hidden hairline-border">
+<img alt="User profile avatar" data-alt="A professional portrait of a high-net-worth individual in a sophisticated, minimalist corporate setting. The lighting is soft and cinematic, highlighting sharp features and a confident expression. The background consists of blurred architectural elements in a clean, high-key light mode palette of whites and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVV4BMVvUUoHtY7UxO3Pkf9InNeBmvs-OsgxVWqPRICWz0eIitsscjJStdOPyefiKYMU78mMPH9mER3H_2LUAofKDbGEtjPNKOZybQcFWQH1zcNwGGSgDjVA5r0MvwhIsq3FK9UB-43Zv_rIFikPE4v23a5RRVPBEo0tgIpnbp6zMnAftu-haU3ZSAEmH9rbsP1JBPAMTD9i03CXeXVE2IDFQZNMsM9frYBhVBcUyuH8GzdPLTq_gzaVfDWBv3QOmR3ANhUreto6E"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-container-padding-mobile md:px-container-padding-desktop py-stack-lg flex flex-col gap-stack-lg">
+<!-- Welcome Section: Editorial Headline -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-stack-md">
+<div class="max-w-3xl">
+<span class="text-primary font-label-lg text-label-lg tracking-[0.2em] uppercase mb-stack-sm block">Invitation Accepted</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background leading-tight">
+                    Welcome to the <br/><span class="italic text-primary">Vanguard of Capital.</span>
+</h1>
+</div>
+<div class="hidden md:block w-48 h-1 bg-primary-container/20 relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full w-1/4 bg-primary-container"></div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar: Relationship Manager & Progress -->
+<aside class="lg:col-span-4 flex flex-col gap-stack-lg order-2 lg:order-1">
+<!-- Progress Stepper -->
+<div class="bg-surface-container-lowest hairline-border p-stack-md ambient-lift rounded-lg">
+<h3 class="font-label-lg text-label-lg text-secondary mb-stack-md uppercase tracking-widest">Onboarding Progress</h3>
+<div class="space-y-stack-md">
+<!-- Step 1: Active -->
+<div class="flex items-center gap-stack-md p-stack-sm bg-primary-container/5 rounded-md border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary" data-icon="how_to_reg" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<div>
+<p class="font-label-lg text-label-lg text-primary">Identity Verification</p>
+<p class="font-label-md text-label-md text-secondary">In Progress</p>
+</div>
+</div>
+<!-- Step 2: Inactive -->
+<div class="flex items-center gap-stack-md p-stack-sm opacity-50">
+<span class="material-symbols-outlined text-outline" data-icon="verified">verified</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Accreditation</p>
+<p class="font-label-md text-label-md text-secondary">Locked</p>
+</div>
+</div>
+<!-- Step 3: Inactive -->
+<div class="flex items-center gap-stack-md p-stack-sm opacity-50">
+<span class="material-symbols-outlined text-outline" data-icon="account_balance_wallet">account_balance_wallet</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Investment Preferences</p>
+<p class="font-label-md text-label-md text-secondary">Pending</p>
+</div>
+</div>
+<!-- Step 4: Inactive -->
+<div class="flex items-center gap-stack-md p-stack-sm opacity-50">
+<span class="material-symbols-outlined text-outline" data-icon="enhanced_encryption">enhanced_encryption</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Vault Initialization</p>
+<p class="font-label-md text-label-md text-secondary">Final Stage</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Relationship Manager -->
+<div class="bg-surface-container-lowest hairline-border p-stack-md ambient-lift rounded-lg">
+<div class="flex items-center gap-stack-md mb-stack-md">
+<div class="w-14 h-14 rounded-full overflow-hidden hairline-border">
+<img alt="Advisor profile picture" data-alt="A sophisticated male wealth manager in a bespoke grey suit, standing in a brightly lit, modern office with floor-to-ceiling glass windows. The aesthetic is ultra-clean and high-end, featuring a soft morning light that creates a serene and trustworthy atmosphere. The background is a minimalist blur of contemporary architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3thRuxD8h5guq7WIBw1doXc1s7wsw8X2HW74faA1jUnK1EMhChP-p5nQPoHHHHT4LHRaOIF61nQsvwy0quXkBxUWHMhazkuUDEa7dwjm-OQdHekVcPZ7KQEhlBIg6lxiKFKWBcK-rDGZLn0_0pdYY7_pcO7cFNuHv75YrQLAqZ5Dcf_SiYqmMFC6L_ZL2MCSZAaLDPLcaMgRf0UpLJJ21ge5-aq30EvjKiHTNULXCoPXtS-IiDM-nBFRATK_CKGsf8n1XBDgLis"/>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-background">Julian Vance</p>
+<p class="font-label-md text-label-md text-primary tracking-widest uppercase">Senior Advisor</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-stack-md leading-relaxed">
+                        Julian is your dedicated liaison for all STARK private market allocations.
+                    </p>
+<button class="w-full py-stack-sm px-stack-md bg-primary-container text-on-primary-container rounded-full font-label-lg text-label-lg transition-transform active:scale-95 flex justify-center items-center gap-unit">
+                        Schedule Introduction
+                        <span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area: Identity Verification -->
+<article class="lg:col-span-8 flex flex-col gap-stack-md order-1 lg:order-2">
+<div class="bg-surface-container-lowest hairline-border p-stack-lg ambient-lift rounded-lg relative overflow-hidden">
+<!-- Subtle Background Art -->
+<div class="absolute right-0 top-0 w-1/3 h-full opacity-[0.03] pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="A minimalist architectural shot of a spiraling white staircase in a contemporary art gallery. The lighting is bright and even, emphasizing clean lines and geometric purity. The palette is dominated by off-whites and soft shadows, reflecting a sense of peace, precision, and high-end sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4DZE0xfuW8OnZQ93WlKnxOwrrcE1EFMVsyUYU5GFSMjgsd0nM4xkPC1vPucrcpKffOrIm2W4oOU-AacYqHfIqebPeU2qngRIs8KN_IeoI-QTuthj6U4G3YVudzVtjg_F3-1cJ9HL9wp_1fvNiup1rj1k4a9dmzScL17UBFQQVMWa_NZVqRTxwzOFProdzYWvPWlSbz3G4d4iPKgNR3v01yeab9hvlrID9Z2ysyeTCMISn_Vx0EzF3yKUcJZoY4RlrC4kwPF0ENAA"/>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-unit text-primary mb-stack-sm">
+<span class="material-symbols-outlined" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-lg text-label-lg tracking-widest uppercase">Secure Verification</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Identity &amp; Wealth Verification</h2>
+<p class="font-body-lg text-body-lg text-secondary mb-stack-lg max-w-xl">
+                            To maintain the integrity of our exclusive investment pool, we require high-resolution digital copies of your official documentation.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg">
+<!-- Document Box 1 -->
+<div class="hairline-border border-dashed p-stack-md rounded-md bg-surface-container-low/50 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="badge">badge</span>
+<span class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="upload">upload</span>
+</div>
+<h4 class="font-label-lg text-label-lg mb-unit">Government Passport</h4>
+<p class="font-label-md text-label-md text-secondary">Ensure the photo and biometric data are clearly visible.</p>
+<div class="mt-stack-md flex items-center gap-unit">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-primary">Awaiting Upload</span>
+</div>
+</div>
+<!-- Document Box 2 -->
+<div class="hairline-border border-dashed p-stack-md rounded-md bg-surface-container-low/50 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="account_balance">account_balance</span>
+<span class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="upload">upload</span>
+</div>
+<h4 class="font-label-lg text-label-lg mb-unit">Proof of Wealth</h4>
+<p class="font-label-md text-label-md text-secondary">Bank statement or tax return from the last fiscal year.</p>
+<div class="mt-stack-md flex items-center gap-unit">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-primary">Awaiting Upload</span>
+</div>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="flex flex-wrap items-center gap-stack-md pt-stack-md border-t border-outline-variant/20">
+<div class="flex items-center gap-unit opacity-60">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">AES-256 Encrypted</span>
+</div>
+<div class="flex items-center gap-unit opacity-60">
+<span class="material-symbols-outlined text-[18px]" data-icon="gavel">gavel</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">SEC Compliant</span>
+</div>
+<div class="flex items-center gap-unit opacity-60">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">GDPR Protected</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Next Action -->
+<div class="flex justify-between items-center py-stack-md">
+<button class="px-stack-md py-stack-sm border border-on-background/20 rounded-full font-label-lg text-label-lg hover:bg-surface-container transition-colors">
+                        Save for Later
+                    </button>
+<button class="px-stack-lg py-stack-sm bg-on-background text-surface rounded-full font-label-lg text-label-lg shadow-xl hover:bg-on-background/90 transition-all active:scale-95 disabled:opacity-50" disabled="">
+                        Confirm Documents
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg border-t border-outline-variant/40 bg-surface mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding-desktop max-w-7xl mx-auto w-full">
+<span class="font-headline-md text-headline-md text-primary mb-stack-md md:mb-0">STARK</span>
+<div class="flex flex-col md:flex-row gap-stack-md items-center">
+<div class="flex gap-stack-md">
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Institutional Compliance</a>
+</div>
+<p class="font-body-md text-body-md text-secondary opacity-60">
+                    © 2024 STARK Investment Group. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

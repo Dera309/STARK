@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Capital Call Execution | STARK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#5f5e5e",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#554300",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#434546",
+                        "on-primary-fixed-variant": "#574500",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-background": "#1a1c1c",
+                        "outline": "#7f7663",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#656464",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-low": "#f3f3f4",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-dim": "#dadada",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-tint": "#735c00",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffe088",
+                        "primary-fixed-dim": "#e9c349",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "tertiary-container": "#b2b3b3",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-primary": "#e9c349",
+                        "secondary-container": "#e5e2e1",
+                        "primary-container": "#d4af37",
+                        "outline-variant": "#d0c5af",
+                        "inverse-surface": "#2f3131",
+                        "background": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#5d5f5f",
+                        "primary": "#735c00",
+                        "on-primary-fixed": "#241a00",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-padding-desktop": "64px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Caslon Text"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
+        }
+        .ambient-lift {
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<header class="sticky top-0 w-full z-50 flex justify-between items-center px-container-padding-desktop py-stack-sm bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm opacity-90">
+<div class="flex items-center gap-12">
+<span class="font-headline-lg text-headline-lg tracking-tight text-primary">STARK</span>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-300 font-label-lg text-label-lg" href="#">Dashboard</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-300 font-label-lg text-label-lg" href="#">Portfolio</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-300 font-label-lg text-label-lg" href="#">Reports</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors duration-300 font-label-lg text-label-lg" href="#">News</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="material-symbols-outlined text-primary cursor-pointer transition-opacity active:opacity-70" data-icon="notifications">notifications</div>
+<div class="material-symbols-outlined text-primary cursor-pointer transition-opacity active:opacity-70" data-icon="settings">settings</div>
+<div class="w-8 h-8 rounded-full overflow-hidden hairline-border bg-surface-container">
+<img alt="Executive Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a senior financial executive in a high-end, softly lit boardroom environment. The individual is wearing a charcoal suit, looking confident and poised. The background is blurred with warm wooden tones and architectural glass, maintaining a sophisticated and exclusive light-mode aesthetic consistent with premium banking software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu8rpNj2DBT75YN1vBsEoYA8XbNaNOXzfD-O0OlczpGuJRxqwxbxJ9vbO9I8pgFCSb9CVbrml_v9nDOFDOSqilVql2_VBYbjHqzuziU1EiElg9dloawhsZbCssqI1q5JyLrRIfwIrR1iINrKJxUc-JvE4_rTOlAW4TlJEBCP1ufZBaHdXUTV9qk0PKKz9zRbYF4QPHWbd1PUZyoplI--9J_onDkuIcyxv6DATPLYxGwcVeMhV-h2ataFZWCLfqCfJmvsqvp660WuQ"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1400px] mx-auto px-container-padding-desktop py-stack-lg">
+<!-- Page Title & Header -->
+<div class="mb-stack-lg border-l-4 border-primary pl-gutter">
+<span class="font-label-md text-label-md uppercase tracking-[0.2em] text-secondary mb-2 block">Institutional Portal</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Capital Call Execution</h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg items-start">
+<!-- Main Content Area -->
+<div class="lg:col-span-8 space-y-stack-lg">
+<!-- Summary Card -->
+<section class="bg-surface-container-lowest hairline-border p-stack-lg rounded-lg ambient-lift">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Nexus Infrastructure Fund II</h2>
+<p class="font-body-md text-body-md text-secondary">Asset Class: Private Equity / Infrastructure</p>
+</div>
+<div class="bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="font-label-md text-label-md text-primary">DUE IN 48 HOURS</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-stack-md border-y border-outline-variant/30">
+<div>
+<span class="font-label-md text-label-md text-secondary block mb-1">Total Commitment</span>
+<span class="font-headline-md text-headline-md text-on-surface">$25.00M</span>
+</div>
+<div class="border-x border-outline-variant/30 px-gutter">
+<span class="font-label-md text-label-md text-secondary block mb-1">Current Call Amount</span>
+<span class="font-headline-md text-headline-md text-primary">$4.25M</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary block mb-1">Capital Contributed</span>
+<span class="font-headline-md text-headline-md text-on-surface">75%</span>
+</div>
+</div>
+<div class="mt-stack-md flex items-center gap-3 bg-primary/5 p-4 rounded-md">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+<strong>Portfolio Impact:</strong> This execution will fulfill the scheduled second-tranche allocation, bringing total contributed capital to <span class="font-bold">75.0%</span> of the initial commitment.
+                        </p>
+</div>
+</section>
+<!-- Funding Source Section -->
+<section>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Select Funding Source</h3>
+<div class="space-y-stack-sm">
+<!-- Source Item 1 (Selected) -->
+<div class="bg-surface-container-lowest p-stack-md rounded-lg hairline-border ambient-lift flex justify-between items-center ring-1 ring-primary">
+<div class="flex items-center gap-gutter">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">STARK Liquidity Vault</span>
+<span class="font-body-md text-body-md text-secondary">Ending in •••• 8842</span>
+</div>
+</div>
+<div class="text-right flex items-center gap-gutter">
+<div>
+<span class="font-label-md text-label-md text-secondary block">Verified Balance</span>
+<span class="font-label-lg text-label-lg text-on-surface">$12,450,220.00</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-primary" data-icon="check" data-weight="fill">check</span>
+</div>
+</div>
+</div>
+<!-- Source Item 2 -->
+<div class="bg-surface p-stack-md rounded-lg hairline-border hover:bg-surface-container-lowest transition-all cursor-pointer flex justify-between items-center">
+<div class="flex items-center gap-gutter opacity-60">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">J.P. Morgan Institutional</span>
+<span class="font-body-md text-body-md text-secondary">Ending in •••• 4401</span>
+</div>
+</div>
+<div class="text-right flex items-center gap-gutter opacity-60">
+<div>
+<span class="font-label-md text-label-md text-secondary block">Verified Balance</span>
+<span class="font-label-lg text-label-lg text-on-surface">$8,122,000.00</span>
+</div>
+<div class="w-6 h-6 rounded-full border border-outline flex items-center justify-center"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-gutter pt-stack-md">
+<button class="w-full sm:w-auto px-12 py-4 bg-primary text-on-primary rounded-full font-label-lg text-label-lg hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                        Confirm &amp; Authorize Transfer
+                    </button>
+<button class="w-full sm:w-auto px-12 py-4 border border-on-surface text-on-surface rounded-full font-label-lg text-label-lg hover:bg-on-surface hover:text-white transition-all flex items-center justify-center gap-3">
+                        Save for Later
+                    </button>
+</div>
+</div>
+<!-- Sidebar Panel (Security) -->
+<aside class="lg:col-span-4 sticky top-[120px]">
+<div class="bg-surface-container-high/50 p-stack-lg rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-stack-md">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<h3 class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface">Security Protocol</h3>
+</div>
+<ul class="space-y-stack-md">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+<div>
+<span class="font-label-lg text-label-lg block text-on-surface">Multi-party Computation (MPC)</span>
+<p class="font-body-md text-body-md text-secondary text-sm">Distributed key generation for secure signing.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+<div>
+<span class="font-label-lg text-label-lg block text-on-surface">Hardware-key Attestation</span>
+<p class="font-body-md text-body-md text-secondary text-sm">Physical security module verification active.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+<div>
+<span class="font-label-lg text-label-lg block text-on-surface">E2E Ledger Encryption</span>
+<p class="font-body-md text-body-md text-secondary text-sm">Real-time cryptographic audit trail established.</p>
+</div>
+</li>
+</ul>
+<div class="mt-stack-lg pt-stack-md border-t border-outline-variant/30">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-secondary">Authorized By</span>
+<span class="font-label-md text-label-md text-on-surface">A. Sterling</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary">Timestamp</span>
+<span class="font-label-md text-label-md text-on-surface">Oct 24, 14:02 GMT</span>
+</div>
+</div>
+</div>
+<!-- Compliance Badge -->
+<div class="mt-stack-md p-stack-md bg-white hairline-border rounded-lg flex items-center gap-4">
+<img alt="SIPC Logo" class="w-10 h-10 grayscale opacity-40" data-alt="A clean, minimalist graphic emblem representing financial regulatory compliance and security. The design uses crisp vector lines and a gold and black color scheme to convey institutional trust and high-end financial protection. The background is a soft ivory white with subtle texture, reflecting a light-mode premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1uqab9Oc0q7L1FUYVc9BZJKxkw5tJ_C6AfSfsJ17jrvoEGnQ_IfFSxM2Je17cSpNVngJdINq7NpZb8FcE5ynA89polpGu1AxHTU2ax5VhmAOCzIb38i9-sklzsl6_LmHdv9c1aHtPOqOvcAkLZmmRKtcnVNDKLSBUzxB14ApWzXPtLnaBqDroXtGT__E4C4POFe7B12B6_Z6SPiI1cyVodBgMh9HKP2n5R7r5geECogPoAKtvHCZGNOpUWOFFz6EMOzh2lPUXm3U"/>
+<p class="text-[10px] uppercase tracking-widest text-secondary leading-relaxed">
+                        Assets protected under institutional custody agreements. Transaction subject to FINRA/SIPC regulatory guidelines.
+                    </p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto border-t border-outline-variant/30 px-container-padding-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface">
+<div class="flex flex-col md:flex-row items-center gap-gutter">
+<span class="font-headline-md text-headline-md text-primary">STARK</span>
+<p class="font-body-md text-body-md text-secondary-fixed-dim text-sm">© 2024 STARK Wealth Management. All rights reserved. Member FINRA/SIPC.</p>
+</div>
+<nav class="flex gap-gutter">
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Regulatory Disclosures</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Cookie Settings</a>
+</nav>
+</footer>
+</body></html>

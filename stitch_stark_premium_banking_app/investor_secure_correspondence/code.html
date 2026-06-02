@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .premium-shadow {
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(127, 118, 99, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#e5e2e1",
+                        "secondary": "#5f5e5e",
+                        "surface-tint": "#735c00",
+                        "surface-dim": "#dadada",
+                        "inverse-on-surface": "#f0f1f1",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "outline": "#7f7663",
+                        "tertiary": "#5d5f5f",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#241a00",
+                        "on-surface": "#1a1c1c",
+                        "outline-variant": "#d0c5af",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffe088",
+                        "primary-container": "#d4af37",
+                        "on-primary-fixed-variant": "#574500",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#656464",
+                        "inverse-surface": "#2f3131",
+                        "primary": "#735c00",
+                        "on-primary-container": "#554300",
+                        "background": "#f9f9f9",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "on-background": "#1a1c1c",
+                        "surface": "#f9f9f9",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-container": "#434546",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-padding-mobile": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-padding-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface-container-low/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] fixed top-0 z-40 w-full flex items-center justify-between px-container-padding-desktop h-20">
+<div class="font-headline-lg text-headline-lg font-bold tracking-[0.2em] text-primary">ALTOS</div>
+<div class="hidden md:flex items-center gap-stack-md">
+<span class="font-label-caps text-label-md text-on-surface-variant hover:text-primary transition-all duration-500 cursor-pointer">INTELLIGENCE</span>
+<span class="font-label-caps text-label-md text-on-surface-variant hover:text-primary transition-all duration-500 cursor-pointer">MARKETS</span>
+<span class="font-label-caps text-label-md text-tertiary-container font-semibold border-b border-tertiary-container">LEDGER</span>
+<span class="font-label-caps text-label-md text-on-surface-variant hover:text-primary transition-all duration-500 cursor-pointer">ANALYTICS</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">account_balance_wallet</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">hub</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<span class="font-label-lg text-label-lg text-primary uppercase tracking-widest">System: Stable</span>
+<img alt="CIO Profile" class="w-10 h-10 rounded-full border border-primary/20" data-alt="A professional portrait of a senior investment executive in a minimalist studio setting. The lighting is soft and architectural, emphasizing clean lines and a high-end corporate aesthetic. The background is a muted, warm grey that complements the Stark Gold brand palette. The image conveys absolute trust, precision, and institutional grade authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVlPSsLT6LsLeW-XqLUGhc1uEW7KA6hAgfXustCBFjpYgUd1jT8XmPrjeEhUjupbJabQxPKGM-H02Ud2LoVYIRb9w1khfP4NXQD3Xg_ZP5iVJmi1suRwz58I9qqPr5mAW9N_UTUmixsgdwxQpDjNZwoS8SMHi9ZhK6iJN1YL54VVKIuabd4ZgGUXSlCdo7-SPZOSzfMATe3q0P7eag_RmptnK2BPDRULLd82-YclIi-UdF72FNOKdul958kdG3mgmbudOubpzbwHU"/>
+</div>
+</div>
+</header>
+<div class="flex pt-20 min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-[280px] bg-surface-container-lowest border-r border-outline-variant/10 fixed left-0 h-full py-8 flex flex-col justify-between">
+<div>
+<nav class="space-y-2 px-4">
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container/50 rounded-lg cursor-pointer transition-colors duration-300">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-lg">Intelligence</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container/50 rounded-lg cursor-pointer transition-colors duration-300">
+<span class="material-symbols-outlined">show_chart</span>
+<span class="font-label-caps text-label-lg">Markets</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-tertiary-container bg-tertiary-container/5 border-r-2 border-tertiary-container rounded-lg cursor-pointer transition-colors duration-300">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-lg">Ledger</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container/50 rounded-lg cursor-pointer transition-colors duration-300">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-lg">Entities</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container/50 rounded-lg cursor-pointer transition-colors duration-300">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-lg">Analytics</span>
+</div>
+</nav>
+</div>
+<div class="px-8 pb-10 space-y-6">
+<button class="w-full bg-primary-container text-on-primary-container font-label-lg py-4 rounded-full shadow-lg hover:brightness-110 transition-all">
+                    Execute Trade
+                </button>
+<div class="pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-4 py-3 text-on-surface-variant cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-md">Settings</span>
+</div>
+<div class="flex items-center gap-4 py-3 text-on-surface-variant cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-caps text-label-md">Support</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[280px] p-container-padding-desktop max-w-[1400px] mx-auto">
+<!-- Page Header -->
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Secure Communications</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Encrypted document exchange and direct advisor memo portal. All transmissions are protected by institutional-grade security protocols.</p>
+</div>
+<div class="grid grid-cols-12 gap-stack-md items-start">
+<!-- Left: Secure Compose Area -->
+<div class="col-span-8 space-y-stack-md">
+<!-- Memo Section -->
+<div class="bg-white p-10 rounded-lg hairline-border premium-shadow">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md text-primary">Direct Memo to Advisor</h2>
+<span class="flex items-center gap-2 text-primary font-label-lg">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                                END-TO-END ENCRYPTED
+                            </span>
+</div>
+<div class="space-y-8">
+<div class="relative">
+<input class="w-full border-b border-outline-variant/30 py-4 bg-transparent focus:outline-none focus:border-primary-container text-body-lg placeholder:text-outline-variant transition-colors" placeholder="Subject Reference (e.g., Q3 Portfolio Strategy)" type="text"/>
+<label class="absolute -top-4 left-0 text-label-md text-primary tracking-widest uppercase">Subject</label>
+</div>
+<div class="relative">
+<textarea class="w-full border-b border-outline-variant/30 py-4 bg-transparent focus:outline-none focus:border-primary-container text-body-md placeholder:text-outline-variant transition-colors resize-none" placeholder="Enter your confidential message here..." rows="8"></textarea>
+<label class="absolute -top-4 left-0 text-label-md text-primary tracking-widest uppercase">Message</label>
+</div>
+<div class="flex justify-end gap-4 pt-4">
+<button class="px-8 py-3 rounded-full border border-outline text-label-lg hover:bg-surface-container-low transition-colors">Save Draft</button>
+<button class="px-10 py-3 rounded-full bg-primary-container text-on-primary-container text-label-lg font-bold shadow-md hover:scale-[1.02] active:scale-[0.99] transition-transform">Transmit Securely</button>
+</div>
+</div>
+</div>
+<!-- Drag & Drop Vault Area -->
+<div class="bg-white p-10 rounded-lg hairline-border premium-shadow border-dashed border-2 border-primary-container/20">
+<div class="flex flex-col items-center justify-center py-12 text-center">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[40px] text-primary">upload_file</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Secure Document Vault</h3>
+<p class="font-body-md text-on-surface-variant mb-8 max-w-sm">Drag and drop confidential PDF or XLSX files here. Maximum file size 100MB.</p>
+<div class="flex gap-4">
+<button class="px-8 py-3 rounded-full bg-on-surface text-white text-label-lg flex items-center gap-2">
+<span class="material-symbols-outlined">add</span> Select Files
+                                </button>
+</div>
+</div>
+<!-- Upload Queue (Example) -->
+<div class="mt-8 border-t border-outline-variant/10 pt-8">
+<p class="font-label-caps text-label-md text-on-surface-variant mb-4 tracking-widest">PENDING TRANSMISSION</p>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg mb-3">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">description</span>
+<div>
+<p class="font-label-lg">Trust_Deed_v4.pdf</p>
+<p class="text-label-md text-on-surface-variant">2.4 MB • Encrypting...</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-error cursor-pointer">cancel</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Security Protocol Sidebar -->
+<div class="col-span-4 space-y-stack-md">
+<div class="bg-surface-container-low p-8 rounded-lg hairline-border">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="font-label-caps text-label-lg tracking-widest text-primary">SECURITY PROTOCOL</h3>
+</div>
+<div class="space-y-6">
+<div class="pb-6 border-b border-outline-variant/10">
+<h4 class="font-label-lg text-on-surface mb-1">AES-256 Encryption</h4>
+<p class="text-label-md text-on-surface-variant">Military-grade encryption at rest and in transit. Your data remains unreadable even to Altos administrators.</p>
+</div>
+<div class="pb-6 border-b border-outline-variant/10">
+<h4 class="font-label-lg text-on-surface mb-1">Hardware-Key Authentication</h4>
+<p class="text-label-md text-on-surface-variant">Session validation requires your verified secure enclave or physical security key.</p>
+</div>
+<div class="pb-6 border-b border-outline-variant/10">
+<h4 class="font-label-lg text-on-surface mb-1">Zero-Knowledge Architecture</h4>
+<p class="text-label-md text-on-surface-variant">Private keys are generated locally and never leave your secure environment.</p>
+</div>
+<div>
+<h4 class="font-label-lg text-on-surface mb-1">Audit Trail</h4>
+<p class="text-label-md text-on-surface-variant">Every interaction is cryptographically signed and logged for your annual compliance review.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 p-8 rounded-lg hairline-border flex flex-col items-center text-center">
+<img alt="Security Technology" class="w-full aspect-square object-cover rounded-lg mb-6 opacity-80" data-alt="A macro photograph of a high-tech security server or hardware module. Blue and gold micro-LED lights illuminate a brushed steel surface with hairline-thin technical etchings. The mood is dark, focused, and suggests extreme technological advancement and data protection. The aesthetic is ultra-minimalist and institutional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJLbookMRzoQOYfBKCKMt1vl4uVsvZzKRolbV5n-uWG1CzCSly3JbUmGPoi_jDYzL18qTApw6zdHPsrkpPPCpgqwh80dRCsoLLiQKKWH98AWcVtsF_BZIzvDhiJO5MthpDNQIXpdAqhW9x7Uz3VpXmruCkWGK2z8jkAsPjXm9SkB0pyNsjAoR70WB1_eCW65nOq35dIKPQW7m6xw3wuKvo5Ae0TyGyAPNAj56D4kGYTsSj8KHh9pthDJMFEUCXzPqVkKJ0y5YfGFc"/>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Vault Status: Active</h4>
+<p class="text-label-md text-on-surface-variant uppercase tracking-widest">Last verified 2m ago</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-stack-lg pt-8 border-t border-outline-variant/10 flex justify-between items-center w-full">
+<div class="font-label-caps text-label-md text-on-surface-variant">
+                    © 2024 ALTOS CAPITAL MANAGEMENT. v2.4.0-PRIME
+                </div>
+<div class="flex gap-8">
+<span class="font-label-caps text-label-md text-on-surface-variant hover:text-tertiary-fixed cursor-pointer transition-colors">Terms of Service</span>
+<span class="font-label-caps text-label-md text-on-surface-variant hover:text-tertiary-fixed cursor-pointer transition-colors">Regulatory Disclosures</span>
+<span class="font-label-caps text-label-md text-on-surface-variant hover:text-tertiary-fixed cursor-pointer transition-colors">Privacy Protocol</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

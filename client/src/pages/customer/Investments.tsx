@@ -84,44 +84,53 @@ const InvestmentsPage: React.FC = () => {
       {/* Page Header */}
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-black tracking-tight">Investments</h1>
-          <p className="text-on-surface-variant text-sm font-medium">
+          <h1 className="text-3xl font-black tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Investments</h1>
+          <p className="text-white/80 text-sm font-medium">
             Make your money work as hard as you do.
           </p>
         </div>
       </div>
 
-      {/* Asset Allocation Hero */}
-      <section className="bg-surface-container-highest shadow-2xl rounded-[2.5rem] p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-center gap-6 sm:gap-8 border border-outline-variant">
-        <div className="relative z-10 flex-1">
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-on-surface-variant mb-2">
+      {/* Asset Allocation Hero — matches realistic card design */}
+      <section className="rounded-xl p-8 md:p-10 flex flex-col gap-6 md:items-center relative overflow-hidden group hover:scale-[1.01] transition-transform duration-700" style={{
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+      }}>
+        {/* Card Texture Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
+        }}></div>
+        
+        {/* Holographic Sheen Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        {/* Decorative Glow */}
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-stark-gold rounded-full blur-[80px] opacity-10 group-hover:opacity-20 transition-opacity duration-700" />
+        
+        <div className="flex flex-col gap-2 md:items-center z-10">
+          <span className="font-label-caps text-label-caps text-white/80 uppercase tracking-widest" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
             Total Managed Assets
-          </p>
-          <h2 className="text-5xl font-black mb-2">${(totalInvested / 100).toLocaleString()}</h2>
-          <div className="flex gap-2 text-xs font-bold text-success mb-6">
-            <span>↑ 12.4% yield this year</span>
+          </span>
+          <h2 className="font-display-lg text-display-lg text-white tracking-tight tabular-nums" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+            ${(totalInvested / 100).toLocaleString()}
+          </h2>
+          <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 w-max md:mx-auto backdrop-blur-sm">
+            <span className="material-symbols-outlined text-stark-gold text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>trending_up</span>
+            <span className="font-body-sm text-body-sm text-stark-gold">↑ 12.4% yield this year</span>
           </div>
-          <button
-            onClick={() => {
-              setIsApplyMode(true);
-              setActionError(null);
-            }}
-            className="px-8 py-4 bg-primary text-white rounded-full font-black text-sm shadow-xl hover:scale-105 transition-transform"
-          >
-            Start New Deposit
-          </button>
         </div>
-
-        <div className="w-48 h-48 rounded-full border-[16px] border-primary/20 flex items-center justify-center relative">
-          <div className="absolute inset-0 rounded-full border-[16px] border-primary border-t-transparent -rotate-45" />
-          <span className="text-xl font-black">Invested</span>
-        </div>
+        <button
+          onClick={() => { setIsApplyMode(true); setActionError(null); }}
+          className="btn-stark-gold z-10"
+        >
+          Start New Deposit
+        </button>
       </section>
 
       {/* Active Fixed Deposits */}
       {activeInvestments.length > 0 && (
         <section>
-          <h3 className="text-xl font-black uppercase tracking-tight text-on-surface-variant mb-4 sm:mb-6">
+          <h3 className="text-xl font-black uppercase tracking-tight text-white mb-4 sm:mb-6" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
             Active Fixed Deposits
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -138,18 +147,28 @@ const InvestmentsPage: React.FC = () => {
 
       {/* Empty State */}
       {!deposits.length && (
-        <section className="text-center py-20 bg-surface-container-low rounded-[3rem] border border-dashed border-outline-variant">
-          <div className="text-6xl mb-6">📈</div>
-          <h3 className="text-2xl font-black mb-2">No active investments yet</h3>
-          <p className="text-on-surface-variant max-w-sm mx-auto mb-8 font-medium">
-            Protect your savings from inflation with our high-yield fixed deposits.
-          </p>
-          <button
-            onClick={() => setIsApplyMode(true)}
-            className="text-primary font-black uppercase tracking-widest text-xs hover:underline"
-          >
-            Explore Tenures
-          </button>
+        <section className="text-center py-20 rounded-[3rem] border border-dashed border-white/20 relative overflow-hidden" style={{
+          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+        }}>
+          {/* Card Texture Overlay */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
+          }}></div>
+          
+          <div className="relative z-10">
+            <div className="text-6xl mb-6">📈</div>
+            <h3 className="text-2xl font-black mb-2 text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>No active investments yet</h3>
+            <p className="text-white/80 max-w-sm mx-auto mb-8 font-medium">
+              Protect your savings from inflation with our high-yield fixed deposits.
+            </p>
+            <button
+              onClick={() => setIsApplyMode(true)}
+              className="text-stark-gold font-black uppercase tracking-widest text-xs hover:underline"
+            >
+              Explore Tenures
+            </button>
+          </div>
         </section>
       )}
 

@@ -23,8 +23,11 @@ export const useDashboardData = () => {
         useCache ? cachedGet("/transactions?limit=5", 15000) : api.get("/transactions?limit=5"),
       ]);
 
-      setAccounts(accountsRes.data);
-      setTransactions(transactionsRes.data);
+      // /accounts returns a plain array
+      setAccounts(Array.isArray(accountsRes.data) ? accountsRes.data : []);
+      // /transactions returns { transactions: [...], meta: {...} }
+      const txData = transactionsRes.data;
+      setTransactions(Array.isArray(txData) ? txData : Array.isArray(txData?.transactions) ? txData.transactions : []);
     } catch (err: unknown) {
       console.error("Dashboard data fetch error:", err);
       const errorMessage = err instanceof Error && 'response' in err 

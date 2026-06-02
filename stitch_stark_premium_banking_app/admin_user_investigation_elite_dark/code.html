@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .gold-border {
+            border: 1px solid #D4AF37;
+        }
+        .gold-glow {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffe088",
+                      "surface-tint": "#c6c6c7",
+                      "surface-container-lowest": "#0e0e0e",
+                      "error-container": "#93000a",
+                      "surface-dim": "#131313",
+                      "inverse-primary": "#5d5f5f",
+                      "background": "#131313",
+                      "surface-container-high": "#2a2a2a",
+                      "primary-fixed": "#e2e2e2",
+                      "on-secondary": "#2f3131",
+                      "on-tertiary-container": "#7b6100",
+                      "on-tertiary": "#3c2f00",
+                      "inverse-on-surface": "#313030",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary-fixed": "#241a00",
+                      "tertiary-container": "#ffe088",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "surface-container-low": "#1c1b1b",
+                      "outline": "#8e9192",
+                      "on-surface-variant": "#c4c7c8",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "on-primary-fixed": "#1a1c1c",
+                      "tertiary": "#ffffff",
+                      "primary-container": "#e2e2e2",
+                      "surface-container-highest": "#353534",
+                      "on-error": "#690005",
+                      "surface": "#131313",
+                      "secondary-container": "#484949",
+                      "on-secondary-container": "#b8b8b8",
+                      "surface-bright": "#393939",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "secondary": "#c6c6c6",
+                      "on-primary": "#2f3131",
+                      "secondary-fixed": "#e3e2e2",
+                      "on-surface": "#e5e2e1",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "surface-variant": "#353534",
+                      "surface-container": "#201f1f",
+                      "on-primary-container": "#636565",
+                      "primary": "#ffffff",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "outline-variant": "#444748",
+                      "on-secondary-fixed-variant": "#464747",
+                      "on-primary-fixed-variant": "#454747",
+                      "error": "#ffb4ab"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-desktop": "40px",
+                      "unit": "8px",
+                      "stack-lg": "48px",
+                      "stack-md": "24px",
+                      "gutter": "16px",
+                      "container-padding-mobile": "24px",
+                      "stack-sm": "12px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 h-screen w-[280px] bg-surface-container-lowest border-r border-outline-variant/10 flex flex-col h-full py-8 z-50">
+<div class="px-8 mb-10">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-[0.2em]">ALTOS</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 opacity-50">Institutional Grade</p>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">dashboard</span> Intelligence
+            </a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">show_chart</span> Markets
+            </a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">receipt_long</span> Ledger
+            </a>
+<!-- Active State: Entities (Investigation context) -->
+<a class="flex items-center gap-4 px-6 py-4 text-tertiary-container bg-tertiary-container/5 border-r-2 border-tertiary-container transition-colors duration-300 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span> Entities
+            </a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">assessment</span> Analytics
+            </a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">verified_user</span> Security
+            </a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-caps text-label-caps tracking-widest hover:bg-white/90 transition-all active:scale-95">
+                EXECUTE TRADE
+            </button>
+<div class="mt-8 space-y-1">
+<a class="flex items-center gap-4 px-2 py-2 text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                </a>
+<a class="flex items-center gap-4 px-2 py-2 text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">contact_support</span> Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] flex-grow flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] sticky top-0 z-40 h-20 w-full flex items-center justify-between px-container-padding-desktop">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-primary/60 text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm text-on-surface-variant w-64" placeholder="Search Stark Intelligence..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed shadow-[0_0_10px_#ffe088]"></span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed">System: Stable</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">account_balance_wallet</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">hub</span>
+</div>
+<div class="h-10 w-10 rounded-full border border-outline-variant/30 overflow-hidden">
+<img alt="Chief Investment Officer Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a senior investment officer in his 50s, wearing a tailored charcoal suit. The lighting is dramatic and moody, reflecting a high-stakes financial environment. Background is a soft-focus penthouse office in a modern skyscraper with city lights at twilight. The image uses a cool-toned, expensive aesthetic with sharp focus on the subject's face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcQo-euRmIYTVvtLjyweVo2VUq1jRp136p4R2AHzd1NTOiEhilu8PoTWeK9IYL90m1kfl6ygYp9K8F5lchzlZHxwnqoIfueB4fS1UsP5J2pbLWAAAt-ePHPWBgad_CTAbL0KeDD1I3mlWC3rY31clQ7IDCnStnGO3nsDpV7BbfTzMnuoFlzrQehQzjmzG5trmsDHlUN3FJBP2D6VZ72rNuMJJaS25b6KSD63qmsAWN1CAusWLIKnqyGAImokGC-bBkv4QqG4zRk28"/>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="p-container-padding-desktop flex flex-col gap-stack-lg max-w-[1600px] mx-auto w-full">
+<!-- Subject Header -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-stack-md">
+<div class="flex gap-gutter items-center">
+<div class="relative">
+<div class="w-24 h-24 rounded-2xl overflow-hidden border border-white/10">
+<img alt="Alexander Vance" class="w-full h-full object-cover grayscale" data-alt="A focused close-up of a middle-aged male subject named Alexander Vance, looking directly into the camera with an intense expression. The portrait has high-contrast lighting, casting deep shadows for a noir, dramatic effect. The aesthetic is clean and professional, with a monochrome palette enhanced by subtle silver and blue lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdCUPUXs9I9-6rHZaZkgTa-fO0zx1-_mO5gGPl49Oarvjdgdle_bgz7dNz_qL5hobt9GoAoSAE0V2KD5rq4pnPbi0a5UvkIFTYUd-lal-3Mt6yvMay--B045fRoLCDQ-88COCYtP02D33_MzZ6lHUkjtWyKzaq-RV85kjlxIrLhC3STWkcMHh7E7Ew4TGEi5pKuXOcnTR3u43fhMnW2mtSyzgVwZ2zPjN8vlKUf-gxZr9iUMr-Gtsg1D7V4nI-u6K7ZfThgKcSers"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-error-container text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-tighter border border-black">CRITICAL</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Alexander Vance</h2>
+<span class="px-2 py-0.5 rounded border border-tertiary-fixed/40 font-label-caps text-[10px] text-tertiary-fixed gold-glow">STK-8924-X</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                                Under Surveillance
+                            </span>
+<span class="text-outline-variant">|</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Primary Node: Geneva, CH</span>
+</div>
+</div>
+</div>
+<div class="flex gap-gutter">
+<button class="px-6 py-3 border border-error text-error hover:bg-error/10 transition-all font-label-caps text-label-caps rounded-lg">FREEZE ACCOUNT</button>
+<button class="px-6 py-3 border border-outline-variant text-on-surface hover:bg-white/5 transition-all font-label-caps text-label-caps rounded-lg">FLAG FOR REVIEW</button>
+<button class="px-6 py-3 bg-white text-black font-label-caps text-label-caps rounded-lg hover:bg-opacity-90 transition-all">CLEAR CLEARANCE</button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Risk Synopsis Card -->
+<div class="col-span-12 lg:col-span-4 glass-card p-stack-md flex flex-col justify-between min-h-[340px]">
+<div>
+<div class="flex justify-between items-start">
+<p class="font-label-caps text-label-caps text-on-surface-variant">RISK SYNOPSIS</p>
+<span class="material-symbols-outlined text-tertiary-fixed">warning</span>
+</div>
+<div class="mt-8 flex items-baseline gap-2">
+<h3 class="font-display-lg text-display-lg text-error">94</h3>
+<span class="font-title-md text-title-md text-on-surface-variant">/100</span>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-2">Elevated threat level detected by Stark-A1</p>
+</div>
+<div class="space-y-4 pt-8 border-t border-white/5">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Velocity Anomaly</span>
+<span class="font-body-sm text-body-sm text-error font-semibold">+4,200%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Structuring Likelihood</span>
+<span class="font-body-sm text-body-sm text-tertiary-fixed font-semibold">High</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sanction Overlap</span>
+<span class="font-body-sm text-body-sm text-error-container px-2 py-0.5 rounded font-semibold">CONFIRMED</span>
+</div>
+</div>
+</div>
+<!-- Digital Footprint / Map -->
+<div class="col-span-12 lg:col-span-8 glass-card overflow-hidden relative group">
+<div class="absolute top-6 left-6 z-10 space-y-1">
+<p class="font-label-caps text-label-caps text-on-surface">DIGITAL FOOTPRINT</p>
+<p class="font-title-md text-title-md text-primary font-bold">Node Hub: Geneva</p>
+</div>
+<div class="absolute bottom-6 left-6 z-10 flex gap-4">
+<div class="bg-black/60 backdrop-blur-md px-4 py-2 rounded border border-white/10">
+<p class="font-label-caps text-[10px] text-on-surface-variant">ACTIVE DEVICES</p>
+<p class="font-title-md text-title-md text-primary">04</p>
+</div>
+<div class="bg-black/60 backdrop-blur-md px-4 py-2 rounded border border-white/10">
+<p class="font-label-caps text-[10px] text-on-surface-variant">LATEST UPLINK</p>
+<p class="font-title-md text-title-md text-primary">2m ago</p>
+</div>
+</div>
+<img alt="Satellite map of Geneva" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110" data-alt="A dark-themed satellite topographical map of Geneva, Switzerland, rendered in an elite administrative UI style. The map features luminous gold and silver data points representing server nodes and connection points. The lighting mimics a nighttime surveillance view with soft ambient glows over Lake Geneva and the surrounding urban grid. The overall atmosphere is technological, precise, and high-fidelity." data-location="Geneva" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS4NPzaec0wT7va9dm6CEBNNLYaEJ-KgTCr22ca8IeuA9pQArPs7YXYzupJbDzfzBPMmdq_h2BQbtRcQdL__SDC7LVF0pOdbql0MccIMZ0dJPL3CwPSAzL41_wY_AuZQRHFProEU-ZOx-YQV2RjcRFqa_T5jQbhfTgmipNF5uj5_ebO9OiY-aYMm9AjeiMdFoyd7uVxvVfMUIGe5jsQY-XWYgSVimr6LmtU00BjtQM-ZElRF0Lw6DxgelflWaFDDt8pNWF_dL_kTI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+</div>
+<!-- Transaction Lineage -->
+<div class="col-span-12 lg:col-span-7 glass-card p-stack-md">
+<div class="flex justify-between items-center mb-8">
+<p class="font-label-caps text-label-caps text-on-surface">TRANSACTION LINEAGE</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-white/5 rounded-full text-[10px] font-label-caps text-on-surface-variant">7-Day Trace</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant cursor-pointer">filter_list</span>
+</div>
+</div>
+<div class="space-y-6">
+<!-- High Risk Entry -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-tertiary-fixed/10 border border-tertiary-fixed/20">
+<span class="material-symbols-outlined text-tertiary-fixed">hub</span>
+</div>
+<div>
+<p class="font-title-md text-body-lg font-semibold text-primary">Vault 0x921...F1A</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Offshore Custodian Entity</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-body-lg text-tertiary-fixed gold-glow">+$1,420,000.00</p>
+<p class="font-label-caps text-[10px] text-error">HIGH RISK CONNECTION</p>
+</div>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<!-- Normal Risk Entry -->
+<div class="flex items-center justify-between group cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+</div>
+<div>
+<p class="font-title-md text-body-lg font-semibold text-primary">Credit Suisse Personal</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Primary Fiat Account</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-body-lg text-primary">-$25,400.00</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">INTERNAL TRANSFER</p>
+</div>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<!-- High Risk Entry -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-tertiary-fixed/10 border border-tertiary-fixed/20">
+<span class="material-symbols-outlined text-tertiary-fixed">account_tree</span>
+</div>
+<div>
+<p class="font-title-md text-body-lg font-semibold text-primary">Z-Global Logistics Ltd.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Shell Entity [Potential Structuring]</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-body-lg text-tertiary-fixed gold-glow">+$450,000.00</p>
+<p class="font-label-caps text-[10px] text-error">SANCTION FLAG: LAYER 2</p>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary flex items-center gap-2 transition-colors">
+                            VIEW FULL GRAPH <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Administrative Log (Tail-f style) -->
+<div class="col-span-12 lg:col-span-5 glass-card p-stack-md bg-black/40">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_#ffb4ab]"></span>
+<p class="font-label-caps text-label-caps text-on-surface">SECURITY EVENT LOG</p>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant opacity-50 tracking-widest">LIVE_FEED</span>
+</div>
+<div class="font-mono text-[11px] leading-6 space-y-2 overflow-y-auto h-[400px] pr-4 custom-scrollbar">
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">14:22:01.04</span>
+<p class="text-tertiary-fixed">[STARK_SHIELD] Intercepted outbound request to node 192.88.2.1</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">14:21:44.22</span>
+<p class="text-on-surface-variant">User Vance.A accessed Ledger Section // Entity Linkages</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">14:20:12.89</span>
+<p class="text-error">[ALERT] Sudden liquidity spike: $1.4M deposited into sub-vault delta</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">14:15:33.10</span>
+<p class="text-on-surface-variant">Credential validation: Hardware Token AUTH_SUCCESS</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">14:02:44.55</span>
+<p class="text-on-surface-variant">Location Ping: Geneva Business Center - Lat: 46.2044 Lon: 6.1432</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">13:58:12.01</span>
+<p class="text-tertiary-fixed">[NETWORK] Encrypted tunnel established via TOR_BRIDGE_GVA</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">13:45:00.00</span>
+<p class="text-outline-variant opacity-40">System cycle routine scan: Subject STK-8924-X secure</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">13:32:11.90</span>
+<p class="text-on-surface-variant">Multiple login attempts detected (03) from unknown MacAddress</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">13:10:05.44</span>
+<p class="text-on-surface-variant">Risk engine recalculation complete: Delta +12pts</p>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant whitespace-nowrap">12:45:22.12</span>
+<p class="text-on-surface-variant">Administrative query initiated by CID_0092</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto bg-surface-dim border-t border-outline-variant/5 flex justify-between items-center px-container-padding-desktop py-4 w-full">
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-50">© 2024 ALTOS CAPITAL MANAGEMENT. v2.4.0-PRIME</p>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Regulatory Disclosures</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Privacy Protocol</a>
+</div>
+</footer>
+</main>
+</body></html>

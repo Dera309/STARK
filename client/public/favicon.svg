@@ -1,0 +1,7 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="8" fill="#131313"/>
+  <!-- STARK chevron logo: gold top bar, white middle, silver bottom -->
+  <path d="M5 9H27L23.5 13H8.5L5 9Z" fill="#D4AF37"/>
+  <path d="M8.5 15H23.5L20 19H12L8.5 15Z" fill="#FFFFFF"/>
+  <path d="M12 21H20L18.5 23H13.5L12 21Z" fill="#C0C0C0"/>
+</svg>

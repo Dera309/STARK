@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ALTOS | Client Detail - Nexus Infrastructure Fund II</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-headline { font-family: 'Libre Caslon Text', serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#5d5f5f",
+                        "surface": "#f9f9f9",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#735c00",
+                        "primary": "#735c00",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#e9c349",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "primary-container": "#d4af37",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#574500",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-primary-container": "#554300",
+                        "background": "#f9f9f9",
+                        "tertiary-container": "#b2b3b3",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-surface-variant": "#4d4635",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#656464",
+                        "inverse-surface": "#2f3131",
+                        "secondary-fixed": "#e5e2e1",
+                        "primary-fixed": "#ffe088",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary-container": "#e5e2e1",
+                        "secondary": "#5f5e5e",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-primary-fixed": "#241a00",
+                        "outline-variant": "#d0c5af",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-background": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "outline": "#7f7663",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-container": "#434546",
+                        "on-surface": "#1a1c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "64px",
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container/30">
+<!-- TopAppBar Execution -->
+<header class="bg-surface-container-low/80 backdrop-blur-xl flex items-center justify-between px-container-padding-desktop h-20 w-full docked full-width top-0 z-40 border-b border-outline-variant/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] sticky">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg font-bold tracking-[0.2em] text-primary font-headline">ALTOS</span>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">Intelligence</a>
+<a class="font-label-caps text-label-caps text-tertiary-container font-semibold" href="#">Entities</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">Markets</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-all">notifications</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-all">account_balance_wallet</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-all">hub</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">System: Stable</span>
+<img alt="Chief Investment Officer Profile" class="w-10 h-10 rounded-full border border-outline-variant/20 object-cover shadow-sm" data-alt="A professional portrait of a senior investment executive with a clean, high-key studio background. The lighting is soft and flattering, creating a premium institutional feel. The subject wears a bespoke dark suit with subtle textures, embodying quiet confidence and absolute precision in a minimalist gallery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE4pJHfoOLi68tWsoVYVR1JaAUr2edDQR7RzmnmkqHmMdXdyEACHf9TzhqiTTTOkijDYysfPWbtfycn0VGFQ2qRhHVC5RtV84COiZDnInzP7nXsAQHBJcPvthM6BevUgSHfF2hJhxoy0qZ5aCidbp-eSFTtgEFvxDeRUGXmR43tQB0JpSBGT-L4z-NhLPazSyjKbedfHgV2Ajl-Hw7Tf1CcpbGcAm_-6919sSI90uPIgBZb1FDswLDY61TA4W-SsUBBb8tl2d5A2Y"/>
+</div>
+</div>
+</header>
+<main class="flex min-h-screen">
+<!-- SideNavBar Execution -->
+<aside class="hidden md:flex flex-col h-full py-8 bg-surface-container-lowest docked left-0 w-[280px] border-r border-outline-variant/10 sticky top-20">
+<div class="px-6 mb-12">
+<p class="font-title-md text-title-md font-headline text-primary tracking-tight">Portfolio Navigator</p>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mt-1">Client Management Shell</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Intelligence</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="show_chart">show_chart</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Markets</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Ledger</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-tertiary-container bg-tertiary-container/5 border-r-2 border-tertiary-container" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Entities</span>
+</a>
+</nav>
+<div class="mt-auto px-6 space-y-4">
+<button class="w-full py-4 bg-primary text-white rounded-none font-label-caps text-label-caps uppercase tracking-widest shadow-lg hover:bg-surface-tint transition-all active:scale-[0.98]">
+                    Execute Trade
+                </button>
+<div class="pt-8 border-t border-outline-variant/10">
+<a class="flex items-center gap-4 py-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+<span class="text-xs uppercase tracking-widest">Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<section class="flex-1 px-container-padding-desktop py-12 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-16">
+<div class="flex items-center gap-4 mb-4">
+<span class="px-3 py-1 bg-primary-container/10 text-primary-container text-[10px] font-bold tracking-[0.2em] uppercase rounded-full border border-primary-container/20">Institutional Tier 1</span>
+<span class="text-on-surface-variant/40 text-xs">ID: NX-2024-IF-II</span>
+</div>
+<h1 class="font-headline text-display-lg text-on-surface mb-2 tracking-tight">Nexus Infrastructure Fund II</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    Closed-end infrastructure private equity vehicle focused on European energy transition assets and sustainable logistics hubs.
+                </p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Performance Overview Card -->
+<div class="col-span-12 lg:col-span-8 bg-white border border-outline-variant/10 shadow-[0px_30px_60px_rgba(0,0,0,0.02)] p-10 relative overflow-hidden group">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="font-headline text-headline-md text-on-surface mb-1">Performance Matrix</h3>
+<p class="text-label-md text-on-surface-variant uppercase tracking-widest">YTD Allocation &amp; Yield</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="trending_up">trending_up</span>
+</div>
+<div class="grid grid-cols-3 gap-12">
+<div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mb-2">Net Asset Value</p>
+<p class="font-headline text-headline-lg text-primary">$412.8M</p>
+<p class="text-xs text-green-600 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">north_east</span> +4.2% QoQ
+                            </p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mb-2">Internal Rate of Return</p>
+<p class="font-headline text-headline-lg text-on-surface">14.2%</p>
+<p class="text-xs text-on-surface-variant mt-2 italic">Realized: 11.8%</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mb-2">Capital Called</p>
+<p class="font-headline text-headline-lg text-on-surface">68.5%</p>
+<div class="w-full h-1 bg-surface-container mt-4">
+<div class="w-[68.5%] h-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/10">
+<img alt="Performance Graph" class="w-full h-48 object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A sophisticated, minimalist financial data visualization featuring a clean gold line chart representing investment growth over time. The background is a soft alabaster white with subtle grid lines. The aesthetic is editorial and high-end, utilizing the brand's primary gold and warm grey tones to convey stability and premium performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv31D7xKAAj7ochf5s55PVG4BgdPYQnV-V7IdyB1UHnVbJ_hSYUgG0EDmWWsbdl7JtJTIEfn14xMqycoMKTl0iLQpDpqKrDJ71WSCb8b-j7CiafkWTEUkZxJBnZUWUtCyAQoOr4RdGsFRvgQbKfJdetWvs196lXi12EXTyCDgW2O0I0oVUR6PVoGw2lwcDJtHwA7xCCN3F1Craqbxv1DG9-Lb9QMekMQ0muiH3oGeuhet6Bd2EK9KckZOlNQDOI--Hjn6ymHhuArM"/>
+</div>
+</div>
+<!-- Quick Action Panel -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<div class="bg-white border border-outline-variant/10 shadow-[0px_30px_60px_rgba(0,0,0,0.02)] p-8">
+<h4 class="font-headline text-headline-md text-on-surface mb-6">Mandates</h4>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-between p-4 border border-outline-variant/10 hover:border-primary-container transition-all group">
+<span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface group-hover:text-primary">Initiate Capital Call</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary" data-icon="payments">payments</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 border border-outline-variant/10 hover:border-primary-container transition-all group">
+<span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface group-hover:text-primary">Schedule Review</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary" data-icon="calendar_today">calendar_today</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 border border-outline-variant/10 hover:border-primary-container transition-all group">
+<span class="font-label-lg text-label-lg uppercase tracking-widest text-on-surface group-hover:text-primary">Issue Distribution</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary" data-icon="account_balance">account_balance</span>
+</button>
+</div>
+</div>
+<div class="bg-primary/5 p-8 border border-primary/10">
+<p class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-2">Priority Notice</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Upcoming regulatory disclosure deadline for Entity 2.4 on Sept 14. Shared folder has been updated.
+                        </p>
+</div>
+</div>
+<!-- Correspondence & Documents Section -->
+<div class="col-span-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Correspondence -->
+<div class="bg-white border border-outline-variant/10 shadow-[0px_30px_60px_rgba(0,0,0,0.02)] p-10">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-headline-md text-on-surface">Recent Correspondence</h3>
+<button class="text-[10px] uppercase tracking-[0.2em] text-primary border-b border-primary/20 hover:border-primary">View Archive</button>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<div class="py-6 first:pt-0 group cursor-pointer">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-lg text-label-lg text-on-surface group-hover:text-primary transition-colors">Quarterly Investment Committee</span>
+<span class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest">2h ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">The latest project review for the Dutch Wind Farm cluster indicates a potential 12% upside on current valuations...</p>
+</div>
+<div class="py-6 group cursor-pointer">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-lg text-label-lg text-on-surface group-hover:text-primary transition-colors">LP Inbound: Capital Structuring</span>
+<span class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest">Aug 28</span>
+</div>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Query regarding the tax-efficient treatment of SPV-4 holdings under the new regulatory framework...</p>
+</div>
+</div>
+</div>
+<!-- Shared Documents -->
+<div class="bg-white border border-outline-variant/10 shadow-[0px_30px_60px_rgba(0,0,0,0.02)] p-10">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-headline-md text-on-surface">Vaulted Documents</h3>
+<span class="material-symbols-outlined text-outline-variant" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-transparent hover:border-outline-variant/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="description">description</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Q3 Risk Assessment.pdf</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest">Modified: Today</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-amber-50 text-amber-700 text-[9px] font-bold tracking-widest uppercase border border-amber-200">Needs Annotation</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-transparent hover:border-outline-variant/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="description">description</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Nexus_Entity_Chart_v2.svg</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest">Modified: Aug 24</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-green-50 text-green-700 text-[9px] font-bold tracking-widest uppercase border border-green-200">Verified</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-transparent hover:border-outline-variant/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="description">description</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Capital_Call_Notice_012.pdf</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest">Modified: Aug 20</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant/60 text-[9px] font-bold tracking-widest uppercase">Draft</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Execution -->
+<footer class="bg-surface-dim text-on-surface-variant flex justify-between items-center px-container-padding-desktop py-4 w-full full-width bottom-0 border-t border-outline-variant/5">
+<div class="flex items-center gap-8">
+<span class="font-body-sm text-body-sm opacity-60">© 2024 ALTOS CAPITAL MANAGEMENT. v2.4.0-PRIME</span>
+</div>
+<div class="flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Regulatory Disclosures</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Privacy Protocol</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK | Vault Initialization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "inverse-primary": "#e9c349",
+                "on-tertiary-fixed": "#1a1c1c",
+                "on-secondary-fixed-variant": "#474646",
+                "on-primary-fixed": "#241a00",
+                "surface-container": "#eeeeee",
+                "on-error": "#ffffff",
+                "tertiary-fixed": "#e2e2e2",
+                "surface-container-highest": "#e2e2e2",
+                "on-tertiary-fixed-variant": "#454747",
+                "secondary-fixed-dim": "#c8c6c5",
+                "secondary": "#5f5e5e",
+                "on-secondary-container": "#656464",
+                "on-background": "#1a1c1c",
+                "tertiary-container": "#b2b3b3",
+                "tertiary": "#5d5f5f",
+                "on-error-container": "#93000a",
+                "tertiary-fixed-dim": "#c6c6c7",
+                "on-primary-container": "#554300",
+                "surface-container-lowest": "#ffffff",
+                "inverse-surface": "#2f3131",
+                "primary-fixed": "#ffe088",
+                "surface-tint": "#735c00",
+                "outline-variant": "#d0c5af",
+                "on-tertiary": "#ffffff",
+                "on-surface-variant": "#4d4635",
+                "surface": "#f9f9f9",
+                "on-primary-fixed-variant": "#574500",
+                "secondary-fixed": "#e5e2e1",
+                "surface-container-low": "#f3f3f4",
+                "primary-container": "#d4af37",
+                "error": "#ba1a1a",
+                "on-tertiary-container": "#434546",
+                "on-secondary": "#ffffff",
+                "inverse-on-surface": "#f0f1f1",
+                "surface-bright": "#f9f9f9",
+                "surface-variant": "#e2e2e2",
+                "surface-container-high": "#e8e8e8",
+                "outline": "#7f7663",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed": "#1c1b1b",
+                "surface-dim": "#dadada",
+                "background": "#f9f9f9",
+                "secondary-container": "#e5e2e1",
+                "on-surface": "#1a1c1c",
+                "primary-fixed-dim": "#e9c349",
+                "on-primary": "#ffffff",
+                "primary": "#735c00"
+              },
+              "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "stack-sm": "12px",
+                "unit": "8px",
+                "stack-md": "24px",
+                "container-padding-mobile": "24px",
+                "stack-lg": "48px",
+                "gutter": "24px",
+                "container-padding-desktop": "64px"
+              },
+              "fontFamily": {
+                "body-md": ["Hanken Grotesk"],
+                "body-lg": ["Hanken Grotesk"],
+                "label-lg": ["Hanken Grotesk"],
+                "headline-md": ["Libre Caslon Text"],
+                "headline-lg": ["Libre Caslon Text"],
+                "display-lg": ["Libre Caslon Text"],
+                "label-md": ["Hanken Grotesk"],
+                "display-lg-mobile": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gallery-shadow {
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.04);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 0.5px solid rgba(0, 0, 0, 0.05);
+        }
+        .hairline-border {
+            border-bottom: 0.5px solid #d0c5af;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-container-padding-desktop w-full sticky top-0 z-50 bg-surface dark:bg-surface-dim h-20 border-b border-outline-variant/30 shadow-sm opacity-95">
+<div class="font-headline-lg text-headline-lg tracking-widest text-primary dark:text-primary-fixed-dim">STARK</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-primary cursor-pointer transition-transform active:scale-95" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer transition-transform active:scale-95" data-icon="settings">settings</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A professional portrait of a high-net-worth investor in a tailored charcoal suit, set against a blurred minimalist architectural background with soft natural lighting. The image conveys wealth, confidence, and quiet sophistication in a modern light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp_ux4UnPqai8iZCTW74gVQLg9e37q5wvA3H-Al48Iz8XoCEtpVNzEmStZ_vVAB3ps4TvSdFHabtpiGgHADai7PsmUO4aHUH7Xx9lXEohKw87T37wRC33Z_IVTn66j35ShVLQrhb0rDaBajDNksCnGRs9pm8-ASAUuM9UvFHPjHkyP4KnE_CnMJMnP59Etw4JKtb3MHm37PQQaQOFshmr8BLZAp0LunW6C3-LlbdV6w0n6QUwAiIUJ9LSjEuVPn82usjfMdKBbCzM"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-padding-desktop py-stack-lg flex flex-col gap-stack-lg">
+<!-- Success State Hero -->
+<section class="flex flex-col items-center text-center py-stack-lg">
+<div class="relative w-64 h-64 mb-stack-md flex items-center justify-center">
+<!-- Abstract STARK 'S' Graphic -->
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl opacity-30"></div>
+<div class="z-10 w-48 h-48 flex items-center justify-center border border-primary/20 rounded-full gallery-shadow bg-surface-container-lowest">
+<img alt="STARK S Monogram" class="w-32 h-32 object-contain" data-alt="A luxurious 3D digital sculpture of the letter S, crafted from polished gold and frosted glass textures. It sits in a bright, minimalist gallery setting with soft atmospheric depth and hairline light reflections. The composition is centered and elegant, embodying high-end financial precision and modern luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjb-tF3rmxFkW0pO54mPBnGvCAQJbQE2IkIxOv5TfSItFaty1YoX-vxPj8Ud4VvExQk-BsyLLaPiWZ6-ssVsZ8uufetdgPgAX111Xj7j-c9fOH9i1L75NgtjgO0dsavWDuhXP00-eNIm0u8KSwTWf2I0Qfo438RPoHQ1_PYHsnZfT22CLdwdErjL2hUakaCNIcIE_yp5QA8iy0bbam7h5dhmBMKopV6yAmanbR6o5_7S2G8EYwVT-M_dYIlmE0J2qqga6om7djrUc"/>
+</div>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-unit">Your Seat at the Table is Ready.</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">The STARK ecosystem has been meticulously configured to your investment mandate. Your assets are now shielded within the Vault.</p>
+</section>
+<!-- Bento Grid: Security & Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-md">
+<!-- Vault Initialization Column -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-lg p-stack-md border border-outline-variant/10 gallery-shadow">
+<div class="flex items-center justify-between mb-stack-md border-b border-outline-variant/20 pb-unit">
+<h2 class="font-headline-md text-headline-md">Vault Security Setup</h2>
+<span class="bg-primary-fixed text-on-primary-fixed px-stack-sm py-1 rounded-full text-label-md font-label-md">ENCRYPTED</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg py-stack-sm">
+<div class="space-y-stack-md">
+<div class="space-y-unit">
+<label class="font-label-lg text-label-lg text-primary uppercase">Multi-Sig Key Pattern</label>
+<div class="aspect-square bg-surface-container-low rounded-lg flex items-center justify-center relative overflow-hidden p-6 border border-outline-variant/30">
+<!-- Geometric Seed Visualizer -->
+<div class="w-full h-full border-[0.5px] border-primary/20 rounded-full flex items-center justify-center">
+<div class="w-3/4 h-3/4 border-[0.5px] border-primary/40 rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 text-center">
+<p class="text-label-md font-label-md text-secondary">Pattern Generated: STARK-7742-ALPHA</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between">
+<div class="space-y-stack-sm">
+<div class="p-stack-sm border-b border-outline-variant/20 flex justify-between items-center">
+<span class="font-body-md text-body-md">Biometric Fail-Safe</span>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="p-stack-sm border-b border-outline-variant/20 flex justify-between items-center">
+<span class="font-body-md text-body-md">Hardware Key Sync</span>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="p-stack-sm border-b border-outline-variant/20 flex justify-between items-center opacity-50">
+<span class="font-body-md text-body-md">Legacy Recovery Protocol</span>
+<span class="material-symbols-outlined text-outline" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-lg py-stack-sm rounded-full tracking-widest transition-transform active:scale-95">
+                            COMPLETE VAULT LOCK
+                        </button>
+</div>
+</div>
+</div>
+<!-- Mandate Summary -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-lg p-stack-md border border-outline-variant/10 gallery-shadow flex flex-col">
+<h3 class="font-headline-md text-headline-md mb-stack-md">Investment Mandate</h3>
+<div class="space-y-stack-md flex-grow">
+<div>
+<p class="text-label-md font-label-md text-secondary uppercase">Risk Profile</p>
+<p class="font-headline-md text-headline-md text-primary">Capital Preservation+</p>
+</div>
+<div class="hairline-border py-2 flex justify-between items-end">
+<div>
+<p class="text-label-md font-label-md text-secondary uppercase">Annual Target</p>
+<p class="font-body-lg text-body-lg">8.5% — 12.0%</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="trending_up">trending_up</span>
+</div>
+<div class="py-2 flex items-center gap-stack-sm">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="Assigned advisor" class="w-full h-full object-cover" data-alt="A close-up portrait of a senior investment advisor with silver hair, wearing a white shirt and gold tie. He has a warm, trustworthy expression. The background is a blurred office with shelves of art books, lit by soft, golden-hour sunlight through a window." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPpZSVtl26Qp4gkYE6lzlhedvldXTVBUhR5MY-BKu5LbiAhaZlxTHGIpXc8ot_MAFOwb7IPGciL5j2XoA2UyU-X0frVostMA8eFzXMCPYpjlVUdzk9tqKV9dMT0OT5HymOQ46SYKqWBnG0Un2pjl0uIbv4jHKI93de--pjawaatocYPVs0mG3trtQzx-sMPZQRxahoDfIRZ2URhXBtXqW6oZzhpON-xLqgBSyiv_Fxg1P1ZFEbz4vP5jjjBhHiDIt9Ic4Q1RFZ81Q"/>
+</div>
+<div>
+<p class="text-label-md font-label-md text-secondary uppercase">Assigned Advisor</p>
+<p class="font-body-md text-body-md font-semibold">Julian Vane</p>
+</div>
+</div>
+</div>
+<div class="mt-stack-lg pt-stack-md border-t border-outline-variant/20">
+<button class="w-full border border-on-surface text-on-surface font-label-lg py-3 rounded-full tracking-widest hover:bg-on-surface hover:text-surface transition-colors">
+                        DOWNLOAD FULL MANDATE
+                    </button>
+</div>
+</div>
+</div>
+<!-- Next Steps Cards -->
+<section class="py-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Intelligence &amp; Action</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg p-stack-md border border-outline-variant/10 gallery-shadow hover:translate-y-[-4px] transition-transform cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-stack-sm" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h3 class="font-headline-md text-headline-md mb-unit">Explore Portfolio</h3>
+<p class="text-secondary font-body-md mb-stack-md">View your initial asset allocation across private equity, real estate, and fixed income.</p>
+<span class="text-primary font-label-lg flex items-center group-hover:gap-2 transition-all">ENTER DASHBOARD <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></span>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg p-stack-md border border-outline-variant/10 gallery-shadow hover:translate-y-[-4px] transition-transform cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-stack-sm" data-icon="add_card">add_card</span>
+<h3 class="font-headline-md text-headline-md mb-unit">Fund Your Account</h3>
+<p class="text-secondary font-body-md mb-stack-md">Initiate your first capital call or link external institutional accounts via secure bridge.</p>
+<span class="text-primary font-label-lg flex items-center group-hover:gap-2 transition-all">INITIATE TRANSFER <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></span>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg p-stack-md border border-outline-variant/10 gallery-shadow hover:translate-y-[-4px] transition-transform cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl mb-stack-sm" data-icon="insights">insights</span>
+<h3 class="font-headline-md text-headline-md mb-unit">Market Analysis</h3>
+<p class="text-secondary font-body-md mb-stack-md">Review the quarterly global outlook curated by our Senior Strategy Committee.</p>
+<span class="text-primary font-label-lg flex items-center group-hover:gap-2 transition-all">VIEW INSIGHTS <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg border-t border-outline-variant/40 bg-surface dark:bg-surface-dim mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding-desktop max-w-7xl mx-auto w-full">
+<div class="flex flex-col gap-2 items-center md:items-start mb-stack-md md:mb-0">
+<span class="font-headline-md text-headline-md text-primary">STARK</span>
+<p class="font-body-md text-body-md text-secondary opacity-80">© 2024 STARK Investment Group. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-stack-md">
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Regulatory Disclosures</a>
+<a class="font-label-md text-label-md text-on-secondary-fixed-variant hover:text-primary transition-colors" href="#">Institutional Compliance</a>
+</div>
+</div>
+</footer>
+</body></html>

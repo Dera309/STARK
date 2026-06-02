@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK - Pay Bills</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "surface-dim": "#131313",
+                        "on-secondary": "#2f3131",
+                        "primary-fixed": "#e2e2e2",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary-container": "#b8b8b8",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-tint": "#c6c6c7",
+                        "tertiary": "#ffffff",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary": "#2f3131",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "secondary": "#c6c6c6",
+                        "tertiary-container": "#ffe088",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#5d5f5f",
+                        "primary": "#ffffff",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#484949",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary-container": "#636565",
+                        "surface-container": "#201f1f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e3e2e2",
+                        "outline-variant": "#444748",
+                        "surface-variant": "#353534",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#7b6100",
+                        "on-surface-variant": "#c4c7c8",
+                        "primary-container": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "40px",
+                        "stack-md": "24px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .glass-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .glass-input:focus {
+            outline: none;
+            border-bottom-color: theme('colors.tertiary-fixed');
+            box-shadow: 0 1px 0 0 theme('colors.tertiary-fixed');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pb-[120px]">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-xl dark:bg-surface/80 fixed top-0 w-full z-50 border-b border-white/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<div class="flex justify-between items-center h-20 px-container-padding-mobile w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A sophisticated headshot of a business professional in a sleek, minimalist dark studio setting. Soft, cinematic lighting highlights their features against a deep charcoal background, evoking a sense of trust and elite status. The overall aesthetic is highly polished and consistent with a premium private banking application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKdNQcPiftJqhlB5Tjt-g9vKb4seVv66lx5xBgaW1Q6R42ZJZMk8lvesiv1gcvUc6Ee34Rn4Kn8XeAyn_LD2oqNGsj8dR7S4tHb1N4VMQWUPzr2LeWLSWc253cneOkA93mFKHk5TTk4Vz8ZVQBzyQ8xsCmBBoxHAH4Op7lUw_2xmxjlOblngplue6I8iwvrCw-ABUhG-Ck25kLMWM3n8UhQZLulIgKwK8FaKkBhGd4l8vBYMUM6xcl1d-da2qpLbcyDSO11-jMWCQ"/>
+</div>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-[0.2em] text-primary dark:text-primary uppercase absolute left-1/2 -translate-x-1/2">
+                STARK
+            </div>
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-28 px-container-padding-mobile flex flex-col gap-stack-lg max-w-3xl mx-auto w-full">
+<!-- Header & Search -->
+<section class="flex flex-col gap-stack-md">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">Pay Bills</h1>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant ml-2">search</span>
+<input class="glass-input w-full pl-10 py-3 font-body-lg text-body-lg text-primary placeholder:text-on-surface-variant" placeholder="Search billers..." type="text"/>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-title-md text-title-md text-on-surface">Categories</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+<!-- Airtime -->
+<button class="glass-card rounded-DEFAULT p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="phone_iphone" data-weight="fill" style="font-variation-settings: 'FILL' 1;">phone_iphone</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Airtime</span>
+</button>
+<!-- Electricity -->
+<button class="glass-card rounded-DEFAULT p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="bolt" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Electricity</span>
+</button>
+<!-- Internet -->
+<button class="glass-card rounded-DEFAULT p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="wifi" data-weight="fill" style="font-variation-settings: 'FILL' 1;">wifi</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Internet</span>
+</button>
+<!-- Cable TV -->
+<button class="glass-card rounded-DEFAULT p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="tv" data-weight="fill" style="font-variation-settings: 'FILL' 1;">tv</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Cable TV</span>
+</button>
+<!-- Water -->
+<button class="glass-card rounded-DEFAULT p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="water_drop" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Water</span>
+</button>
+<!-- Insurance -->
+<button class="glass-card rounded-DEFAULT p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="shield" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Insurance</span>
+</button>
+</div>
+</section>
+<!-- Recent Payments -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-title-md text-title-md text-on-surface">Recent Payments</h2>
+<div class="flex flex-col gap-unit">
+<!-- Recent 1 -->
+<div class="glass-card rounded-DEFAULT p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="tv">tv</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-primary font-medium">SkyStream Vision</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Account: 8847-2910</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="font-body-lg text-body-lg text-primary">$124.00</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Oct 12</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-tertiary-fixed/10 flex items-center justify-center hover:bg-tertiary-fixed/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary-fixed text-sm" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<!-- Recent 2 -->
+<div class="glass-card rounded-DEFAULT p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="bolt">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-primary font-medium">Nexus Energy</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Account: NE-5510</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="font-body-lg text-body-lg text-primary">$340.50</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Oct 05</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-tertiary-fixed/10 flex items-center justify-center hover:bg-tertiary-fixed/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary-fixed text-sm" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-surface-container-lowest/90 backdrop-blur-2xl dark:bg-surface-container-lowest/90 fixed bottom-0 w-full z-50 rounded-t-lg shadow-[0px_-10px_40px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] pb-safe">
+<div class="flex justify-around items-center h-24 px-4 w-full">
+<button class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 group">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined mb-1 text-tertiary-fixed" data-icon="swap_horiz" data-weight="fill" style="font-variation-settings: 'FILL' 1;">swap_horiz</span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed">TRANSFER</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 group">
+<span class="material-symbols-outlined mb-1" data-icon="credit_card">credit_card</span>
+<span class="font-label-caps text-label-caps">CARDS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 group">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">WEALTH</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 group">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">PROFILE</span>
+</button>
+</div>
+</nav>
+</body></html>

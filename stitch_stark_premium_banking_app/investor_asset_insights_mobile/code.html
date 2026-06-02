@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#5f5e5e",
+            "error": "#ba1a1a",
+            "on-primary-container": "#554300",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#434546",
+            "on-primary-fixed-variant": "#574500",
+            "secondary-fixed-dim": "#c8c6c5",
+            "on-background": "#1a1c1c",
+            "outline": "#7f7663",
+            "surface-bright": "#f9f9f9",
+            "on-secondary-fixed-variant": "#474646",
+            "on-secondary-fixed": "#1c1b1b",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#656464",
+            "secondary-fixed": "#e5e2e1",
+            "on-surface": "#1a1c1c",
+            "tertiary-fixed": "#e2e2e2",
+            "surface-container": "#eeeeee",
+            "on-surface-variant": "#4d4635",
+            "surface-container-low": "#f3f3f4",
+            "inverse-on-surface": "#f0f1f1",
+            "tertiary-fixed-dim": "#c6c6c7",
+            "on-tertiary-fixed": "#1a1c1c",
+            "surface-dim": "#dadada",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#e8e8e8",
+            "surface-tint": "#735c00",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#ffe088",
+            "primary-fixed-dim": "#e9c349",
+            "surface-container-highest": "#e2e2e2",
+            "surface-variant": "#e2e2e2",
+            "on-tertiary": "#ffffff",
+            "surface": "#f9f9f9",
+            "tertiary-container": "#b2b3b3",
+            "on-tertiary-fixed-variant": "#454747",
+            "inverse-primary": "#e9c349",
+            "secondary-container": "#e5e2e1",
+            "primary-container": "#d4af37",
+            "outline-variant": "#d0c5af",
+            "inverse-surface": "#2f3131",
+            "background": "#f9f9f9",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#5d5f5f",
+            "primary": "#735c00",
+            "on-primary-fixed": "#241a00",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "unit": "8px",
+            "container-padding-desktop": "64px",
+            "stack-md": "24px",
+            "container-padding-mobile": "24px",
+            "stack-lg": "48px",
+            "gutter": "24px",
+            "stack-sm": "12px"
+          },
+          "fontFamily": {
+            "headline-md": ["Libre Caslon Text"],
+            "display-lg-mobile": ["Libre Caslon Text"],
+            "display-lg": ["Libre Caslon Text"],
+            "label-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-lg": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-lg": ["Libre Caslon Text"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+            "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .thin-border { border: 0.5px solid rgba(127, 118, 99, 0.2); }
+    .ambient-shadow { box-shadow: 0 30px 60px rgba(0, 0, 0, 0.03); }
+    body { -webkit-font-smoothing: antialiased; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-outline-variant/30 flat no shadows h-16 flex items-center">
+<div class="flex justify-between items-center px-container-padding-mobile w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md tracking-widest text-primary dark:text-primary-fixed-dim">STARK</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim hover:opacity-70 transition-opacity">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Private client profile image" data-alt="A sophisticated professional portrait of a high-net-worth individual with soft studio lighting. The background is a minimalist, warm grey, maintaining the STARK premium aesthetic. The subject is dressed in bespoke tailoring, conveying quiet confidence and exclusivity consistent with a high-end financial gallery atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8R5cJ5ndSST5GAh8nfRcDVOpzIyeO3fAkoNEc-H4lXTBBY8Gdk_a2bbkd4c5XsxvSZfXzePbb_OMT-vMXeKknDr2ljYP5SoOfpr8Kk9dkdrVvssw5fJ1OwtAJOF4alE24CTeYaJsR2uvukUwoUjBVxNp9jeXTY5gwOWo7fGFmOi6dxdgipe8PLZ0IgKxp4fWZ71GbO4k9jZZ8lQROMn5FPxTJbVS3m2D38vmRlFXEp1zpuWj4itzmcvCtyLCslz5SoXXZB-Ep-IA"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-padding-mobile max-w-md mx-auto space-y-stack-lg">
+<!-- Fund Header & Value -->
+<section class="space-y-unit">
+<p class="font-label-md text-label-md uppercase tracking-widest text-secondary">Asset Insights</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background leading-tight">Nexus Infrastructure Fund</h1>
+<div class="flex items-baseline gap-2 pt-2">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-background">$2,840,152.00</span>
+</div>
+<div class="flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+<span class="font-label-lg text-label-lg">-1.24% today</span>
+</div>
+</section>
+<!-- Performance Chart Section -->
+<section class="space-y-stack-md">
+<div class="flex justify-between items-end">
+<h2 class="font-label-lg text-label-lg text-on-background uppercase tracking-wider">6-Month Performance</h2>
+<span class="font-label-md text-label-md text-secondary">USD Basis</span>
+</div>
+<div class="w-full h-48 flex items-end justify-between gap-1 px-2 border-b border-outline-variant/30">
+<!-- Mock Bar Chart -->
+<div class="w-full bg-primary/10 rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-primary/10 rounded-t-sm" style="height: 75%"></div>
+<div class="w-full bg-primary/20 rounded-t-sm" style="height: 85%"></div>
+<div class="w-full bg-primary/15 rounded-t-sm" style="height: 70%"></div>
+<div class="w-full bg-primary/40 rounded-t-sm" style="height: 95%"></div>
+<div class="w-full bg-primary-container rounded-t-sm" style="height: 90%"></div>
+</div>
+<div class="flex justify-between px-1">
+<span class="font-label-md text-label-md text-secondary">MAR</span>
+<span class="font-label-md text-label-md text-secondary">APR</span>
+<span class="font-label-md text-label-md text-secondary">MAY</span>
+<span class="font-label-md text-label-md text-secondary">JUN</span>
+<span class="font-label-md text-label-md text-secondary">JUL</span>
+<span class="font-label-md text-label-md text-on-background font-semibold">AUG</span>
+</div>
+</section>
+<!-- Key Metrics Grid -->
+<section class="grid grid-cols-3 gap-unit">
+<div class="bg-surface-container-lowest thin-border ambient-shadow p-unit h-24 flex flex-col justify-between">
+<span class="font-label-md text-label-md text-secondary uppercase">Volatility</span>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background">24</span>
+<span class="text-[10px] text-primary font-semibold uppercase tracking-tighter">Low</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest thin-border ambient-shadow p-unit h-24 flex flex-col justify-between">
+<span class="font-label-md text-label-md text-secondary uppercase">Yield</span>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background">5.8%</span>
+<span class="text-[10px] text-secondary font-semibold uppercase tracking-tighter">Annualized</span>
+</div>
+</div>
+<div class="bg-primary-container p-unit h-24 flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-primary-container uppercase">Tier</span>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-primary-container">Top 5%</span>
+<span class="text-[10px] text-on-primary-container/70 font-semibold uppercase tracking-tighter">Global Ranking</span>
+</div>
+</div>
+</section>
+<!-- Advisor Note / Market Commentary -->
+<section class="bg-surface-container-low thin-border p-stack-md space-y-stack-sm rounded-lg relative overflow-hidden">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img alt="Julian Thorne Advisor" data-alt="A close-up portrait of a senior investment advisor, Julian Thorne, looking directly at the camera with a calm and intelligent expression. He is set against a blurred background of a modern, light-filled office. The lighting is soft and professional, echoing the STARK brand's clean, high-end gallery aesthetic and sophisticated visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Y7s9NpixR4OkcWVOyCJbfgVWcEkKIszpZe7Gi6OPYCcsd3OlIQ7TmU1m2x_YKSA479VBiMGKI8-oiFc3-62MFBIx48eE1UZgYhEJFS-qA69jeMVx0rbE3xl3lLpVqXRH8YcMtye5DOSuSa8kZ5bnQJtNoLCnjn3NBZ7foQi1MIGLortKUAvTZ-bLZQGjohsO7co9tlfNjO5rVXti6QsH0YMnnYg-nbEMGGsHVWV9Q1NLT-azv6M7eVZnfSBcpNu2sN1Drq1nxmg"/>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-background">Julian Thorne</h3>
+<p class="font-label-md text-label-md text-secondary">Chief Strategist</p>
+</div>
+</div>
+<blockquote class="font-headline-md text-headline-md text-on-surface italic border-l-2 border-primary-container pl-4 py-1">
+        "Infrastructure equities remain the bedrock of resilient portfolios during mid-cycle shifts."
+      </blockquote>
+<button class="font-label-lg text-label-lg text-primary flex items-center gap-2 pt-2 hover:opacity-70 transition-opacity">
+        Read Full Briefing
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</section>
+<!-- Top Holdings Preview -->
+<section class="space-y-stack-md">
+<h2 class="font-label-lg text-label-lg text-on-background uppercase tracking-wider">Top Underlying Assets</h2>
+<div class="space-y-unit">
+<!-- Asset 1 -->
+<div class="flex justify-between items-center py-stack-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-background">Renewable Grid Alpha</p>
+<p class="font-label-md text-label-md text-secondary">Energy Infrastructure</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-on-background">12.4%</span>
+</div>
+<!-- Asset 2 -->
+<div class="flex justify-between items-center py-stack-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_city</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-background">Urban Logistics Trust</p>
+<p class="font-label-md text-label-md text-secondary">Real Estate</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-on-background">9.8%</span>
+</div>
+<!-- Asset 3 -->
+<div class="flex justify-between items-center py-stack-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-background">Aquifer Resource Bond</p>
+<p class="font-label-md text-label-md text-secondary">Utilities</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-on-background">8.2%</span>
+</div>
+</div>
+</section>
+<!-- Primary Action Button -->
+<section class="pt-stack-md">
+<button class="w-full h-16 bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined">balance</span>
+        REBALANCE PORTFOLIO
+      </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/90 backdrop-blur-md border-t border-outline-variant/20 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</body></html>

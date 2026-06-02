@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#e9c349",
+                        "on-secondary-container": "#656464",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-fixed": "#241a00",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary": "#5d5f5f",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#5f5e5e",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#434546",
+                        "on-surface": "#1a1c1c",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#d0c5af",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#735c00",
+                        "primary-fixed": "#ffe088",
+                        "surface": "#f9f9f9",
+                        "outline": "#7f7663",
+                        "on-background": "#1a1c1c",
+                        "inverse-surface": "#2f3131",
+                        "primary": "#735c00",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#474646",
+                        "background": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "primary-container": "#d4af37"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "container-padding-mobile": "24px",
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "container-padding-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+        .hairline-border { border: 0.5px solid rgba(127, 118, 99, 0.2); }
+        .ambient-shadow { box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.03); }
+        .gold-glow:focus { border-bottom: 2px solid #D4AF37; outline: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant/30 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-center w-full px-container-padding-desktop py-4">
+<div class="flex items-center gap-12">
+<span class="font-display-lg text-display-lg tracking-tight text-primary">STARK</span>
+<nav class="hidden md:flex gap-8 items-center h-full pt-2">
+<a class="text-primary border-b-2 border-primary pb-1 font-label-lg text-label-lg" href="#">Overview</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg" href="#">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-lg text-label-lg" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-1 focus:ring-primary-container w-64" placeholder="Search assets..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-all duration-300">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-all duration-300">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+<img alt="Investor profile avatar" class="w-10 h-10 rounded-full border border-outline-variant/30 object-cover" data-alt="A sophisticated close-up portrait of a mature professional man in a bespoke tailored suit, captured with high-end editorial lighting in a minimalist architectural setting. The lighting is soft and directional, highlighting textures of fine wool and skin, creating an atmosphere of quiet confidence and expertise. The background is a clean, neutral gallery wall that emphasizes a high-net-worth individual aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA88PCylnsvYlN1dWqEfN2uKmCpQOs16KuAHrIdWDBr6wHucwIItpSCefUcWxrohVFe5Al4dzaQsfoJ6lLjue_Gx1RKPUTCvkvIguQAJQJtAGlwlfyALHM4x5svS1_rVKdl5uVgbBlwt1rYfkC5pcGRDBb24Hn7nioZ7T6ctMYwMb-fiXRZ706MLG9FoqtADvoKS_b1AGzUDI5pU27XdCWjGhPsSYRcJmrXJUfBf8snopoGInpcl0_ejkBCjCdOtw_wBoBfVO7ojvQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface border-r border-outline-variant/30 flex flex-col py-stack-lg gap-stack-md hidden md:flex pt-32">
+<div class="px-8 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary">STARK PORTAL</h2>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-1">Premium Investor Relations</p>
+</div>
+<nav class="flex-1 space-y-2">
+<div class="flex items-center text-primary font-bold border-l-4 border-primary pl-4 cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Dashboard</span>
+</div>
+<div class="flex items-center text-on-surface-variant pl-5 hover:bg-surface-container-high hover:text-on-surface cursor-pointer transition-all duration-200 py-2">
+<span class="material-symbols-outlined mr-3">account_balance_wallet</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Portfolio</span>
+</div>
+<div class="flex items-center text-on-surface-variant pl-5 hover:bg-surface-container-high hover:text-on-surface cursor-pointer transition-all duration-200 py-2">
+<span class="material-symbols-outlined mr-3">description</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Reports</span>
+</div>
+<div class="flex items-center text-on-surface-variant pl-5 hover:bg-surface-container-high hover:text-on-surface cursor-pointer transition-all duration-200 py-2">
+<span class="material-symbols-outlined mr-3">newspaper</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">News Feed</span>
+</div>
+<div class="flex items-center text-on-surface-variant pl-5 hover:bg-surface-container-high hover:text-on-surface cursor-pointer transition-all duration-200 py-2">
+<span class="material-symbols-outlined mr-3">mail</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Messages</span>
+</div>
+</nav>
+<div class="px-8 mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container py-3 px-4 rounded-full font-label-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                Download Annual Report
+            </button>
+<div class="mt-8 space-y-4">
+<div class="flex items-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-sm">
+<span class="material-symbols-outlined mr-2 text-lg">help_outline</span>
+                    Support
+                </div>
+<div class="flex items-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-sm">
+<span class="material-symbols-outlined mr-2 text-lg">gavel</span>
+                    Compliance
+                </div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 pt-32 px-container-padding-desktop pb-stack-lg min-h-screen">
+<!-- Dashboard Header -->
+<header class="mb-stack-lg">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Investor Overview</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A curated summary of your capital deployment and performance trajectory across the STARK ecosystem.</p>
+</header>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<!-- Total Portfolio Value -->
+<div class="bg-white hairline-border ambient-shadow rounded p-stack-md">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Total Portfolio Value</span>
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<div class="flex items-baseline gap-2 mb-6">
+<h2 class="font-headline-lg text-headline-lg">$14,820,450</h2>
+<span class="text-primary font-label-md text-label-md">+4.2%</span>
+</div>
+<div class="h-16 w-full flex items-end gap-1"><svg class="w-full h-16" preserveaspectratio="none" viewbox="0 0 400 64"><defs><lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" style="stop-color:var(--tw-primary-container);stop-opacity:0.4"></stop><stop offset="100%" style="stop-color:var(--tw-primary-container);stop-opacity:0"></stop></lineargradient></defs><path d="M0 64 L0 45 Q40 35 80 50 T160 40 T240 30 T320 15 T400 5 L400 64 Z" fill="url(#grad1)"></path><path d="M0 45 Q40 35 80 50 T160 40 T240 30 T320 15 T400 5" fill="none" stroke="#735c00" stroke-width="1.5"></path></svg></div>
+</div>
+<!-- Net Return -->
+<div class="bg-white hairline-border ambient-shadow rounded p-stack-md">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Net Return (YTD)</span>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div class="flex items-baseline gap-2 mb-6">
+<h2 class="font-headline-lg text-headline-lg">$1,240,112</h2>
+<span class="text-primary font-label-md text-label-md">+12.8%</span>
+</div>
+<div class="h-16 w-full flex items-end gap-1"><svg class="w-full h-16" preserveaspectratio="none" viewbox="0 0 400 64"><defs><lineargradient id="grad2" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" style="stop-color:var(--tw-primary-container);stop-opacity:0.4"></stop><stop offset="100%" style="stop-color:var(--tw-primary-container);stop-opacity:0"></stop></lineargradient></defs><path d="M0 64 L0 50 Q40 55 80 40 T160 45 T240 25 T320 35 T400 10 L400 64 Z" fill="url(#grad2)"></path><path d="M0 50 Q40 55 80 40 T160 45 T240 25 T320 35 T400 10" fill="none" stroke="#735c00" stroke-width="1.5"></path></svg></div>
+</div>
+<!-- Annualized Yield -->
+<div class="bg-white hairline-border ambient-shadow rounded p-stack-md">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Annualized Yield</span>
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="flex items-baseline gap-2 mb-6">
+<h2 class="font-headline-lg text-headline-lg">9.45%</h2>
+<span class="text-on-surface-variant font-label-md text-label-md">Stable</span>
+</div>
+<div class="h-16 w-full flex items-end gap-1"><svg class="w-full h-16" preserveaspectratio="none" viewbox="0 0 400 64"><defs><lineargradient id="grad3" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" style="stop-color:var(--tw-primary-container);stop-opacity:0.4"></stop><stop offset="100%" style="stop-color:var(--tw-primary-container);stop-opacity:0"></stop></lineargradient></defs><path d="M0 64 L0 30 Q40 28 80 32 T160 30 T240 31 T320 29 T400 30 L400 64 Z" fill="url(#grad3)"></path><path d="M0 30 Q40 28 80 32 T160 30 T240 31 T320 29 T400 30" fill="none" stroke="#735c00" stroke-width="1.5"></path></svg></div>
+</div>
+</div>
+<!-- Ecosystem Growth Chart -->
+<section class="bg-white hairline-border ambient-shadow rounded p-stack-lg mb-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md mb-1">Ecosystem Growth</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Capital appreciation trends across primary verticals.</p>
+</div>
+<div class="flex bg-surface-container rounded-full p-1">
+<button class="px-6 py-1.5 rounded-full text-label-md font-bold bg-white shadow-sm">Quarterly</button>
+<button class="px-6 py-1.5 rounded-full text-label-md text-on-surface-variant hover:text-on-surface transition-colors">Yearly</button>
+</div>
+</div>
+<div class="relative h-[400px] w-full flex items-end gap-8 px-4"><div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10 py-10"><div class="border-t border-outline"></div><div class="border-t border-outline"></div><div class="border-t border-outline"></div><div class="border-t border-outline"></div></div><svg class="absolute bottom-10 left-0 w-full h-[300px] px-4" preserveaspectratio="none" viewbox="0 0 1000 300"><defs><lineargradient id="areaGrad" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.6"></stop><stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.05"></stop></lineargradient></defs><path d="M0 300 L0 220 Q125 240 250 180 T500 150 T750 100 T1000 40 L1000 300 Z" fill="url(#areaGrad)"></path><path d="M0 220 Q125 240 250 180 T500 150 T750 100 T1000 40" fill="none" stroke="#735c00" stroke-width="3"></path></svg><div class="absolute bottom-0 left-0 w-full flex justify-between px-4 font-label-md text-on-surface-variant"><span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span></div><div class="absolute top-[20%] left-[65%] bg-white/90 backdrop-blur shadow-lg border border-outline-variant p-3 rounded-lg flex flex-col gap-1 z-10 animate-pulse"><span class="text-xs text-on-surface-variant font-bold">OCT 23 Performance</span><span class="text-lg font-headline-md text-primary">$9.2M (+14%)</span></div></div>
+</section>
+<!-- Asymmetric Layout: Recent Activity & Outlook -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Recent Activity Feed (Left) -->
+<div class="lg:col-span-7">
+<h3 class="font-headline-md text-headline-md mb-stack-md">Recent Activity</h3>
+<div class="bg-white hairline-border ambient-shadow rounded divide-y divide-outline-variant/20">
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Dividend Reinvestment</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Global Equity Fund • 2h ago</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg text-primary">+$12,450.00</span>
+</div>
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Quarterly Statement Available</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Tax Year 2023 • Yesterday</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">download</span>
+</div>
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">New Allocation: Real Estate</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Stark Private REIT • Oct 12</p>
+</div>
+</div>
+<span class="font-label-lg text-label-lg">-$250,000.00</span>
+</div>
+</div>
+</div>
+<!-- Quarterly Outlook Summary (Right) -->
+<div class="lg:col-span-5">
+<h3 class="font-headline-md text-headline-md mb-stack-md">Quarterly Outlook</h3>
+<div class="relative rounded overflow-hidden h-[420px] bg-primary group"><div class="absolute inset-0 z-10 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #d4af37 1px, transparent 0); background-size: 24px 24px;"></div><div class="absolute inset-0 z-10 opacity-10 pointer-events-none" style="background: repeating-linear-gradient(45deg, transparent, transparent 40px, #d4af37 40px, #d4af37 41px);"></div>
+<img alt="Corporate architectural abstract" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-multiply group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, low-angle architectural photograph of a sleek glass and steel skyscraper reaching into a clear morning sky. The image features a sophisticated palette of metallic greys and deep blues, with golden morning sunlight reflecting off the glass panes to create high-contrast glints. The style is ultra-minimalist and modern, evoking a sense of corporate power, clarity, and future-forward investment stability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1UWLquuVFXYkGc43p4QrZwkB7F6ITylr94oRESutY7Oz4DEkz-dKaxEELK11HEcOyi41MuAWm-WWi3pXnVsMxo8FaZBQNcsnLp2kXkThw0Hj4gXtRDR_lG3Veq40bf4Yd3awhrsdjq7FeZj-lUYNGMELTwQnTzimDK9ifLt8QnTsWpg4i7bUKI6NxZyxwFCeIxcXXzTAU8PuMNMRYhpFmqt5kJoaY6ckY2yDVXOKPhqqTULOA8NrZOUCjMySC5zNr_YJYYqadzLA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+<div class="relative h-full flex flex-col justify-end p-8 text-on-primary">
+<span class="font-label-md text-label-md uppercase tracking-[0.2em] mb-2 opacity-80">Market Insight • Q4 2024</span>
+<h4 class="font-headline-md text-headline-md mb-4 italic">"Navigating the Great Transition: Resilience in Private Markets"</h4>
+<p class="font-body-md text-body-md mb-6 opacity-90 line-clamp-3">As we enter the final quarter, the focus shifts toward structural alpha in alternative assets. Our analysts anticipate a stabilization of yields across core infrastructure...</p>
+<button class="flex items-center gap-2 font-label-lg text-label-lg hover:gap-4 transition-all">
+                            Read Full Analysis
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="md:ml-72 bg-surface-container-low border-t border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-container-padding-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-headline-sm text-headline-sm text-primary">STARK</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">© 2024 STARK CAPITAL MANAGEMENT. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-8">
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Terms of Service</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Compliance</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Regulatory Disclosures</a>
+</div>
+</div>
+</footer>
+</body></html>

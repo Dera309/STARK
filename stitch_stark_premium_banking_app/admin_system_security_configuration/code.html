@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK | System Security Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e3e2e2",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#484949",
+                        "secondary": "#c6c6c6",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-primary-fixed": "#1a1c1c",
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-background": "#e5e2e1",
+                        "on-primary": "#2f3131",
+                        "outline": "#8e9192",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "surface-bright": "#393939",
+                        "on-tertiary-container": "#7b6100",
+                        "on-surface": "#e5e2e1",
+                        "tertiary": "#ffffff",
+                        "surface": "#131313",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "surface-tint": "#c6c6c7",
+                        "primary": "#ffffff",
+                        "surface-variant": "#353534",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#2f3131",
+                        "inverse-primary": "#5d5f5f",
+                        "surface-container": "#201f1f",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131313",
+                        "primary-container": "#e2e2e2",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary-fixed-variant": "#454747",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "on-primary-container": "#636565",
+                        "background": "#131313",
+                        "tertiary-container": "#ffe088",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#c4c7c8",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#b8b8b8",
+                        "inverse-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "40px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #000000; color: #e5e2e1; }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.03);
+        }
+        .gold-glow { box-shadow: 0 0 15px rgba(233, 195, 73, 0.1); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .active-nav-indicator { transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    </script>
+</head>
+<body class="flex min-h-screen">
+
+    <!-- SideNavBar Shell -->
+    <aside class="fixed left-0 h-full w-64 bg-surface-container-lowest border-r border-white/5 flex flex-col py-stack-lg z-50">
+        <div class="px-stack-md mb-stack-lg">
+            <h1 class="font-headline-lg text-headline-lg tracking-widest text-primary">STARK</h1>
+            <p class="font-label-caps text-label-caps text-secondary opacity-60">Institutional Grade</p>
+        </div>
+        <nav class="flex-grow flex flex-col gap-2">
+            <a href="#" class="text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm flex items-center gap-3 transition-all duration-300 hover:bg-white/5">
+                <span class="material-symbols-outlined">insights</span>
+                <span class="font-label-caps text-label-caps">Intelligence</span>
+            </a>
+            <a href="#" class="text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm flex items-center gap-3 transition-all duration-300 hover:bg-white/5">
+                <span class="material-symbols-outlined">account_balance</span>
+                <span class="font-label-caps text-label-caps">Capital</span>
+            </a>
+            <a href="#" class="text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm flex items-center gap-3 transition-all duration-300 hover:bg-white/5">
+                <span class="material-symbols-outlined">hub</span>
+                <span class="font-label-caps text-label-caps">Nexus</span>
+            </a>
+            <a href="#" class="text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm flex items-center gap-3 transition-all duration-300 hover:bg-white/5">
+                <span class="material-symbols-outlined">security</span>
+                <span class="font-label-caps text-label-caps">Protocols</span>
+            </a>
+            <a href="#" class="text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm flex items-center gap-3 transition-all duration-300 hover:bg-white/5">
+                <span class="material-symbols-outlined">fact_check</span>
+                <span class="font-label-caps text-label-caps">Audit</span>
+            </a>
+            <!-- Active State: System -->
+            <a href="#" class="text-primary border-l-2 border-primary bg-white/5 px-stack-md py-stack-sm flex items-center gap-3">
+                <span class="material-symbols-outlined">settings_input_component</span>
+                <span class="font-label-caps text-label-caps">System</span>
+            </a>
+        </nav>
+        <div class="px-stack-md mt-auto">
+            <button class="w-full py-3 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest rounded-none hover:bg-secondary-fixed transition-colors">
+                SECURE TERMINAL
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-grow ml-64 flex flex-col">
+        
+        <!-- TopAppBar Shell -->
+        <header class="flex justify-between items-center px-container-padding-desktop py-unit w-full sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)]">
+            <div class="flex items-center gap-stack-md">
+                <div class="relative flex items-center bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                    <span class="material-symbols-outlined text-secondary mr-2">search</span>
+                    <input type="text" placeholder="Global Security Query..." class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm text-primary w-64 placeholder-secondary/40">
+                </div>
+            </div>
+            <div class="flex items-center gap-stack-md">
+                <button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">notifications</button>
+                <button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">settings</button>
+                <div class="w-10 h-10 rounded-full border border-white/20 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Administrator Profile" data-alt="A close-up portrait of a professional male administrator in a high-end corporate setting. The lighting is dramatic and moody, with cool blue and silver highlights that emphasize a sense of authority and elite status. The background is a blurred, high-tech control center with faint glowing monitors, maintaining a sophisticated and futuristic aesthetic." class="w-full h-full object-cover">
+                </div>
+            </div>
+        </header>
+
+        <div class="p-container-padding-desktop space-y-stack-lg">
+            
+            <!-- Dashboard Header -->
+            <div class="flex justify-between items-end">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Security Configuration</h2>
+                    <p class="font-body-lg text-body-lg text-secondary opacity-60">Real-time administrative control over global threat vectors.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="flex items-center gap-2 text-tertiary-fixed-dim font-label-caps text-label-caps px-4 py-2 border border-tertiary-fixed-dim/30 gold-glow">
+                        <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+                        SYSTEM STATUS: OPTIMAL
+                    </span>
+                </div>
+            </div>
+
+            <!-- KPI Section (Security Posture Overview) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="glass-card p-stack-md space-y-3 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <span class="material-symbols-outlined text-[64px]">shield_with_heart</span>
+                    </div>
+                    <p class="font-label-caps text-label-caps text-secondary">Active Firewall</p>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-display-lg text-display-lg text-primary">99.9%</span>
+                        <span class="font-body-sm text-body-sm text-tertiary-fixed-dim">Mitigated</span>
+                    </div>
+                    <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div class="w-[99%] h-full bg-primary shadow-[0_0_8px_rgba(255,255,255,0.5)]"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-stack-md space-y-3 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-error">
+                        <span class="material-symbols-outlined text-[64px]">emergency</span>
+                    </div>
+                    <p class="font-label-caps text-label-caps text-secondary">IDS Alerts (24h)</p>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-display-lg text-display-lg text-primary">02</span>
+                        <span class="font-body-sm text-body-sm text-error">Critical</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-secondary/40">Hardware-level intercept quarantined.</p>
+                </div>
+                <div class="glass-card p-stack-md space-y-3 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <span class="material-symbols-outlined text-[64px]">lock</span>
+                    </div>
+                    <p class="font-label-caps text-label-caps text-secondary">Encryption Health</p>
+                    <div class="flex items-baseline gap-2">
+                        <span class="font-display-lg text-display-lg text-primary">AES-4096</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-secondary/40">Quantum-resistant protocols active.</p>
+                </div>
+            </div>
+
+            <!-- Main Config Grid (Bento Style) -->
+            <div class="grid grid-cols-12 gap-gutter">
+                
+                <!-- Protocol Configuration (Left Column) -->
+                <div class="col-span-12 lg:col-span-8 glass-card p-stack-md">
+                    <div class="flex justify-between items-center mb-stack-md">
+                        <h3 class="font-title-md text-title-md text-primary">Protocol Configuration</h3>
+                        <button class="font-label-caps text-label-caps text-secondary border-b border-white/20 hover:text-primary transition-colors">UPDATE ALL</button>
+                    </div>
+                    <div class="space-y-6">
+                        <!-- Protocol Row 1 -->
+                        <div class="flex items-center justify-between p-4 bg-white/5 border border-white/5 group hover:border-white/20 transition-all">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary p-2 bg-white/10">vault</span>
+                                <div>
+                                    <h4 class="font-body-lg text-body-lg text-primary">Zero-Knowledge Vaults</h4>
+                                    <p class="font-body-sm text-body-sm text-secondary/60">Decentralized asset storage with null-trace logging.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-stack-md">
+                                <input type="range" class="w-32 accent-primary bg-white/10" min="0" max="100" value="85">
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <div class="w-11 h-6 bg-white/10 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Protocol Row 2 -->
+                        <div class="flex items-center justify-between p-4 bg-white/5 border border-white/5 hover:border-white/20 transition-all">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary p-2 bg-white/10">key</span>
+                                <div>
+                                    <h4 class="font-body-lg text-body-lg text-primary">Hardware-Key Enforcement</h4>
+                                    <p class="font-body-sm text-body-sm text-secondary/60">Strict requirement for YubiKey or Titan hardware.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-stack-md">
+                                <input type="range" class="w-32 accent-primary bg-white/10" min="0" max="100" value="100">
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <div class="w-11 h-6 bg-white/10 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Protocol Row 3 -->
+                        <div class="flex items-center justify-between p-4 bg-white/5 border border-white/5 hover:border-white/20 transition-all">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary p-2 bg-white/10">grid_view</span>
+                                <div>
+                                    <h4 class="font-body-lg text-body-lg text-primary">MPC Signing Matrix</h4>
+                                    <p class="font-body-sm text-body-sm text-secondary/60">Multi-Party Computation for institutional transfers.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-stack-md">
+                                <input type="range" class="w-32 accent-primary bg-white/10" min="0" max="100" value="40">
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-white/10 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Control Matrix (Right Column) -->
+                <div class="col-span-12 lg:col-span-4 glass-card p-stack-md flex flex-col">
+                    <h3 class="font-title-md text-title-md text-primary mb-stack-md">Access Clearance</h3>
+                    <div class="space-y-4 flex-grow">
+                        <div class="flex justify-between items-center py-2 border-b border-white/5">
+                            <span class="font-label-caps text-label-caps text-tertiary-fixed-dim">LEVEL 05 (OMEGA)</span>
+                            <span class="font-body-lg text-body-lg text-primary">02 Users</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/5">
+                            <span class="font-label-caps text-label-caps text-secondary">LEVEL 04 (EXECUTIVE)</span>
+                            <span class="font-body-lg text-body-lg text-primary">12 Users</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/5">
+                            <span class="font-label-caps text-label-caps text-secondary">LEVEL 03 (ANALYST)</span>
+                            <span class="font-body-lg text-body-lg text-primary">48 Users</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-white/5">
+                            <span class="font-label-caps text-label-caps text-secondary">LEVEL 02 (OPERATIONS)</span>
+                            <span class="font-body-lg text-body-lg text-primary">156 Users</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="font-label-caps text-label-caps text-secondary">LEVEL 01 (ENTRY)</span>
+                            <span class="font-body-lg text-body-lg text-primary">842 Users</span>
+                        </div>
+                    </div>
+                    <div class="mt-stack-md pt-stack-md border-t border-white/5">
+                        <p class="font-body-sm text-body-sm text-secondary/40 mb-3">Clearance distribution follows Pareto efficiency principles.</p>
+                        <button class="w-full py-2 border border-white/20 font-label-caps text-label-caps text-primary hover:bg-white/5 transition-all">MANAGE USERS</button>
+                    </div>
+                </div>
+                
+                <!-- Real-time Threat Intel (Wide bottom row) -->
+                <div class="col-span-12 glass-card p-stack-md grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+                    <div class="space-y-4">
+                        <h3 class="font-label-caps text-label-caps text-secondary tracking-widest">Global Attack Vectors</h3>
+                        <div class="relative h-40 w-full overflow-hidden grayscale opacity-50 hover:opacity-100 transition-opacity">
+                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=600" alt="World Map" data-location="London" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                            <!-- Pulse Indicators on map -->
+                            <div class="absolute top-1/4 left-1/3 w-2 h-2 bg-primary rounded-full animate-ping"></div>
+                            <div class="absolute bottom-1/2 right-1/4 w-2 h-2 bg-primary rounded-full animate-ping"></div>
+                        </div>
+                    </div>
+                    <div class="col-span-2 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-label-caps text-label-caps text-secondary tracking-widest">Real-Time Event Stream</h3>
+                            <span class="text-[10px] text-tertiary-fixed-dim bg-tertiary-fixed-dim/10 px-2 py-0.5 rounded">LIVE FEED</span>
+                        </div>
+                        <div class="space-y-2 max-h-40 overflow-y-auto pr-2 custom-scrollbar">
+                            <div class="flex items-center gap-3 font-body-sm text-body-sm py-2 border-b border-white/5">
+                                <span class="text-secondary/40">14:22:01</span>
+                                <span class="text-tertiary-fixed-dim">SUCC:</span>
+                                <span class="text-primary">Brute force mitigation from IP 192.168.0.x (Frankfurt)</span>
+                            </div>
+                            <div class="flex items-center gap-3 font-body-sm text-body-sm py-2 border-b border-white/5">
+                                <span class="text-secondary/40">14:21:45</span>
+                                <span class="text-error">WARN:</span>
+                                <span class="text-primary">Unauthorized API request detected (Nexus Endpoint)</span>
+                            </div>
+                            <div class="flex items-center gap-3 font-body-sm text-body-sm py-2 border-b border-white/5">
+                                <span class="text-secondary/40">14:20:12</span>
+                                <span class="text-secondary-fixed">INFO:</span>
+                                <span class="text-primary">Automated key rotation initiated for L5 users.</span>
+                            </div>
+                            <div class="flex items-center gap-3 font-body-sm text-body-sm py-2">
+                                <span class="text-secondary/40">14:18:33</span>
+                                <span class="text-tertiary-fixed-dim">SUCC:</span>
+                                <span class="text-primary">Quantum-safe packet injection complete.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer Shell -->
+        <footer class="flex justify-between items-center px-container-padding-desktop py-stack-md mt-auto bg-surface border-t border-white/5 transition-opacity duration-500">
+            <div class="font-label-caps text-label-caps opacity-50 text-secondary-fixed-dim">
+                STARK
+            </div>
+            <div class="font-body-sm text-body-sm text-secondary-fixed-dim">
+                © 2024 STARK INSTITUTIONAL. SECURE TERMINAL V4.2.1-ELITE.
+            </div>
+            <nav class="flex gap-stack-md">
+                <a href="#" class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors">Legal Disclosures</a>
+                <a href="#" class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors">Privacy Protocol</a>
+                <a href="#" class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors">Audit Logs</a>
+            </nav>
+        </footer>
+
+    </main>
+
+</body>
+</html></style></head><body></body></html>

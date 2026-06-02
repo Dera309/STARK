@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#444748",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-primary-fixed-variant": "#454747",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "primary": "#ffffff",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-container": "#636565",
+                    "surface-container": "#201f1f",
+                    "surface-variant": "#353534",
+                    "secondary-fixed": "#e3e2e2",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-primary": "#2f3131",
+                    "secondary": "#c6c6c6",
+                    "surface-bright": "#393939",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-secondary-container": "#b8b8b8",
+                    "on-error": "#690005",
+                    "surface": "#131313",
+                    "secondary-container": "#484949",
+                    "primary-container": "#e2e2e2",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed": "#1a1c1c",
+                    "tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "tertiary-container": "#ffe088",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "surface-container-low": "#1c1b1b",
+                    "outline": "#8e9192",
+                    "on-surface-variant": "#c4c7c8",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-on-surface": "#313030",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#3c2f00",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed": "#e2e2e2",
+                    "on-secondary": "#2f3131",
+                    "on-tertiary-container": "#7b6100",
+                    "inverse-primary": "#5d5f5f",
+                    "background": "#131313",
+                    "surface-tint": "#c6c6c7",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error-container": "#93000a",
+                    "surface-dim": "#131313",
+                    "tertiary-fixed": "#ffe088"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding-mobile": "24px",
+                    "stack-sm": "12px",
+                    "container-padding-desktop": "40px",
+                    "unit": "8px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .elite-accent-border {
+            border-bottom: 1px solid rgba(255, 224, 136, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #444748;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col bg-surface/90 backdrop-blur-xl border-r border-outline-variant/20 shadow-[0px_0px_30px_rgba(192,192,192,0.05)] py-stack-lg px-gutter z-50">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">STARK</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Institutional Grade</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">terminal</span>
+<span class="font-label-caps text-label-caps">Terminal</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Asset Matrix</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">monitoring</span>
+<span class="font-label-caps text-label-caps">Liquidity Pool</span>
+</a>
+<a class="text-tertiary-fixed font-bold border-r-2 border-tertiary-fixed flex items-center gap-stack-sm py-4 transition-all duration-500 group bg-surface-variant/10" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-caps text-label-caps">Security Shield</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-4 hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">settings_input_component</span>
+<span class="font-label-caps text-label-caps">System Config</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<button class="mb-stack-md w-full py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded transition-all hover:bg-opacity-90 active:scale-[0.98]">
+                New Protocol
+            </button>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-3 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="text-on-surface-variant font-medium flex items-center gap-stack-sm py-3 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="font-label-caps text-label-caps">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-20 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm z-40 flex justify-between items-center px-container-padding-desktop">
+<div class="flex items-center gap-4">
+<span class="font-title-md text-title-md font-bold text-primary tracking-widest">STARK TERMINAL</span>
+<div class="h-6 w-[1px] bg-outline-variant/30"></div>
+<span class="font-label-caps text-label-caps text-tertiary-fixed">AUDIT_TRAIL_LOG</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors">wifi_tethering</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors">verified_user</span>
+<div class="relative">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer transition-colors">notifications_active</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-tertiary-fixed rounded-full border border-surface"></span>
+</div>
+</div>
+<button class="px-4 py-2 border border-error text-error font-label-caps text-label-caps rounded hover:bg-error/10 transition-colors">
+                Emergency Lock
+            </button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<img alt="Chief Executive Admin" class="w-10 h-10 rounded-full border border-outline-variant/50" data-alt="A professional studio portrait of a high-level executive with sharp, intelligent features, set against a dark, minimalist background. The lighting is sophisticated and directional, creating a cinematic look consistent with an elite administrative environment. The aesthetic is modern, monochromatic, and prestigious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXPi4VCyrem_V7qPlr0UCs0aOrBggfysrnT4anVs84F6GzZ0wcD9WgX2qEmirMZna81ie0rbJUwnuPuscTBcYB3o8dCunzMEHU77Wh8M8dO0dBCkSintIvhqTOPc9DseBQT0v3eGa_LlWrCkztBLrGJxBcch_LFsjLEd4563lxeQpIbIVBYqD2bXFZsgQGvDWKjBr0zcGZ29WZvRWfkbVrFmcEgC3f3_5iuZiWyKFjgair1-2vQkch2vQ-ggawMp9KxIzb16ToJj0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-20 p-container-padding-desktop min-h-[calc(100vh-80px)]">
+<!-- Audit Trail Controls Section -->
+<section class="mb-stack-md flex flex-col md:flex-row justify-between items-end gap-stack-md">
+<div class="w-full md:w-auto">
+<h2 class="font-display-lg text-display-lg mb-2">Audit Trail</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">High-precision cryptographic logs for all administrative vectors. Every action is signed and immutable within the STARK ledger.</p>
+</div>
+<div class="flex flex-wrap gap-4 w-full md:w-auto justify-end">
+<div class="relative group w-full md:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-b border-outline-variant/30 focus:border-tertiary-fixed outline-none py-3 pl-10 pr-4 font-label-caps text-label-caps text-on-surface transition-all placeholder:text-on-surface-variant/40" placeholder="SEARCH ACTIONS, ADMINS, OR TARGETS..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 border border-outline-variant/30 hover:border-primary transition-colors text-on-surface font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                    DATE RANGE
+                </button>
+<button class="flex items-center gap-2 px-6 py-3 border border-outline-variant/30 hover:border-primary transition-colors text-on-surface font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-sm">filter_alt</span>
+                    ADVANCED FILTERS
+                </button>
+<button class="flex items-center gap-2 px-4 py-3 bg-white text-black hover:bg-on-surface-variant transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-sm">download</span>
+                    EXPORT CSV
+                </button>
+</div>
+</section>
+<!-- Data Table Section -->
+<section class="glass-card rounded-lg overflow-hidden border border-outline-variant/10">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high/50 border-b border-outline-variant/20">
+<tr>
+<th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary">
+                                    TIMESTAMP <span class="material-symbols-outlined text-xs">arrow_downward</span>
+</div>
+</th>
+<th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary">
+                                    ADMIN ID <span class="material-symbols-outlined text-xs">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary">
+                                    ACTION <span class="material-symbols-outlined text-xs">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary">
+                                    TARGET ENTITY <span class="material-symbols-outlined text-xs">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">
+                                IP ADDRESS
+                            </th>
+<th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant text-right">
+                                SEVERITY
+                            </th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Critical Action Row -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">14:22:01.04</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-9021-X</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-tertiary-fixed/10 text-tertiary-fixed border border-tertiary-fixed/30 rounded text-[10px] font-bold tracking-widest">ACCOUNT FREEZE</span>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">WALLET_8829_LP_POOL</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">192.168.1.104</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-tertiary-fixed">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed shadow-[0_0_8px_#ffe088]"></span>
+<span class="font-label-caps text-label-caps">CRITICAL</span>
+</div>
+</td>
+</tr>
+<!-- Standard Action Row -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">14:15:22.18</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-4042-S</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">LIMIT INCREASE</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">INSTITUTIONAL_VC_ALPHA</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">45.22.112.9</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-caps text-label-caps">STANDARD</span>
+</div>
+</td>
+</tr>
+<!-- High Severity Action Row -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">13:58:04.91</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-0012-G</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-error/10 text-error border border-error/30 rounded text-[10px] font-bold tracking-widest uppercase">Root Access Granted</span>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">SYSTEM_CORE_NODE_0</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">10.0.42.5</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-error">
+<span class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_#ffb4ab]"></span>
+<span class="font-label-caps text-label-caps">HIGH</span>
+</div>
+</td>
+</tr>
+<!-- Repeated rows for density -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">13:42:11.02</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-9021-X</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">PROTOCOL_UPDATE</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">STARK_SHIELD_V4</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">192.168.1.104</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-caps text-label-caps">STANDARD</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">12:10:55.77</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-2291-L</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">USER_MIGRATION</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">CLIENT_LEGACY_DB</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">211.90.3.44</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-caps text-label-caps">STANDARD</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors group elite-accent-border">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">11:05:12.33</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-9021-X</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">
+<span class="px-2 py-1 bg-tertiary-fixed/10 text-tertiary-fixed border border-tertiary-fixed/30 rounded text-[10px] font-bold tracking-widest">API_KEY_REVOKE</span>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">EXT_PARTNER_03</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">192.168.1.104</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-tertiary-fixed">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed shadow-[0_0_8px_#ffe088]"></span>
+<span class="font-label-caps text-label-caps">CRITICAL</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">2024-05-12 <span class="text-on-surface-variant/60 ml-2">10:50:41.22</span></td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-primary">ADM-4042-S</td>
+<td class="px-6 py-4 font-body-sm text-body-sm">CONFIG_VIEW</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">TAX_LOGIC_ENGINE</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface-variant">45.22.112.9</td>
+<td class="px-6 py-4 text-right">
+<div class="inline-flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-caps text-label-caps">STANDARD</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="bg-surface-container-low px-6 py-4 border-t border-outline-variant/10 flex justify-between items-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant">
+                    SHOWING 1-7 OF 2,481 ACTIONS
+                </div>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:bg-surface-variant/30 transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center border border-primary text-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:bg-surface-variant/30 transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:bg-surface-variant/30 transition-colors">3</button>
+<span class="w-10 h-10 flex items-center justify-center text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:bg-surface-variant/30 transition-colors">354</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- System Integrity Bento Grid -->
+<section class="mt-stack-lg grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-6 rounded-lg flex flex-col justify-between h-48">
+<div>
+<span class="material-symbols-outlined text-tertiary-fixed mb-4">shield_with_heart</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Integrity Status</h3>
+<p class="text-2xl font-bold mt-1">Verified 100%</p>
+</div>
+<div class="w-full bg-outline-variant/20 h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed h-full w-full shadow-[0_0_10px_#ffe088]"></div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg flex flex-col justify-between h-48">
+<div>
+<span class="material-symbols-outlined text-primary mb-4">bolt</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Live Action Flux</h3>
+<p class="text-2xl font-bold mt-1">12 Actions/Sec</p>
+</div>
+<div class="flex items-end gap-1 h-12">
+<div class="bg-primary/20 w-full h-1/2"></div>
+<div class="bg-primary/40 w-full h-3/4"></div>
+<div class="bg-primary/20 w-full h-2/3"></div>
+<div class="bg-primary/60 w-full h-full"></div>
+<div class="bg-primary/40 w-full h-1/2"></div>
+<div class="bg-primary/20 w-full h-1/3"></div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg flex flex-col justify-between h-48 border-l-2 border-l-tertiary-fixed">
+<div>
+<span class="material-symbols-outlined text-tertiary-fixed mb-4">policy</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Pending Approvals</h3>
+<p class="text-2xl font-bold mt-1">4 Escalated</p>
+</div>
+<button class="font-label-caps text-label-caps text-tertiary-fixed flex items-center gap-2 hover:underline">
+                    REVIEW QUEUE <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-16rem)] py-4 bg-surface-container-lowest border-t border-outline-variant/5 px-container-padding-desktop flex justify-between items-center z-40">
+<div class="font-label-caps text-label-caps text-on-surface-variant">
+            © 2024 STARK ASSET MANAGEMENT. ALL PROTOCOLS ENCRYPTED.
+        </div>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Compliance</a>
+<a class="font-label-caps text-label-caps text-primary hover:text-tertiary-fixed transition-colors underline underline-offset-4" href="#">Audit Logs</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">API Documentation</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK OS | Global Admin Oversight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #000000;
+            font-family: 'Inter', sans-serif;
+            color: #e5e2e1;
+            margin: 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 192, 192, 0.08);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.02);
+        }
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(233, 195, 73, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#353534",
+                      "surface-container": "#201f1f",
+                      "on-tertiary": "#3c2f00",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "on-primary-fixed-variant": "#454747",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#b8b8b8",
+                      "surface-dim": "#131313",
+                      "primary-container": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#464747",
+                      "background": "#131313",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-bright": "#393939",
+                      "tertiary": "#ffffff",
+                      "secondary": "#c6c6c6",
+                      "on-background": "#e5e2e1",
+                      "tertiary-fixed": "#ffe088",
+                      "tertiary-container": "#ffe088",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "on-surface-variant": "#c4c7c8",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "outline": "#8e9192",
+                      "error-container": "#93000a",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "inverse-primary": "#5d5f5f",
+                      "on-primary-fixed": "#1a1c1c",
+                      "secondary-fixed": "#e3e2e2",
+                      "on-primary": "#2f3131",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "on-surface": "#e5e2e1",
+                      "primary": "#ffffff",
+                      "inverse-surface": "#e5e2e1",
+                      "on-secondary": "#2f3131",
+                      "inverse-on-surface": "#313030",
+                      "primary-fixed": "#e2e2e2",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface": "#131313",
+                      "on-error-container": "#ffdad6",
+                      "surface-tint": "#c6c6c7",
+                      "surface-container-low": "#1c1b1b",
+                      "secondary-container": "#484949",
+                      "on-tertiary-container": "#7b6100",
+                      "on-primary-container": "#636565",
+                      "surface-container-lowest": "#0e0e0e",
+                      "outline-variant": "#444748",
+                      "on-error": "#690005"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "24px",
+                      "stack-lg": "48px",
+                      "container-padding-desktop": "40px",
+                      "stack-md": "24px",
+                      "gutter": "16px",
+                      "stack-sm": "12px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "title-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-dim">
+<!-- Navigation Drawer (SideNavBar) -->
+<aside class="h-full w-72 fixed left-0 top-0 border-r border-outline-variant/10 bg-surface-container-low backdrop-blur-xl flex flex-col py-stack-lg shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="px-8 mb-12">
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary">STARK OS</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-50 uppercase tracking-widest mt-1">Institutional Suite</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 opacity-60 text-on-surface-variant font-body-lg text-body-lg hover:bg-surface-container-highest/30 transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">insights</span> Intelligence
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 opacity-60 text-on-surface-variant font-body-lg text-body-lg hover:bg-surface-container-highest/30 transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">account_balance</span> Capital
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 opacity-60 text-on-surface-variant font-body-lg text-body-lg hover:bg-surface-container-highest/30 transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">hub</span> Nexus
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 opacity-60 text-on-surface-variant font-body-lg text-body-lg hover:bg-surface-container-highest/30 transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span> Protocols
+            </a>
+<a class="text-tertiary-container font-bold border-l-2 border-tertiary-container pl-4 flex items-center gap-3 py-3 font-body-lg text-body-lg bg-tertiary-container/5 rounded-r-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span> Audit
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 opacity-60 text-on-surface-variant font-body-lg text-body-lg hover:bg-surface-container-highest/30 transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span> System
+            </a>
+</nav>
+<div class="px-8 mt-auto pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-tertiary-fixed-dim/30">
+<img alt="STARK Executive User" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a high-ranking corporate executive in a dark tailored suit. The lighting is dramatic and moody, utilizing high-contrast shadows typical of a luxury office environment. The background is softly blurred with subtle hints of glowing digital interfaces, maintaining a consistent STARK elite dark aesthetic. The overall mood is one of authority and calm confidence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvgMmOI0aolVT_kLeVpD47Fc12jhpETaSjAip-JV7iwuPk7VQy0LY8PF-g54AC14THKArWv7MgXvuVm7Ah2kQj_VIxDbkBMVCgKnUSpHBJ6kfAqYS3BzH1K7bsfd4-XKCKK2_RlUtlbHJGXI03ioWaogkZ_tIZ3CJs5d7drmYUgyhXGDCNfcE7mPqOsZnwukr7p-mS08RBDtRtK56xC1DuKHFKP4LIKVF10f7Zc6ZcgxieyCQjImo9qWkjoXjx0gzEoEagmwyF-pw"/>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-primary">Julian T.</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Global Admin</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-transparent border border-outline-variant/30 text-on-surface font-label-caps text-label-caps hover:bg-error/10 hover:text-error hover:border-error transition-all duration-300 rounded-lg">
+                Terminate Session
+            </button>
+</div>
+</aside>
+<!-- Header (TopAppBar) -->
+<header class="fixed top-0 right-0 left-72 h-20 bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/10 z-40 flex items-center justify-between px-container-padding-desktop">
+<div class="flex items-center gap-stack-md flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-body-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 text-body-sm text-on-surface focus:ring-1 focus:ring-tertiary-fixed-dim transition-all" placeholder="Global Entity Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-r border-outline-variant/20 pr-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dns</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-tertiary-fixed-dim rounded-full ring-2 ring-surface-dim"></span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-on-surface-variant">System Status: <span class="text-tertiary-fixed-dim">OPTIMAL</span></span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim animate-pulse">verified_user</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-72 pt-20 pb-stack-lg px-container-padding-desktop min-h-screen">
+<!-- Dashboard Header -->
+<div class="py-stack-md flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Global Admin Oversight</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-2">Real-time monitoring of advisor-client interactions and high-value capital flows across the global network.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="px-6 py-2.5 bg-primary text-on-primary font-label-caps text-label-caps rounded-lg hover:scale-[1.02] transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span> Export Audit
+                </button>
+<button class="px-6 py-2.5 bg-surface-container-high border border-outline-variant/20 text-primary font-label-caps text-label-caps rounded-lg hover:bg-surface-bright transition-colors">
+                    Filter View
+                </button>
+</div>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-md">
+<!-- Metric 1 -->
+<div class="glass-card p-6 rounded-xl border-l-4 border-tertiary-fixed-dim">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Pending Approvals</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim">hourglass_empty</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">14</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-tertiary-fixed-dim">High Priority</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="glass-card p-6 rounded-xl border-l-4 border-outline">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Advisor Sessions</span>
+<span class="material-symbols-outlined text-outline">group</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">182</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Live Now</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="glass-card p-6 rounded-xl border-l-4 border-tertiary-fixed-dim gold-glow">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">System Integrity</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim">security</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">99.9</span><span class="text-headline-lg font-headline-lg text-tertiary-fixed-dim">%</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="glass-card p-6 rounded-xl border-l-4 border-error/50">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Activity Flags</span>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-success">Secure</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Map and Activity Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Global Oversight Map -->
+<div class="lg:col-span-2 glass-card rounded-xl overflow-hidden flex flex-col">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-primary">Oversight Map</h3>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-2 font-label-caps text-[10px] text-on-surface-variant uppercase"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span> Active Node</span>
+<span class="flex items-center gap-2 font-label-caps text-[10px] text-on-surface-variant uppercase"><span class="w-2 h-2 rounded-full bg-outline"></span> Standby</span>
+</div>
+</div>
+<div class="flex-1 min-h-[400px] relative bg-surface-container-lowest">
+<!-- Placeholder for Map Visualization -->
+<div class="absolute inset-0 opacity-40 mix-blend-screen overflow-hidden">
+<img alt="Subtle Global Heatmap" class="w-full h-full object-cover grayscale invert contrast-125" data-alt="A dark, minimalist digital world map rendered in deep charcoal and black. Stylized golden light dots and subtle pulsating heat map rings are concentrated over major financial hubs like New York, London, Tokyo, and Zurich. The visual style is high-end data visualization with thin glowing lines and a deep sense of digital depth. The lighting is low-key, emphasizing the golden data points against a void-like background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBeKbkiW6pkDtEy34CfPaRNptfMpD9knadkeltdv8yggX7BMVxGV1PpeXqkPH9NswG3l5KjDvkALkHlmVuKcTnIWSFspJ_cKWG4yYB6M_XO0iGuqHnHAF_qRRuAqF1pUvcVSoWrptnfuno-Ke9ZVCYUnqE_9jqhmw_uKFpl47pPxfF0hNvnU2ItQgKWAsSBj0PiN0-qHlFZ4WTs3mWJJMeSjg08UHJOI5eDz5e_G9KfeUWXX_Ni9itzUvDrR5p07PWiQ1lYqKRmTk"/>
+</div>
+<!-- Map Overlays (Nodes) -->
+<div class="absolute top-1/4 left-1/4 group cursor-pointer">
+<div class="w-4 h-4 bg-tertiary-fixed-dim rounded-full animate-ping opacity-50 absolute"></div>
+<div class="w-4 h-4 bg-tertiary-fixed-dim rounded-full relative gold-glow border border-white/20"></div>
+<div class="absolute top-6 left-1/2 -translate-x-1/2 glass-card px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 pointer-events-none">
+<p class="font-label-caps text-[10px] text-primary">London Node: 42 Active</p>
+</div>
+</div>
+<div class="absolute top-1/3 left-[22%] group cursor-pointer">
+<div class="w-3 h-3 bg-tertiary-fixed-dim rounded-full relative gold-glow"></div>
+</div>
+<div class="absolute top-1/2 left-[78%] group cursor-pointer">
+<div class="w-4 h-4 bg-tertiary-fixed-dim rounded-full animate-ping opacity-50 absolute"></div>
+<div class="w-4 h-4 bg-tertiary-fixed-dim rounded-full relative gold-glow"></div>
+</div>
+<div class="absolute bottom-6 right-6 flex flex-col gap-2">
+<div class="glass-card p-3 rounded-lg border-l-2 border-tertiary-fixed-dim">
+<p class="font-label-caps text-[10px] text-on-surface-variant">Hottest Zone</p>
+<p class="font-title-md text-[16px] text-primary">New York Corridor</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Event Log -->
+<div class="glass-card rounded-xl flex flex-col">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-primary">Global Event Log</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-2 max-h-[500px] scrollbar-hide">
+<!-- Log Item 1 -->
+<div class="p-4 hover:bg-surface-container-high/40 rounded-lg transition-colors border border-transparent hover:border-outline-variant/10">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim">Authorized Access</span>
+<span class="text-[10px] text-on-surface-variant font-body-sm">2m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Advisor <span class="text-primary font-bold">Julian T.</span> initiated document annotation on Entity 2.4</p>
+</div>
+<!-- Log Item 2 -->
+<div class="p-4 hover:bg-surface-container-high/40 rounded-lg transition-colors border border-transparent hover:border-outline-variant/10">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-primary">Capital Flow</span>
+<span class="text-[10px] text-on-surface-variant font-body-sm">8m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Approver <span class="text-primary font-bold">Elena V.</span> authorized Capital Call for Fund II</p>
+</div>
+<!-- Log Item 3 -->
+<div class="p-4 hover:bg-surface-container-high/40 rounded-lg transition-colors border border-transparent hover:border-outline-variant/10">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant">System</span>
+<span class="text-[10px] text-on-surface-variant font-body-sm">15m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Compliance engine sync completed for EMEA Region.</p>
+</div>
+<!-- Log Item 4 -->
+<div class="p-4 hover:bg-surface-container-high/40 rounded-lg transition-colors border border-transparent hover:border-outline-variant/10">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim">High Value Action</span>
+<span class="text-[10px] text-on-surface-variant font-body-sm">22m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Advisor <span class="text-primary font-bold">Marcus S.</span> updated Portfolio Allocation for Global Partners.</p>
+</div>
+<!-- Log Item 5 -->
+<div class="p-4 hover:bg-surface-container-high/40 rounded-lg transition-colors border border-transparent hover:border-outline-variant/10">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant">User Session</span>
+<span class="text-[10px] text-on-surface-variant font-body-sm">45m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">New session established via Zurich Private Gateway.</p>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant/10">
+<button class="w-full text-center font-label-caps text-label-caps text-on-surface-variant hover:text-primary py-2 transition-colors">View Full Archive</button>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Precision Charts -->
+<div class="mt-stack-md grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-6 rounded-xl col-span-1">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-widest">Network Latency</h4>
+<div class="h-32 flex items-end gap-1 px-2">
+<!-- Bar Chart Sim -->
+<div class="flex-1 bg-tertiary-fixed-dim/20 rounded-t-sm h-[60%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/20 rounded-t-sm h-[75%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/40 rounded-t-sm h-[65%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/20 rounded-t-sm h-[85%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/80 rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/30 rounded-t-sm h-[90%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/20 rounded-t-sm h-[70%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/50 rounded-t-sm h-[60%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim/20 rounded-t-sm h-[80%]"></div>
+<div class="flex-1 bg-tertiary-fixed-dim rounded-t-sm h-[95%]"></div>
+</div>
+<div class="mt-4 flex justify-between">
+<p class="text-[10px] text-on-surface-variant font-label-caps">Avg: 12ms</p>
+<p class="text-[10px] text-tertiary-fixed-dim font-label-caps">Optimal</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl col-span-2">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Advisor Performance Matrix</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">7 Day Rolling Average</span>
+</div>
+<div class="flex h-32 gap-stack-md items-center">
+<div class="flex-1 h-full bg-surface-container-high rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary-fixed-dim/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-[65%] bg-tertiary-fixed-dim/20 border-t border-tertiary-fixed-dim/40"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<p class="font-label-caps text-label-caps text-primary">Response Time: 0.8s</p>
+</div>
+</div>
+<div class="flex-1 h-full bg-surface-container-high rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-[88%] bg-primary/5 border-t border-primary/20"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<p class="font-label-caps text-label-caps text-primary">Compliance: 99.8%</p>
+</div>
+</div>
+<div class="flex-1 h-full bg-surface-container-high rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-outline/5 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-[42%] bg-outline/10 border-t border-outline/20"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<p class="font-label-caps text-label-caps text-primary">Audit Velocity: High</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Institutional Footer -->
+<footer class="flex flex-row justify-between items-center py-stack-md px-container-padding-desktop ml-72 border-t border-outline-variant/10 bg-surface-container-lowest text-on-surface-variant">
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps font-bold text-on-surface uppercase tracking-widest">STARK</span>
+<span class="font-body-sm text-body-sm opacity-70">© 2024 STARK Institutional Banking. All rights reserved.</span>
+</div>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps opacity-70 hover:text-tertiary-container transition-colors" href="#">Security Protocols</a>
+<a class="font-label-caps text-label-caps opacity-70 hover:text-tertiary-container transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps opacity-70 hover:text-tertiary-container transition-colors" href="#">Legal Disclosure</a>
+</div>
+</footer>
+</body></html>

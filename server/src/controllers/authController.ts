@@ -86,56 +86,34 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 };
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
-  console.log('=== LOGIN REQUEST RECEIVED ===');
-  console.log('Request body:', req.body);
-
   try {
-    const { password, deviceFingerprint } = req.body;
+    const { password } = req.body;
     const email = req.body.email?.toLowerCase().trim();
+    // Accept a provided fingerprint or generate a fallback so the field is never missing
+    const deviceFingerprint: string = req.body.deviceFingerprint || `device-${uuidv4().substring(0, 9)}`;
 
-    console.log('Login attempt for email:', email);
-
-    if (!email || !password || !deviceFingerprint) {
-      console.log('Missing required fields');
-      throw UnprocessableEntity('Email, password, and device fingerprint are required');
+    if (!email || !password) {
+      throw UnprocessableEntity('Email and password are required');
     }
 
     const user = await User.findOne({ email });
-    console.log('User found:', !!user);
-    console.log('Searching for email:', email);
 
     if (!user) {
-      console.log('User not found for email:', email);
-      // List all emails in database for debugging
-      const allUsers = await User.find({}, 'email').limit(5);
-      console.log('Available emails:', allUsers.map(u => u.email));
       throw Unauthorized('Invalid email or password');
     }
 
-    console.log('Found user:', user.email);
-    console.log('User status:', user.status);
-    console.log('User KYC status:', user.kycStatus);
-
     // Check if user account is active
     if (user.status !== 'ACTIVE') {
-      console.log('User account not active, status:', user.status);
       throw Unauthorized('Account is not active. Please contact support.');
     }
 
     // Check if account is locked
     if (user.lockedUntil && user.lockedUntil > new Date()) {
-      console.log('Account is locked until:', user.lockedUntil);
       throw Forbidden('Your account is temporarily locked. Please try again later.');
     }
 
-    console.log('Failed login attempts:', user.failedLoginAttempts);
-
     // Compare password
     const isPasswordMatch = await user.comparePassword(password);
-
-    console.log('Password match result:', isPasswordMatch);
-    console.log('Input password length:', password?.length);
-    console.log('Stored hash starts with:', user.passwordHash?.substring(0, 7));
 
     if (!isPasswordMatch) {
       // Increment failed attempts
@@ -145,12 +123,12 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       if (user.failedLoginAttempts >= 5) {
         user.lockedUntil = new Date(Date.now() + 30 * 60 * 1000); // 30 minutes
         await user.save();
-        
+
         // Notify user via email
         if (notificationService) {
           await notificationService.sendLockoutEmail(user);
         }
-        
+
         throw Forbidden('Your account has been locked due to multiple failed login attempts. An email has been sent.');
       }
 
@@ -159,7 +137,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
 
     // Successful login: Reset failed attempts
-    console.log('Password check passed, proceeding with login');
     user.failedLoginAttempts = 0;
     user.lockedUntil = null;
 
@@ -169,45 +146,35 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       user.registeredDevices.push(deviceFingerprint);
       isNewDevice = true;
     }
-    console.log('Device check completed, isNewDevice:', isNewDevice);
 
     await user.save();
 
     // Notify if new device
-    if (isNewDevice) {
-      if (notificationService) {
-        await notificationService.sendSecurityAlert(user, deviceFingerprint);
-      }
+    if (isNewDevice && notificationService) {
+      await notificationService.sendSecurityAlert(user, deviceFingerprint);
     }
 
     // Generate token and session
-    console.log('Generating token and session');
     const jti = uuidv4();
-    console.log('Generated JTI:', jti);
-
     const token = tokenService.generateToken(user._id.toString(), jti);
-    console.log('Generated token (first 50 chars):', token.substring(0, 50));
 
-    // Calculate expiry (24h as per requirement)
+    // Calculate expiry (24h)
     const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
     const session = new Session({
       userId: user._id,
-      token: jti, // Using JTI as the session identifier
+      token: jti,
       deviceFingerprint,
       ipAddress: req.ip || '0.0.0.0',
       expiresAt,
     });
 
-    console.log('Saving session...');
     await session.save();
-    console.log('Session saved successfully');
 
     // Populate role to get its name
     await user.populate('roleId');
     const role = user.roleId as any;
 
-    // Prepare response
     res.status(200).json({
       user: {
         _id: user._id,

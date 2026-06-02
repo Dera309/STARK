@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK - Virtual Card Management</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "surface-dim": "#131313",
+                        "on-secondary": "#2f3131",
+                        "primary-fixed": "#e2e2e2",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary-container": "#b8b8b8",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-tint": "#c6c6c7",
+                        "tertiary": "#ffffff",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary": "#2f3131",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "secondary": "#c6c6c6",
+                        "tertiary-container": "#ffe088",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#5d5f5f",
+                        "primary": "#ffffff",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#484949",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary-container": "#636565",
+                        "surface-container": "#201f1f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e3e2e2",
+                        "outline-variant": "#444748",
+                        "surface-variant": "#353534",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#7b6100",
+                        "on-surface-variant": "#c4c7c8",
+                        "primary-container": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "40px",
+                        "stack-md": "24px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "title-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom 3D Card Styling */
+        .card-perspective {
+            perspective: 1000px;
+        }
+        .card-3d {
+            transform: rotateX(15deg) rotateY(-10deg) rotateZ(2deg);
+            transform-style: preserve-3d;
+            box-shadow: -15px 25px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden selection:bg-tertiary-fixed selection:text-on-tertiary-fixed min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] bg-surface/80 backdrop-blur-xl dark:bg-surface/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex justify-between items-center h-20 px-container-padding-mobile">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWkgkAN1c73Kg0nMo0Ev9zVDCsI6QoXIzDJqu114TRGPa0LVC4vedCI1lv4Hkl_bqS8cetHrEJ27tuPT3Kqsi_St48wlMXkYpmVLMXNSTCzTJsEOMaLR-1ouhASL7BcrAPpLFBQ102bfDMM717SJqnEHjWIw8okWuhZKgh5QqetKbwLgWsRrtz3AeJWVibgBxRR4jpBKHxEfdciN040CwsJamG9Nd710TlN_pfDZuy9XxNyqMzJozwi5vw-KZedgbQlqlFdw4Ky8c"/>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-[0.2em] text-primary dark:text-primary uppercase">
+            STARK
+        </div>
+<button class="text-primary hover:opacity-80 transition-opacity duration-300 flex items-center justify-center w-10 h-10 rounded-full bg-surface-container/50 border border-white/5">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-32 px-container-padding-mobile flex flex-col gap-stack-lg max-w-2xl mx-auto w-full">
+<!-- Header -->
+<div class="flex items-center justify-between">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">My Cards</h1>
+<button class="font-label-caps text-label-caps text-secondary flex items-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span> NEW
+            </button>
+</div>
+<!-- Hero: 3D Virtual Card Section -->
+<section class="flex flex-col items-center gap-stack-sm relative">
+<!-- Ambient Glow Behind Card -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-tertiary-fixed/10 rounded-full blur-[80px] -z-10"></div>
+<div class="card-perspective w-full max-w-[340px]">
+<div class="card-3d relative w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-[#1c1c1c] via-[#0a0a0a] to-[#000000] p-6 flex flex-col justify-between overflow-hidden border border-white/10 group">
+<!-- Card Glare Effect -->
+<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-50 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+<!-- Top Row: Logo & Contactless -->
+<div class="flex justify-between items-start z-10">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-[0.2em] text-tertiary-fixed uppercase" style="font-size: 20px;">
+                            STARK
+                        </div>
+<span class="material-symbols-outlined text-outline-variant transform rotate-90">wifi</span>
+</div>
+<!-- Chip -->
+<div class="w-12 h-9 rounded bg-gradient-to-br from-[#d4af37] via-[#f3e5ab] to-[#aa7c11] opacity-80 z-10 shadow-inner relative overflow-hidden">
+<div class="absolute inset-0 border border-black/20 rounded"></div>
+<!-- Decorative chip lines -->
+<div class="absolute top-1/4 w-full h-[1px] bg-black/20"></div>
+<div class="absolute top-1/2 w-full h-[1px] bg-black/20"></div>
+<div class="absolute top-3/4 w-full h-[1px] bg-black/20"></div>
+</div>
+<!-- Bottom Row: Masked Details -->
+<div class="flex justify-between items-end z-10 w-full mt-4">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline-variant tracking-[0.2em] mb-1">VIRTUAL ELITE</span>
+<div class="font-body-lg text-body-lg text-primary tracking-[0.2em] flex gap-3">
+<span>••••</span><span>••••</span><span>••••</span><span>8429</span>
+</div>
+</div>
+<!-- Network Logo Placeholder -->
+<div class="flex relative">
+<div class="w-8 h-8 rounded-full bg-error/80 mix-blend-screen"></div>
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed/80 mix-blend-screen -ml-3"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Toggle Info Button -->
+<button class="mt-4 px-6 py-2 rounded-full border border-outline-variant/30 bg-surface-container/30 backdrop-blur-md font-label-caps text-label-caps text-primary flex items-center gap-2 hover:bg-surface-container transition-colors shadow-[0px_10px_30px_rgba(192,192,192,0.02)]">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                SHOW INFO
+            </button>
+</section>
+<!-- Controls Section (Bento Grid Style) -->
+<section class="grid grid-cols-3 gap-gutter">
+<!-- Freeze Toggle Card -->
+<div class="glass-panel rounded-xl p-4 flex flex-col items-center justify-center gap-3 relative overflow-hidden cursor-pointer hover:bg-surface-container-high/40 transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-xl">ac_unit</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary text-center">FREEZE<br/>CARD</span>
+<!-- Active Indicator dot (Silver state as requested for toggle logic) -->
+<div class="absolute top-3 right-3 w-2 h-2 rounded-full bg-secondary-container border border-outline-variant"></div>
+</div>
+<!-- Settings Card -->
+<div class="glass-panel rounded-xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-surface-container-high/40 transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-xl">settings</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary text-center">CARD<br/>SETTINGS</span>
+</div>
+<!-- Limits Card -->
+<div class="glass-panel rounded-xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-surface-container-high/40 transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary text-xl">tune</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary text-center">USAGE<br/>LIMITS</span>
+</div>
+</section>
+<!-- Transaction History -->
+<section class="flex flex-col gap-stack-sm">
+<div class="flex justify-between items-end mb-2">
+<h2 class="font-title-md text-title-md text-primary">Recent Activity</h2>
+<button class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors">VIEW ALL</button>
+</div>
+<!-- Transaction Items (Glass Cards) -->
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<div class="glass-panel rounded-xl p-4 flex items-center justify-between hover:bg-surface-container-high/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-tertiary-fixed">flight</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary font-medium">Private Jet Charter</div>
+<div class="font-body-sm text-body-sm text-secondary">Today, 14:30 • Virtual Card</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-primary">- $12,450.00</div>
+<div class="font-label-caps text-label-caps text-outline-variant mt-1">APPROVED</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="glass-panel rounded-xl p-4 flex items-center justify-between hover:bg-surface-container-high/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary font-medium">Le Bernardin</div>
+<div class="font-body-sm text-body-sm text-secondary">Yesterday • Virtual Card</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-primary">- $845.20</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="glass-panel rounded-xl p-4 flex items-center justify-between hover:bg-surface-container-high/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-white/5">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary font-medium">Tom Ford Boutique</div>
+<div class="font-body-sm text-body-sm text-secondary">Oct 24 • Virtual Card</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-primary">- $3,200.00</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="flex justify-around items-center h-24 pb-safe px-4 w-full fixed bottom-0 z-50 rounded-t-lg border-t border-white/5 shadow-[0px_-10px_40px_rgba(0,0,0,0.5)] bg-surface-container-lowest/90 backdrop-blur-2xl dark:bg-surface-container-lowest/90 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<!-- DASHBOARD (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<!-- TRANSFER (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">swap_horiz</span>
+<span class="font-label-caps text-label-caps">TRANSFER</span>
+</a>
+<!-- CARDS (Active) -->
+<a class="flex flex-col items-center justify-center text-primary scale-110 transition-transform duration-300 relative" href="#">
+<!-- Active Indicator Glow -->
+<div class="absolute -top-4 w-1 h-1 rounded-full bg-tertiary-fixed shadow-[0_0_10px_rgba(255,224,136,0.8)]"></div>
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="font-label-caps text-label-caps">CARDS</span>
+</a>
+<!-- WEALTH (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">WEALTH</span>
+</a>
+<!-- PROFILE (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-label-caps">PROFILE</span>
+</a>
+</nav>
+</body></html>

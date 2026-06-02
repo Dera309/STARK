@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .silver-glow {
+            box-shadow: 0px 0px 15px rgba(192, 192, 192, 0.1);
+        }
+        .gold-border {
+            border: 1px solid #e9c349;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#574500",
+                      "background": "#131313",
+                      "surface-variant": "#353534",
+                      "on-tertiary-container": "#7b6100",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "secondary-container": "#484949",
+                      "inverse-primary": "#5d5f5f",
+                      "surface-container-lowest": "#0e0e0e",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "primary": "#ffffff",
+                      "surface-container-high": "#2a2a2a",
+                      "on-surface-variant": "#c4c7c8",
+                      "primary-container": "#e2e2e2",
+                      "surface-dim": "#131313",
+                      "surface": "#131313",
+                      "error": "#ffb4ab",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#e2e2e2",
+                      "on-error": "#690005",
+                      "outline": "#8e9192",
+                      "surface-container-highest": "#353534",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "on-secondary-fixed-variant": "#464747",
+                      "on-secondary-container": "#b8b8b8",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#241a00",
+                      "on-primary-fixed-variant": "#454747",
+                      "on-primary": "#2f3131",
+                      "secondary-fixed": "#e3e2e2",
+                      "tertiary-container": "#ffe088",
+                      "on-surface": "#e5e2e1",
+                      "on-primary-container": "#636565",
+                      "on-secondary": "#2f3131",
+                      "on-tertiary": "#3c2f00",
+                      "inverse-surface": "#e5e2e1",
+                      "inverse-on-surface": "#313030",
+                      "surface-tint": "#c6c6c7",
+                      "on-primary-fixed": "#1a1c1c",
+                      "surface-container": "#201f1f",
+                      "tertiary-fixed": "#ffe088",
+                      "tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "outline-variant": "#444748",
+                      "surface-bright": "#393939",
+                      "secondary": "#c6c6c6",
+                      "on-background": "#e5e2e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-padding-desktop": "40px",
+                      "stack-sm": "12px",
+                      "unit": "8px",
+                      "stack-md": "24px",
+                      "container-padding-mobile": "24px",
+                      "stack-lg": "48px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "title-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SIDE NAV BAR -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-stack-lg bg-surface border-r border-outline-variant/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="px-6 mb-stack-lg flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-background font-bold">S</div>
+<div>
+<h1 class="font-display-lg text-[24px] font-bold tracking-tighter text-primary">STARK</h1>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">Elite Operations</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center px-4 py-3 text-primary border-r-2 border-primary font-bold transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Command</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Portfolio</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="payments">payments</span>
+<span class="font-label-caps text-label-caps">Liquidity</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps">Clients</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="gavel">gavel</span>
+<span class="font-label-caps text-label-caps">Governance</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-6 border-t border-outline-variant/10">
+<div class="gold-border rounded-lg p-3 mb-4 flex items-center justify-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim uppercase">System: Optimal</span>
+</div>
+<a class="flex items-center px-4 py-2 text-on-surface-variant font-label-caps hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="verified_user">verified_user</span>
+<span>Security</span>
+</a>
+<a class="flex items-center px-4 py-2 text-on-surface-variant font-label-caps hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TOP APP BAR -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex items-center justify-between px-gutter bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 z-40">
+<div class="flex items-center space-x-8">
+<span class="font-headline-lg text-headline-lg font-black text-primary">COMMAND CENTER</span>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary" href="#">Markets</a>
+<a class="font-label-caps text-label-caps uppercase text-primary border-b border-primary" href="#">Risk</a>
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer" data-icon="shield_lock">shield_lock</span>
+<button class="bg-primary text-background font-label-caps px-6 py-2 rounded hover:opacity-80 transition-all duration-300 uppercase">Execute</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/30 overflow-hidden">
+<img alt="Administrator Profile" data-alt="A close-up portrait of a professional executive with a confident expression, set against a dark, minimalist architectural background. The lighting is low-key and dramatic, highlighting sharp facial features with a cool silver rim light. The overall aesthetic is one of elite corporate leadership and quiet authority, fitting for a premium fintech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAwR2y_yhz1LEzb5F_5ewCLI_UrRxOZGC6H_xp-y4swKAzq9w1uhG69b6EHePJvGgACtDt73FdaxextPpwqkDTFBxd4Azv0LqVWyO6Qf5m1kl4a3jFijP83ilTKAx0K_BwKikEXSQo81eGR-dh23DvtFPDoxeJZ1WpH8pENYwqY-Cf7JAuuJW7mpUqrqja8yhJpnbmzff0JZWbZ2ngXOXRgAP9Ov8pyYvaKIumem0ho8UgSo-2m8iwf-RgYOANlqhpO6QyxqmOxsE"/>
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT CANVAS -->
+<main class="ml-64 pt-24 pb-stack-lg px-container-padding-desktop min-h-screen">
+<!-- DASHBOARD HEADER -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<p class="font-label-caps text-tertiary-fixed-dim mb-2 uppercase tracking-widest">Global Infrastructure Integrity</p>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">System Health</h2>
+</div>
+<div class="flex space-x-4">
+<div class="glass-card px-6 py-3 rounded-lg flex items-center space-x-4">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase">Global Uptime</p>
+<p class="font-title-md text-primary">99.999%</p>
+</div>
+<div class="w-12 h-1 bg-surface-container-highest rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-[99.9%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- BENTO GRID -->
+<div class="grid grid-cols-12 gap-6">
+<!-- NODE PERFORMANCE GRID -->
+<section class="col-span-8 glass-card p-6 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-md text-primary flex items-center">
+<span class="material-symbols-outlined mr-2 text-on-surface-variant" data-icon="dns">dns</span>
+                        Node Performance
+                    </h3>
+<div class="flex space-x-2">
+<span class="bg-surface-container-high px-3 py-1 rounded text-[10px] font-label-caps text-on-surface-variant">REAL-TIME</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<!-- NODE CARD -->
+<div class="p-4 rounded border border-outline-variant/10 bg-surface-container-low hover:border-primary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-on-surface-variant">US-EAST-01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 silver-glow"></span>
+</div>
+<div class="mb-4">
+<p class="text-on-surface-variant font-label-caps text-[10px]">THROUGHPUT</p>
+<p class="font-title-md text-primary">12.4 GB/s</p>
+</div>
+<div class="h-8 flex items-end space-x-0.5">
+<div class="flex-1 bg-primary/20 h-[60%]"></div>
+<div class="flex-1 bg-primary/20 h-[80%]"></div>
+<div class="flex-1 bg-primary/40 h-[70%]"></div>
+<div class="flex-1 bg-primary/60 h-[90%]"></div>
+<div class="flex-1 bg-primary h-[85%]"></div>
+</div>
+</div>
+<div class="p-4 rounded border border-outline-variant/10 bg-surface-container-low hover:border-primary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-on-surface-variant">EU-WEST-02</span>
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 silver-glow"></span>
+</div>
+<div class="mb-4">
+<p class="text-on-surface-variant font-label-caps text-[10px]">THROUGHPUT</p>
+<p class="font-title-md text-primary">8.2 GB/s</p>
+</div>
+<div class="h-8 flex items-end space-x-0.5">
+<div class="flex-1 bg-primary/20 h-[40%]"></div>
+<div class="flex-1 bg-primary/40 h-[50%]"></div>
+<div class="flex-1 bg-primary/20 h-[45%]"></div>
+<div class="flex-1 bg-primary/60 h-[60%]"></div>
+<div class="flex-1 bg-primary h-[55%]"></div>
+</div>
+</div>
+<div class="p-4 rounded border border-outline-variant/10 bg-surface-container-low hover:border-primary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-on-surface-variant">AP-SOUTH-01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim silver-glow"></span>
+</div>
+<div class="mb-4">
+<p class="text-on-surface-variant font-label-caps text-[10px]">THROUGHPUT</p>
+<p class="font-title-md text-primary">15.9 GB/s</p>
+</div>
+<div class="h-8 flex items-end space-x-0.5">
+<div class="flex-1 bg-primary/20 h-[90%]"></div>
+<div class="flex-1 bg-primary/40 h-[85%]"></div>
+<div class="flex-1 bg-primary h-[95%]"></div>
+<div class="flex-1 bg-primary/60 h-[80%]"></div>
+<div class="flex-1 bg-primary/20 h-[70%]"></div>
+</div>
+</div>
+<div class="p-4 rounded border border-outline-variant/10 bg-surface-container-low hover:border-primary/30 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-on-surface-variant">UK-NORTH-01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 silver-glow"></span>
+</div>
+<div class="mb-4">
+<p class="text-on-surface-variant font-label-caps text-[10px]">THROUGHPUT</p>
+<p class="font-title-md text-primary">11.1 GB/s</p>
+</div>
+<div class="h-8 flex items-end space-x-0.5">
+<div class="flex-1 bg-primary/20 h-[30%]"></div>
+<div class="flex-1 bg-primary/20 h-[40%]"></div>
+<div class="flex-1 bg-primary/40 h-[60%]"></div>
+<div class="flex-1 bg-primary/60 h-[70%]"></div>
+<div class="flex-1 bg-primary h-[75%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- LATENCY DISTRIBUTION -->
+<section class="col-span-4 glass-card p-6 rounded-lg">
+<h3 class="font-title-md text-primary mb-6 flex items-center">
+<span class="material-symbols-outlined mr-2 text-on-surface-variant" data-icon="bar_chart">bar_chart</span>
+                    Latency Distribution
+                </h3>
+<div class="space-y-6">
+<div class="flex items-end h-32 space-x-2">
+<div class="flex-1 bg-primary/10 h-[20%]"></div>
+<div class="flex-1 bg-primary/20 h-[35%]"></div>
+<div class="flex-1 bg-primary/40 h-[60%]"></div>
+<div class="flex-1 bg-primary/60 h-[85%]"></div>
+<div class="flex-1 bg-primary h-[100%]"></div>
+<div class="flex-1 bg-primary/60 h-[70%]"></div>
+<div class="flex-1 bg-primary/40 h-[40%]"></div>
+<div class="flex-1 bg-primary/20 h-[15%]"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[10px] text-on-surface-variant">
+<span>10ms</span>
+<span>50ms</span>
+<span>100ms</span>
+<span>250ms</span>
+</div>
+<div class="border-t border-outline-variant/10 pt-4">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-on-surface-variant">AVG LATENCY</span>
+<span class="font-title-md text-tertiary-fixed-dim">42ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RESOURCE ALLOCATION -->
+<section class="col-span-12 glass-card p-8 rounded-lg">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-title-md text-primary flex items-center">
+<span class="material-symbols-outlined mr-2 text-on-surface-variant" data-icon="hub">hub</span>
+                        Global Resource Allocation
+                    </h3>
+<div class="flex space-x-6 font-label-caps text-[10px] text-on-surface-variant">
+<div class="flex items-center"><span class="w-2 h-2 rounded-full bg-primary mr-2"></span> CPU</div>
+<div class="flex items-center"><span class="w-2 h-2 rounded-full bg-secondary mr-2"></span> MEMORY</div>
+<div class="flex items-center"><span class="w-2 h-2 rounded-full bg-outline mr-2"></span> STORAGE</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-12">
+<!-- REGION A -->
+<div>
+<div class="flex justify-between mb-4">
+<span class="font-label-caps text-primary">NORTH AMERICA</span>
+<span class="font-label-caps text-on-surface-variant">88% UTILIZATION</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>CPU</span><span>74%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[74%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>MEMORY</span><span>92%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[92%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>STORAGE</span><span>45%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline w-[45%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- REGION B -->
+<div>
+<div class="flex justify-between mb-4">
+<span class="font-label-caps text-primary">EUROPEAN UNION</span>
+<span class="font-label-caps text-on-surface-variant">62% UTILIZATION</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>CPU</span><span>42%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>MEMORY</span><span>58%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[58%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>STORAGE</span><span>86%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline w-[86%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- REGION C -->
+<div>
+<div class="flex justify-between mb-4">
+<span class="font-label-caps text-primary">ASIA PACIFIC</span>
+<span class="font-label-caps text-on-surface-variant">94% UTILIZATION</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>CPU</span><span>98%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error w-[98%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>MEMORY</span><span>88%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[88%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1"><span>STORAGE</span><span>30%</span></div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline w-[30%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DATABASE INTEGRITY -->
+<section class="col-span-5 glass-card p-6 rounded-lg">
+<h3 class="font-title-md text-primary mb-6 flex items-center">
+<span class="material-symbols-outlined mr-2 text-on-surface-variant" data-icon="database">database</span>
+                    Database Integrity
+                </h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded border-l-2 border-primary">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="font-label-caps text-primary">CORE-LEDGER-DB</p>
+<p class="text-[10px] text-on-surface-variant">Last checksum: 2 min ago</p>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-primary">STABLE</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded border-l-2 border-primary">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="font-label-caps text-primary">AUTH-VAULT-PRIMARY</p>
+<p class="text-[10px] text-on-surface-variant">Last checksum: 4 min ago</p>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-primary">STABLE</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded border-l-2 border-tertiary-fixed-dim">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="sync" style="font-variation-settings: 'FILL' 0;">sync</span>
+<div>
+<p class="font-label-caps text-tertiary-fixed-dim">ANALYTICS-REPLICA</p>
+<p class="text-[10px] text-on-surface-variant">Syncing: 89% complete</p>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim uppercase">Syncing</span>
+</div>
+</div>
+</section>
+<!-- MAINTENANCE & UPTIME TIMELINE -->
+<section class="col-span-7 glass-card p-6 rounded-lg">
+<h3 class="font-title-md text-primary mb-6 flex items-center">
+<span class="material-symbols-outlined mr-2 text-on-surface-variant" data-icon="timeline">timeline</span>
+                    Network Uptime &amp; Maintenance
+                </h3>
+<div class="relative h-24 w-full bg-surface-container-low rounded mb-6 overflow-hidden flex items-center px-4">
+<!-- Uptime bars -->
+<div class="flex space-x-1 w-full h-12">
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-error rounded-sm animate-pulse"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+</div>
+<div class="absolute bottom-2 left-4 font-label-caps text-[8px] text-on-surface-variant">24H NETWORK CONTINUITY</div>
+</div>
+<div>
+<h4 class="font-label-caps text-on-surface-variant mb-4 uppercase text-[10px]">Upcoming Maintenance</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-2">
+<div class="flex items-center space-x-3">
+<span class="text-tertiary-fixed-dim font-bold">14 OCT</span>
+<span class="font-body-sm">Global CDN Security Patching</span>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">04:00 UTC</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-2">
+<div class="flex items-center space-x-3">
+<span class="text-on-surface-variant font-bold">18 OCT</span>
+<span class="font-body-sm">Database Index Optimization</span>
+</div>
+<span class="font-label-caps text-[10px] text-on-surface-variant">22:00 UTC</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FOOTER -->
+<footer class="w-[calc(100%-16rem)] ml-64 py-unit bg-background border-t border-outline-variant/5 flex justify-between items-center px-container-padding-desktop">
+<p class="font-label-caps text-[10px] tracking-widest text-on-surface-variant uppercase">© 2024 STARK INSTITUTIONAL. ALL RIGHTS RESERVED. SECURED BY QUANTUM-GRADE ENCRYPTION.</p>
+<div class="flex space-x-6">
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500" href="#">Legal</a>
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500" href="#">Privacy</a>
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500" href="#">Protocols</a>
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500" href="#">Audit</a>
+</div>
+</footer>
+</body></html>

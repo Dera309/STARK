@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK Admin | User Investigation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#735c00",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "tertiary-fixed": "#e2e2e2",
+                        "inverse-primary": "#e9c349",
+                        "background": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#434546",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-background": "#1a1c1c",
+                        "tertiary-container": "#b2b3b3",
+                        "primary-fixed-dim": "#e9c349",
+                        "surface-container-low": "#f3f3f4",
+                        "outline": "#7f7663",
+                        "on-surface-variant": "#4d4635",
+                        "on-primary-fixed": "#241a00",
+                        "tertiary": "#5d5f5f",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-error": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "primary-container": "#d4af37",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-secondary-container": "#656464",
+                        "on-primary": "#ffffff",
+                        "secondary": "#5f5e5e",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-primary-container": "#554300",
+                        "surface-container": "#eeeeee",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "primary": "#735c00",
+                        "inverse-surface": "#2f3131",
+                        "outline-variant": "#d0c5af",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-primary-fixed-variant": "#574500",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "64px",
+                        "stack-sm": "12px",
+                        "gutter": "24px",
+                        "container-padding-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .thin-hairline { border-width: 0.5px; }
+        .gallery-shadow { box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-[280px] bg-surface-container-lowest border-r border-outline-variant/10 py-8 fixed left-0 z-50">
+<div class="px-8 mb-12">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-[0.2em]">ALTOS</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Institutional Grade</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Intelligence</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="show_chart">show_chart</span>
+<span class="font-label-caps text-label-caps">Markets</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps">Ledger</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-tertiary-container bg-tertiary-container/5 border-r-2 border-tertiary-container" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps font-semibold">Entities</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-caps text-label-caps">Security</span>
+</a>
+</nav>
+<div class="mt-auto px-8 space-y-4">
+<button class="w-full bg-primary text-white py-4 rounded-full font-label-caps text-label-caps hover:bg-primary/90 transition-all active:scale-[0.98]">
+                    Execute Trade
+                </button>
+<div class="space-y-1">
+<a class="flex items-center gap-4 py-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-4 py-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="contact_support">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-[280px]">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 h-20 w-full bg-surface-container-low/80 backdrop-blur-xl border-b border-outline-variant/10 flex items-center justify-between px-container-padding-desktop">
+<div class="flex items-center gap-8">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50" data-icon="search">search</span>
+<input class="bg-surface border-none rounded-full pl-12 pr-6 py-2 w-[320px] focus:ring-1 focus:ring-primary/20 text-body-md font-body-md" placeholder="Search Entity Hub..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-label-caps text-label-caps text-primary">System: Stable</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="CIO Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a high-ranking corporate executive in a crisp white shirt and tailored charcoal suit. The lighting is soft and directional, creating a sophisticated business atmosphere. The background is a blurred high-end office interior with glass and light oak textures, maintaining a bright and clean light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5A4ACItQ9cg81VMyZa-oQyS0gXasnWdw9cKU6C8pQvDfwUeUaFgQHm2cPvHy0GGc4dkPD9dnnCebQT5yq4JGmV-akHGC3OWwL5jnHUtCmQZVruc123xITfIs4-j-Kg_KvJtuKNgkows1_DWqNZ4SEwxDw_Ccy5PxFG74jqOHA-na0iR65eIHS7gLdSHrOHirb7tf9QhZFnaKLgccUGE4sNjwv0j3KE2PhRxmomNvRv55e9gaIFlU5ayp-SsKg5DzE11T8vbOUzQo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-container-padding-desktop max-w-[1400px] mx-auto space-y-stack-lg">
+<!-- Subject Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-gutter">
+<div class="space-y-2">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Evelyn Waverly</h2>
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label-caps text-label-caps text-on-surface-variant">STK-7712-A</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="font-label-caps text-label-caps">Status: KYC Pending</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="priority_high">priority_high</span>
+<span class="font-label-caps text-label-caps">Priority: Medium</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3 outline outline-1 outline-on-surface hover:bg-on-surface hover:text-white transition-all rounded-full font-label-caps text-label-caps">
+                            Reject
+                        </button>
+<button class="px-8 py-3 outline outline-1 outline-on-surface hover:bg-on-surface hover:text-white transition-all rounded-full font-label-caps text-label-caps">
+                            Request Info
+                        </button>
+<button class="px-8 py-3 bg-primary-container text-on-primary-container hover:bg-primary-container/80 transition-all rounded-full font-label-caps text-label-caps">
+                            Approve KYC
+                        </button>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Risk Synopsis Card -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-8 gallery-shadow space-y-8">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Risk Synopsis</span>
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col items-center justify-center py-4">
+<div class="relative flex items-center justify-center">
+<svg class="w-48 h-48 -rotate-90">
+<circle class="stroke-surface-container-high fill-none" cx="96" cy="96" r="88" stroke-width="4"></circle>
+<circle class="stroke-primary fill-none" cx="96" cy="96" r="88" stroke-dasharray="553" stroke-dashoffset="320" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg">42</span>
+<span class="font-label-caps text-label-caps opacity-60">OF 100</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface rounded-lg border border-outline-variant/10 flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-label-md text-label-md">Status: Flagged for Verification</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/10">
+<span class="font-body-md text-on-surface-variant">Geopolitical Risk</span>
+<span class="font-label-caps text-label-caps">Low</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/10">
+<span class="font-body-md text-on-surface-variant">Wealth Origin</span>
+<span class="font-label-caps text-label-caps">Verified</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/10">
+<span class="font-body-md text-on-surface-variant">PEP Check</span>
+<span class="font-label-caps text-label-caps">Clear</span>
+</div>
+</div>
+</div>
+<!-- Transaction Lineage -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-8 gallery-shadow space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Transaction Lineage</span>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+</button>
+</div>
+</div>
+<div class="h-[400px] w-full relative bg-surface rounded-lg border border-outline-variant/10 overflow-hidden">
+<!-- Minimalist Graph Representation -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative w-full h-full">
+<!-- Centered Subject -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white ring-8 ring-white">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+</div>
+</div>
+<!-- Network Nodes (Conceptual) -->
+<div class="absolute top-[20%] left-[30%] text-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-white border border-outline-variant/20 mx-auto flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="business_center">business_center</span>
+</div>
+<p class="font-label-md text-label-md">Waverly Trust</p>
+</div>
+<div class="absolute top-[25%] right-[25%] text-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-white border border-outline-variant/20 mx-auto flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance">account_balance</span>
+</div>
+<p class="font-label-md text-label-md">Swiss Ledger</p>
+</div>
+<div class="absolute bottom-[20%] right-[35%] text-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-white border border-outline-variant/20 mx-auto flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="diamond">diamond</span>
+</div>
+<p class="font-label-md text-label-md">Art Holding</p>
+</div>
+<!-- Connections (SVG Lines) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+<line stroke="currentColor" stroke-width="1" x1="50%" x2="30%" y1="50%" y2="20%"></line>
+<line stroke="currentColor" stroke-width="1" x1="50%" x2="75%" y1="50%" y2="25%"></line>
+<line stroke="currentColor" stroke-width="1" x1="50%" x2="65%" y1="50%" y2="80%"></line>
+</svg>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="px-3 py-1 bg-white/80 backdrop-blur rounded-full text-[10px] font-label-caps border border-outline-variant/10">High-Net-Worth Accounts Detected</span>
+</div>
+</div>
+</div>
+<!-- KYC Documentation -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-8 gallery-shadow space-y-8">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">KYC Documentation Artifacts</span>
+<button class="flex items-center gap-2 text-primary font-label-caps text-label-caps">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+                                Add Artifact
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Document Card 1 -->
+<div class="group border border-outline-variant/10 rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all duration-500">
+<div class="h-40 bg-surface-container-low relative overflow-hidden">
+<img alt="ID Document Preview" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="A highly detailed studio photograph of a premium, modern identification card lying on a minimalist white marble surface. The card features holographic security elements that catch a soft, golden overhead light. The atmosphere is sterile, professional, and expensive, fitting the STARK brand aesthetic with clean lines and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-Iozz-6zh8_pjsszI3mIog7KVBBltSby_AGM-I4FjXpdXp7K_hXEpQuHOFybDUdfHg3CxDakl7-WP4DQ7cWRaUBZsD9hgOlPeHsXyHxWep1KvDOB7XYZbGQrQbBF5kCFbiEuJ8iRvAhgjmzio-MoGczVewaTmoCTFPVBKEmRNfSnykvF0BcAZuGmsaoH-r7PjWaKSMlxqDnmONsASqAKUWeuMGaq1l3Ai_K0kmqbs6i7CJ4C8TwU8-8pvrevtdTaPtX6oDFr4tmY"/>
+<div class="absolute top-4 right-4 h-6 w-6 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-label-lg text-label-lg">Passport - GB</h4>
+<p class="text-[10px] font-label-caps text-on-surface-variant">Verified Oct 12, 2023</p>
+</div>
+</div>
+<!-- Document Card 2 -->
+<div class="group border border-outline-variant/10 rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all duration-500">
+<div class="h-40 bg-surface-container-low relative overflow-hidden">
+<img alt="Proof of Address Preview" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="A macro shot of a crisp, white high-end utility statement on heavy-weight paper. The document features minimalist typography and a subtle embossed logo at the top. The lighting is bright and even, highlighting the fine texture of the paper and the sharp black ink, set against a pristine, gallery-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBplsDhKBaSESN_NBpsFKn1_aHPL3i56AbYGbLQKEaJmy1aXCy22c42jpnfrPOgKv_9oToetXf2XXZkBa5rVm7hEzcm3hGWVmU5iGgZ4RXstvkAmFecZr4fn4_bxDMHmEjFiXt4b7AAdi8afgUsmy0RQIFuHvxpL8MVBPM-vUwv7MYxVuAL2ycksl7fX8zRsonWTIS-P8S1ik0TQBlQXndUn_2vAdamvi7-pqtj0jEkYEGuOouLNkp9OTimuqFo6BYCqEmEMoCD4HE"/>
+<div class="absolute top-4 right-4 h-6 w-6 bg-primary rounded-full flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-[14px]" data-icon="visibility">visibility</span>
+</div>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-label-lg text-label-lg">Proof of Residence</h4>
+<p class="text-[10px] font-label-caps text-on-surface-variant">In Review</p>
+</div>
+</div>
+<!-- Document Card 3 -->
+<div class="group border border-outline-variant/10 rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all duration-500">
+<div class="h-40 bg-surface-container-low relative overflow-hidden">
+<img alt="Wealth Origin Preview" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="A clean, aerial view of a financial wealth statement showing diversified assets in a minimalist table format. The document is placed on a light oak desk next to a luxury fountain pen. The sunlight from a large window creates soft, elongated shadows, emphasizing a bright, successful, and high-trust environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_SYFXfA6NkIv03qC5r8tEx5UVuAmAMemDkI8RMN7Dczz7otmSr-j_dAeC_ByjcLRM_g7coEQq2MXON6Tddwq8CuS238egZ7HVWmH9Zh8agN9C7E-YWqsr4Ed8DjrlEQR6pN2Ia-n-y145yBmTLGdDq2-uLzWC2vf6rGdn5YJfAXGyw219hH7c9IYCK1pGsCx5t8ZmMJYsg_UHX4fd8JqUnsoXhovoWsYCV9u6hCIOJdt-0n7RgJk5JGhbRvvl_et1y1uxYuSKXfQ"/>
+<div class="absolute top-4 right-4 h-6 w-6 bg-amber-500 rounded-full flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-[14px]" data-icon="priority_high">priority_high</span>
+</div>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-label-lg text-label-lg">Wealth Source Decl.</h4>
+<p class="text-[10px] font-label-caps text-on-surface-variant">Action Required</p>
+</div>
+</div>
+<!-- Document Card 4 (Empty/Add State) -->
+<div class="group border border-dashed border-outline-variant/40 rounded-lg h-full flex flex-col items-center justify-center bg-surface hover:bg-white transition-all cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant text-4xl mb-2" data-icon="add_circle">add_circle</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">New Document</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-stack-lg border-t border-outline-variant/5 bg-surface-dim px-container-padding-desktop py-8 w-full flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-on-surface-variant font-label-caps text-label-caps">
+                    © 2024 ALTOS CAPITAL MANAGEMENT. v2.4.0-PRIME
+                </div>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Regulatory Disclosures</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary-fixed transition-colors" href="#">Privacy Protocol</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

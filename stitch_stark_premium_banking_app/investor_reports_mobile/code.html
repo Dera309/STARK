@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#5f5e5e",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#554300",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#434546",
+                    "on-primary-fixed-variant": "#574500",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-background": "#1a1c1c",
+                    "outline": "#7f7663",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#474646",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#656464",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-surface": "#1a1c1c",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-container": "#eeeeee",
+                    "on-surface-variant": "#4d4635",
+                    "surface-container-low": "#f3f3f4",
+                    "inverse-on-surface": "#f0f1f1",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "surface-dim": "#dadada",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-tint": "#735c00",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffe088",
+                    "primary-fixed-dim": "#e9c349",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f9f9f9",
+                    "tertiary-container": "#b2b3b3",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "inverse-primary": "#e9c349",
+                    "secondary-container": "#e5e2e1",
+                    "primary-container": "#d4af37",
+                    "outline-variant": "#d0c5af",
+                    "inverse-surface": "#2f3131",
+                    "background": "#f9f9f9",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#5d5f5f",
+                    "primary": "#735c00",
+                    "on-primary-fixed": "#241a00",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-padding-desktop": "64px",
+                    "stack-md": "24px",
+                    "container-padding-mobile": "24px",
+                    "stack-lg": "48px",
+                    "gutter": "24px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Libre Caslon Text"],
+                    "display-lg-mobile": ["Libre Caslon Text"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hairline-border { border: 0.5px solid rgba(127, 118, 99, 0.2); }
+        .ambient-shadow { box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.04); }
+        body { background-color: #f9f9f9; -webkit-font-smoothing: antialiased; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant/30 flex justify-between items-center px-container-padding-mobile h-16 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md tracking-widest text-primary">STARK</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-70 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="Private client profile image" class="w-full h-full object-cover" data-alt="A professional headshot of a sophisticated private banking client in a tailored charcoal suit, set against a blurred minimalist architectural background with warm natural light. The style is editorial and clean, following a premium luxury aesthetic with soft focus and high-end details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUABZhxt0IGGZrfDzu8cY3gDGW2Wilh5hChty8Mq-HK_7RQgt8T8SpraA1wdPj23WzMHHdl-FtmmfS3GqdWU4gHAOnw6biyq0DHOcxJMJEAh8_6fozFDEPU8vkszio5hWBg8xAZTSvG0RMdbKqVikffXR8HZfZqlmrceYIT9lErj0Hy1gJUu1ztF8cJKgEI2yyjDg72TkRDf_1QuPea1l39FUNgCvlMheN62MK2HLhUpSf7oq2MqFTYMLZDC3ivRFjKGuRa91cFI0"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-padding-mobile max-w-md mx-auto min-h-screen">
+<!-- Page Title & Subtext -->
+<section class="mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Reports &amp; Filings</h1>
+<p class="font-body-md text-secondary leading-relaxed">A curated collection of your latest performance insights and regulatory documentation.</p>
+</section>
+<!-- Search & Filter -->
+<section class="flex gap-stack-sm mb-stack-lg">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest hairline-border rounded-full py-2.5 pl-10 pr-4 text-label-lg focus:outline-none focus:border-primary-container transition-colors placeholder:text-outline-variant" placeholder="Search documents..." type="text"/>
+</div>
+<button class="hairline-border rounded-full px-4 flex items-center gap-2 hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+<span class="font-label-lg text-label-lg">Filter</span>
+</button>
+</section>
+<!-- Featured Document (Urgent Action) -->
+<section class="mb-stack-lg">
+<div class="bg-surface-container-lowest hairline-border ambient-shadow rounded-lg p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">Ready</span>
+</div>
+<div class="mb-6">
+<span class="text-error font-label-md text-label-md uppercase tracking-widest mb-2 block">Urgent Action Required</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">2023 Schedule K-1</h2>
+<p class="font-body-md text-secondary">Federal Tax Document for STARK Diversified Fund III</p>
+</div>
+<div class="flex items-center justify-between mt-8 pt-6 border-t border-outline-variant/10">
+<div class="text-label-md text-secondary">
+<span class="block">Expires in 12 days</span>
+<span class="block text-outline-variant">Size: 2.4 MB</span>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-lg text-label-lg px-6 py-3 rounded-full flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Secure Download
+                    </button>
+</div>
+</div>
+</section>
+<!-- Document List: Performance Reviews -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-lg text-label-lg text-outline uppercase tracking-[0.15em]">Performance Reviews</h3>
+<span class="text-label-md text-outline-variant">2 items</span>
+</div>
+<div class="space-y-4">
+<!-- Document Item -->
+<div class="bg-white hairline-border rounded-lg p-5 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium">Q1 2024 Performance Review</h4>
+<div class="flex items-center gap-3 text-label-md text-secondary mt-0.5">
+<span>Mar 31, 2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>1.8 MB</span>
+</div>
+</div>
+</div>
+<button class="text-outline-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="download">download</span>
+</button>
+</div>
+<!-- Document Item -->
+<div class="bg-white hairline-border rounded-lg p-5 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium">Annual Portfolio Audit 2023</h4>
+<div class="flex items-center gap-3 text-label-md text-secondary mt-0.5">
+<span>Jan 15, 2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>4.2 MB</span>
+</div>
+</div>
+</div>
+<button class="text-outline-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Document List: Regulatory Filings -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-lg text-label-lg text-outline uppercase tracking-[0.15em]">Regulatory Filings</h3>
+<span class="text-label-md text-outline-variant">2 items</span>
+</div>
+<div class="space-y-4">
+<!-- Document Item (Processing) -->
+<div class="bg-white hairline-border rounded-lg p-5 flex items-center justify-between">
+<div class="flex items-center gap-4 opacity-60">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="pending">pending</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium">Form ADV Annual Update</h4>
+<div class="flex items-center gap-2 text-label-md text-secondary mt-0.5">
+<span class="font-medium text-secondary">Status: Processing</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant opacity-30" data-icon="download">download</span>
+</div>
+<!-- Document Item -->
+<div class="bg-white hairline-border rounded-lg p-5 flex items-center justify-between hover:bg-surface-bright transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium">Privacy Policy Disclosure</h4>
+<div class="flex items-center gap-3 text-label-md text-secondary mt-0.5">
+<span>Updated Dec 2023</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>0.4 MB</span>
+</div>
+</div>
+</div>
+<button class="text-outline-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md flex justify-around items-center px-4 py-3 pb-safe border-t border-outline-variant/20 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
+<a class="flex flex-col items-center justify-center text-secondary hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-semibold active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-md text-label-md">Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</body></html>

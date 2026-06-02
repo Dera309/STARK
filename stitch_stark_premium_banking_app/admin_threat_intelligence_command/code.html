@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK | Threat Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#574500",
+                        "background": "#131313",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#7b6100",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "secondary-container": "#484949",
+                        "inverse-primary": "#5d5f5f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "primary": "#ffffff",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#c4c7c8",
+                        "primary-container": "#e2e2e2",
+                        "surface-dim": "#131313",
+                        "surface": "#131313",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#e2e2e2",
+                        "on-error": "#690005",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary-container": "#b8b8b8",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary": "#2f3131",
+                        "secondary-fixed": "#e3e2e2",
+                        "tertiary-container": "#ffe088",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#636565",
+                        "on-secondary": "#2f3131",
+                        "on-tertiary": "#3c2f00",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "surface-tint": "#c6c6c7",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container": "#201f1f",
+                        "tertiary-fixed": "#ffe088",
+                        "tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "outline-variant": "#444748",
+                        "surface-bright": "#393939",
+                        "secondary": "#c6c6c6",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-padding-desktop": "40px",
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .golden-glow {
+            box-shadow: 0 0 15px rgba(233, 195, 73, 0.15);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg overflow-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-stack-lg bg-surface border-r border-outline-variant/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-background font-bold" data-icon="security">security</span>
+</div>
+<div>
+<h1 class="font-display-lg text-display-lg font-bold tracking-tighter text-primary leading-none text-[24px]">STARK</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">Elite Operations</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 text-primary border-r-2 border-primary font-bold transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Command</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Portfolio</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="payments">payments</span>
+<span>Liquidity</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="group">group</span>
+<span>Clients</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="gavel">gavel</span>
+<span>Governance</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-surface-variant font-label-caps transition-all cubic-bezier(0.2,0.8,0.2,1) hover:translate-x-1 hover:bg-surface-container-high hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-6 space-y-4">
+<div class="p-4 glass-card rounded-lg border-tertiary/20">
+<div class="flex items-center gap-3 mb-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed-dim">System: Optimal</span>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-tight">Quantum Shield Active. Multi-sig validation required for egress.</p>
+</div>
+<div class="flex flex-col gap-2 border-t border-outline-variant/10 pt-4">
+<a class="flex items-center text-on-surface-variant font-label-caps text-[11px] hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]" data-icon="verified_user">verified_user</span> Security
+                </a>
+<a class="flex items-center text-on-surface-variant font-label-caps text-[11px] hover:text-primary" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]" data-icon="contact_support">contact_support</span> Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex items-center justify-between px-gutter bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-[0px_4px_20px_rgba(0,0,0,0.5)] z-40">
+<div class="flex items-center gap-8">
+<h2 class="font-headline-lg text-headline-lg font-black text-primary">THREAT INTEL</h2>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary transition-opacity" href="#">Markets</a>
+<a class="font-label-caps text-label-caps uppercase text-primary border-b border-primary" href="#">Risk</a>
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden xl:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-[12px] font-label-caps w-64 focus:ring-1 focus:ring-primary" placeholder="QUERY NETWORK..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="shield_lock">shield_lock</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-right hidden sm:block">ADMIN_STARK<br/><span class="text-[10px] opacity-50">NODE_01</span></span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-primary/20 object-cover" data-alt="A close-up professional portrait of a high-ranking executive in a dark, tailored suit. The lighting is dramatic and moody with cold blue rim lighting and warm amber key lighting, reflecting a high-tech control room environment. He exudes authority and intelligence against a blurred background of glowing server arrays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU6giAqpSHHVmQBpigiuipQM9wYYYhYN7ja0YA9NiLJwaHj5RIJPOn-BG4QG0F_QefdfbJBNcD-FRPFvpzIkKjiz0-uqutDa3NnCyKQ8lX-cNkve_UPLSjUrOP7deMvlg_k-rEE-MRVrwtSDAcYwPjlQjuqTDUBIOLwDFfVAiJdUcG9oOsmZ3fiGuanMv-2msBWfUhI73hpanYdN9Zw5x6FZe48h_7pH2Ah34ypsQycqKwXGcDmnaMjM2srhSH6zmUVugZU8a9K6k"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 h-screen overflow-y-auto bg-background">
+<div class="p-container-padding-desktop space-y-stack-md pb-stack-lg">
+<!-- Hero Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-stack-md rounded-lg flex flex-col justify-between h-32 border-l-2 border-primary">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Packet Integrity</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="verified">verified</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[32px] font-bold text-primary">99.9997%</span>
+<span class="text-tertiary-fixed-dim font-label-caps text-[10px]">+0.0002%</span>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex flex-col justify-between h-32 border-l-2 border-tertiary-fixed-dim">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Mitigation Velocity</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[20px]" data-icon="bolt">bolt</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[32px] font-bold text-primary">12.4ms</span>
+<span class="text-error font-label-caps text-[10px]">-1.2ms</span>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-lg flex flex-col justify-between h-32 border-l-2 border-outline">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">System Load</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="memory">memory</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[32px] font-bold text-primary">42%</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden ml-4">
+<div class="h-full bg-primary w-[42%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Threat Map (Bento Main) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter h-[500px]">
+<div class="lg:col-span-2 glass-card rounded-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+<div class="p-gutter border-b border-outline-variant/10 flex justify-between items-center relative z-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="language">language</span>
+<h3 class="font-title-md text-title-md text-primary font-bold">Global Threat Map</h3>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-error/10 text-error text-[10px] font-label-caps rounded-full border border-error/20 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span> 4 ACTIVE ATTACK VECTORS
+                            </span>
+</div>
+</div>
+<div class="w-full h-[calc(100%-60px)] relative">
+<img class="w-full h-full object-cover opacity-40 grayscale contrast-125" data-alt="A highly detailed, futuristic digital world map glowing with web-like connections and data streams. The map is presented in deep blacks and charcoal tones, with vibrant gold and silver points representing data hubs. Thin glowing lines traverse the continents in arcs, representing active network traffic, while pulsating red clusters indicate localized cyber threats. The aesthetic is extremely high-tech, resembling a top-tier security command center display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM_MCpv3jzC8Q8khnS6pV0Q_7UthBfSGcwM9JYBCa8k0osebAWdkNS9D6AlPAoKaLb4dz1Xq2UsUuFETNk6vH9pbXND_I7VJ2v0bvOT1C3_Y2gL2u-xtDOlAb5bYisxugX1gz1xQOfW5_EQcNsh9tkRT0u-bvb6r5rEL3uERYsu-MLislFnEyyJ4o0QMDa7leggqIZ9fbQ6ewxMI-5GWnFUtqshUZfJJ8lUgY37Vthgmt1QDwj9hFI11RRC0WivHa8kCnRSmXwq5Q"/>
+<!-- Active Attack Overlay Simulation -->
+<div class="absolute top-1/4 left-1/4 flex flex-col items-center">
+<div class="w-4 h-4 bg-tertiary-fixed-dim rounded-full shadow-[0_0_20px_#e9c349] animate-pulse"></div>
+<div class="mt-2 glass-card px-3 py-1 rounded text-[10px] font-label-caps border-tertiary-fixed-dim/30">BEIJING_NODE_9</div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 flex flex-col items-center">
+<div class="w-4 h-4 bg-error rounded-full shadow-[0_0_20px_#ffb4ab] animate-pulse"></div>
+<div class="mt-2 glass-card px-3 py-1 rounded text-[10px] font-label-caps border-error/30">FRANKFURT_DDoS</div>
+</div>
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+<path d="M 25% 25% Q 50% 10% 75% 66%" fill="none" stroke="#e9c349" stroke-dasharray="5,5" stroke-width="1"></path>
+</svg>
+</div>
+</div>
+<!-- Live Intrusion Feed -->
+<div class="glass-card rounded-lg flex flex-col">
+<div class="p-gutter border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-primary font-bold">Intrusion Feed</h3>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="security_update_good">security_update_good</span>
+</div>
+<div class="flex-1 overflow-y-auto p-gutter space-y-4">
+<!-- Feed Item -->
+<div class="flex gap-4 group transition-all">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-error mt-2"></div>
+<div class="w-[1px] flex-1 bg-outline-variant/20 my-1"></div>
+</div>
+<div class="flex-1 pb-4 border-b border-outline-variant/5">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[10px] text-error uppercase">High Priority</span>
+<span class="text-[9px] font-mono text-on-surface-variant">14:22:01.04</span>
+</div>
+<p class="text-body-sm text-[12px] text-primary font-medium leading-tight">Brute force attempt detected on NODE_72:SECURE_PORT</p>
+<div class="mt-2 flex gap-2">
+<span class="text-[9px] font-mono bg-surface-container-high px-1.5 py-0.5 rounded text-on-surface-variant">IP: 192.168.1.104</span>
+<span class="text-[9px] font-label-caps text-tertiary-fixed-dim uppercase">Mitigated</span>
+</div>
+</div>
+</div>
+<!-- Feed Item -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div class="w-[1px] flex-1 bg-outline-variant/20 my-1"></div>
+</div>
+<div class="flex-1 pb-4 border-b border-outline-variant/5">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Network Audit</span>
+<span class="text-[9px] font-mono text-on-surface-variant">14:21:45.88</span>
+</div>
+<p class="text-body-sm text-[12px] text-on-surface-variant font-medium leading-tight">SQL Injection pattern identified in Egress Traffic.</p>
+<div class="mt-2 flex gap-2">
+<span class="text-[9px] font-label-caps text-tertiary-fixed-dim uppercase">Isolated</span>
+</div>
+</div>
+</div>
+<!-- Feed Item -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim mt-2"></div>
+<div class="w-[1px] flex-1 bg-outline-variant/20 my-1"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim uppercase">Pattern Match</span>
+<span class="text-[9px] font-mono text-on-surface-variant">14:20:12.33</span>
+</div>
+<p class="text-body-sm text-[12px] text-on-surface-variant font-medium leading-tight">Zero-day heuristic match for 'SILVER_VOX' malware chain.</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-outline-variant/10 text-center">
+<button class="font-label-caps text-[10px] text-primary hover:tracking-widest transition-all">VIEW ALL INCIDENTS</button>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Heuristic Analysis & Key Identifiers -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Heuristic Analysis Chart -->
+<div class="lg:col-span-2 glass-card rounded-lg p-gutter">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-title-md text-title-md text-primary font-bold">Heuristic Pattern Recognition</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">VOLUMETRIC</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">ANOMALY</span>
+</div>
+</div>
+</div>
+<!-- Mock Chart -->
+<div class="h-48 w-full flex items-end gap-2 px-2 pb-2 border-b border-l border-outline-variant/20 relative">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
+<div class="w-full h-[1px] bg-outline"></div>
+<div class="w-full h-[1px] bg-outline"></div>
+<div class="w-full h-[1px] bg-outline"></div>
+</div>
+<!-- Chart Bars -->
+<div class="flex-1 bg-gradient-to-t from-primary/10 to-primary/40 h-[40%] rounded-t-sm group relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-surface text-[10px] p-1 border border-outline/30 rounded whitespace-nowrap">40.2 MB/s</div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-tertiary-fixed-dim/10 to-tertiary-fixed-dim/40 h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/10 to-primary/40 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-tertiary-fixed-dim/10 to-tertiary-fixed-dim/40 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/10 to-primary/40 h-[30%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-tertiary-fixed-dim/10 to-tertiary-fixed-dim/40 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/10 to-primary/40 h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-tertiary-fixed-dim/10 to-tertiary-fixed-dim/40 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/10 to-primary/40 h-[20%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-tertiary-fixed-dim/10 to-tertiary-fixed-dim/40 h-[95%] rounded-t-sm"></div>
+</div>
+</div>
+<!-- Threat Level Distribution -->
+<div class="glass-card rounded-lg p-gutter">
+<h3 class="font-title-md text-title-md text-primary font-bold mb-stack-md">Mitigation Statistics</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">DDoS Prevention</span>
+<span class="font-mono text-primary text-[12px]">82%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">Quantum Shielding</span>
+<span class="font-mono text-primary text-[12px]">100%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim w-full golden-glow"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">Identity Verification</span>
+<span class="font-mono text-primary text-[12px]">94%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-4 p-3 bg-surface-container-low rounded border border-tertiary-fixed-dim/20">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<div>
+<p class="font-label-caps text-[10px] text-tertiary-fixed-dim">ELITE PROTOCOL ACTIVE</p>
+<p class="text-[11px] text-on-surface-variant">System integrity at maximum confidence levels.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-unit bg-surface-container-lowest border-t border-outline-variant/5 flex justify-between items-center px-container-padding-desktop">
+<p class="font-label-caps text-[10px] tracking-widest text-on-surface-variant uppercase">© 2024 STARK INSTITUTIONAL. ALL RIGHTS RESERVED. SECURED BY QUANTUM-GRADE ENCRYPTION.</p>
+<div class="flex items-center gap-6">
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500 uppercase" href="#">Legal</a>
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500 uppercase" href="#">Privacy</a>
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500 uppercase" href="#">Protocols</a>
+<a class="font-label-caps text-[10px] tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-500 uppercase" href="#">Audit</a>
+</div>
+</footer>
+</main>
+<!-- FAB (Suppressed on Details, but kept here for Home level visibility) -->
+<button class="fixed bottom-10 right-10 w-14 h-14 bg-primary text-background rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+</body></html>

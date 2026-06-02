@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#e9c349",
+                    "on-secondary-container": "#656464",
+                    "inverse-on-surface": "#f0f1f1",
+                    "on-primary-fixed": "#241a00",
+                    "surface-variant": "#e2e2e2",
+                    "secondary-fixed": "#e5e2e1",
+                    "tertiary-fixed": "#e2e2e2",
+                    "tertiary": "#5d5f5f",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "on-primary-fixed-variant": "#574500",
+                    "surface-container-low": "#f3f3f4",
+                    "secondary": "#5f5e5e",
+                    "on-surface-variant": "#4d4635",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary-container": "#434546",
+                    "on-surface": "#1a1c1c",
+                    "surface-bright": "#f9f9f9",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "tertiary-container": "#b2b3b3",
+                    "surface-container-high": "#e8e8e8",
+                    "outline-variant": "#d0c5af",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#735c00",
+                    "primary-fixed": "#ffe088",
+                    "surface": "#f9f9f9",
+                    "outline": "#7f7663",
+                    "on-background": "#1a1c1c",
+                    "inverse-surface": "#2f3131",
+                    "primary": "#735c00",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-primary-container": "#554300",
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-secondary-fixed-variant": "#474646",
+                    "background": "#f9f9f9",
+                    "secondary-container": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dadada",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "primary-container": "#d4af37"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "container-padding-mobile": "24px",
+                    "unit": "8px",
+                    "stack-sm": "12px",
+                    "container-padding-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Libre Caslon Text"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Libre Caslon Text"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(127, 118, 99, 0.2);
+        }
+        .soft-shadow {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.03);
+        }
+        .chart-donut {
+            background: conic-gradient(
+                #D4AF37 0% 45%, 
+                #1a1c1c 45% 70%, 
+                #735c00 70% 85%, 
+                #e5e2e1 85% 100%
+            );
+            border-radius: 50%;
+            position: relative;
+        }
+        .chart-donut::after {
+            content: '';
+            position: absolute;
+            inset: 20%;
+            background: #ffffff;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 z-40 w-full flex justify-between items-center px-container-padding-desktop py-4 bg-surface-container-lowest border-b border-outline-variant/30 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg tracking-tight text-primary">STARK</span>
+<nav class="hidden md:flex gap-8 items-end h-full">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Overview</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 text-label-lg focus:ring-1 focus:ring-primary transition-all" placeholder="Search assets..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-all">settings</button>
+<img alt="Investor profile avatar" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional close-up portrait of a high-net-worth individual with a confident and serene expression. The lighting is soft and cinematic, highlighting sophisticated features against a clean, blurred gallery-style background. The overall aesthetic is expensive and refined, mirroring the premium Stark brand identity with warm gold undertones and high-key brightness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPrDd1tzEFzkWgwnl5C2E-WAyO6ahFWqvoa637dgWcMCPui13EjgYMKJZ3J0e6e3of9iGAvioXnrEOXk1MxKUIrsIt9OcWpKrqQtAauiAHRw2cY6a9C0o1M7-VrtQW7dLhLQMm1UAixftFabv9aTNABD5dmYs3w_Fg81x4X5r4wwH6Al7dE8r3KypWfgZSDAg1rnLSYR36yk_3Fc6kzE48qQdzH-LW6jpaD36Ber7GcUHoXoEtuHXBqq2cKEu5v98-1Bu7F5UCV_c"/>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface border-r border-outline-variant/30 flex flex-col py-stack-lg gap-stack-md hidden lg:flex mt-20">
+<div class="px-8 mb-4">
+<h2 class="font-headline-md text-headline-md text-primary">STARK PORTAL</h2>
+<p class="font-body-md text-label-md text-on-surface-variant opacity-70">Premium Investor Relations</p>
+</div>
+<nav class="flex-1 flex flex-col">
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="text-primary font-bold border-l-4 border-primary pl-7 py-3 flex items-center gap-4 bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-weight="fill">account_balance_wallet</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Portfolio</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Reports</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">News Feed</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Messages</span>
+</a>
+</nav>
+<div class="px-8 mt-auto flex flex-col gap-4">
+<button class="bg-primary text-on-primary py-4 rounded-pill font-label-lg uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                Download Annual Report
+            </button>
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant/30">
+<a class="text-on-surface-variant flex items-center gap-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="text-label-md">Support</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+<span class="text-label-md">Compliance</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-72 pt-28 pb-stack-lg px-container-padding-mobile lg:px-container-padding-desktop">
+<!-- Header Section -->
+<section class="mb-stack-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile lg:text-display-lg text-on-surface">Asset Allocation</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-2">A strategic distribution of your capital across premier asset classes, optimized for resilient long-term growth and capital preservation.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 border border-outline rounded-full font-label-lg hover:bg-surface-container transition-all">Filter</button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-lg hover:brightness-110 transition-all shadow-md">Rebalance</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Analysis -->
+<div class="bento-grid">
+<!-- Donut Chart Card -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest hairline-border soft-shadow rounded-lg p-stack-md flex flex-col">
+<h3 class="font-headline-md text-headline-md mb-8">Distribution Strategy</h3>
+<div class="flex-1 flex flex-col items-center justify-center relative py-8">
+<div class="w-64 h-64 chart-donut shadow-inner"></div>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Total Value</span>
+<span class="font-headline-lg text-headline-lg">$14.2M</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="text-label-lg">Equities (45%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-on-surface"></div>
+<span class="text-label-lg">Digital (25%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-label-lg">Fixed Income (15%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed"></div>
+<span class="text-label-lg">Nexus Bonds (15%)</span>
+</div>
+</div>
+</div>
+<!-- Risk Exposure Heatmap -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest hairline-border soft-shadow rounded-lg p-stack-md">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-headline-md">Risk Exposure Matrix</h3>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span>Low Risk</span>
+<div class="w-32 h-2 rounded-full bg-gradient-to-r from-secondary-fixed via-primary-container to-primary"></div>
+<span>High Risk</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2 h-64">
+<!-- High Density Heatmap Visualization -->
+<div class="bg-primary opacity-90 rounded-sm flex items-center justify-center text-on-primary font-label-md p-2 text-center">Tech Equities</div>
+<div class="bg-primary opacity-70 rounded-sm flex items-center justify-center text-on-primary font-label-md p-2 text-center">Emerging Markets</div>
+<div class="bg-primary-container rounded-sm flex items-center justify-center text-on-primary-container font-label-md p-2 text-center">Crypto Alpha</div>
+<div class="bg-secondary-fixed rounded-sm flex items-center justify-center text-on-secondary-fixed-variant font-label-md p-2 text-center">Gold Reserves</div>
+<div class="bg-primary opacity-60 rounded-sm flex items-center justify-center text-on-primary font-label-md p-2 text-center">Private Equity</div>
+<div class="bg-primary-container opacity-80 rounded-sm flex items-center justify-center text-on-primary-container font-label-md p-2 text-center">Blue Chip</div>
+<div class="bg-secondary-fixed opacity-90 rounded-sm flex items-center justify-center text-on-secondary-fixed-variant font-label-md p-2 text-center">US Treasuries</div>
+<div class="bg-secondary-fixed opacity-70 rounded-sm flex items-center justify-center text-on-secondary-fixed-variant font-label-md p-2 text-center">Cash Liquidity</div>
+<div class="bg-primary opacity-40 rounded-sm flex items-center justify-center text-on-surface font-label-md p-2 text-center">Real Estate</div>
+<div class="bg-primary-container opacity-40 rounded-sm flex items-center justify-center text-on-surface font-label-md p-2 text-center">Venture Debt</div>
+<div class="bg-secondary-fixed opacity-50 rounded-sm flex items-center justify-center text-on-surface font-label-md p-2 text-center">Nexus Grade B</div>
+<div class="bg-secondary-fixed opacity-30 rounded-sm flex items-center justify-center text-on-surface font-label-md p-2 text-center">TIPS</div>
+</div>
+<p class="mt-6 text-label-md text-on-surface-variant italic">Your current profile leans towards 'Aggressive Growth' with a weighted risk score of 7.2/10.</p>
+</div>
+<!-- Detailed Performance Table -->
+<div class="col-span-12 bg-surface-container-lowest hairline-border soft-shadow rounded-lg overflow-hidden">
+<div class="px-stack-md py-6 border-b border-outline-variant/30 bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Asset Class Performance</h3>
+<span class="text-label-md text-primary font-bold uppercase tracking-widest">Last Updated: 12m ago</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-stack-md py-4 font-label-lg uppercase tracking-widest">Asset Class</th>
+<th class="px-stack-md py-4 font-label-lg uppercase tracking-widest">Allocation</th>
+<th class="px-stack-md py-4 font-label-lg uppercase tracking-widest text-right">Value (USD)</th>
+<th class="px-stack-md py-4 font-label-lg uppercase tracking-widest text-right">YTD Performance</th>
+<th class="px-stack-md py-4 font-label-lg uppercase tracking-widest text-right">Volatility</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-md py-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+<div>
+<div class="font-body-md font-bold">Equities</div>
+<div class="text-label-md text-on-surface-variant">Global High Growth</div>
+</div>
+</td>
+<td class="px-stack-md py-6">
+<div class="w-32 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+</td>
+<td class="px-stack-md py-6 text-right font-body-md">$6,390,000</td>
+<td class="px-stack-md py-6 text-right text-primary font-bold">+14.2%</td>
+<td class="px-stack-md py-6 text-right text-on-surface-variant">12.5%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-stack-md py-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface">currency_bitcoin</span>
+<div>
+<div class="font-body-md font-bold">Digital Reserves</div>
+<div class="text-label-md text-on-surface-variant">Liquid Assets</div>
+</div>
+</td>
+<td class="px-stack-md py-6">
+<div class="w-32 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-on-surface h-full w-[25%]"></div>
+</div>
+</td>
+<td class="px-stack-md py-6 text-right font-body-md">$3,550,000</td>
+<td class="px-stack-md py-6 text-right text-primary font-bold">+32.8%</td>
+<td class="px-stack-md py-6 text-right text-on-surface-variant">28.4%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-stack-md py-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">account_balance</span>
+<div>
+<div class="font-body-md font-bold">Fixed Income</div>
+<div class="text-label-md text-on-surface-variant">Corporate Bonds</div>
+</div>
+</td>
+<td class="px-stack-md py-6">
+<div class="w-32 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[15%]"></div>
+</div>
+</td>
+<td class="px-stack-md py-6 text-right font-body-md">$2,130,000</td>
+<td class="px-stack-md py-6 text-right text-on-surface-variant font-bold">+3.2%</td>
+<td class="px-stack-md py-6 text-right text-on-surface-variant">4.1%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-stack-md py-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">shield</span>
+<div>
+<div class="font-body-md font-bold">Nexus Bonds</div>
+<div class="text-label-md text-on-surface-variant">Proprietary Stark Debt</div>
+</div>
+</td>
+<td class="px-stack-md py-6">
+<div class="w-32 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[15%]"></div>
+</div>
+</td>
+<td class="px-stack-md py-6 text-right font-body-md">$2,130,000</td>
+<td class="px-stack-md py-6 text-right text-primary font-bold">+8.5%</td>
+<td class="px-stack-md py-6 text-right text-on-surface-variant">6.2%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Insight Section -->
+<div class="col-span-12 lg:col-span-12 bg-primary-container text-on-primary-container p-stack-md rounded-lg flex flex-col md:flex-row items-center gap-8">
+<div class="bg-surface-container-lowest/20 p-6 rounded-full">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md mb-2">Portfolio Insight</h4>
+<p class="font-body-lg text-body-lg opacity-90">Based on recent market shifts, your allocation to <span class="font-bold underline">Fixed Income</span> is currently 5% below your target profile. We suggest a rebalance from Digital Reserves to maintain your capital preservation threshold.</p>
+</div>
+<button class="whitespace-nowrap bg-on-primary-container text-primary-container px-8 py-4 rounded-full font-label-lg uppercase tracking-widest hover:brightness-125 transition-all">Review Advice</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg border-t border-outline-variant/30 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-container-padding-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-sm text-headline-sm text-primary">STARK</span>
+<span class="font-label-md text-label-md text-on-secondary-container mt-1 uppercase tracking-widest">© 2024 STARK CAPITAL MANAGEMENT. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Terms of Service</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Compliance</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">Regulatory Disclosures</a>
+</div>
+</div>
+</footer>
+</body></html>

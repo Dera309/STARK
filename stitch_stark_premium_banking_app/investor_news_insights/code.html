@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#e9c349",
+                        "on-secondary-container": "#656464",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-fixed": "#241a00",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary": "#5d5f5f",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#5f5e5e",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#434546",
+                        "on-surface": "#1a1c1c",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#d0c5af",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#735c00",
+                        "primary-fixed": "#ffe088",
+                        "surface": "#f9f9f9",
+                        "outline": "#7f7663",
+                        "on-background": "#1a1c1c",
+                        "inverse-surface": "#2f3131",
+                        "primary": "#735c00",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#474646",
+                        "background": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "primary-container": "#d4af37"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "container-padding-mobile": "24px",
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "container-padding-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hairline-border { border: 0.5px solid rgba(127, 118, 99, 0.2); }
+        .ambient-shadow { box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.03); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-container-padding-desktop py-4 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant/30 dark:border-outline/20 shadow-[0_20px_50px_rgba(0,0,0,0.02)] dark:shadow-none">
+<div class="flex items-center gap-stack-md">
+<span class="font-display-lg text-display-lg tracking-tight text-primary dark:text-primary-fixed-dim">STARK</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-lg" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-lg" href="#">Portfolio</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-label-lg" href="#">News Feed</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary transition-colors font-label-lg" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-label-lg focus:ring-1 focus:ring-primary w-64" placeholder="Search insights..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden hairline-border">
+<img alt="Investor profile avatar" data-alt="A professional headshot of a high-net-worth investor in a tailored charcoal suit, set against a blurred background of a modern, minimalist architectural space with soft natural lighting and warm gold tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnxwY_Yu4Opl4uJ4axECcJXNZjMEBUHtvNlQ5xKl5UVKJ9Bjcnrrf2Hzh333AlKzPY762DBfcemEwtiaNnAk3iDBmourc6ruEwvNr9Y46Am9v6PcLdUsgEXE0Pa1YWGHSIspEfziS5raMbTjvEs9UlnNUPtBqjIdaQXLSf4EskcSq_BjHMEk_Iqkzw2QhUr0Ju39UXewucbbw-X6r122h2v-TpsXKB8e4lvqjg84xdTuoQhsGq5Hj6GoRclh7PS9Q_WRzjrtcqI6E"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface dark:bg-inverse-surface border-r border-outline-variant/30 dark:border-outline/20 hidden xl:flex flex-col h-full py-stack-lg gap-stack-md z-40">
+<div class="px-8 mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">STARK PORTAL</h2>
+<p class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant opacity-70">Premium Investor Relations</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-secondary-fixed-dim pl-8 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-secondary-fixed-dim pl-8 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Portfolio</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-secondary-fixed-dim pl-8 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Reports</span>
+</a>
+<a class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim font-bold border-l-4 border-primary pl-7 py-3 bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">News Feed</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-secondary-fixed-dim pl-8 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest">Messages</span>
+</a>
+</div>
+<div class="px-8 mt-auto flex flex-col gap-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-full font-label-lg uppercase tracking-widest shadow-lg hover:opacity-90 transition-opacity">
+                Download Annual Report
+            </button>
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+<span class="font-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="gavel">gavel</span>
+<span class="font-label-md">Compliance</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="xl:ml-72 pt-32 pb-stack-lg px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto">
+<!-- Hero Featured Article -->
+<section class="mb-stack-lg">
+<div class="relative group cursor-pointer overflow-hidden rounded-lg hairline-border ambient-shadow bg-surface-container-lowest">
+<div class="flex flex-col lg:flex-row">
+<div class="lg:w-3/5 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105" data-alt="A wide-angle shot of a sleek, glass-walled financial district at dusk, reflecting the amber and gold lights of the city. The architectural lines are sharp and minimalist, embodying high-end luxury and global stability, with a serene atmosphere and soft, atmospheric depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4vtzDGpE6AIUgKTLNkMFcn0v-HBir8bbuZnDUIiaF_zd_cLM5LItjH70tyllZXLMGZBvCAurWQULn4erLCOdhwF8I7r7r9Lval09mVn7mFgxeLlCPzDXqJTxS7QpmRRDMa9VW-TK5U8ZJ2ropoGIfSDwIxE7I78O4UMXtXmq5EjYF3rJyzmstakn4nAwVA9mf2eeojwRVcR3Cq2SfujjxVYPFRvwbJbD26VyxwVGZhzpMxPf9BFEXb9aeqd0ZTu_f-SDBykN7APE"/>
+</div>
+<div class="lg:w-2/5 p-stack-md lg:p-12 flex flex-col justify-center">
+<span class="font-label-md uppercase tracking-[0.2em] text-primary mb-4">Market Analysis • Q4 2024</span>
+<h1 class="font-display-lg text-headline-lg lg:text-display-lg mb-6 leading-tight">The Future of Sovereign Wealth in a Decoupled Economy</h1>
+<p class="font-body-lg text-on-surface-variant mb-8 line-clamp-3">Chief Analyst Marcus Sterling explores the shifting landscape of global reserves and the emergence of private ecosystem liquidity as the new gold standard for high-net-worth preservation.</p>
+<div class="flex items-center gap-4">
+<span class="w-12 h-[1px] bg-primary"></span>
+<button class="font-label-lg uppercase tracking-widest text-primary hover:tracking-[0.2em] transition-all duration-300">Read the Full Report</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Analysis Card -->
+<div class="md:col-span-8 bg-surface-container-lowest p-stack-md rounded-lg hairline-border ambient-shadow flex flex-col md:flex-row gap-gutter group">
+<div class="md:w-1/2 aspect-square overflow-hidden rounded">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A close-up of a sophisticated mechanical watch movement, highlighting the intricate gold gears and precision engineering. The lighting is dramatic and moody, focusing on the craftsmanship and timeless luxury of the fine machinery, set against a dark, velvet-like background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6EUMjUd2AfMVLobtJpfuxBpeAX_4jmifUUgsqQbggRsJCsr3CjTvRN4ge20bNRXl37nrt8Sd4g2RPckYevzfsa1FmQZx66yIbz2jHZHkGEYVrzIE-Oqo4RkBAqroBNZ6eAUyLp0IHCYae3ETmxpWHmmcsyy-48WUveRJvH6NJDa9Yph_Iouk4TBP9F_Ayf3wLdQzGVz3V9VogtguhRCmIweh_yB45qHS_vXrW8Ot6-UcPyIUO9aXrAjC4dKkD_14IjltYbTgmv-M"/>
+</div>
+<div class="md:w-1/2 flex flex-col py-4">
+<span class="font-label-md text-secondary uppercase tracking-widest mb-2">Ecosystem Update</span>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors">Precision Engineering: The Stark 2025 Roadmap</h3>
+<p class="text-on-surface-variant mb-auto">An exclusive look into our upcoming digital infrastructure enhancements and the integration of quantum-secured transaction ledgers.</p>
+<div class="flex items-center justify-between mt-6 pt-4 border-t border-outline-variant/20">
+<span class="font-label-md text-on-surface-variant">5 min read</span>
+<span class="material-symbols-outlined text-primary" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Short Insight Card -->
+<div class="md:col-span-4 bg-primary-container/10 p-stack-md rounded-lg hairline-border flex flex-col justify-between border-primary/20">
+<div>
+<div class="flex gap-2 mb-6">
+<span class="px-3 py-1 bg-primary text-on-primary rounded-full text-label-md uppercase">Urgent</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface rounded-full text-label-md uppercase">Brief</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 italic">"The true currency of the next decade is not data, but verified trust."</h3>
+<p class="font-body-md text-on-surface-variant">— STARK Executive Board</p>
+</div>
+<button class="mt-8 flex items-center gap-2 font-label-lg uppercase tracking-widest text-primary">
+                    View Bulletin <span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</button>
+</div>
+<!-- Editorial Image Card -->
+<div class="md:col-span-4 bg-surface-container-lowest overflow-hidden rounded-lg hairline-border ambient-shadow group">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist board room with a large, polished marble table and deep leather chairs. Large floor-to-ceiling windows look out onto a foggy mountain landscape, creating a sense of quiet power, exclusivity, and calm strategic deliberation in a high-key, gallery-style light setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu71QNZvJfTHd0hHcPfFlX3rH5lcrCMpPeb8iWTnOyifwx-XB3_CQVzfvxwQcYMLhdnjSEwGh3zGb3naWcfmj_zS2X9QwaQuNJWkK1xB43HIZ1yKgFN8JEqHh2C3SNNNRISvjH74GKBMOgFO6X8JJQOW6DocPzH3HzHc5VxDqPlJEnBN67A1WFiRpnzMrmjMImP0kbo6jWzeCeDde5biE_7y1nfnlsT5hYk1Ezjs78pVrBpXD5BopWiH3QY6UmKV6LQZhLCnAqImA"/>
+</div>
+<div class="p-8">
+<span class="font-label-md text-primary uppercase tracking-[0.2em] mb-3 block">Policy</span>
+<h4 class="font-headline-md text-headline-md mb-4">New Compliance Frameworks for 2025</h4>
+<p class="text-on-surface-variant font-body-md">Understanding the impact of global regulatory shifts on private capital mobility.</p>
+</div>
+</div>
+<!-- Broad Image Card -->
+<div class="md:col-span-8 relative rounded-lg overflow-hidden h-[400px] group cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Abstract golden silk waves flowing across a pristine white space. The fabric has a metallic, liquid-gold texture that catches the light with soft, shimmering highlights, representing fluid wealth, elegance, and the seamless nature of the STARK investment experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRSL54-0wPMyDLlUGhi3HufSfUQGeoy_uiehJ1slwn8FsEUlZKNWsDJGB4oXBongvXWrO0JtRuyvpiUzB1nvOzz-4kl307XHqnxIcQbUN9e-SLK-AHA6HyAQkXkK1Y7ISUJeGAnf9b-wu9tHA1o46bol6S8shblUdoaa2UzPbGMNBnXW1eR9toiU0ayOV_WUQiLqTvrkpgcYN2OtOfQ5fQROX98obmq3XiuP-zQYSeQBCFpZvGq_wc5Csxa8PlA-ws7fI94rH92NE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
+<span class="font-label-md text-primary-fixed uppercase tracking-widest mb-2">Annual Gala</span>
+<h3 class="font-headline-lg text-headline-lg text-white mb-4">A Night of Stewardship: Highlights from the Zurich Summit</h3>
+<p class="text-white/80 max-w-xl font-body-lg">Revisiting the key conversations that shaped our strategy for the upcoming fiscal year.</p>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-stack-lg flex flex-col items-center gap-stack-md">
+<button class="px-12 py-4 hairline-border hover:bg-surface-container-low transition-colors rounded-full font-label-lg uppercase tracking-[0.3em] flex items-center gap-3 group">
+                Discover More Insights
+                <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/30 dark:border-outline/20">
+<div class="max-w-7xl mx-auto px-container-padding-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed-dim">STARK</span>
+<span class="font-label-md text-label-md text-on-surface/60">EST. 1924</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors font-label-md" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors font-label-md" href="#">Terms of Service</a>
+<a class="text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors font-label-md" href="#">Compliance</a>
+<a class="text-on-secondary-container dark:text-on-tertiary-fixed-variant hover:text-primary transition-colors font-label-md" href="#">Regulatory Disclosures</a>
+</div>
+<div class="font-label-md text-label-md text-on-secondary-container/50">
+                © 2024 STARK CAPITAL MANAGEMENT. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation Shell (Suppressed on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant/30 px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-label-md">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[10px] font-label-md">PORTFOLIO</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="newspaper" data-weight="fill">newspaper</span>
+<span class="text-[10px] font-label-md">NEWS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="text-[10px] font-label-md">MESSAGES</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK OS - Event Trace Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dadada",
+                      "primary-container": "#d4af37",
+                      "surface-container-high": "#e8e8e8",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#574500",
+                      "on-secondary-container": "#656464",
+                      "inverse-surface": "#2f3131",
+                      "tertiary-container": "#b2b3b3",
+                      "primary-fixed-dim": "#e9c349",
+                      "on-surface-variant": "#4d4635",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-primary-container": "#554300",
+                      "background": "#f9f9f9",
+                      "on-error": "#ffffff",
+                      "surface": "#f9f9f9",
+                      "error": "#ba1a1a",
+                      "tertiary": "#5d5f5f",
+                      "surface-tint": "#735c00",
+                      "primary": "#735c00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e2e2e2",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#e9c349",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "outline": "#7f7663",
+                      "inverse-on-surface": "#f0f1f1",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#434546",
+                      "on-surface": "#1a1c1c",
+                      "surface-bright": "#f9f9f9",
+                      "secondary-container": "#e5e2e1",
+                      "surface-container-low": "#f3f3f4",
+                      "secondary-fixed": "#e5e2e1",
+                      "primary-fixed": "#ffe088",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "secondary": "#5f5e5e",
+                      "outline-variant": "#d0c5af",
+                      "on-primary-fixed": "#241a00",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-secondary-fixed-variant": "#474646"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "stack-lg": "48px",
+                      "container-padding-desktop": "64px",
+                      "stack-sm": "12px",
+                      "stack-md": "24px",
+                      "container-padding-mobile": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-lg": ["Libre Caslon Text"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "display-lg": ["Libre Caslon Text"],
+                      "headline-md": ["Libre Caslon Text"],
+                      "display-lg-mobile": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(127, 118, 99, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- SideNavBar Shell -->
+<nav class="h-screen w-72 fixed left-0 top-0 flex flex-col bg-surface border-r border-outline-variant/10 backdrop-blur-2xl shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="flex flex-col gap-unit h-full p-gutter">
+<div class="mb-stack-lg">
+<span class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary">STARK</span>
+<p class="text-on-surface-variant font-label-md uppercase tracking-widest mt-1">Elite Operations</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-4 p-3 rounded transition-colors duration-300 text-on-surface-variant hover:text-primary hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-lg text-body-lg tracking-wide">Intelligence</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded transition-colors duration-300 text-on-surface-variant hover:text-primary hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-body-lg text-body-lg tracking-wide">Capital</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded transition-colors duration-300 text-on-surface-variant hover:text-primary hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-body-lg text-body-lg tracking-wide">Nexus</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded transition-colors duration-300 text-on-surface-variant hover:text-primary hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-body-lg text-body-lg tracking-wide">Protocols</span>
+</a>
+<!-- Active Audit State -->
+<a class="flex items-center gap-4 p-3 rounded transition-transform duration-500 ease-[0.2,0.8,0.2,1] scale-[0.98] text-tertiary-fixed bg-surface-container-high border-r-2 border-tertiary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-lg text-body-lg tracking-wide">Audit</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded transition-colors duration-300 text-on-surface-variant hover:text-primary hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-lg text-body-lg tracking-wide">System</span>
+</a>
+</div>
+<div class="mt-auto pt-gutter border-t border-outline-variant/10">
+<div class="flex items-center gap-3 mb-stack-md px-2">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border border-primary-container p-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-VpzllYMv78LDKd-evlHxJj3MUgQVDwvLs_t7GKcA5IteZha15uXYiE_W8b3pSKiCitRodfnMJgMb9NGWj5bQ2reVVFiYBDSSYqpGVvyO5xdkNrpRSc3f9QiB4SRrcMIfSGszAeuDZUsv2QemADABw0yLeHQAI10XSXo5B2vkYnAi6zBAzVtKTF7STFBvr7d9w9-Kf2f0L_GmlUxpUnYu861nLiSntawQCXIap9jXIaLhdwWdFaow7K2ddWNjaI6yQdH3Q76kPxI"/>
+<div>
+<p class="font-label-lg text-label-lg">S. Rogers</p>
+<p class="text-xs text-on-surface-variant opacity-60">ADMIN_LEVEL_01</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 rounded-full bg-outline-variant/10 hover:bg-error/10 hover:text-error transition-all font-label-lg text-label-lg uppercase tracking-widest">
+                    Terminate Session
+                </button>
+</div>
+</div>
+</nav>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-72 h-20 bg-surface/80 backdrop-blur-3xl border-b border-outline-variant/10 shadow-sm z-40">
+<div class="flex justify-between items-center px-container-padding-desktop w-full h-full">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-lg text-headline-lg font-black text-primary">STARK OS</span>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full min-w-[320px]">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-full placeholder:text-on-surface-variant/40" placeholder="Search Trace ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed transition-colors" data-icon="wifi_tethering">wifi_tethering</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed transition-colors" data-icon="notifications_active">notifications_active</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed transition-colors" data-icon="account_circle">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-20 pb-32 min-h-screen">
+<div class="px-container-padding-desktop py-stack-lg max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<nav class="flex gap-2 text-on-surface-variant mb-4">
+<span class="font-label-md uppercase tracking-widest opacity-60">Audit</span>
+<span class="opacity-30">/</span>
+<span class="font-label-md uppercase tracking-widest text-primary-container">Event Trace: #772-XT-BRAVO</span>
+</nav>
+<h1 class="font-display-lg text-display-lg">Trace Detail</h1>
+<p class="text-on-surface-variant font-body-lg max-w-2xl mt-2">Administrative override on High-Yield Sovereign Vault #092. Detected at 04:12:09 UTC.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-6 py-3 border border-on-surface hairline-border rounded-full font-label-lg uppercase tracking-widest hover:bg-on-surface hover:text-surface transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                        Export Evidence
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary-container text-on-primary-container rounded-full font-label-lg uppercase tracking-widest shadow-lg shadow-primary-container/20 hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow">play_arrow</span>
+                        Replay Event
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="bento-grid">
+<!-- Entity Profile -->
+<div class="col-span-4 row-span-2 bg-surface-container-lowest hairline-border p-stack-md rounded-lg shadow-[0px_30px_60px_rgba(0,0,0,0.02)]">
+<h3 class="font-label-md uppercase tracking-widest text-primary-container mb-6">Affected Entity Profile</h3>
+<div class="relative w-full aspect-square mb-6 overflow-hidden rounded">
+<img class="w-full h-full object-cover" data-alt="A high-end cinematic close-up of a sophisticated silver data core terminal inside a pristine white tech vault. Soft volumetric lighting highlights the metallic textures and micro-circuitry. The aesthetic is extremely clean and luxurious, reflecting a state-of-the-art secure financial facility. Minimalist golden accents catch the light against a backdrop of soft architectural shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBVOCF7fqcdienW0yIKEC2ojibFdTCh0PSpqTbfB9LPwHd0wTKujDqE3RTNgp0A3UlBstM7GzUssS5zO35hxLGbNDkyNyjan9ImDO8Rxo_JWF-93NgKr99eHZBCRWGzDuFOrpOPJEHpeCrRM5cmWDsfhRTH0SUOpmztqkmID9_iMu5hOs5pWd2SAXp11jtK810TT7gH4QHEi2XY9mGurH1abmNdhXun6n7SDg6YYPNuNAef94AQ9wF3XpZdJCK9dcTNFJEOVC9vA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-xs uppercase tracking-tighter opacity-70">Vault Identifier</p>
+<p class="font-headline-md text-headline-md">SOV-092-ALPHA</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant font-label-md">Status</span>
+<span class="text-error font-label-lg uppercase">Locked (Audit)</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant font-label-md">Classification</span>
+<span class="font-label-lg uppercase">Sovereign Tier III</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant font-label-md">Location</span>
+<span class="font-label-lg uppercase">Zurich Nexus-4</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant font-label-md mb-2">Access Logs (Last 24h)</p>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary-container w-[15%]"></div>
+<div class="h-full bg-surface-variant w-[80%]"></div>
+<div class="h-full bg-error w-[5%]"></div>
+</div>
+<p class="text-[10px] mt-2 opacity-50 uppercase tracking-tighter">1 Critical Anomaly Detected</p>
+</div>
+</div>
+</div>
+<!-- Sequence Timeline -->
+<div class="col-span-8 bg-surface-container-lowest hairline-border p-stack-md rounded-lg shadow-[0px_30px_60px_rgba(0,0,0,0.02)]">
+<h3 class="font-label-md uppercase tracking-widest text-primary-container mb-8">Event Sequence Timeline</h3>
+<div class="relative space-y-12 pl-8 border-l border-outline-variant/20 ml-2">
+<!-- Step 1 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 bg-primary-container rounded-full border-4 border-surface ring-4 ring-primary-container/10"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-lg uppercase">Authentication Initialized</p>
+<p class="text-on-surface-variant text-sm mt-1">Biometric handshake verified for Admin ID: XR-921.</p>
+</div>
+<span class="font-label-md text-on-surface-variant opacity-50">04:11:02.12</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 bg-primary-container rounded-full border-4 border-surface ring-4 ring-primary-container/10"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-lg uppercase">Vault Decryption Request</p>
+<p class="text-on-surface-variant text-sm mt-1">Request sent to Key Management System (KMS).</p>
+</div>
+<span class="font-label-md text-on-surface-variant opacity-50">04:11:45.88</span>
+</div>
+</div>
+<!-- Step 3 (The Anomaly) -->
+<div class="relative bg-error/5 -mx-4 px-4 py-4 rounded border-l-4 border-error">
+<div class="absolute -left-[32px] top-4 w-4 h-4 bg-error rounded-full border-4 border-surface ring-4 ring-error/10"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-lg uppercase text-error">Anomalous Delta Detected</p>
+<p class="text-on-surface-variant text-sm mt-1 font-bold">Ledger update attempted without secondary consensus. Triggering system lock.</p>
+</div>
+<span class="font-label-md text-error">04:12:09.02</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 bg-on-surface-variant rounded-full border-4 border-surface"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-lg uppercase">Forensic Freeze</p>
+<p class="text-on-surface-variant text-sm mt-1">Environmental state captured. Global audit record generated.</p>
+</div>
+<span class="font-label-md text-on-surface-variant opacity-50">04:12:15.33</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ledger Delta Snapshots -->
+<div class="col-span-8 bento-grid">
+<div class="col-span-6 bg-white hairline-border p-stack-md rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-label-md uppercase tracking-widest opacity-50">State Snapshot (Before)</h4>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="history">history</span>
+</div>
+<div class="font-mono text-xs bg-surface-container p-4 rounded text-on-surface-variant leading-relaxed">
+                            {<br/>
+                              "balance": "1,402,000.00",<br/>
+                              "currency": "XAU",<br/>
+                              "status": "ACTIVE",<br/>
+                              "checksum": "8b2a...9c"<br/>
+                            }
+                        </div>
+</div>
+<div class="col-span-6 bg-white hairline-border p-stack-md rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-label-md uppercase tracking-widest text-primary-container">State Snapshot (After)</h4>
+<span class="material-symbols-outlined text-primary-container" data-icon="analytics">analytics</span>
+</div>
+<div class="font-mono text-xs bg-primary-container/5 border border-primary-container/20 p-4 rounded text-on-surface-variant leading-relaxed">
+                            {<br/>
+                              "balance": <span class="text-error font-bold">"1,202,000.00"</span>,<br/>
+                              "currency": "XAU",<br/>
+                              "status": <span class="text-error font-bold">"PENDING_AUDIT"</span>,<br/>
+                              "delta": "-200,000.00"<br/>
+                            }
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="absolute bottom-0 right-0 left-72 py-stack-md bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="flex justify-between items-center px-container-padding-desktop w-full">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps font-bold text-tertiary-fixed">STARK INDUSTRIES</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-60 uppercase tracking-widest">© 2024 ELITE PRECISION ENFORCED.</p>
+</div>
+<div class="flex gap-stack-md">
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Security Protocols</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">System Status</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Privacy Vault</a>
+</div>
+</div>
+</footer>
+</body></html>

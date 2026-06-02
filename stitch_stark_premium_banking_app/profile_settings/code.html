@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK - Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "surface-dim": "#131313",
+                        "on-secondary": "#2f3131",
+                        "primary-fixed": "#e2e2e2",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary-container": "#b8b8b8",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-tint": "#c6c6c7",
+                        "tertiary": "#ffffff",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary": "#2f3131",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "secondary": "#c6c6c6",
+                        "tertiary-container": "#ffe088",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#5d5f5f",
+                        "primary": "#ffffff",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#484949",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary-container": "#636565",
+                        "surface-container": "#201f1f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e3e2e2",
+                        "outline-variant": "#444748",
+                        "surface-variant": "#353534",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#7b6100",
+                        "on-surface-variant": "#c4c7c8",
+                        "primary-container": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "40px",
+                        "stack-md": "24px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+        }
+        .gold-border {
+            border: 1px solid theme('colors.tertiary-fixed-dim');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-[120px] pt-[100px] md:pt-[120px] selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 border-b border-white/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<div class="flex justify-between items-center h-20 px-container-padding-mobile md:px-container-padding-desktop w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-white/10 object-cover hover:opacity-80 transition-opacity duration-300 cursor-pointer" data-alt="A close-up portrait of a professional individual with a neutral expression, wearing formal attire, captured in high-resolution with soft, directional lighting against a dark, minimal background, embodying a sophisticated and secure persona suitable for a premium banking application profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxmL_trwOG7S7elLk0YMjdLO3y8VA_EBujuDM9hq3i7GtrFX06FzMU246zNsIVhfZHFwejri2Qd6v_LtEXVUTOSO4-jE_9T-hYEH004ITC75OL7A86nKPfD9sNYNLvBEdV1wkN85G8_Pb7XNq47URszDK-BpusPItWqxxcoK3PkJBGaOJ1Cd21YvXdXagWxaEL1LEPqEXTrAMw1CN1NAsq4RLtxPD-1ATh7TFRY3T5BV2P3eSQxWoNQ-z4BU-H5v5Ekda_fKUzjuE"/>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-[0.2em] text-primary dark:text-primary uppercase">STARK</div>
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</div>
+</header>
+<main class="px-container-padding-mobile md:px-container-padding-desktop max-w-3xl mx-auto space-y-stack-lg">
+<!-- Profile Header -->
+<section class="flex flex-col items-center text-center mt-stack-md">
+<div class="relative mb-6 group">
+<img alt="User Avatar" class="w-24 h-24 rounded-full border-2 border-surface-tint object-cover shadow-[0px_10px_30px_rgba(192,192,192,0.1)] transition-transform duration-500 group-hover:scale-105" data-alt="A close-up portrait of a professional individual with a neutral expression, wearing formal attire, captured in high-resolution with soft, directional lighting against a dark, minimal background, embodying a sophisticated and secure persona suitable for a premium banking application profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEtl4K9iybKS2ThDiFuYvfhEGXadll2KsfCMfdi51V6TNbxMDOo2j1EAVCeZpcbD4wJKdkNk_nPxJRGnxtT8SAUKBseUTWvm7GAOfiUWj8cyPPJhUcedItNeCsyKVeQLjqgLRciNSnUi57Je9R0SYH7_7sDtAs7_pvadf9MPpBDPbOK6Mqqcgo31xcKTVHR4dfArAffOOaqzoLzOvZWE83Rj-PP9ngbZJLUrZviHRJGSyJ7O0oDNVG830n4ZLhGDv9ZWTNT7lW0Ho"/>
+<div class="absolute -bottom-2 -right-2 bg-surface p-1 rounded-full border border-surface-tint">
+<div class="bg-tertiary-fixed-dim text-on-tertiary-fixed w-8 h-8 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Alexander Wright</h1>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-tertiary-fixed-dim uppercase tracking-widest gold-border px-3 py-1 rounded-full bg-tertiary-fixed-dim/10">Elite Member</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-[#4ADE80]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Verified
+                </span>
+</div>
+</section>
+<!-- Settings List -->
+<section class="space-y-stack-md">
+<!-- Personal Info -->
+<div class="glass-card rounded-xl p-2">
+<div class="px-4 py-3 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-colors duration-300 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary">Personal Info</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Update your details</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Security -->
+<div class="glass-card rounded-xl p-2">
+<div class="px-4 py-3 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-colors duration-300 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shield_lock</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary">Security</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Biometrics, 2FA, Passwords</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Notifications -->
+<div class="glass-card rounded-xl p-2">
+<div class="px-4 py-3 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-colors duration-300 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications_active</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary">Notifications</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Manage alerts</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- App Settings & Appearance -->
+<div class="glass-card rounded-xl p-2 space-y-1">
+<div class="px-4 py-3 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-colors duration-300 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary">App Settings</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Preferences &amp; limits</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="w-full h-px bg-white/5 my-1"></div>
+<div class="px-4 py-3 flex items-center justify-between group rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dark_mode</span>
+</div>
+<div>
+<div class="font-body-lg text-body-lg text-primary">Appearance</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dark Mode</div>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<section class="mt-stack-lg flex justify-center">
+<button class="font-label-caps text-label-caps text-error border border-error/30 hover:bg-error/10 px-8 py-4 rounded-full transition-all duration-300 uppercase tracking-widest bg-transparent">
+                Log Out
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-lg bg-surface-container-lowest/90 backdrop-blur-2xl dark:bg-surface-container-lowest/90 border-t border-white/5 shadow-[0px_-10px_40px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+<div class="flex justify-around items-center h-24 pb-safe px-4 w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">swap_horiz</span>
+<span class="font-label-caps text-label-caps">TRANSFER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">credit_card</span>
+<span class="font-label-caps text-label-caps">CARDS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40 hover:text-primary/80 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">WEALTH</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary scale-110 transition-transform duration-300 hover:text-primary/80" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps font-bold">PROFILE</span>
+</a>
+</div>
+</nav>
+</body></html>

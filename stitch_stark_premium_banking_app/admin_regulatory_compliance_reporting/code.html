@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK | Institutional Regulatory Compliance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e3e2e2",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#484949",
+                        "secondary": "#c6c6c6",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-primary-fixed": "#1a1c1c",
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-background": "#e5e2e1",
+                        "on-primary": "#2f3131",
+                        "outline": "#8e9192",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "surface-bright": "#393939",
+                        "on-tertiary-container": "#7b6100",
+                        "on-surface": "#e5e2e1",
+                        "tertiary": "#ffffff",
+                        "surface": "#131313",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "surface-tint": "#c6c6c7",
+                        "primary": "#ffffff",
+                        "surface-variant": "#353534",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#2f3131",
+                        "inverse-primary": "#5d5f5f",
+                        "surface-container": "#201f1f",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131313",
+                        "primary-container": "#e2e2e2",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-tertiary": "#3c2f00",
+                        "on-primary-fixed-variant": "#454747",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "on-primary-container": "#636565",
+                        "background": "#131313",
+                        "tertiary-container": "#ffe088",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#c4c7c8",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#b8b8b8",
+                        "inverse-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "unit": "8px",
+                        "stack-lg": "48px",
+                        "container-padding-desktop": "40px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+        }
+        .status-optimal { color: #ffffff; border: 1px solid rgba(255,255,255,0.2); }
+        .status-review { color: #ffe088; border: 1px solid rgba(255, 224, 136, 0.2); }
+        .status-critical { color: #ffb4ab; border: 1px solid rgba(255, 180, 171, 0.2); }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 h-full w-64 bg-surface-container-lowest border-r border-white/5 flex flex-col py-stack-lg z-50">
+<div class="px-stack-md mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg tracking-widest text-primary">STARK</h1>
+<p class="font-label-caps text-label-caps text-secondary-fixed-dim">Institutional Grade</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps">Intelligence</span>
+</a>
+<a class="flex items-center gap-3 text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-caps text-label-caps">Capital</span>
+</a>
+<a class="flex items-center gap-3 text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-caps text-label-caps">Nexus</span>
+</a>
+<a class="flex items-center gap-3 text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Protocols</span>
+</a>
+<a class="flex items-center gap-3 text-primary border-l-2 border-primary bg-white/5 px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-caps text-label-caps">Audit</span>
+</a>
+<a class="flex items-center gap-3 text-secondary-fixed-dim hover:text-primary px-stack-md py-stack-sm transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-label-caps text-label-caps">System</span>
+</a>
+</nav>
+<div class="mt-auto px-stack-md">
+<button class="w-full py-stack-sm bg-primary text-on-primary font-label-caps text-label-caps rounded-DEFAULT hover:scale-[1.02] transition-transform duration-300">
+                Secure Terminal
+            </button>
+</div>
+</aside>
+<main class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-container-padding-desktop py-stack-sm w-full shadow-[0px_10px_30px_rgba(192,192,192,0.05)]">
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary opacity-50">search</span>
+<input class="bg-white/5 border-none rounded-full pl-10 pr-4 py-2 font-body-sm text-body-sm text-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search Audits..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="text-secondary hover:text-primary transition-colors material-symbols-outlined">notifications</button>
+<button class="text-secondary hover:text-primary transition-colors material-symbols-outlined">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a high-ranking financial administrator in a sharp, dark bespoke suit. The lighting is dramatic and moody, reflecting a high-stakes corporate environment. The background is a blurred obsidian and silver interior of a private vault. The overall aesthetic is one of quiet power, extreme precision, and luxury institutional management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfO-xsjfVdfZHAeiMiui-jj6UmEs5SuDi54PeHKPZpDkFv88z5f-OAWJ22Yg20ZgBwuehJcOY6GWyM2D4kPJk_D8LU1AHST3kEyD2bNLp08YGISQyVdvBYAUNFPvwUbkgTp5wwdQLg58htMPACDo17-zMpfSiCHWR5EXOPZWG9Oe5CLbbwBxWsEvoMLD53e0QBD-Ne__M1rccOAuWjwSajGQFMjjtWM3b_8EOc4-i2zc6HinXsE6VhtgCJYBbOnwrrzTHajoSd5zg"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-container-padding-desktop space-y-stack-lg max-w-7xl">
+<!-- Header Section -->
+<section class="flex justify-between items-end">
+<div class="space-y-unit">
+<p class="font-label-caps text-label-caps text-on-tertiary-container uppercase tracking-widest">Compliance Command</p>
+<h2 class="font-headline-lg text-headline-lg text-primary">Regulatory Compliance Reporting</h2>
+</div>
+<div class="flex gap-gutter">
+<div class="glass-card px-stack-md py-stack-sm rounded-DEFAULT flex items-center gap-stack-sm">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
+<span class="font-label-caps text-label-caps text-secondary">System Status: Optimal</span>
+</div>
+</div>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-12 gap-stack-md">
+<!-- Compliance Drift Analytics -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-lg p-stack-md">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-title-md text-title-md text-primary">Compliance Drift Analytics</h3>
+<div class="flex gap-stack-sm">
+<span class="font-label-caps text-label-caps text-secondary px-2 py-1 border border-white/10 rounded">30D</span>
+<span class="font-label-caps text-label-caps text-primary px-2 py-1 bg-white/5 border border-white/20 rounded">90D</span>
+</div>
+</div>
+<div class="h-64 relative flex items-end justify-between px-unit">
+<!-- Abstract Chart Simulation -->
+<div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+<img alt="Data Analytics Visual" class="w-full h-full object-cover rounded" data-alt="A sophisticated data visualization chart featuring glowing silver and white lines on a deep black background. The lines are thin and precise, representing financial trends and compliance scores. Soft gradients fade into the obsidian background, creating a sense of depth and futuristic elegance. Subtle light refraction effects mimic a glass overlay, maintaining the elite institutional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJuZF6BrIrqGlyQQ8FOYM2Ay7GxTRtVcUuAlZobOGdnlSPT3Oy9851HzMJdyx4vcquyoYEYW1kuP4J4Tc4fiyDn3njXHuSws_iT9P_FxIdYrPvuTmt4lVFhTk95xFqS6D9cCzVoYD9UfZQKq6wko2LkIW4Z9mBOitQoV1MuXiBOfgZq4_9if5p5wAThQr6Ah-cnAZC6eYjhArl-FyRif6McCno6jDvJOw6Vu0xAZhjaYzfYK_cKgpVc-SuKNEDDHiKOiGfU9UDTxI"/>
+</div>
+<!-- UI Overlay for Chart -->
+<div class="w-full h-full flex items-end gap-1 pb-4 border-b border-white/5">
+<div class="flex-1 bg-gradient-to-t from-white/10 to-transparent h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-white/20 to-transparent h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-white/10 to-transparent h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-white/30 to-white/10 h-[90%] rounded-t-sm border-t border-white/50"></div>
+<div class="flex-1 bg-gradient-to-t from-white/10 to-transparent h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-white/10 to-transparent h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-gradient-to-t from-white/15 to-transparent h-[80%] rounded-t-sm"></div>
+</div>
+</div>
+<div class="mt-stack-sm flex justify-around">
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-secondary">Global Score</p>
+<p class="font-title-md text-title-md text-primary">98.4%</p>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-secondary">Volatility</p>
+<p class="font-title-md text-title-md text-primary">0.02%</p>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-secondary">Audit Readiness</p>
+<p class="font-title-md text-title-md text-primary">Optimal</p>
+</div>
+</div>
+</div>
+<!-- Audit Export Center -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-lg p-stack-md flex flex-col">
+<h3 class="font-title-md text-title-md text-primary mb-stack-md">Audit Export Center</h3>
+<p class="font-body-sm text-body-sm text-secondary mb-stack-lg">Package vaulted documents and encrypted logs for SEC/FINRA review.</p>
+<div class="space-y-stack-sm flex-1">
+<div class="flex items-center justify-between p-stack-sm border border-white/5 rounded hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">inventory_2</span>
+<span class="font-label-caps text-label-caps">Full Vault Snapshot</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-30">download</span>
+</div>
+<div class="flex items-center justify-between p-stack-sm border border-white/5 rounded hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+<span class="font-label-caps text-label-caps">Communication Logs</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-30">download</span>
+</div>
+<div class="flex items-center justify-between p-stack-sm border border-white/5 rounded hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">gavel</span>
+<span class="font-label-caps text-label-caps">Entity Disclosures</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-30">download</span>
+</div>
+</div>
+<button class="mt-stack-lg w-full py-stack-sm border border-white/20 text-primary font-label-caps text-label-caps rounded-DEFAULT hover:bg-white hover:text-black transition-all duration-300">
+                        Generate Regulatory Package
+                    </button>
+</div>
+<!-- Report Status Hub -->
+<div class="col-span-12 glass-card rounded-lg overflow-hidden">
+<div class="p-stack-md border-b border-white/5 flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-primary">Report Status Hub</h3>
+<button class="text-secondary font-label-caps text-label-caps flex items-center gap-1 hover:text-primary transition-colors">
+                            View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-white/5 bg-white/5">
+<th class="px-stack-md py-4 font-label-caps text-label-caps text-secondary">Report Name</th>
+<th class="px-stack-md py-4 font-label-caps text-label-caps text-secondary">Jurisdiction</th>
+<th class="px-stack-md py-4 font-label-caps text-label-caps text-secondary">Status</th>
+<th class="px-stack-md py-4 font-label-caps text-label-caps text-secondary">Last Verified</th>
+<th class="px-stack-md py-4 font-label-caps text-label-caps text-secondary">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-stack-md py-stack-md font-body-lg text-body-lg text-primary">Form ADV - Annual Amendment</td>
+<td class="px-stack-md py-stack-md font-body-sm text-body-sm text-secondary">US SEC</td>
+<td class="px-stack-md py-stack-md">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest status-optimal">Optimal</span>
+</td>
+<td class="px-stack-md py-stack-md font-body-sm text-body-sm text-secondary">12 Oct 2024</td>
+<td class="px-stack-md py-stack-md">
+<button class="text-primary hover:underline font-label-caps text-label-caps">View Filing</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-stack-md py-stack-md font-body-lg text-body-lg text-primary">Schedule K-1 Distribution</td>
+<td class="px-stack-md py-stack-md font-body-sm text-body-sm text-secondary">US IRS</td>
+<td class="px-stack-md py-stack-md">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest status-review">Review Required</span>
+</td>
+<td class="px-stack-md py-stack-md font-body-sm text-body-sm text-secondary">08 Oct 2024</td>
+<td class="px-stack-md py-stack-md">
+<button class="text-primary hover:underline font-label-caps text-label-caps">Validate Data</button>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-stack-md py-stack-md font-body-lg text-body-lg text-primary">AML/KYC External Audit</td>
+<td class="px-stack-md py-stack-md font-body-sm text-body-sm text-secondary">Global/Inter-Agency</td>
+<td class="px-stack-md py-stack-md">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest status-critical">Critical</span>
+</td>
+<td class="px-stack-md py-stack-md font-body-sm text-body-sm text-secondary">Pending</td>
+<td class="px-stack-md py-stack-md">
+<button class="text-error hover:underline font-label-caps text-label-caps">Address Alerts</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Automated Filing Queue -->
+<div class="col-span-12 glass-card rounded-lg p-stack-md">
+<h3 class="font-title-md text-title-md text-primary mb-stack-md">Automated Filing Queue</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<!-- Deadline Card 1 -->
+<div class="p-stack-md bg-white/5 rounded border border-white/5 space-y-stack-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-secondary opacity-60">FCA UK Annex IV</span>
+<span class="material-symbols-outlined text-primary text-xl">timer</span>
+</div>
+<div class="py-stack-sm">
+<p class="font-display-lg text-[32px] font-bold text-primary">14d 04h</p>
+<p class="font-label-caps text-[10px] text-secondary">COUNTDOWN TO DEADLINE</p>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:scale-[1.01] transition-transform">
+                                Initiate Audit
+                            </button>
+</div>
+<!-- Deadline Card 2 -->
+<div class="p-stack-md bg-white/5 rounded border border-white/5 space-y-stack-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-secondary opacity-60">ESMA AIFMD Reporting</span>
+<span class="material-symbols-outlined text-primary text-xl">timer</span>
+</div>
+<div class="py-stack-sm">
+<p class="font-display-lg text-[32px] font-bold text-primary">02d 18h</p>
+<p class="font-label-caps text-[10px] text-error">URGENT FILING REQUIRED</p>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:scale-[1.01] transition-transform">
+                                Initiate Audit
+                            </button>
+</div>
+<!-- Deadline Card 3 -->
+<div class="p-stack-md bg-white/5 rounded border border-white/5 space-y-stack-sm">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-secondary opacity-60">SEC Form PF</span>
+<span class="material-symbols-outlined text-primary text-xl">timer</span>
+</div>
+<div class="py-stack-sm">
+<p class="font-display-lg text-[32px] font-bold text-primary">45d 11h</p>
+<p class="font-label-caps text-[10px] text-secondary">QUEUEING DATA PIPELINE</p>
+</div>
+<button class="w-full py-2 border border-white/20 text-primary font-label-caps text-label-caps rounded hover:bg-white/5 transition-colors">
+                                Review Draft
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto w-full bg-surface border-t border-white/5 flex justify-between items-center px-container-padding-desktop py-stack-md transition-opacity duration-500">
+<span class="font-label-caps text-label-caps opacity-50 text-secondary-fixed-dim">© 2024 STARK INSTITUTIONAL. SECURE TERMINAL V4.2.1-ELITE.</span>
+<div class="flex gap-stack-md">
+<a class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors" href="#">Legal Disclosures</a>
+<a class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors" href="#">Privacy Protocol</a>
+<a class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors" href="#">Audit Logs</a>
+</div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d0c5af;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#e5e2e1",
+                        "secondary": "#5f5e5e",
+                        "surface-tint": "#735c00",
+                        "surface-dim": "#dadada",
+                        "inverse-on-surface": "#f0f1f1",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "outline": "#7f7663",
+                        "tertiary": "#5d5f5f",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#241a00",
+                        "on-surface": "#1a1c1c",
+                        "outline-variant": "#d0c5af",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffe088",
+                        "primary-container": "#d4af37",
+                        "on-primary-fixed-variant": "#574500",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#656464",
+                        "inverse-surface": "#2f3131",
+                        "primary": "#735c00",
+                        "on-primary-container": "#554300",
+                        "background": "#f9f9f9",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#e5e2e1",
+                        "on-background": "#1a1c1c",
+                        "surface": "#f9f9f9",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-container": "#434546",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-padding-mobile": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "container-padding-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "headline-md": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="bg-surface-container-low/80 backdrop-blur-xl text-primary flex items-center justify-between px-container-padding-desktop h-20 w-full docked full-width top-0 z-40 border-b border-outline-variant/10 shadow-[0px_10px_30px_rgba(192,192,192,0.05)]">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg font-bold tracking-[0.2em] text-primary">ALTOS</span>
+<nav class="hidden md:flex gap-8">
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] cursor-pointer">Intelligence</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] cursor-pointer">Markets</span>
+<span class="font-label-caps text-label-caps text-tertiary-container font-semibold">Ledger</span>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 px-4 py-2 bg-surface-container-highest rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary scale-100 active:scale-[0.99] transition-transform cursor-pointer" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-body-md text-on-surface-variant placeholder-on-surface-variant/50 w-64" placeholder="Search correspondence..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all duration-500 cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all duration-500 cursor-pointer" data-icon="account_balance_wallet">account_balance_wallet</span>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-primary-container">
+<img alt="CIO" data-alt="A professional headshot of a senior investment officer in a bespoke charcoal suit, set against a blurred background of a high-end, minimalist architectural interior with warm golden lighting and clean lines. The image exudes a sense of quiet authority, sophistication, and premium executive banking aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaxMAQ0NcwfE2QZEBrBX8SZgLClwHk1OvivoMYJVhhiGbwWRKc4prVHT2cfaOHgGoqX6_H84QghjFSwyncYsNMZLwVZ79lIKiAsnmF7zz2ZFK1O5QZ9vl9WyYJjswS_C2OHRhdYd-TECw3QLcb2V5tzPgW_Ta8-M5xmkjh_06MYS9sFZD77jr6Zd4C66i2g4bm417GVs1q61LJ87Gdjy_x71WXLhzFD_VVP-MwYthMN9ZVuKdsUnnZpJfF67s5tPxJAA4X-whIkhY"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-full py-8 bg-surface-container-lowest docked left-0 w-[280px] border-r border-outline-variant/10">
+<div class="px-6 mb-10">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">SECURE</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">Communication Node</p>
+</div>
+<nav class="flex-1 flex flex-col">
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Intelligence</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="show_chart">show_chart</span>
+<span class="font-label-caps text-label-caps">Markets</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-tertiary-container bg-tertiary-container/5 border-r-2 border-tertiary-container cursor-pointer">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps">Ledger</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps">Entities</span>
+</div>
+<div class="mt-auto border-t border-outline-variant/5 pt-4">
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</div>
+</div>
+</nav>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Message List Pane -->
+<section class="w-1/3 border-r border-outline-variant/10 bg-surface-bright flex flex-col">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Correspondence</h3>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary/5 rounded-full transition-colors" data-icon="edit_square">edit_square</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Active Message Item -->
+<div class="p-6 bg-surface-container-low border-r-2 border-primary-container cursor-pointer transition-colors">
+<div class="flex gap-4">
+<div class="h-12 w-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Julian Vance</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60">10:24 AM</span>
+</div>
+<p class="text-[11px] uppercase tracking-tighter text-primary font-bold mb-1">Senior Advisor</p>
+<p class="text-body-md font-body-md text-on-surface-variant line-clamp-2 leading-snug">Regarding the Q3 allocation strategy for the European real estate fund...</p>
+</div>
+</div>
+</div>
+<!-- Other Message Items -->
+<div class="p-6 hover:bg-surface-container-low/50 transition-colors cursor-pointer border-b border-outline-variant/5">
+<div class="flex gap-4">
+<div class="h-12 w-12 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary-container shrink-0">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Compliance Desk</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60">Yesterday</span>
+</div>
+<p class="text-[11px] uppercase tracking-tighter text-on-surface-variant/60 font-bold mb-1">Institutional Oversight</p>
+<p class="text-body-md font-body-md text-on-surface-variant/70 line-clamp-2 leading-snug">Action Required: Annual disclosure forms for the North American portfolio...</p>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-surface-container-low/50 transition-colors cursor-pointer border-b border-outline-variant/5">
+<div class="flex gap-4">
+<div class="h-12 w-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Venture Group A</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60">Monday</span>
+</div>
+<p class="text-[11px] uppercase tracking-tighter text-on-surface-variant/60 font-bold mb-1">Series C Stakeholder</p>
+<p class="text-body-md font-body-md text-on-surface-variant/70 line-clamp-2 leading-snug">The latest cap table updates have been synchronized with your ALTOS vault.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Conversation Pane -->
+<section class="flex-1 flex flex-col bg-white">
+<!-- Chat Header -->
+<header class="p-8 border-b border-outline-variant/10 flex justify-between items-center">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="h-16 w-16 rounded-full overflow-hidden border-2 border-primary-container p-1 bg-white">
+<img alt="Advisor" class="rounded-full h-full w-full object-cover" data-alt="A portrait of a distinguished senior financial advisor in a minimalist studio setting. The advisor has a calm, confident expression, graying hair at the temples, and is wearing a dark navy executive blazer. The lighting is soft and directional, typical of a high-end gallery portrait, maintaining the brand's sophisticated gold and onyx palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWZzSYLzq7Pl8tX7ZUNnVC_HRaiKjivJzxqmGCWjuJDKBaZmC8mB3Tkz3Nk5Hk3sOPIJ94UcmBy1GEX6shA29krtie4oVWnHtNGq9AFNwfp6dMve0OG6xI00tqhC_6gVfLz7z8jrDjYURjWTH0bLsy16B2Jc3wHeXbFPpuFwOjSPlQbX0D7-SIsILTCOn3glWpO84O9YpGj6Veau-FRtITuDlXR3Gy1A0O1aApfcaQHZxUoIj_80dLxFnxKxtDbuhU7aQb0xfI02Q"/>
+</div>
+<span class="absolute bottom-1 right-1 h-3 w-3 bg-green-500 rounded-full border-2 border-white"></span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Julian Vance</h2>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">Senior Advisor</span>
+<span class="h-1 w-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-md text-label-md text-green-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                    Secure Encryption Active
+                                </span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="h-12 w-12 border border-outline-variant/20 rounded-full flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+<button class="h-12 w-12 border border-outline-variant/20 rounded-full flex items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+</button>
+<button class="h-12 px-6 bg-primary-container text-on-primary-container rounded-full font-label-lg flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                            Schedule Review
+                        </button>
+</div>
+</header>
+<!-- Messages Content -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-10">
+<!-- Date Divider -->
+<div class="flex items-center justify-center">
+<span class="px-4 py-1 bg-surface-container-low rounded-full font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest">Thursday, October 24</span>
+</div>
+<!-- Incoming Message -->
+<div class="flex gap-6 max-w-2xl">
+<div class="h-10 w-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary shrink-0 mt-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_circle">account_circle</span>
+</div>
+<div class="space-y-2">
+<div class="p-6 bg-surface-container-low rounded-tr-xl rounded-b-xl border border-outline-variant/10 shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Good morning. I've completed the initial stress-test analysis for the private equity holdings in the Core Portfolio. The results suggest a higher-than-expected resilience to the recent interest rate fluctuations.</p>
+</div>
+<span class="text-[10px] font-label-md text-on-surface-variant/40 ml-1">09:12 AM</span>
+</div>
+</div>
+<!-- Outgoing Message -->
+<div class="flex flex-row-reverse gap-6 max-w-2xl ml-auto">
+<div class="h-10 w-10 rounded-full bg-on-surface text-white flex items-center justify-center shrink-0 mt-1">
+<span class="font-label-caps text-[12px]">MB</span>
+</div>
+<div class="space-y-2 text-right">
+<div class="p-6 bg-on-surface text-white rounded-tl-xl rounded-b-xl shadow-lg shadow-on-surface/5">
+<p class="font-body-lg text-body-lg leading-relaxed">Thank you, Julian. Does this change our stance on the upcoming liquidity event for the Series D participation?</p>
+</div>
+<span class="text-[10px] font-label-md text-on-surface-variant/40 mr-1">09:45 AM • Delivered</span>
+</div>
+</div>
+<!-- Incoming Message with PDF -->
+<div class="flex gap-6 max-w-2xl">
+<div class="h-10 w-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary shrink-0 mt-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_circle">account_circle</span>
+</div>
+<div class="space-y-4">
+<div class="p-6 bg-surface-container-low rounded-tr-xl rounded-b-xl border border-outline-variant/10 shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">It certainly warrants a revisit. I've attached the full risk assessment report below for your review before our call at 2:00 PM.</p>
+</div>
+<!-- Shared Document Component -->
+<div class="w-80 p-4 border border-outline-variant/30 rounded-xl bg-white flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+<div class="h-12 w-12 bg-error/5 text-error flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Q3_Stress_Analysis_V2.pdf</p>
+<p class="font-label-md text-[11px] text-on-surface-variant/60 uppercase">2.4 MB • Secure PDF</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="download">download</span>
+</div>
+<span class="text-[10px] font-label-md text-on-surface-variant/40 ml-1">10:24 AM</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<footer class="p-8 bg-surface-bright border-t border-outline-variant/10">
+<div class="max-w-4xl mx-auto relative bg-white rounded-2xl border border-outline-variant/20 shadow-sm focus-within:border-primary transition-colors">
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-6 font-body-lg text-on-surface placeholder-on-surface-variant/30 resize-none custom-scrollbar" placeholder="Secure message to Julian Vance..." rows="2"></textarea>
+<div class="flex justify-between items-center px-6 pb-4">
+<div class="flex gap-4 text-on-surface-variant/60">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="attach_file">attach_file</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="sentiment_satisfied">sentiment_satisfied</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="mic">mic</span></button>
+</div>
+<button class="h-10 px-8 bg-on-surface text-white rounded-full font-label-caps text-[12px] tracking-widest hover:bg-on-surface/90 transition-colors">Execute Send</button>
+</div>
+</div>
+<p class="text-center mt-4 text-[10px] font-label-md text-on-surface-variant/40 tracking-widest uppercase">Encryption Status: AES-256 Multi-Layer Tunneling Enabled</p>
+</footer>
+</section>
+<!-- Contextual Sidebar (Details/Files) -->
+<section class="w-[320px] bg-surface-container-low/50 border-l border-outline-variant/10 flex flex-col p-8 overflow-y-auto custom-scrollbar">
+<div class="mb-10">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant/60 mb-6 tracking-widest">Advisor Availability</h4>
+<div class="bg-white p-6 rounded-xl border border-outline-variant/10 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<span class="h-2 w-2 rounded-full bg-green-500"></span>
+<span class="font-label-lg text-label-lg text-on-surface">Available until 6:00 PM</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-6 leading-relaxed">Julian is currently in his Zurich office. Typical response time: &lt; 15 mins.</p>
+<button class="w-full py-3 border border-outline-variant/30 rounded-full font-label-caps text-[11px] tracking-widest hover:bg-surface-container-low transition-colors">View Schedule</button>
+</div>
+</div>
+<div class="mb-10">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant/60 mb-6 tracking-widest">Shared Documents</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="h-10 w-10 rounded bg-white border border-outline-variant/20 flex items-center justify-center text-on-surface-variant group-hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate">Portfolio_Summary_OCT.pdf</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Oct 12 • 1.8 MB</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="h-10 w-10 rounded bg-white border border-outline-variant/20 flex items-center justify-center text-on-surface-variant group-hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="table_chart">table_chart</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate">Tax_Report_FY23_Draft.xlsx</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Sep 28 • 452 KB</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="h-10 w-10 rounded bg-white border border-outline-variant/20 flex items-center justify-center text-on-surface-variant group-hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="article">article</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate">NDA_ALTOS_Global_V4.pdf</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Sep 15 • 2.1 MB</p>
+</div>
+</div>
+</div>
+<button class="mt-8 text-primary font-label-caps text-[11px] tracking-widest flex items-center gap-2 hover:gap-3 transition-all">
+                        View All Assets
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="mt-auto pt-8 border-t border-outline-variant/10">
+<div class="bg-primary/5 p-6 rounded-xl border border-primary/10">
+<div class="flex items-center gap-3 text-primary mb-3">
+<span class="material-symbols-outlined" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-caps text-label-caps tracking-wider">Vault Integrity</span>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-relaxed mb-4">This communication channel is audited and compliant with SEC Rule 204-2 and GDPR protocols.</p>
+<div class="flex items-center gap-2">
+<div class="h-1 flex-1 bg-primary/20 rounded-full overflow-hidden">
+<div class="h-full w-full bg-primary"></div>
+</div>
+<span class="text-[10px] font-bold text-primary">100%</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer Component -->
+<footer class="bg-surface-dim text-on-surface-variant font-body-sm text-body-sm flex justify-between items-center px-container-padding-desktop py-4 w-full full-width bottom-0 border-t border-outline-variant/5">
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps opacity-60">© 2024 ALTOS CAPITAL MANAGEMENT. v2.4.0-PRIME</span>
+<span class="h-3 w-[1px] bg-outline-variant/30"></span>
+<div class="flex gap-4">
+<span class="font-label-caps text-label-caps hover:text-tertiary-fixed transition-colors cursor-pointer">Terms of Service</span>
+<span class="font-label-caps text-label-caps hover:text-tertiary-fixed transition-colors cursor-pointer">Regulatory Disclosures</span>
+<span class="font-label-caps text-label-caps hover:text-tertiary-fixed transition-colors cursor-pointer">Privacy Protocol</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="security">security</span>
+<span class="font-label-caps text-label-caps">Secure Session Active</span>
+</div>
+</footer>
+</body></html>

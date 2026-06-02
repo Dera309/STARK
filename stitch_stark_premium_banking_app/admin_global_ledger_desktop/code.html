@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK OS - Audit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#8e9192",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-bright": "#393939",
+                        "inverse-primary": "#5d5f5f",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-primary": "#2f3131",
+                        "on-error": "#690005",
+                        "surface": "#131313",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "primary-container": "#e2e2e2",
+                        "secondary-fixed": "#e3e2e2",
+                        "secondary-container": "#484949",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-background": "#e5e2e1",
+                        "on-primary-container": "#636565",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "primary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#ffe088",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-container": "#b8b8b8",
+                        "surface-tint": "#c6c6c7",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary": "#3c2f00",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#7b6100",
+                        "tertiary": "#ffffff",
+                        "secondary": "#c6c6c6",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed": "#ffe088",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary": "#2f3131",
+                        "surface-container": "#201f1f",
+                        "secondary-fixed-dim": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "gutter": "16px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "container-padding-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden font-body-lg">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-surface text-primary dark:text-primary font-body-lg text-body-lg tracking-wide h-screen w-72 fixed left-0 top-0 flex flex-col border-r border-outline-variant/10 backdrop-blur-2xl shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="p-gutter pb-stack-md flex items-center justify-center border-b border-outline-variant/10">
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary dark:text-primary">STARK</h1>
+<p class="font-label-caps text-label-caps ml-2 mt-2 text-tertiary-fixed opacity-80">Elite Operations</p>
+</div>
+<div class="flex flex-col gap-unit h-full p-gutter flex-grow">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 flex items-center gap-gutter p-unit rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Intelligence</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 flex items-center gap-gutter p-unit rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span>Capital</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 flex items-center gap-gutter p-unit rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span>Nexus</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 flex items-center gap-gutter p-unit rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span>Protocols</span>
+</a>
+<a class="text-tertiary-fixed dark:text-tertiary-fixed bg-surface-container-high border-r-2 border-tertiary-fixed hover:bg-white/5 transition-all duration-300 flex items-center gap-gutter p-unit rounded-l-lg scale-[0.98] origin-right" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Audit</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 flex items-center gap-gutter p-unit rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>System</span>
+</a>
+</div>
+<div class="p-gutter mt-auto border-t border-outline-variant/10">
+<button class="w-full py-unit px-gutter border border-outline-variant/30 text-error hover:bg-error/10 hover:border-error transition-all duration-300 rounded text-body-sm font-body-sm text-center">
+                Terminate Session
+            </button>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface/80 text-primary dark:text-primary font-label-caps text-label-caps fixed top-0 right-0 left-72 h-20 border-b border-outline-variant/10 backdrop-blur-3xl shadow-sm z-40">
+<div class="flex justify-between items-center px-container-padding-desktop w-full h-full">
+<div class="flex items-center gap-stack-sm w-1/3">
+<div class="relative w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-0 bottom-unit text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 text-primary focus:ring-0 focus:border-tertiary-fixed pl-8 pb-unit text-body-sm font-body-sm placeholder:text-on-surface-variant/50 transition-colors duration-300" placeholder="Search Ledgers..." type="text"/>
+</div>
+</div>
+<div class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary text-center w-1/3">
+                STARK OS
+            </div>
+<div class="flex items-center gap-stack-md justify-end w-1/3">
+<button class="text-on-surface-variant hover:text-primary hover:text-tertiary-fixed transition-colors duration-300 hover:opacity-80">
+<span class="material-symbols-outlined" data-icon="wifi_tethering">wifi_tethering</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary hover:text-tertiary-fixed transition-colors duration-300 hover:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary hover:text-tertiary-fixed transition-colors duration-300 hover:opacity-80">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-20 pb-32 min-h-screen px-container-padding-desktop pt-stack-lg">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-unit">Global Ledger</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Real-time monitoring of all secure transfers, filtered by risk threshold and spatial distribution.</p>
+</div>
+<div class="flex gap-gutter">
+<button class="border border-outline-variant text-on-surface-variant px-gutter py-unit rounded-lg font-body-sm text-body-sm hover:text-primary hover:border-primary transition-all duration-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span> Export Audit
+                </button>
+<button class="bg-primary text-background px-gutter py-unit rounded-lg font-body-sm text-body-sm font-bold hover:bg-tertiary-fixed transition-all duration-300">
+                    Deploy Protocol
+                </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-gutter mb-stack-lg">
+<!-- Filters & Map (Left Column) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-gutter">
+<!-- Filters Card -->
+<div class="bg-surface-container-low border border-outline-variant/10 rounded-lg p-stack-md relative overflow-hidden backdrop-blur-xl shadow-[0px_10px_30px_rgba(192,192,192,0.02)] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none before:h-[1px]">
+<h3 class="font-label-caps text-label-caps text-tertiary-fixed mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">tune</span> Filter Parameters
+                    </h3>
+<div class="space-y-stack-md">
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant block mb-unit">Currency Pair</label>
+<div class="relative">
+<select class="w-full bg-surface-container border border-outline-variant/30 text-primary font-body-sm text-body-sm rounded p-unit appearance-none focus:ring-0 focus:border-tertiary-fixed transition-colors">
+<option>USD / EUR - Standard</option>
+<option>USD / JPY - High Volume</option>
+<option>BTC / USD - Volatile</option>
+<option>XAU / USD - Reserve</option>
+</select>
+<span class="material-symbols-outlined absolute right-unit top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant block mb-unit flex justify-between">
+<span>Volume Threshold</span>
+<span class="text-primary">&gt; $10M</span>
+</label>
+<input class="w-full accent-tertiary-fixed bg-surface-container h-1 rounded-full appearance-none outline-none" max="100" min="0" type="range" value="75"/>
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant block mb-unit">Risk Score</label>
+<div class="flex gap-unit">
+<button class="flex-1 bg-surface-container border border-outline-variant/30 text-on-surface-variant py-unit rounded font-body-sm text-body-sm hover:border-primary transition-colors">Low</button>
+<button class="flex-1 bg-tertiary-fixed/10 border border-tertiary-fixed text-tertiary-fixed py-unit rounded font-body-sm text-body-sm">Med</button>
+<button class="flex-1 bg-surface-container border border-outline-variant/30 text-on-surface-variant py-unit rounded font-body-sm text-body-sm hover:border-error transition-colors">High</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Hotspot Map -->
+<div class="bg-surface-container-low border border-outline-variant/10 rounded-lg relative overflow-hidden backdrop-blur-xl flex-grow shadow-[0px_10px_30px_rgba(192,192,192,0.02)] min-h-[300px]">
+<img alt="Global transaction clusters represented as a stylized, high-contrast dark mode map. The map should be predominantly deep charcoal and pure black, illuminated by glowing, intricate data points and connecting lines in bright gold and silver. The aesthetic should feel like a highly advanced, secure intelligence interface, emphasizing global connectivity and precise geographic hotspots with a sleek, minimalist, and expensive glassmorphism execution." class="w-full h-full object-cover opacity-80 mix-blend-luminosity" data-alt="Global transaction clusters represented as a stylized, high-contrast dark mode map. The map should be predominantly deep charcoal and pure black, illuminated by glowing, intricate data points and connecting lines in bright gold and silver. The aesthetic should feel like a highly advanced, secure intelligence interface, emphasizing global connectivity and precise geographic hotspots with a sleek, minimalist, and expensive glassmorphism execution." data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE77O1Rj1ucVe0tGB0HTrQQo9JveABvd9CElsFEU9n5Yi8aPYR35zu4hVE94Le7QCiEbJMcYwCT2nqOOfmmZUcO_kSP32u556Ti6dyeq0EBhs73d5oyAWhW0rfVJUF_1DJ2oMU-dat95nxrC2aqK8DEVM3oaEoeklP0G6iGbjnvB6ZqoH3eocD7hQRwlKXZzoOg7DsmpBoIIts78qU4xs6lH6DdWwOc6vE0wHNCLl9JFpZJAjty-XbLWLG4OpNSZ2bnJfg9ArNcnQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-stack-sm left-stack-sm">
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-label-caps text-label-caps text-tertiary-fixed border border-tertiary-fixed/30 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed animate-pulse"></span> LIVE SPATIAL
+                         </span>
+</div>
+</div>
+</div>
+<!-- Transaction Ledger (Right Column) -->
+<div class="col-span-12 xl:col-span-8 bg-surface-container-lowest border border-outline-variant/10 rounded-lg overflow-hidden shadow-[0px_10px_30px_rgba(192,192,192,0.02)] flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none before:h-[1px]">
+<div class="p-stack-md border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-low/50">
+<h3 class="font-title-md text-title-md text-primary">Ledger Entries</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 4 of 12,094 records</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/10 bg-surface-container-lowest font-label-caps text-label-caps text-on-surface-variant">
+<th class="p-gutter font-medium w-1/5">TX Hash</th>
+<th class="p-gutter font-medium">Time (UTC)</th>
+<th class="p-gutter font-medium">Asset Flow</th>
+<th class="p-gutter font-medium text-right">Volume</th>
+<th class="p-gutter font-medium text-center">Risk</th>
+<th class="p-gutter font-medium text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-gutter font-mono text-on-surface-variant group-hover:text-primary transition-colors">0x8F9a...3c2B</td>
+<td class="p-gutter text-on-surface-variant">14:02:11</td>
+<td class="p-gutter">
+<div class="flex items-center gap-2">
+<span class="text-primary">USD</span>
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">arrow_forward</span>
+<span class="text-primary">EUR</span>
+</div>
+</td>
+<td class="p-gutter text-right font-medium text-primary">$14,200,500</td>
+<td class="p-gutter text-center">
+<span class="inline-block w-8 h-1 bg-surface-container rounded-full overflow-hidden">
+<span class="block h-full bg-error w-3/4"></span>
+</span>
+</td>
+<td class="p-gutter text-right">
+<span class="text-tertiary-fixed flex items-center justify-end gap-1 text-[11px] uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[14px]">pending</span> Pending
+                                    </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-gutter font-mono text-on-surface-variant group-hover:text-primary transition-colors">0x1A2b...9d4E</td>
+<td class="p-gutter text-on-surface-variant">13:45:00</td>
+<td class="p-gutter">
+<div class="flex items-center gap-2">
+<span class="text-primary">XAU</span>
+<span class="material-symbols-outlined text-[14px] text-outline">arrow_forward</span>
+<span class="text-primary">USD</span>
+</div>
+</td>
+<td class="p-gutter text-right font-medium text-primary">$8,750,000</td>
+<td class="p-gutter text-center">
+<span class="inline-block w-8 h-1 bg-surface-container rounded-full overflow-hidden">
+<span class="block h-full bg-outline w-1/4"></span>
+</span>
+</td>
+<td class="p-gutter text-right">
+<span class="text-outline flex items-center justify-end gap-1 text-[11px] uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Cleared
+                                    </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant/5 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-gutter font-mono text-on-surface-variant group-hover:text-primary transition-colors">0x7C5d...2f1A</td>
+<td class="p-gutter text-on-surface-variant">13:12:44</td>
+<td class="p-gutter">
+<div class="flex items-center gap-2">
+<span class="text-primary">BTC</span>
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">arrow_forward</span>
+<span class="text-primary">USD</span>
+</div>
+</td>
+<td class="p-gutter text-right font-medium text-primary">$42,100,000</td>
+<td class="p-gutter text-center">
+<span class="inline-block w-8 h-1 bg-surface-container rounded-full overflow-hidden">
+<span class="block h-full bg-tertiary-fixed w-1/2"></span>
+</span>
+</td>
+<td class="p-gutter text-right">
+<span class="text-outline flex items-center justify-end gap-1 text-[11px] uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Cleared
+                                    </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-gutter font-mono text-on-surface-variant group-hover:text-primary transition-colors">0x9E8f...4a3C</td>
+<td class="p-gutter text-on-surface-variant">12:55:10</td>
+<td class="p-gutter">
+<div class="flex items-center gap-2">
+<span class="text-primary">JPY</span>
+<span class="material-symbols-outlined text-[14px] text-outline">arrow_forward</span>
+<span class="text-primary">EUR</span>
+</div>
+</td>
+<td class="p-gutter text-right font-medium text-primary">$3,400,000</td>
+<td class="p-gutter text-center">
+<span class="inline-block w-8 h-1 bg-surface-container rounded-full overflow-hidden">
+<span class="block h-full bg-outline w-1/5"></span>
+</span>
+</td>
+<td class="p-gutter text-right">
+<span class="text-outline flex items-center justify-end gap-1 text-[11px] uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Cleared
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-on-surface-variant dark:text-on-surface-variant font-body-sm text-body-sm absolute bottom-0 right-0 left-72 py-stack-md border-t border-outline-variant/5">
+<div class="flex justify-between items-center px-container-padding-desktop w-full">
+<div class="font-label-caps text-label-caps font-bold text-tertiary-fixed">
+                © 2024 STARK INDUSTRIES. ELITE PRECISION ENFORCED.
+            </div>
+<div class="flex gap-gutter">
+<a class="text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all duration-300" href="#">Security Protocols</a>
+<a class="text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all duration-300" href="#">System Status</a>
+<a class="text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all duration-300" href="#">Privacy Vault</a>
+</div>
+</div>
+</footer>
+</body></html>

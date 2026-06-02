@@ -125,25 +125,6 @@ const NotificationCenter: React.FC<{ compact?: boolean }> = ({ compact = false }
     }
   };
 
-  const createTestNotification = async () => {
-    try {
-      // Create a test notification by calling a test endpoint
-      // For now, we'll simulate it by adding a local notification
-      const testNotif: AppNotification = {
-        _id: "test-" + Date.now(),
-        userId: "current-user",
-        type: "SYSTEM",
-        title: "Test Notification",
-        body: "This is a test notification to verify the mark-as-read button functionality",
-        read: false,
-        channel: "IN_APP",
-        createdAt: new Date(),
-      };
-      setNotifications((prev) => [testNotif, ...prev]);
-    } catch (err) {
-      console.error("Failed to create test notification");
-    }
-  };
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
@@ -151,12 +132,9 @@ const NotificationCenter: React.FC<{ compact?: boolean }> = ({ compact = false }
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={compact
-          ? "relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high active:bg-surface-container-highest transition-colors"
-          : "relative p-3 rounded-2xl bg-surface-container-low border border-outline-variant hover:bg-surface-container-highest transition-all group"
-        }
+        className="relative flex items-center justify-center transition-colors"
       >
-        <span className={compact ? "text-lg" : "text-xl"}>🔔</span>
+        <span className="material-symbols-outlined text-lg">notifications</span>
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface animate-pulse">
             {unreadCount}
@@ -202,18 +180,6 @@ const NotificationCenter: React.FC<{ compact?: boolean }> = ({ compact = false }
             </div>
 
             <footer className="p-3 sm:p-4 text-center border-t border-outline-variant flex flex-col gap-2 sm:gap-3">
-              {/* Debug info - always show button for testing */}
-              <div className="flex justify-between items-center flex-wrap gap-2">
-                <div className="text-[8px] text-on-surface-variant font-mono">
-                  Debug: {notifications.length} total, {unreadCount} unread
-                </div>
-                <button
-                  onClick={createTestNotification}
-                  className="text-[8px] font-black uppercase tracking-widest text-secondary hover:text-on-secondary-container transition-colors bg-secondary/10 px-2 py-1 rounded"
-                >
-                  Add Test
-                </button>
-              </div>
               <div className="flex justify-between items-center flex-wrap gap-2">
                 <button
                   onClick={markAsRead}

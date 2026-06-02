@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>STARK | Portfolio Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#5f5e5e",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#554300",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#434546",
+                      "on-primary-fixed-variant": "#574500",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-background": "#1a1c1c",
+                      "outline": "#7f7663",
+                      "surface-bright": "#f9f9f9",
+                      "on-secondary-fixed-variant": "#474646",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#656464",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-surface": "#1a1c1c",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container": "#eeeeee",
+                      "on-surface-variant": "#4d4635",
+                      "surface-container-low": "#f3f3f4",
+                      "inverse-on-surface": "#f0f1f1",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-dim": "#dadada",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-tint": "#735c00",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#ffe088",
+                      "primary-fixed-dim": "#e9c349",
+                      "surface-container-highest": "#e2e2e2",
+                      "surface-variant": "#e2e2e2",
+                      "on-tertiary": "#ffffff",
+                      "surface": "#f9f9f9",
+                      "tertiary-container": "#b2b3b3",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "inverse-primary": "#e9c349",
+                      "secondary-container": "#e5e2e1",
+                      "primary-container": "#d4af37",
+                      "outline-variant": "#d0c5af",
+                      "inverse-surface": "#2f3131",
+                      "background": "#f9f9f9",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#5d5f5f",
+                      "primary": "#735c00",
+                      "on-primary-fixed": "#241a00",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "container-padding-desktop": "64px",
+                      "stack-md": "24px",
+                      "container-padding-mobile": "24px",
+                      "stack-lg": "48px",
+                      "gutter": "24px",
+                      "stack-sm": "12px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Libre Caslon Text"],
+                      "display-lg-mobile": ["Libre Caslon Text"],
+                      "display-lg": ["Libre Caslon Text"],
+                      "label-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-lg": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-lg": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gallery-shadow {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.01);
+        }
+        .hairline-border {
+            border: 0.5px solid rgba(127, 118, 99, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-outline-variant/30 flex justify-between items-center px-container-padding-mobile h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden hairline-border">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a sophisticated private banking client in a minimalist studio setting. The lighting is soft and artistic, highlighting a clean-shaven man in a high-end black cashmere sweater. The background is a soft, warm gray, maintaining the STARK brand's quiet luxury aesthetic and gold-accented atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGAd08QQbIUjQFvwz8bMg0m7-qZFConsgMo661Sb-QFvtZb4ab1WzECR_AWcFhLcf6NyJ3NE8gnIf92P9XL2GzGdnNlfovUDYdE2_WzptcFHpilQfPGcOkkruQ2KTgQ77M5U4pqWNFxAM67T3bsO2cqg_kv8oaHubt8gGLk2u6Whb6wNFDYLLaPWfgjfcqVsEArCMDkvWiUT2CBYi6siLxVVCRl5TFXuAQmHG5R-JWFMgS7y3qLLqQRIr_MGswqO2t3WpeCRe_tcs"/>
+</div>
+</div>
+<div class="font-headline-md text-headline-md tracking-widest text-primary">STARK</div>
+<button class="material-symbols-outlined text-primary hover:opacity-70 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+</header>
+<main class="pt-24 pb-32 px-container-padding-mobile max-w-lg mx-auto">
+<!-- Total Portfolio Value Section -->
+<section class="mb-stack-lg">
+<h2 class="font-label-md text-label-md uppercase tracking-widest text-secondary mb-2">Total Portfolio Value</h2>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-background">$4.2M</span>
+<span class="font-label-lg text-label-lg text-primary">+12.4%</span>
+</div>
+<!-- Subtle Gold Sparkline -->
+<div class="mt-6 h-16 w-full relative">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 60">
+<path d="M0,45 Q50,40 100,50 T200,30 T300,35 T400,10" fill="none" stroke="#D4AF37" stroke-linecap="round" stroke-width="1.5"></path>
+<path d="M0,45 Q50,40 100,50 T200,30 T300,35 T400,10 V60 H0 Z" fill="url(#goldGradient)" opacity="0.05"></path>
+<defs>
+<lineargradient id="goldGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</section>
+<!-- Asset Distribution -->
+<section class="mb-stack-lg">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-background">Asset Distribution</h2>
+<span class="material-symbols-outlined text-secondary" data-icon="pie_chart">pie_chart</span>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Private Equity Card -->
+<div class="bg-surface-container-lowest hairline-border p-6 rounded-lg gallery-shadow flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase mb-1">Private Equity</p>
+<p class="font-headline-md text-headline-md text-on-background">45%</p>
+</div>
+<div class="w-12 h-12 rounded-full border-[3px] border-primary-container flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+</div>
+<!-- Real Estate & Fixed Income Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest hairline-border p-6 rounded-lg gallery-shadow">
+<p class="font-label-md text-label-md text-secondary uppercase mb-1">Real Estate</p>
+<p class="font-headline-md text-headline-md text-on-background">30%</p>
+</div>
+<div class="bg-surface-container-lowest hairline-border p-6 rounded-lg gallery-shadow">
+<p class="font-label-md text-label-md text-secondary uppercase mb-1">Fixed Income</p>
+<p class="font-headline-md text-headline-md text-on-background">25%</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Yield Forecast -->
+<section class="mb-stack-lg">
+<div class="bg-surface-container-lowest hairline-border p-8 rounded-lg gallery-shadow relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-label-md text-label-md text-secondary uppercase mb-4 tracking-widest">Projected Annual Yield</h2>
+<div class="flex items-center gap-6">
+<div>
+<p class="font-display-lg-mobile text-display-lg-mobile text-on-background mb-1">$312,000</p>
+<p class="font-body-lg text-body-lg text-primary">7.2% Net Return</p>
+</div>
+<!-- Circular Progress for Tax Efficiency -->
+<div class="relative w-20 h-20 ml-auto">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-primary" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213" stroke-dashoffset="42" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-label-md text-[10px] leading-tight text-secondary">TAX</span>
+<span class="font-label-lg text-label-lg leading-tight">82%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Subtle graphic background -->
+<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+</section>
+<!-- Recent Distributions -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-background mb-6">Recent Distributions</h2>
+<div class="space-y-0">
+<!-- Row 1 -->
+<div class="py-5 border-b border-outline-variant/20 flex justify-between items-center group active:bg-surface-container-low transition-colors px-1">
+<div class="max-w-[70%]">
+<p class="font-body-md text-body-md text-on-background truncate">Quarterly Dividend - Global Equity Fund</p>
+<p class="font-label-md text-label-md text-secondary mt-1 uppercase">12 Oct 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-background">+$42,150.00</p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="py-5 border-b border-outline-variant/20 flex justify-between items-center group active:bg-surface-container-low transition-colors px-1">
+<div class="max-w-[70%]">
+<p class="font-body-md text-body-md text-on-background truncate">Rental Income - London Commercial Portfolio</p>
+<p class="font-label-md text-label-md text-secondary mt-1 uppercase">05 Oct 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-background">+$18,900.00</p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="py-5 border-b border-outline-variant/20 flex justify-between items-center group active:bg-surface-container-low transition-colors px-1">
+<div class="max-w-[70%]">
+<p class="font-body-md text-body-md text-on-background truncate">Yield Distribution - Fixed Income II</p>
+<p class="font-label-md text-label-md text-secondary mt-1 uppercase">28 Sep 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-background">+$9,240.00</p>
+</div>
+</div>
+</div>
+<button class="mt-8 w-full py-4 px-6 rounded-full border border-on-background text-on-background font-label-lg text-label-lg uppercase tracking-widest hover:bg-on-background hover:text-white transition-all active:scale-95">
+                View All Transactions
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md dark:bg-surface/90 border-t border-outline-variant/20 shadow-[0_-10px_40px_rgba(0,0,0,0.02)] flex justify-around items-center px-4 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</body></html>

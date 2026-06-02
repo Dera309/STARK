@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK OS - Admin Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#8e9192",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-bright": "#393939",
+                        "inverse-primary": "#5d5f5f",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-primary": "#2f3131",
+                        "on-error": "#690005",
+                        "surface": "#131313",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "primary-container": "#e2e2e2",
+                        "secondary-fixed": "#e3e2e2",
+                        "secondary-container": "#484949",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-background": "#e5e2e1",
+                        "on-primary-container": "#636565",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "primary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#ffe088",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-container": "#b8b8b8",
+                        "surface-tint": "#c6c6c7",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary": "#3c2f00",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#7b6100",
+                        "tertiary": "#ffffff",
+                        "secondary": "#c6c6c6",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed": "#ffe088",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary": "#2f3131",
+                        "surface-container": "#201f1f",
+                        "secondary-fixed-dim": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "gutter": "16px",
+                        "stack-md": "24px",
+                        "container-padding-mobile": "24px",
+                        "container-padding-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: linear-gradient(180deg, rgba(32, 31, 31, 0.8) 0%, rgba(19, 19, 19, 0.9) 100%);
+            border: 1px solid rgba(196, 199, 200, 0.1);
+            box-shadow: 0px 10px 30px rgba(192, 192, 192, 0.05);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+        }
+        .chart-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(196, 199, 200, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(196, 199, 200, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg text-body-lg min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-surface h-screen w-72 fixed left-0 top-0 flex flex-col border-r border-outline-variant/10 backdrop-blur-2xl shadow-[0px_10px_30px_rgba(192,192,192,0.05)] z-50">
+<div class="p-gutter flex flex-col gap-unit h-full">
+<div class="mb-stack-md flex items-center gap-gutter px-4 py-6">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuC3l1zaUK9siUSR2WhYbvExgdBEXRRvX5z10OCsvu2kgeICRj6-qKmQCaGATRfJPJ2LxU1T7FqrzRrxR4F4-IQVs9m6vV-5QKLJgtF5EISjB7CbThIHbRwY1-C4oaS3J4Ie0GpL_IpdNhKsY0HC5FBvgoVp0XzggvSG1oLv4122zj7xBoma32HvNR6vmLl2TZzlpAXLi9hbJ62EbEVmZ2PszOcl_eo-fZYPCQ4qma4jolR9bg93W04Cz1XKlwyHW5CUMYiIgsBo0"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary dark:text-primary">STARK</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Elite Operations</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-DEFAULT text-tertiary-fixed dark:text-tertiary-fixed bg-surface-container-high border-r-2 border-tertiary-fixed hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-body-lg text-body-lg tracking-wide">Intelligence</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body-lg text-body-lg tracking-wide">Capital</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-body-lg text-body-lg tracking-wide">Nexus</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-body-lg text-body-lg tracking-wide">Protocols</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-lg text-body-lg tracking-wide">Audit</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-lg text-body-lg tracking-wide">System</span>
+</a>
+</div>
+<button class="mt-auto flex items-center justify-center gap-2 w-full py-3 border border-outline-variant/30 rounded-DEFAULT text-on-surface hover:bg-white/5 transition-all duration-300">
+<span class="material-symbols-outlined text-[18px]">power_settings_new</span>
+<span class="font-label-caps text-label-caps">Terminate Session</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen relative">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface/80 fixed top-0 right-0 left-72 h-20 border-b border-outline-variant/10 backdrop-blur-3xl shadow-sm z-40">
+<div class="flex justify-between items-center px-container-padding-desktop w-full h-full">
+<div class="flex items-center gap-gutter">
+<h2 class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary">STARK OS</h2>
+</div>
+<div class="flex-1 max-w-md mx-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-tertiary-fixed transition-colors">search</span>
+<input class="w-full bg-surface-container/50 border-b border-outline-variant/30 py-2 pl-12 pr-4 text-primary focus:outline-none focus:border-tertiary-fixed focus:bg-surface-container transition-all placeholder:text-on-surface-variant/50 font-body-sm text-body-sm" placeholder="Global query..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-tertiary-fixed">
+<span class="material-symbols-outlined">wifi_tethering</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-tertiary-fixed relative">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full shadow-[0_0_8px_rgba(255,180,171,0.6)]"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-tertiary-fixed">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 mt-20 p-container-padding-desktop pb-32 overflow-y-auto">
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Overview</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Real-time system diagnostics and liquidity metrics.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-2 rounded-full border border-tertiary-fixed/30 bg-tertiary-fixed/5 text-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px] animate-pulse">radio_button_checked</span>
+<span class="font-label-caps text-label-caps">System Pulse Normal</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Main Chart Area -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-xl p-stack-md flex flex-col h-[500px]">
+<div class="flex justify-between items-center mb-6 z-10">
+<div>
+<h3 class="font-title-md text-title-md text-primary">Global Liquidity Pool</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Aggregated velocity over 24h</p>
+</div>
+<div class="text-right">
+<div class="font-headline-lg text-headline-lg text-tertiary-fixed">$4.28B</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">arrow_upward</span>
+                                +12.4%
+                            </div>
+</div>
+</div>
+<div class="flex-1 relative chart-grid rounded-lg border border-outline-variant/5">
+<!-- Abstract Chart Representation -->
+<div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-tertiary-fixed/10 to-transparent"></div>
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path class="drop-shadow-[0_0_8px_rgba(255,224,136,0.4)]" d="M0,80 Q10,60 20,70 T40,40 T60,50 T80,20 T100,30" fill="none" stroke="#ffe088" stroke-width="0.5"></path>
+<path d="M0,80 Q10,60 20,70 T40,40 T60,50 T80,20 T100,30 L100,100 L0,100 Z" fill="url(#grad)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ffe088"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute bottom-0 left-1/4 w-px h-full bg-outline-variant/20"></div>
+<div class="absolute bottom-0 left-2/4 w-px h-full bg-outline-variant/20"></div>
+<div class="absolute bottom-0 left-3/4 w-px h-full bg-outline-variant/20"></div>
+</div>
+</div>
+<!-- Side Cards -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Active Sessions -->
+<div class="glass-card rounded-xl p-stack-md flex-1">
+<div class="flex items-start justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<span class="font-label-caps text-label-caps border border-outline-variant/30 px-2 py-1 rounded text-on-surface-variant">LIVE</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface-variant mb-1">Active Sessions</h4>
+<div class="font-headline-lg text-headline-lg text-primary">24,198</div>
+<div class="w-full h-1 bg-surface-container-high mt-4 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+<!-- Node Health -->
+<div class="glass-card rounded-xl p-stack-md flex-1">
+<div class="flex items-start justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary-fixed">dns</span>
+</div>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface-variant mb-1">Node Health Matrix</h4>
+<div class="font-headline-lg text-headline-lg text-primary">99.9%</div>
+<div class="flex gap-1 mt-4">
+<div class="flex-1 h-8 bg-tertiary-fixed/20 rounded border border-tertiary-fixed/30"></div>
+<div class="flex-1 h-8 bg-tertiary-fixed/20 rounded border border-tertiary-fixed/30"></div>
+<div class="flex-1 h-8 bg-tertiary-fixed/20 rounded border border-tertiary-fixed/30"></div>
+<div class="flex-1 h-8 bg-surface-container-high rounded border border-outline-variant/10"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="absolute bottom-0 right-0 left-0 bg-surface-container-lowest dark:bg-surface-container-lowest py-stack-md border-t border-outline-variant/5 z-30">
+<div class="flex justify-between items-center px-container-padding-desktop w-full">
+<span class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant">© 2024 STARK INDUSTRIES. ELITE PRECISION ENFORCED.</span>
+<div class="flex gap-6">
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Security Protocols</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">System Status</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Privacy Vault</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(0, 0, 0, 0.05);
+        }
+        .stark-shadow {
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.03);
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dadada",
+                      "primary-container": "#d4af37",
+                      "surface-container-high": "#e8e8e8",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#574500",
+                      "on-secondary-container": "#656464",
+                      "inverse-surface": "#2f3131",
+                      "tertiary-container": "#b2b3b3",
+                      "primary-fixed-dim": "#e9c349",
+                      "on-surface-variant": "#4d4635",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-primary-container": "#554300",
+                      "background": "#f9f9f9",
+                      "on-error": "#ffffff",
+                      "surface": "#f9f9f9",
+                      "error": "#ba1a1a",
+                      "tertiary": "#5d5f5f",
+                      "surface-tint": "#735c00",
+                      "primary": "#735c00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e2e2e2",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#e9c349",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "outline": "#7f7663",
+                      "inverse-on-surface": "#f0f1f1",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#434546",
+                      "on-surface": "#1a1c1c",
+                      "surface-bright": "#f9f9f9",
+                      "secondary-container": "#e5e2e1",
+                      "surface-container-low": "#f3f3f4",
+                      "secondary-fixed": "#e5e2e1",
+                      "primary-fixed": "#ffe088",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "secondary": "#5f5e5e",
+                      "outline-variant": "#d0c5af",
+                      "on-primary-fixed": "#241a00",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-secondary-fixed-variant": "#474646"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "stack-lg": "48px",
+                      "container-padding-desktop": "64px",
+                      "stack-sm": "12px",
+                      "stack-md": "24px",
+                      "container-padding-mobile": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-lg": ["Libre Caslon Text"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "display-lg": ["Libre Caslon Text"],
+                      "headline-md": ["Libre Caslon Text"],
+                      "display-lg-mobile": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared SideNavBar -->
+<aside class="h-screen w-72 fixed left-0 top-0 flex flex-col bg-surface border-r border-outline-variant/10 backdrop-blur-2xl shadow-[0px_10px_30px_rgba(192,192,192,0.05)] p-gutter gap-unit">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary">STARK</h1>
+<p class="font-body-md text-on-surface-variant opacity-60">Elite Operations</p>
+</div>
+<nav class="flex flex-col gap-unit flex-grow">
+<a class="flex items-center gap-stack-sm p-stack-sm rounded-lg text-tertiary-fixed bg-surface-container-high border-r-2 border-tertiary-fixed transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-lg text-body-lg tracking-wide">Intelligence</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm rounded-lg text-on-surface-variant hover:text-primary transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-body-lg text-body-lg tracking-wide">Capital</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm rounded-lg text-on-surface-variant hover:text-primary transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-body-lg text-body-lg tracking-wide">Nexus</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm rounded-lg text-on-surface-variant hover:text-primary transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-body-lg text-body-lg tracking-wide">Protocols</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm rounded-lg text-on-surface-variant hover:text-primary transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-lg text-body-lg tracking-wide">Audit</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm rounded-lg text-on-surface-variant hover:text-primary transition-all duration-300 hover:bg-white/5" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-lg text-body-lg tracking-wide">System</span>
+</a>
+</nav>
+<div class="mt-auto pt-stack-md border-t border-outline-variant/5">
+<div class="flex items-center gap-stack-sm mb-stack-md">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full object-cover grayscale" data-alt="A professional portrait of a senior executive in a dark tailored suit, captured in high-contrast black and white photography. The lighting is dramatic and moody, reflecting a position of power and authority. The background is a blurred, minimalist office setting with soft architectural highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDitWEX5qLQKuAJPETyswZN4xHx1q7OCvQtl7ckBSDPIBxG8eD7s7vAcYiGXY6jij3-zMUAnlgfgrX48nJGM7NJ8ysVQP4bD-6IIvYm8My2TZlGOVIWwPc4EULBI8N-DZCwZEohcmJd7iUjXPtVaEpBSIUG6S8hDWm399Bns93Plo5RrjOh0GxOMcIDqY76BcGvlLipTBcOYdnLnnJsn9tvuyQ3D88Jl4CyWeltT9CpKnflkr0Nlp1hR1tFrzR_4su8sw9WFQGSqtE"/>
+<div>
+<p class="font-label-lg text-label-lg">Director Stark</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Lvl 9 Clearance</p>
+</div>
+</div>
+<button class="w-full py-stack-sm border border-outline-variant/20 rounded-lg font-label-lg text-label-lg hover:bg-error/10 hover:text-error transition-all duration-300">
+                Terminate Session
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen relative pb-stack-lg">
+<!-- Shared TopAppBar -->
+<header class="fixed top-0 right-0 left-72 h-20 bg-surface/80 backdrop-blur-3xl border-b border-outline-variant/10 shadow-sm z-50 flex justify-between items-center px-container-padding-desktop">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-lg text-headline-lg font-black text-primary">STARK OS</span>
+<div class="h-6 w-px bg-outline-variant/20 mx-unit"></div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-40" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 font-label-md text-label-md w-64 focus:ring-1 focus:ring-primary-container transition-all" placeholder="Global Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="wifi_tethering">wifi_tethering</span>
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="notifications_active">notifications_active</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary-container rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="pt-20 px-container-padding-desktop mt-stack-lg">
+<!-- Hero Title -->
+<div class="mb-stack-lg">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-unit">Executive Governance</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Strategic oversight and systemic validation for the Stark high-net-worth ecosystem. Real-time liquidity auditing and governance coordination.</p>
+</div>
+<!-- KPI Row (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="bg-surface-container-lowest glass-card stark-shadow p-stack-md rounded-lg flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Total AUM</span>
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<p class="font-headline-lg text-headline-lg text-on-surface">$12.4B</p>
+<p class="font-label-md text-label-md text-primary">+2.4% <span class="text-on-surface-variant opacity-40">this quarter</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest glass-card stark-shadow p-stack-md rounded-lg flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Global Liquidity</span>
+<span class="material-symbols-outlined text-primary" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<p class="font-headline-lg text-headline-lg text-on-surface">$3.1B</p>
+<p class="font-label-md text-label-md text-primary-container">Optimal <span class="text-on-surface-variant opacity-40">Tier 1 Buffer</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest glass-card stark-shadow p-stack-md rounded-lg flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">System Integrity</span>
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="font-headline-lg text-headline-lg text-on-surface">99.98%</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">Status: <span class="text-primary">Nominal</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest glass-card stark-shadow p-stack-md rounded-lg flex flex-col justify-between h-40 border-l-4 border-primary-container">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Compliance Score</span>
+<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
+</div>
+<div>
+<p class="font-headline-lg text-headline-lg text-on-surface">AAA+</p>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">Basel III / IV <span class="text-primary-container">Compliant</span></p>
+</div>
+</div>
+</div>
+<!-- Main Insights Section -->
+<div class="grid grid-cols-12 gap-gutter mb-stack-lg">
+<!-- Strategic Risk Matrix (Visualization Placeholder) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest glass-card stark-shadow p-stack-lg rounded-lg min-h-[500px]">
+<div class="flex justify-between items-center mb-stack-lg">
+<div>
+<h3 class="font-headline-md text-headline-md">Strategic Risk Matrix</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Real-time systemic exposure analysis</p>
+</div>
+<div class="flex gap-stack-sm">
+<span class="flex items-center gap-1 font-label-md text-label-md"><span class="w-2 h-2 rounded-full bg-primary"></span> High Impact</span>
+<span class="flex items-center gap-1 font-label-md text-label-md"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> Moderate</span>
+</div>
+</div>
+<div class="relative h-80 w-full border-l border-b border-outline-variant/30 flex items-end">
+<!-- Simulated Matrix Chart -->
+<div class="absolute inset-0 grid grid-cols-4 grid-rows-4 opacity-5 pointer-events-none">
+<div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-t border-on-surface"></div>
+<div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-t border-on-surface"></div>
+<div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-t border-on-surface"></div>
+<div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-r border-t border-on-surface"></div><div class="border-t border-on-surface"></div>
+</div>
+<!-- Data Points -->
+<div class="absolute bottom-1/4 left-1/4 group cursor-help">
+<div class="w-4 h-4 bg-primary-container rounded-full ring-8 ring-primary-container/10"></div>
+<div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Geopolitical (Asia)</div>
+</div>
+<div class="absolute bottom-3/4 left-3/4 group cursor-help">
+<div class="w-6 h-6 bg-primary rounded-full ring-12 ring-primary/5"></div>
+<div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Currency Volatility</div>
+</div>
+<div class="absolute bottom-1/2 left-2/3 group cursor-help">
+<div class="w-3 h-3 bg-secondary rounded-full ring-4 ring-secondary/10"></div>
+<div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Regulatory Shifts</div>
+</div>
+<div class="absolute -left-12 top-1/2 -rotate-90 font-label-md text-label-md text-on-surface-variant/40">IMPACT MAGNITUDE</div>
+<div class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-label-md text-label-md text-on-surface-variant/40">PROBABILITY COEFFICIENT</div>
+</div>
+<div class="mt-12 grid grid-cols-2 gap-stack-md border-t border-outline-variant/10 pt-stack-md">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-unit">Primary Threat Vector</p>
+<p class="font-body-md text-body-md font-bold text-error">Liquidity Crunch (Tier 3 Assets)</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-unit">Mitigation Readiness</p>
+<p class="font-body-md text-body-md font-bold text-primary">Level 4 Defensive Protocols Active</p>
+</div>
+</div>
+</div>
+<!-- Regional Capital Distribution -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest glass-card stark-shadow p-stack-lg rounded-lg flex flex-col">
+<div class="mb-stack-md">
+<h3 class="font-headline-md text-headline-md">Regional Distribution</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Global deployment of liquidity anchors</p>
+</div>
+<div class="flex-grow rounded-lg overflow-hidden relative min-h-[250px] mb-stack-md bg-surface-container">
+<img alt="Global Map" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGPxwGnCRzb653zBoHL-CMJUezKjvdZYglS9J6DqKT_WIOGlFOkZn_xHqv_jVepoIgyfx3dq8WbseNoGDzn70HS7ov8Or699O9iYdejK6IeNUZWyZnMK1qA2VSYRT7LHI8gOZoJVLjoY7rURV57vC1BQ4_LlsQghM8--qGltLrXK0Ngq6zA57if7Z7rZNjRIrJ0xHm-q5vVTYBT1egIoAmzwA7g-JWuixoUBgpG-YhC4zCqd8e6TcZplv3W_eJLQsXp8F0StZGexo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<!-- Strategic Markers -->
+<div class="absolute top-1/3 left-1/4 w-3 h-3 bg-primary-container rounded-full animate-pulse ring-4 ring-primary-container/30"></div>
+<div class="absolute top-1/2 right-1/4 w-3 h-3 bg-primary-container rounded-full animate-pulse ring-4 ring-primary-container/30"></div>
+<div class="absolute bottom-1/4 left-1/2 w-3 h-3 bg-primary-container rounded-full animate-pulse ring-4 ring-primary-container/30"></div>
+</div>
+<ul class="space-y-stack-sm">
+<li class="flex justify-between items-center py-unit border-b border-outline-variant/5">
+<span class="font-body-md text-body-md">EMEA Central Vault</span>
+<span class="font-body-md text-body-md font-bold text-primary">$4.2B</span>
+</li>
+<li class="flex justify-between items-center py-unit border-b border-outline-variant/5">
+<span class="font-body-md text-body-md">Americas Digital Reserve</span>
+<span class="font-body-md text-body-md font-bold text-primary">$3.8B</span>
+</li>
+<li class="flex justify-between items-center py-unit border-b border-outline-variant/5">
+<span class="font-body-md text-body-md">APAC Nexus Growth</span>
+<span class="font-body-md text-body-md font-bold text-primary">$2.9B</span>
+</li>
+<li class="flex justify-between items-center py-unit">
+<span class="font-body-md text-body-md">Swiss Privacy Vaults</span>
+<span class="font-body-md text-body-md font-bold text-primary">$1.5B</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Governance Oversight Section -->
+<div class="bg-surface-container-lowest glass-card stark-shadow rounded-lg overflow-hidden">
+<div class="px-stack-lg py-stack-md bg-surface-container-low/50 flex justify-between items-center border-b border-outline-variant/10">
+<div>
+<h3 class="font-headline-md text-headline-md">Governance Oversight</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Pending high-level approvals requiring Lvl 9 authorization</p>
+</div>
+<button class="px-stack-md py-stack-sm bg-primary text-on-primary rounded-full font-label-lg text-label-lg hover:shadow-lg transition-all duration-300">
+                        Batch Authorization
+                    </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="font-label-md text-label-md text-on-surface-variant opacity-60 uppercase tracking-widest border-b border-outline-variant/10">
+<th class="px-stack-lg py-stack-md">System Protocol</th>
+<th class="px-stack-lg py-stack-md">Risk Level</th>
+<th class="px-stack-lg py-stack-md">Initiator</th>
+<th class="px-stack-lg py-stack-md text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-stack-lg py-stack-md">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary-container" data-icon="security">security</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Protocol Gamma-X</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Liquidity Rebalancing - EMEA</p>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-stack-md">
+<span class="px-3 py-1 bg-primary-container/10 text-primary-container font-label-md text-label-md rounded-full">Moderate</span>
+</td>
+<td class="px-stack-lg py-stack-md font-body-md text-body-md">AI Agent Alpha-7</td>
+<td class="px-stack-lg py-stack-md text-right">
+<button class="font-label-lg text-label-lg text-primary hover:underline underline-offset-4">Review Details</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-stack-lg py-stack-md">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-error" data-icon="lock">lock</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Hard Lock Override</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Asset Freeze Request - ID: 8829-Z</p>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-stack-md">
+<span class="px-3 py-1 bg-error/10 text-error font-label-md text-label-md rounded-full font-bold">Critical</span>
+</td>
+<td class="px-stack-lg py-stack-md font-body-md text-body-md">Global Compliance Ofc.</td>
+<td class="px-stack-lg py-stack-md text-right">
+<button class="font-label-lg text-label-lg text-primary hover:underline underline-offset-4">Review Details</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-stack-lg py-stack-md">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
+<div>
+<p class="font-body-md text-body-md font-bold">Nexus Migration</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Data Sovereignty Realignment</p>
+</div>
+</div>
+</td>
+<td class="px-stack-lg py-stack-md">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant font-label-md text-label-md rounded-full">Routine</span>
+</td>
+<td class="px-stack-lg py-stack-md font-body-md text-body-md">System Architecture</td>
+<td class="px-stack-lg py-stack-md text-right">
+<button class="font-label-lg text-label-lg text-primary hover:underline underline-offset-4">Review Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Shared Footer -->
+<footer class="absolute bottom-0 right-0 left-0 py-stack-md border-t border-outline-variant/5 bg-surface-container-lowest flex justify-between items-center px-container-padding-desktop">
+<div class="flex items-center gap-stack-lg">
+<span class="font-label-caps text-label-caps font-bold text-tertiary-fixed">STARK INDUSTRIES</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-60">© 2024 STARK INDUSTRIES. ELITE PRECISION ENFORCED.</p>
+</div>
+<div class="flex gap-stack-md">
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Security Protocols</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">System Status</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary underline-offset-4 hover:underline transition-all" href="#">Privacy Vault</a>
+</div>
+</footer>
+</main>
+<!-- Contextual Floating Action Button -->
+<button class="fixed bottom-gutter right-gutter w-16 h-16 bg-primary-container text-on-primary-container rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 group z-[60]">
+<span class="material-symbols-outlined text-3xl" data-icon="emergency_share" data-weight="fill" style="font-variation-settings: 'FILL' 1;">emergency_share</span>
+<span class="absolute right-full mr-4 bg-on-surface text-surface text-label-md px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Emergency Lockdown</span>
+</button>
+</body></html>

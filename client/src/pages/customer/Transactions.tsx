@@ -138,49 +138,81 @@ const TransactionsPage: React.FC = () => {
 
   return (
     <div className="space-y-8 pb-4">
-      {/* Search & Filters — matches stitch */}
-      <section className="space-y-6">
-        <div className="relative">
-          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">
-            search
-          </span>
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search transactions..."
-            className="w-full pl-12 pr-4 py-3 bg-surface-container-high border-none rounded-xl focus:ring-2 focus:ring-secondary transition-all font-body text-sm placeholder:text-outline-variant outline-none"
-          />
-        </div>
-        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
-          {(["ALL", "CREDIT", "DEBIT"] as const).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-6 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
-                filter === f
-                  ? "bg-primary text-on-primary"
-                  : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-              }`}
-            >
-              {f === "ALL" ? "All" : f === "CREDIT" ? "Incoming" : "Outgoing"}
-            </button>
-          ))}
+      {/* Search & Filters — matches realistic card design */}
+      <section className="rounded-xl p-6 space-y-6 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-700" style={{
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+      }}>
+        {/* Card Texture Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
+        }}></div>
+        
+        {/* Holographic Sheen Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        {/* Decorative Glow */}
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-tertiary-fixed rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700"></div>
+        
+        <div className="relative z-10 space-y-6">
+          <div className="relative">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/60 text-[20px]">
+              search
+            </span>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search transactions..."
+              className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:ring-2 focus:ring-tertiary-fixed transition-all font-body text-sm placeholder:text-white/40 outline-none text-white backdrop-blur-sm"
+              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+            />
+          </div>
+          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+            {(["ALL", "CREDIT", "DEBIT"] as const).map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-6 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+                  filter === f
+                    ? "bg-tertiary-fixed text-on-tertiary-fixed"
+                    : "bg-white/10 text-white/80 hover:bg-white/20 border border-white/20"
+                }`}
+              >
+                {f === "ALL" ? "All" : f === "CREDIT" ? "Incoming" : "Outgoing"}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Statement Download — matches stitch */}
-      <section className="bg-primary-container text-white p-6 rounded-xl space-y-4 shadow-lg overflow-hidden relative">
+      {/* Statement Download — matches realistic card design */}
+      <section className="rounded-xl p-6 space-y-4 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-700" style={{
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+      }}>
+        {/* Card Texture Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
+        }}></div>
+        
+        {/* Holographic Sheen Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        {/* Decorative Glow */}
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-tertiary-fixed rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700"></div>
+        
         <div className="absolute -right-4 -top-4 opacity-10">
-          <span className="material-symbols-outlined text-8xl filled">account_balance_wallet</span>
+          <span className="material-symbols-outlined text-8xl filled text-white">account_balance_wallet</span>
         </div>
-        <div>
-          <h2 className="text-lg font-bold tracking-tight">Download Statements</h2>
-          <p className="text-xs text-on-primary-container">
+        
+        <div className="relative z-10">
+          <h2 className="text-lg font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Download Statements</h2>
+          <p className="text-xs text-white/80">
             Securely export your history in PDF format
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-2">
+        <div className="relative z-10 grid grid-cols-1 gap-2">
           {[
             { label: "Last 3 Months", period: "3m" as const },
             { label: "Last 6 Months", period: "6m" as const },
@@ -189,20 +221,34 @@ const TransactionsPage: React.FC = () => {
             <button
               key={period}
               onClick={() => handleDownloadStatement(period)}
-              className="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5"
+              className="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-colors border border-white/20 backdrop-blur-sm"
             >
-              <span className="text-sm font-medium">{label}</span>
-              <span className="material-symbols-outlined text-secondary-fixed-dim">download</span>
+              <span className="text-sm font-medium text-white" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>{label}</span>
+              <span className="material-symbols-outlined text-tertiary-fixed">download</span>
             </button>
           ))}
         </div>
       </section>
 
-      {/* Transactions List — matches stitch */}
-      <section className="space-y-6">
-        <div className="flex justify-between items-end">
-          <h2 className="text-xl font-extrabold tracking-tight">Recent Activity</h2>
-          <span className="text-xs text-secondary font-bold uppercase tracking-widest">
+      {/* Transactions List — matches realistic card design */}
+      <section className="rounded-xl p-6 space-y-6 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-700" style={{
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+      }}>
+        {/* Card Texture Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")'
+        }}></div>
+        
+        {/* Holographic Sheen Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        {/* Decorative Glow */}
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-tertiary-fixed rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700"></div>
+        
+        <div className="relative z-10 flex justify-between items-end">
+          <h2 className="text-xl font-extrabold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Recent Activity</h2>
+          <span className="text-xs text-tertiary-fixed font-bold uppercase tracking-widest" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
             History
           </span>
         </div>
@@ -210,31 +256,31 @@ const TransactionsPage: React.FC = () => {
         {isLoading ? (
           <TransactionsSkeleton />
         ) : error ? (
-          <div className="p-8 text-center text-error font-bold">{error}</div>
+          <div className="relative z-10 p-8 text-center text-error font-bold">{error}</div>
         ) : filtered.length === 0 ? (
-          <div className="py-12 text-center text-on-surface-variant font-medium text-sm">
+          <div className="relative z-10 py-12 text-center text-white/80 font-medium text-sm">
             No transactions found.
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="relative z-10 space-y-3">
             {Object.entries(groups).map(([group, txs]) => (
               <div key={group} className="space-y-1">
-                <p className="text-[10px] font-bold text-outline uppercase tracking-tighter px-1">
+                <p className="text-[10px] font-bold text-white/60 uppercase tracking-tighter px-1">
                   {group}
                 </p>
-                <div className="bg-surface-container-lowest rounded-xl p-1">
+                <div className="bg-white/5 rounded-xl p-1 backdrop-blur-sm border border-white/10">
                   {txs.map((tx) => (
                     <div
                       key={tx._id}
-                      className="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg transition-colors"
+                      className="flex items-center gap-4 p-4 hover:bg-white/10 rounded-lg transition-colors"
                     >
                       <div
                         className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
                           tx.status === "FAILED" || tx.status === "VOIDED"
-                            ? "bg-error/10 text-error"
+                            ? "bg-error/20 text-error"
                             : tx.type === "CREDIT" || tx.type === "ADMIN_CREDIT"
-                              ? "bg-secondary-container/20 text-secondary"
-                              : "bg-surface-container-high text-primary"
+                              ? "bg-tertiary-fixed/20 text-tertiary-fixed"
+                              : "bg-white/10 text-white"
                         }`}
                       >
                         <span className="material-symbols-outlined">
@@ -242,10 +288,10 @@ const TransactionsPage: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="text-sm font-bold text-on-surface truncate">
+                        <h4 className="text-sm font-bold text-white truncate" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
                           {getTransactionDescription(tx)}
                         </h4>
-                        <p className="text-xs text-on-surface-variant">
+                        <p className="text-xs text-white/70">
                           {tx.category === "TRANSFER" && tx.counterpartyAccountNumber
                             ? `Account ${tx.counterpartyAccountNumber}`
                             : tx.category}{" "}
@@ -258,9 +304,10 @@ const TransactionsPage: React.FC = () => {
                             tx.status === "FAILED" || tx.status === "VOIDED"
                               ? "text-error"
                               : tx.type === "DEBIT" || tx.type === "TRANSFER"
-                                ? "text-on-surface"
-                                : "text-secondary"
+                                ? "text-white"
+                                : "text-tertiary-fixed"
                           }`}
+                          style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
                         >
                           {tx.status === "FAILED" || tx.status === "VOIDED"
                             ? "Failed"
@@ -270,7 +317,7 @@ const TransactionsPage: React.FC = () => {
                           className={`text-[10px] font-medium ${
                             tx.status === "FAILED" || tx.status === "VOIDED"
                               ? "text-error"
-                              : "text-on-surface-variant"
+                              : "text-white/70"
                           }`}
                         >
                           {tx.status === "SUCCESS" ? formatTime(tx.createdAt) : tx.status}
@@ -295,7 +342,7 @@ const TransactionsPage: React.FC = () => {
               fetchTransactions(p);
             }}
             disabled={page === 1}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-40"
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/20 text-white/80 hover:bg-white/10 transition-colors disabled:opacity-40 backdrop-blur-sm"
           >
             <span className="material-symbols-outlined text-sm">chevron_left</span>
           </button>
@@ -308,8 +355,8 @@ const TransactionsPage: React.FC = () => {
               }}
               className={`w-8 h-8 flex items-center justify-center rounded-lg text-xs font-bold transition-colors ${
                 p === page
-                  ? "bg-primary text-white"
-                  : "border border-outline-variant text-on-surface-variant hover:bg-surface-container-high"
+                  ? "bg-tertiary-fixed text-on-tertiary-fixed"
+                  : "border border-white/20 text-white/80 hover:bg-white/10 backdrop-blur-sm"
               }`}
             >
               {p}
@@ -322,7 +369,7 @@ const TransactionsPage: React.FC = () => {
               fetchTransactions(p);
             }}
             disabled={page === totalPages}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-40"
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/20 text-white/80 hover:bg-white/10 transition-colors disabled:opacity-40 backdrop-blur-sm"
           >
             <span className="material-symbols-outlined text-sm">chevron_right</span>
           </button>
