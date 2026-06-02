@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import ThemeToggle from "../../components/ui/ThemeToggle";
 import api, { ApiError } from "../../services/api";
 
 const Login: React.FC = () => {
@@ -44,6 +45,11 @@ const Login: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-tertiary-fixed-dim/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-surface-container-high/30 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Theme Toggle */}
+      <div className="absolute top-6 right-6 z-10">
+        <ThemeToggle />
       </div>
 
       <main className="w-full max-w-md mx-auto relative z-10 animate-fade-in">
