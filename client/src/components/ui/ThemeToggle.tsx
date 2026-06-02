@@ -10,12 +10,15 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
 
   return (
     <button
-      onClick={() => {
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
         console.log('ThemeToggle clicked, current theme:', theme);
         toggleTheme();
       }}
-      className="relative w-20 h-10 sm:w-16 sm:h-9 bg-surface-container-low border border-outline-variant rounded-full cursor-pointer z-[100] transition-all duration-500"
+      className="relative w-20 h-10 sm:w-16 sm:h-9 bg-surface-container-low border border-outline-variant rounded-full cursor-pointer z-[9999] transition-all duration-500"
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      style={{ touchAction: 'manipulation', minWidth: '80px', minHeight: '40px' }}
     >
       {/* Toggle Circle */}
       <div
