@@ -40,7 +40,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden p-6">
+    <div className="min-h-screen flex items-center justify-center bg-background relative p-6">
       {/* Background radial glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-tertiary-fixed-dim/5 rounded-full blur-[120px]" />
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
       </div>
 
       {/* Theme Toggle */}
-      <div className="absolute top-6 right-6 z-10">
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
         <ThemeToggle />
       </div>
 
