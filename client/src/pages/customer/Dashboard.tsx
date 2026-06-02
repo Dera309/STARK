@@ -358,7 +358,7 @@ const Dashboard: React.FC = () => {
                   </div>
                   <div className="flex flex-col">
                     <span className="font-body-lg text-body-lg text-primary font-medium">
-                      {transaction.description || transaction.type}
+                      {transaction.merchantName || transaction.type}
                     </span>
                     <span className="font-body-sm text-body-sm text-on-surface-variant">
                       {new Date(transaction.createdAt).toLocaleDateString()} • {new Date(transaction.createdAt).toLocaleTimeString()}
