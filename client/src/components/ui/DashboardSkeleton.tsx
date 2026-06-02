@@ -6,56 +6,57 @@ import TransactionSkeleton from "./TransactionSkeleton";
 const DashboardSkeleton: React.FC = () => {
   return (
     <div className="space-y-8 pb-4">
-      {/* Accounts Section */}
-      <section className="space-y-4">
-        <div className="flex justify-between items-end">
-          <Skeleton variant="text" width="120" height="16" />
-          <Skeleton variant="text" width="60" height="14" />
+      {/* Hero Balance/Wealth Portfolio Section */}
+      <section className="flex flex-col gap-4 mt-4">
+        <div className="rounded-xl p-6 md:p-10 flex flex-col gap-6 md:items-center relative overflow-hidden">
+          <Skeleton variant="text" width="200" height="20" />
+          <Skeleton variant="text" width="300" height="40" />
+          <Skeleton variant="rectangular" width="200" height="32" className="rounded-full" />
         </div>
-        <div className="flex gap-4 overflow-x-auto pb-2">
-          <AccountSkeleton />
-          <AccountSkeleton />
-          <AccountSkeleton />
+
+        {/* Quick Actions */}
+        <div className="grid grid-cols-4 gap-4 md:flex md:justify-center md:gap-8">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center gap-3"
+            >
+              <Skeleton variant="circular" width="56" height="56" />
+              <Skeleton variant="text" width="40" height="12" />
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Quick Actions */}
-      <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center justify-center p-3 sm:p-4 bg-surface-container-low rounded-xl gap-2 sm:gap-3"
-          >
-            <Skeleton variant="circular" width="48" height="48" />
-            <Skeleton variant="text" width="60" height="12" />
-          </div>
-        ))}
-      </section>
+      {/* Two Column Layout for Desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        {/* Left Column: Virtual Card */}
+        <div className="md:col-span-7 flex flex-col gap-8">
+          <section className="flex flex-col gap-3">
+            <Skeleton variant="text" width="120" height="20" />
+            <div className="rounded-xl aspect-[1.586/1]">
+              <Skeleton variant="rectangular" width="100%" height="100%" />
+            </div>
+          </section>
+        </div>
 
-      {/* Savings Goal */}
-      <section className="p-6 bg-surface-container-low rounded-xl space-y-4">
-        <div className="flex justify-between items-center">
-          <Skeleton variant="text" width="100" height="16" />
-          <Skeleton variant="text" width="40" height="14" />
+        {/* Right Column: Recent Transactions */}
+        <div className="md:col-span-5 flex flex-col gap-8">
+          <section className="space-y-4">
+            <div className="flex justify-between items-end">
+              <Skeleton variant="text" width="160" height="16" />
+              <Skeleton variant="text" width="60" height="14" />
+            </div>
+            <div className="space-y-3">
+              <TransactionSkeleton />
+              <TransactionSkeleton />
+              <TransactionSkeleton />
+              <TransactionSkeleton />
+              <TransactionSkeleton />
+            </div>
+          </section>
         </div>
-        <Skeleton variant="rectangular" width="100%" height="8" className="rounded-full" />
-        <Skeleton variant="text" width="200" height="12" />
-      </section>
-
-      {/* Recent Transactions */}
-      <section className="space-y-4">
-        <div className="flex justify-between items-end">
-          <Skeleton variant="text" width="160" height="16" />
-          <Skeleton variant="text" width="60" height="14" />
-        </div>
-        <div className="space-y-3">
-          <TransactionSkeleton />
-          <TransactionSkeleton />
-          <TransactionSkeleton />
-          <TransactionSkeleton />
-          <TransactionSkeleton />
-        </div>
-      </section>
+      </div>
     </div>
   );
 };
