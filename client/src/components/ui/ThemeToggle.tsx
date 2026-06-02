@@ -24,7 +24,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
           flex items-center justify-center pointer-events-none border border-outline-variant/30
           ${theme === 'dark'
             ? 'left-1 bg-surface-container-high shadow-silver-glow'
-            : 'left-10 sm:left-8 bg-primary shadow-gold-glow'
+            : 'left-12 sm:left-8 bg-primary shadow-gold-glow'
           }
         `}
       >
