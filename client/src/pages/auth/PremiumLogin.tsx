@@ -156,20 +156,6 @@ const PremiumLogin: React.FC = () => {
             </button>
           </form>
 
-          {/* Biometrics divider — matches design */}
-          <div className="mt-stack-lg flex flex-col items-center gap-stack-sm">
-            <p className="text-label-caps text-on-surface-variant uppercase tracking-widest">
-              Or sign in with
-            </p>
-            <button
-              type="button"
-              className="w-16 h-16 rounded-full glass-card flex items-center justify-center hover:bg-surface-container-high transition-premium group"
-            >
-              <span className="material-symbols-outlined text-3xl text-secondary group-hover:text-primary transition-colors duration-300">
-                fingerprint
-              </span>
-            </button>
-          </div>
         </div>
 
         {/* Sign up link */}
@@ -185,11 +171,26 @@ const PremiumLogin: React.FC = () => {
           </p>
         </div>
 
-        {/* FDIC Notice */}
-        <div className="mt-stack-lg text-center">
+        {/* Regulatory Disclosures */}
+        <div className="mt-stack-lg text-center space-y-2">
           <p className="text-label-caps text-on-surface-variant uppercase tracking-widest text-xs">
             N.A. Member. FDIC
           </p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-label-caps text-on-surface-variant/60 uppercase tracking-widest text-[10px]">
+            <span>CFPB</span>
+            <span>•</span>
+            <span>FinCEN</span>
+            <span>•</span>
+            <span>FINRA/SIPC</span>
+            <span>•</span>
+            <span>NY Dept of Financial Services</span>
+            <span>•</span>
+            <span>NMLS</span>
+            <span>•</span>
+            <span>SWIFT</span>
+            <span>•</span>
+            <span>FHLB</span>
+          </div>
         </div>
       </main>
     </div>

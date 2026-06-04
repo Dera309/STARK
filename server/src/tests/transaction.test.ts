@@ -215,5 +215,35 @@ describe('Transaction & Transfer Integration Tests', () => {
       // Basic PDF check (PDF files starts with %PDF-)
       expect(res.body.slice(0, 5).toString()).toBe('%PDF-');
     }, 10000); // Increase timeout for PDF generation
+
+    it('should generate statement with period=3m parameter', async () => {
+      const res = await makeRequest()
+        .get(`/api/v1/transactions/statement?accountId=${senderAccountId}&period=3m`)
+        .set(createAuthHeader(senderToken));
+
+      expect(res.status).toBe(200);
+      expect(res.header['content-type']).toBe('application/pdf');
+      expect(res.body.slice(0, 5).toString()).toBe('%PDF-');
+    }, 10000);
+
+    it('should generate statement with period=6m parameter', async () => {
+      const res = await makeRequest()
+        .get(`/api/v1/transactions/statement?accountId=${senderAccountId}&period=6m`)
+        .set(createAuthHeader(senderToken));
+
+      expect(res.status).toBe(200);
+      expect(res.header['content-type']).toBe('application/pdf');
+      expect(res.body.slice(0, 5).toString()).toBe('%PDF-');
+    }, 10000);
+
+    it('should generate statement with period=1y parameter', async () => {
+      const res = await makeRequest()
+        .get(`/api/v1/transactions/statement?accountId=${senderAccountId}&period=1y`)
+        .set(createAuthHeader(senderToken));
+
+      expect(res.status).toBe(200);
+      expect(res.header['content-type']).toBe('application/pdf');
+      expect(res.body.slice(0, 5).toString()).toBe('%PDF-');
+    }, 10000);
   });
 });

@@ -48,9 +48,109 @@ const getTransactionDescription = (tx: any): string => {
 /**
  * Generate and download a PDF transaction statement
  */
+/**
+ * Helper to draw PDF page footer
+ */
+const drawFooter = (doc: any, pageNum: number) => {
+  doc.save();
+  // Thin gold rule at the bottom
+  doc.strokeColor('#d4af37').lineWidth(1).moveTo(50, 735).lineTo(562, 735).stroke();
+  
+  // Footer text
+  doc.fillColor('#64748b').fontSize(7).font('Helvetica');
+  doc.text(
+    'STARK Premium Banking App • Member FDIC • CFPB • FinCEN • FINRA/SIPC • NYDFS • NMLS • SWIFT • FHLB',
+    50,
+    745,
+    { align: 'center', width: 512 }
+  );
+  doc.text(
+    `Page ${pageNum}`,
+    50,
+    760,
+    { align: 'right', width: 512 }
+  );
+  doc.restore();
+};
+
+/**
+ * Helper to draw PDF page header & return starting y coordinate for content
+ */
+const drawHeader = (doc: any, pageNum: number, start: Date, end: Date, account: any, req: any, openingBalance: number, closingBalance: number) => {
+  doc.save();
+  if (pageNum === 1) {
+    // 1. Dark Navy top banner: y = 0 to 100
+    doc.rect(0, 0, 612, 100).fill('#0a1628');
+    
+    // Logo "STARK" in gold, "ELITE ACCESS" in white
+    doc.fillColor('#d4af37').fontSize(26).font('Helvetica-Bold').text('STARK', 50, 30);
+    doc.fillColor('#ffffff').fontSize(8).font('Helvetica-Bold').text('E L I T E   A C C E S S', 50, 60);
+    
+    // Banner Right Side: "ACCOUNT STATEMENT" and Period
+    doc.fillColor('#ffffff').fontSize(16).font('Helvetica-Bold').text('ACCOUNT STATEMENT', 300, 30, { align: 'right', width: 262 });
+    doc.fillColor('#94a3b8').fontSize(9).font('Helvetica').text(
+      `Period: ${start.toLocaleDateString()} - ${end.toLocaleDateString()}`,
+      300,
+      55,
+      { align: 'right', width: 262 }
+    );
+    
+    // Gold Accent bar at the bottom of header: y = 97 to 100
+    doc.rect(0, 97, 612, 3).fill('#d4af37');
+
+    // 2. Account Details Card: y = 120 to 200
+    // Fill background with extremely light warm cream/gold wash
+    doc.rect(50, 120, 512, 80).fill('#fdfbf7');
+    // Draw gold border
+    doc.strokeColor('#d4af37').lineWidth(1).rect(50, 120, 512, 80).stroke();
+    
+    // Account details text in dark navy `#0a1628`
+    doc.fillColor('#0a1628');
+    doc.fontSize(11).font('Helvetica-Bold').text('Account Details', 70, 135);
+    doc.fontSize(9).font('Helvetica').text(`Holder: ${req.user.firstName} ${req.user.lastName}`, 70, 155);
+    doc.text(`Account Number: •••• •••• ${account.accountNumber.slice(-4)}`, 70, 172);
+    
+    doc.fontSize(11).font('Helvetica-Bold').text('Statement Summary', 320, 135);
+    doc.fontSize(9).font('Helvetica').text(`Opening Balance: ${(openingBalance / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} ${account.currency}`, 320, 155);
+    doc.fontSize(9).font('Helvetica-Bold').text(`Closing Balance: ${(closingBalance / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} ${account.currency}`, 320, 172);
+
+    // 3. Table Header: y = 220
+    doc.rect(50, 220, 512, 22).fill('#0a1628');
+    doc.fillColor('#ffffff').fontSize(9).font('Helvetica-Bold');
+    doc.text('Date', 60, 226);
+    doc.text('Description', 140, 226);
+    doc.text('Type', 360, 226);
+    doc.text('Amount', 450, 226, { align: 'right', width: 102 });
+
+    doc.restore();
+    return 248; // Starting y for rows on page 1
+  } else {
+    // Page 2+ mini header
+    doc.fillColor('#0a1628').fontSize(16).font('Helvetica-Bold').text('STARK', 50, 35);
+    doc.fillColor('#64748b').fontSize(8).font('Helvetica-Bold').text('ACCOUNT STATEMENT', 150, 42);
+    
+    // Thin gold line
+    doc.strokeColor('#d4af37').lineWidth(1).moveTo(50, 58).lineTo(562, 58).stroke();
+
+    // Table Header: y = 68
+    doc.rect(50, 68, 512, 22).fill('#0a1628');
+    doc.fillColor('#ffffff').fontSize(9).font('Helvetica-Bold');
+    doc.text('Date', 60, 74);
+    doc.text('Description', 140, 74);
+    doc.text('Type', 360, 74);
+    doc.text('Amount', 450, 74, { align: 'right', width: 102 });
+
+    doc.restore();
+    return 96; // Starting y for rows on page 2+
+  }
+};
+
+/**
+ * Generate and download a PDF transaction statement
+ */
 export const downloadStatement = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
-    const { accountId, startDate, endDate } = req.query;
+    const { accountId, startDate, endDate, period } = req.query;
     const userId = req.user._id;
 
     if (!accountId) throw UnprocessableEntity('Account ID is required');
@@ -58,67 +158,117 @@ export const downloadStatement = async (req: AuthRequest, res: Response, next: N
     const account = await Account.findOne({ _id: accountId, userId });
     if (!account) throw NotFound('Account not found');
 
-    const start = startDate ? new Date(startDate as string) : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    let start: Date;
+    if (startDate) {
+      start = new Date(startDate as string);
+    } else if (period === '3m') {
+      start = new Date();
+      start.setMonth(start.getMonth() - 3);
+    } else if (period === '6m') {
+      start = new Date();
+      start.setMonth(start.getMonth() - 6);
+    } else if (period === '1y') {
+      start = new Date();
+      start.setFullYear(start.getFullYear() - 1);
+    } else {
+      start = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    }
     const end = endDate ? new Date(endDate as string) : new Date();
 
-    const transactions = await Transaction.find({
+    // Fetch all successful transactions since start date to calculate correct historical opening/closing balance
+    const allTransactions = await Transaction.find({
       accountId,
       userId,
-      createdAt: { $gte: start, $lte: end },
+      status: 'SUCCESS',
+      createdAt: { $gte: start },
     }).sort({ createdAt: -1 });
+
+    // Filter down to the specific statement period
+    const transactions = allTransactions.filter(tx => tx.createdAt <= end);
+
+    // Calculate historical balances
+    let closingBalance = account.balance;
+    allTransactions.forEach((tx) => {
+      if (tx.createdAt > end) {
+        if (tx.type === 'DEBIT') {
+          closingBalance += tx.amount;
+        } else {
+          closingBalance -= tx.amount;
+        }
+      }
+    });
+
+    let openingBalance = closingBalance;
+    transactions.forEach((tx) => {
+      if (tx.type === 'DEBIT') {
+        openingBalance += tx.amount;
+      } else {
+        openingBalance -= tx.amount;
+      }
+    });
 
     const doc = new PDFDocument({ margin: 50 });
 
-    // Header
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', `attachment; filename=STARK_Statement_${account.accountNumber}.pdf`);
 
     doc.pipe(res);
 
-    // STARK Logo (Simulated)
-    doc.fillColor('#6200EE').fontSize(24).font('Helvetica-Bold').text('STARK', 50, 50);
-    doc.fontSize(10).fillColor('#444').text('DIGITAL BANKING PLATFORM', 50, 75);
+    let pageNum = 1;
+    let y = drawHeader(doc, pageNum, start, end, account, req, openingBalance, closingBalance);
+    drawFooter(doc, pageNum);
 
-    // Document Title
-    doc.fillColor('#000').fontSize(16).text('Account Statement', 0, 100, { align: 'center' });
-    doc.fontSize(10).text(`Period: ${start.toLocaleDateString()} - ${end.toLocaleDateString()}`, 0, 120, { align: 'center' });
-
-    // Account Summary
-    doc.rect(50, 150, 500, 80).fill('#F5F5F5').stroke();
-    doc.fillColor('#000').fontSize(12).font('Helvetica-Bold').text('Account Details', 70, 165);
-    doc.font('Helvetica').fontSize(10).text(`Holder: ${req.user.firstName} ${req.user.lastName}`, 70, 185);
-    doc.text(`Account Number: ${account.accountNumber}`, 70, 200);
-    doc.text(`Currency: ${account.currency}`, 350, 185);
-    doc.font('Helvetica-Bold').text(`Balance: ${(account.balance / 100).toLocaleString()} ${account.currency}`, 350, 200);
-
-    // Table Header
-    const tableTop = 260;
-    doc.font('Helvetica-Bold').fontSize(10);
-    doc.text('Date', 50, tableTop);
-    doc.text('Description', 150, tableTop);
-    doc.text('Type', 350, tableTop);
-    doc.text('Amount', 450, tableTop, { align: 'right' });
-
-    doc.moveTo(50, tableTop + 15).lineTo(550, tableTop + 15).stroke();
-
-    // Table Content
-    let y = tableTop + 30;
     doc.font('Helvetica').fontSize(9);
 
-    transactions.forEach((tx) => {
-      if (y > 700) {
-        doc.addPage();
-        y = 50;
-      }
-      doc.text(tx.createdAt.toLocaleDateString(), 50, y);
-      doc.text(tx.merchantName.slice(0, 30), 150, y);
-      doc.text(tx.type, 350, y);
-      doc.font('Helvetica-Bold').text(`${(tx.amount / 100).toLocaleString()} ${tx.currency}`, 450, y, { align: 'right' }).font('Helvetica');
-      y += 20;
-    });
+    if (transactions.length === 0) {
+      doc.fillColor('#64748b').font('Helvetica-Oblique').fontSize(10);
+      doc.text('No transactions recorded during this period.', 50, y + 30, { align: 'center', width: 512 });
+    } else {
+      transactions.forEach((tx, idx) => {
+        if (y > 700) {
+          doc.addPage();
+          pageNum++;
+          y = drawHeader(doc, pageNum, start, end, account, req, openingBalance, closingBalance);
+          drawFooter(doc, pageNum);
+          doc.font('Helvetica').fontSize(9);
+        }
 
-    // Footer
-    doc.fontSize(8).fillColor('#999').text('This is a computer-generated statement and does not require a signature.', 0, 750, { align: 'center' });
+        // Alternating row background shading
+        if (idx % 2 === 1) {
+          doc.save();
+          doc.rect(50, y - 2, 512, 20).fill('#f8fafc');
+          doc.restore();
+        }
+
+        // Draw horizontal row separator
+        doc.save();
+        doc.strokeColor('#e2e8f0').lineWidth(0.5).moveTo(50, y + 18).lineTo(562, y + 18).stroke();
+        doc.restore();
+
+        doc.fillColor('#0f172a');
+        doc.text(tx.createdAt.toLocaleDateString(), 60, y + 4);
+        
+        const desc = getTransactionDescription(tx);
+        doc.text(desc.slice(0, 42), 140, y + 4);
+        
+        doc.text(tx.type, 360, y + 4);
+
+        // Format amount: debit prefix "-" or credit prefix "+"
+        const prefix = tx.type === 'DEBIT' ? '-' : '+';
+        const formattedAmount = `${prefix}${(tx.amount / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} ${tx.currency}`;
+        
+        if (tx.type === 'DEBIT') {
+          doc.fillColor('#b91c1c').font('Helvetica-Bold'); // Stark elegant red
+        } else {
+          doc.fillColor('#15803d').font('Helvetica-Bold'); // Stark elegant green
+        }
+        
+        doc.text(formattedAmount, 450, y + 4, { align: 'right', width: 102 });
+        doc.font('Helvetica'); // Reset font style
+
+        y += 20;
+      });
+    }
 
     doc.end();
   } catch (error) {
