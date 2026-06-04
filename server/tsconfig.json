@@ -6,14 +6,13 @@
     "outDir": "./dist",
     "rootDir": "..",
     "lib": ["ES2020"],
-
+    "baseUrl": ".",
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
-    "ignoreDeprecations": "5101",
     "paths": {
       "@shared/*": ["../shared/src/*"]
-    },
+    }
   },
   "include": ["src/**/*", "../shared/src/**/*"],
   "exclude": ["src/tests/**/*", "src/scripts/**/*"]
