@@ -7,8 +7,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "outDir": "dist",
-    "baseUrl": "./src",
     "types": ["@testing-library/jest-dom"],
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@shared/*": ["../shared/src/*"]
     }
