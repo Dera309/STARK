@@ -8,7 +8,7 @@
     "moduleResolution": "bundler",
     "outDir": "dist",
     "types": ["@testing-library/jest-dom"],
-    "ignoreDeprecations": ["5101"],
+    "ignoreDeprecations": "5101",
     "paths": {
       "@shared/*": ["../shared/src/*"]
     }
