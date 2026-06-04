@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "strict": false,
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@shared/*": ["../shared/src/*"]
     }
