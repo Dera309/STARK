@@ -377,8 +377,8 @@ export const manageAccountStatus = async (req: AuthRequest, res: Response, next:
     const { id } = req.params;
     const { status } = req.body;
 
-    if (!['ACTIVE', 'FROZEN'].includes(status)) {
-      throw UnprocessableEntity('Invalid account status. Must be ACTIVE or FROZEN.');
+    if (!['ACTIVE', 'FROZEN', 'CLOSED'].includes(status)) {
+      throw UnprocessableEntity('Invalid account status. Must be ACTIVE, FROZEN, or CLOSED.');
     }
 
     const account = await Account.findById(id);
