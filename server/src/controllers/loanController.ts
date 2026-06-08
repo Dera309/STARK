@@ -77,6 +77,10 @@ export const applyForLoan = async (req: AuthRequest, res: Response, next: NextFu
     const account = await Account.findOne({ _id: disbursementAccountId, userId: req.user._id }).session(session);
     if (!account) throw NotFound('Disbursement account not found');
 
+    if (account.status !== 'ACTIVE') {
+      throw Forbidden('Cannot disburse loan to a frozen or closed account');
+    }
+
     // 2. Calculation
     const interest = Math.round(amount * (product.interestRate / 100));
     const totalRepayable = amount + interest;

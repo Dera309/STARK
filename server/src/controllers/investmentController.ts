@@ -33,6 +33,10 @@ export const createFixedDeposit = async (req: AuthRequest, res: Response, next: 
     if (!sourceAccount) throw NotFound('Source account not found');
     if (sourceAccount.balance < principalAmount) throw UnprocessableEntity('Insufficient funds');
 
+    if (sourceAccount.status !== 'ACTIVE') {
+      throw Forbidden('Cannot create fixed deposit from a frozen or closed account');
+    }
+
     const destAccount = await Account.findOne({ _id: destinationAccountId, userId: req.user._id }).session(session);
     if (!destAccount) throw NotFound('Destination account not found');
     
@@ -140,6 +144,10 @@ export const liquidateFixedDeposit = async (req: AuthRequest, res: Response, nex
 
     const destAccount = await Account.findOne({ _id: fd.destinationAccountId, userId: req.user._id }).session(session);
     if (!destAccount) throw NotFound('Destination account not found');
+
+    if (destAccount.status !== 'ACTIVE') {
+      throw Forbidden('Cannot liquidate to a frozen or closed account');
+    }
 
     destAccount.balance += payoutAmount;
     await destAccount.save({ session });
