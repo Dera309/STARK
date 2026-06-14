@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import ThemeToggle from '../../components/ui/ThemeToggle';
 import api, { ApiError } from '../../services/api';
 
 const PremiumLogin: React.FC = () => {
@@ -45,16 +44,11 @@ const PremiumLogin: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background relative p-container-padding-mobile md:p-container-padding-desktop">
+    <div className="min-h-screen flex items-center justify-center bg-background relative p-4 sm:p-6 md:p-8">
       {/* Background radial glow — matches design */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-tertiary-fixed-dim/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-surface-container-high/30 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Theme Toggle */}
-      <div className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50">
-        <ThemeToggle />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-tertiary-fixed-dim/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] bg-surface-container-high/30 rounded-full blur-[100px]" />
       </div>
 
       <main className="w-full max-w-md mx-auto relative z-10 animate-fade-in">
