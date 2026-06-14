@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>STARK | Elite Banking</title>
     <meta name="description" content="STARK — Secure, intelligent, elite digital banking." />
-    <meta name="theme-color" content="#131313" />
+    <meta name="theme-color" content="#131313" id="theme-color" />
     <!-- Favicon: STARK gold S -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Preconnect for fonts -->
@@ -26,6 +26,25 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Prevent flash of wrong theme
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('stark-theme');
+          const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          const theme = savedTheme || (prefersLight ? 'light' : 'dark');
+          document.documentElement.classList.add(theme);
+          
+          // Update theme-color meta tag
+          const themeColor = document.getElementById('theme-color');
+          if (themeColor) {
+            themeColor.content = theme === 'light' ? '#fafafa' : '#131313';
+          }
+        } catch (e) {
+          console.error('Theme initialization error:', e);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
