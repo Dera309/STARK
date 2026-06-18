@@ -2,15 +2,14 @@ import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 
 // Firebase configuration
-// Replace these values with your Firebase project configuration
-// Get these from: https://console.firebase.google.com/ -> Project Settings -> General -> Your apps
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "",
+  apiKey: "AIzaSyAgU6Koq65upUbenVBWQLauvQYq4H_esvM",
+  authDomain: "stark-4e72a.firebaseapp.com",
+  projectId: "stark-4e72a",
+  storageBucket: "stark-4e72a.firebasestorage.app",
+  messagingSenderId: "113183508791",
+  appId: "1:113183508791:web:fbf0b9f80c41ae1942f2b2",
+  measurementId: "G-VHN25DSR1L"
 };
 
 // Initialize Firebase
