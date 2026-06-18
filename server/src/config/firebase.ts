@@ -1,4 +1,5 @@
-import admin from 'firebase-admin';
+const admin = require('firebase-admin');
+const path = require('path');
 
 // Firebase Admin configuration
 // You need to download the service account key JSON from Firebase Console
@@ -6,14 +7,16 @@ import admin from 'firebase-admin';
 // Save the JSON file and set the path as an environment variable
 const serviceAccountPath = process.env.FIREBASE_SERVICE_ACCOUNT_KEY_PATH;
 
-let firebaseAdmin: admin.app.App | null = null;
+let firebaseAdmin = null;
 
 if (serviceAccountPath) {
   try {
-    const serviceAccount = require(serviceAccountPath);
+    // Resolve the path relative to the server root directory
+    const resolvedPath = path.resolve(__dirname, '../../', serviceAccountPath);
+    const serviceAccount = require(resolvedPath);
     
     firebaseAdmin = admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
+      credential: admin.cert(serviceAccount),
     });
     
     console.log('Firebase Admin initialized successfully');
@@ -25,5 +28,6 @@ if (serviceAccountPath) {
   console.warn('FIREBASE_SERVICE_ACCOUNT_KEY_PATH not set. Firebase Admin will not be initialized.');
 }
 
+module.exports = { firebaseAdmin };
 export { firebaseAdmin };
 export default firebaseAdmin;
