@@ -258,7 +258,15 @@ const Cards: React.FC = () => {
           
           {/* Card Actions */}
           <div className="flex gap-4 mt-6">
-            <button className="btn-stark-ghost flex items-center gap-2">
+            <button 
+              className="btn-stark-ghost flex items-center gap-2"
+              onClick={() => {
+                const account = accounts[selectedCard];
+                if (account) {
+                  alert(`Freeze functionality for account ${account.accountNumber} is not yet implemented for customers. Please contact support.`);
+                }
+              }}
+            >
               <span className="material-symbols-outlined">lock</span>
               Freeze Card
             </button>

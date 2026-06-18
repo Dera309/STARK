@@ -13,7 +13,8 @@ const userSchema = new Schema<UserDocument>(
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true, index: true, trim: true, lowercase: true },
     phone: { type: String, required: true, trim: true },
-    passwordHash: { type: String, required: true },
+    passwordHash: { type: String, required: false }, // Made optional for Firebase users
+    firebaseUid: { type: String, unique: true, sparse: true, index: true }, // Firebase user ID
     kycStatus: {
       type: String,
       enum: ['NONE', 'PENDING', 'VERIFIED', 'REJECTED'],

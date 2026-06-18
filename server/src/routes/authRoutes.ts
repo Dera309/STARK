@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { register, login, logout, requestPasswordReset, confirmPasswordReset } from '../controllers/authController';
+import { register, login, logout, requestPasswordReset, confirmPasswordReset, firebaseSync } from '../controllers/authController';
 import { protect } from '../middleware/auth';
 import { validateBody } from '../middleware/validateRequest';
 import { registerSchema, loginSchema, resetPasswordRequestSchema, resetPasswordConfirmSchema } from '../validators/authValidators';
@@ -35,5 +35,11 @@ router.post('/reset-password/request', validateBody(resetPasswordRequestSchema),
  * @desc  Confirm password reset with token
  */
 router.post('/reset-password/confirm', validateBody(resetPasswordConfirmSchema), confirmPasswordReset);
+
+/**
+ * @route POST /api/v1/auth/firebase-sync
+ * @desc  Sync Firebase user with backend
+ */
+router.post('/firebase-sync', firebaseSync);
 
 export default router;

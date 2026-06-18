@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import api, { ApiError } from "../../services/api";
+import { auth } from "../../config/firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const Register: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +14,6 @@ const Register: React.FC = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -24,12 +23,32 @@ const Register: React.FC = () => {
     if (password.length < 8) { setError("Password must be at least 8 characters."); return; }
     setLoading(true);
     try {
-      const response = await api.post("/auth/register", { firstName, lastName, email, phone, password });
-      login(response.data.user, response.data.token);
+      console.log('Attempting Firebase registration with:', email);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      
+      // Update display name with first and last name
+      const displayName = `${firstName} ${lastName}`.trim();
+      await updateProfile(userCredential.user, { displayName });
+      
+      console.log('Firebase registration successful:', userCredential.user.email);
+      
+      // AuthContext will handle the sync with backend via onAuthStateChanged
       navigate("/dashboard", { replace: true });
-    } catch (err: unknown) {
-      const errorData = err instanceof Error && "response" in err ? (err as ApiError).response?.data : null;
-      setError(errorData?.error?.message || errorData?.message || "Registration failed. Please try again.");
+    } catch (err: any) {
+      console.error('Firebase registration error:', err);
+      let errorMessage = "Registration failed. Please try again.";
+      
+      if (err.code === 'auth/email-already-in-use') {
+        errorMessage = "An account with this email already exists.";
+      } else if (err.code === 'auth/invalid-email') {
+        errorMessage = "Invalid email address.";
+      } else if (err.code === 'auth/weak-password') {
+        errorMessage = "Password is too weak. Please use a stronger password.";
+      } else if (err.code === 'auth/operation-not-allowed') {
+        errorMessage = "Email/password accounts are not enabled.";
+      }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

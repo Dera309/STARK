@@ -17,6 +17,7 @@ export interface ApiError {
 const api = axios.create({
   baseURL: API_URL,
   withCredentials: true,
+  timeout: 60000,
   headers: {
     "Content-Type": "application/json",
   },
@@ -49,6 +50,30 @@ api.interceptors.response.use(
   }
 );
 
+// Retry logic with exponential backoff
+const retryWithBackoff = async <T>(
+  fn: () => Promise<T>,
+  maxRetries: number = 3,
+  baseDelay: number = 1000
+): Promise<T> => {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error: any) {
+      const isNetworkError = !error.response && (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT' || error.message === 'Network Error');
+      const isConnectionReset = error.code === 'ECONNRESET' || error.message?.includes('ERR_CONNECTION_RESET');
+      
+      if (attempt === maxRetries - 1 || (!isNetworkError && !isConnectionReset)) {
+        throw error;
+      }
+      
+      const delay = baseDelay * Math.pow(2, attempt);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  throw new Error('Max retries exceeded');
+};
+
 // Cached GET requests
 export const cachedGet = async (url: string, ttl: number = 60000) => {
   const cacheKey = `GET:${url}`;
@@ -57,7 +82,7 @@ export const cachedGet = async (url: string, ttl: number = 60000) => {
     return { data: cached };
   }
 
-  const response = await api.get(url);
+  const response = await retryWithBackoff(() => api.get(url));
   apiCache.set(cacheKey, response.data, ttl);
   return response;
 };
@@ -69,6 +94,15 @@ export const clearCache = (pattern?: string) => {
   } else {
     apiCache.clear();
   }
+};
+
+// Retry wrapper for all API methods
+export const apiWithRetry = {
+  get: (url: string, config?: any) => retryWithBackoff(() => api.get(url, config)),
+  post: (url: string, data?: any, config?: any) => retryWithBackoff(() => api.post(url, data, config)),
+  put: (url: string, data?: any, config?: any) => retryWithBackoff(() => api.put(url, data, config)),
+  patch: (url: string, data?: any, config?: any) => retryWithBackoff(() => api.patch(url, data, config)),
+  delete: (url: string, config?: any) => retryWithBackoff(() => api.delete(url, config)),
 };
 
 export default api;

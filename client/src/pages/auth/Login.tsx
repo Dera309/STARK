@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import api, { ApiError } from "../../services/api";
+import { auth } from "../../config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +11,6 @@ const Login: React.FC = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,20 +19,30 @@ const Login: React.FC = () => {
     setError("");
     setLoading(true);
     try {
-      let deviceFingerprint = localStorage.getItem("device_fingerprint");
-      if (!deviceFingerprint) {
-        deviceFingerprint = `device-${Math.random().toString(36).substr(2, 9)}`;
-        localStorage.setItem("device_fingerprint", deviceFingerprint);
-      }
-      const response = await api.post("/auth/login", { email, password, deviceFingerprint });
-      login(response.data.user, response.data.token);
+      console.log('Attempting Firebase login with:', email);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log('Firebase login successful:', userCredential.user.email);
+      
+      // AuthContext will handle the sync with backend via onAuthStateChanged
       const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || "/dashboard";
       navigate(from, { replace: true });
-    } catch (err: unknown) {
-      const errorMessage = err instanceof Error && "response" in err
-        ? (err as ApiError).response?.data?.message
-        : "Login failed. Please check your credentials.";
-      setError(errorMessage || "Login failed. Please check your credentials.");
+    } catch (err: any) {
+      console.error('Firebase login error:', err);
+      let errorMessage = "Login failed. Please check your credentials.";
+      
+      if (err.code === 'auth/user-not-found') {
+        errorMessage = "No account found with this email.";
+      } else if (err.code === 'auth/wrong-password') {
+        errorMessage = "Incorrect password.";
+      } else if (err.code === 'auth/invalid-email') {
+        errorMessage = "Invalid email address.";
+      } else if (err.code === 'auth/user-disabled') {
+        errorMessage = "This account has been disabled.";
+      } else if (err.code === 'auth/too-many-requests') {
+        errorMessage = "Too many failed attempts. Please try again later.";
+      }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

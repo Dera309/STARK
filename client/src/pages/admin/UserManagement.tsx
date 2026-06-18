@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import api, { ApiError } from "../../services/api";
+import api, { ApiError, apiWithRetry } from "../../services/api";
 import { User, Account } from "../../types";
 
 const AdminUserManagement: React.FC = () => {
@@ -15,7 +15,7 @@ const AdminUserManagement: React.FC = () => {
     setIsLoading(true);
     setError("");
     try {
-      const res = await api.get(`/admin/users?search=${search}`);
+      const res = await apiWithRetry.get(`/admin/users?search=${search}`);
       setUsers(res.data);
     } catch (err: unknown) {
       const errorMessage = err instanceof Error && 'response' in err 
@@ -29,7 +29,7 @@ const AdminUserManagement: React.FC = () => {
 
   const fetchUserDetail = async (id: string) => {
     try {
-      const res = await api.get(`/admin/users/${id}`);
+      const res = await apiWithRetry.get(`/admin/users/${id}`);
       setUserDetail({ accounts: res.data.accounts || [] });
     } catch (err) {
       console.error(err);
@@ -45,7 +45,7 @@ const AdminUserManagement: React.FC = () => {
 
   const handleUpdateKyc = async (id: string, status: "VERIFIED" | "REJECTED") => {
     try {
-      await api.patch(`/admin/users/${id}/kyc`, { status, tier: 1 });
+      await apiWithRetry.patch(`/admin/users/${id}/kyc`, { status, tier: 1 });
       await fetchUsers();
       setSelectedUser(null);
       setUserDetail(null);
@@ -60,11 +60,14 @@ const AdminUserManagement: React.FC = () => {
   const handleToggleAccount = async (id: string, currentStatus: string) => {
     try {
       const nextStatus = currentStatus === "ACTIVE" ? "FROZEN" : "ACTIVE";
-      await api.patch(`/admin/accounts/${id}/status`, { status: nextStatus });
+      console.log('Toggling account status:', { id, currentStatus, nextStatus });
+      const response = await apiWithRetry.patch(`/admin/accounts/${id}/status`, { status: nextStatus });
+      console.log('Account status update response:', response.data);
       if (selectedUser) await fetchUserDetail(selectedUser._id);
     } catch (err: unknown) {
+      console.error('Account status toggle error:', err);
       const errorMessage = err instanceof Error && 'response' in err 
-        ? (err as ApiError).response?.data?.message 
+        ? (err as ApiError).response?.data?.error?.message || (err as ApiError).response?.data?.message
         : "Failed to update account status";
       alert(errorMessage || "Failed to update account status");
     }
@@ -92,7 +95,7 @@ const AdminUserManagement: React.FC = () => {
       }
 
       if (confirm(`Are you sure you want to ${action} this user?`)) {
-        await api.patch(`/admin/users/${id}/status`, { status: newStatus });
+        await apiWithRetry.patch(`/admin/users/${id}/status`, { status: newStatus });
 
         await fetchUsers();
         setSelectedUser(null);
@@ -119,7 +122,7 @@ const AdminUserManagement: React.FC = () => {
     if (!amount || isNaN(parseFloat(amount))) return;
 
     try {
-      await api.post("/admin/accounts/credit", {
+      await apiWithRetry.post("/admin/accounts/credit", {
         accountId,
         amount: Math.round(parseFloat(amount) * 100),
         reason: "Admin credit",
@@ -139,7 +142,7 @@ const AdminUserManagement: React.FC = () => {
     if (!amount || isNaN(parseFloat(amount))) return;
 
     try {
-      await api.post("/admin/accounts/debit", {
+      await apiWithRetry.post("/admin/accounts/debit", {
         accountId,
         amount: Math.round(parseFloat(amount) * 100),
         reason: "Admin debit",

@@ -3,6 +3,7 @@ import { tokenService } from '../services/tokenService';
 import { User } from '../models/User';
 import { Session } from '../models/Session';
 import { Unauthorized } from './errorHandler';
+import firebaseAdmin from '../config/firebase';
 
 export interface AuthRequest extends Request {
   user?: any;
@@ -17,7 +18,7 @@ export interface AuthRequest extends Request {
 }
 
 /**
- * Middleware to protect routes and verify JWT + Session
+ * Middleware to protect routes and verify JWT + Session or Firebase token
  */
 export const protect = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
@@ -32,6 +33,32 @@ export const protect = async (req: AuthRequest, res: Response, next: NextFunctio
 
     if (!token) {
       throw Unauthorized('Not authorized, please log in');
+    }
+
+    // Try to verify as Firebase token first
+    if (firebaseAdmin) {
+      try {
+        const decodedToken = await firebaseAdmin.auth().verifyIdToken(token);
+        
+        // Firebase token verified successfully
+        const firebaseUid = decodedToken.uid;
+        
+        // Find user by Firebase UID
+        const user = await User.findOne({ firebaseUid });
+        
+        if (!user) {
+          throw Unauthorized('User not found in backend');
+        }
+
+        // Attach user to request
+        req.user = user;
+        req.sessionInfo = { userId: user._id.toString(), jti: firebaseUid };
+        
+        return next();
+      } catch (firebaseError) {
+        console.log('Firebase token verification failed, trying JWT:', firebaseError);
+        // Firebase token verification failed, try JWT
+      }
     }
 
     // 1. Verify token signature and expiry

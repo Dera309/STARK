@@ -17,12 +17,14 @@ class SocketService {
 
     this.socket = io(SOCKET_URL, {
       query: { userId },
-      transports: ["polling", "websocket"],
+      transports: ["websocket", "polling"],
       withCredentials: true,
-      timeout: 20000,
+      timeout: 60000,
       reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 2000,
+      reconnectionDelayMax: 10000,
+      forceNew: true,
     });
 
     this.socket.on("connect", () => {

@@ -7,6 +7,7 @@ import { Account, generateAccountNumber } from '../models/Account';
 import { tokenService } from '../services/tokenService';
 import { notificationService } from '../services/notificationService';
 import { Unauthorized, Forbidden, UnprocessableEntity, Conflict } from '../middleware/errorHandler';
+import firebaseAdmin from '../config/firebase';
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -269,6 +270,85 @@ export const confirmPasswordReset = async (req: Request, res: Response, next: Ne
 
     res.status(200).json({ message: 'Password has been reset successfully' });
   } catch (error) {
+    next(error);
+  }
+};
+
+export const firebaseSync = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { uid, email, displayName, photoURL } = req.body;
+
+    if (!uid || !email) {
+      throw UnprocessableEntity('Firebase UID and email are required');
+    }
+
+    console.log('Firebase sync request:', { uid, email, displayName });
+
+    // Check if user exists by Firebase UID
+    let user = await User.findOne({ firebaseUid: uid });
+
+    if (!user) {
+      // Check if user exists by email (for migration from old auth)
+      user = await User.findOne({ email: email.toLowerCase() });
+
+      if (user) {
+        // Update existing user with Firebase UID
+        user.firebaseUid = uid;
+        await user.save();
+        console.log('Updated existing user with Firebase UID:', user._id);
+      } else {
+        // Create new user from Firebase
+        const customerRole = await Role.findOne({ name: 'CUSTOMER' });
+
+        const nameParts = displayName ? displayName.split(' ') : ['', ''];
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ') || '';
+
+        user = await User.create({
+          firebaseUid: uid,
+          email: email.toLowerCase(),
+          firstName,
+          lastName,
+          phone: '',
+          roleId: customerRole?._id || null,
+          kycStatus: 'VERIFIED',
+          status: 'ACTIVE',
+          kycTier: 0,
+        });
+
+        // Auto-create initial SAVINGS account
+        const accountNumber = generateAccountNumber();
+        await Account.create({
+          userId: user._id,
+          accountNumber,
+          type: 'SAVINGS',
+          currency: 'USD',
+          balance: 0,
+          status: 'ACTIVE',
+        });
+
+        console.log('Created new user from Firebase:', user._id);
+      }
+    }
+
+    // Populate role to get its name
+    await user.populate('roleId');
+    const role = user.roleId as any;
+
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        kycStatus: user.kycStatus,
+        kycTier: user.kycTier,
+        status: user.status,
+        role: role?.name || 'CUSTOMER',
+      },
+    });
+  } catch (error) {
+    console.error('Firebase sync error:', error);
     next(error);
   }
 };

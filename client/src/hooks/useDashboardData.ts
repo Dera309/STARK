@@ -30,10 +30,26 @@ export const useDashboardData = () => {
       setTransactions(Array.isArray(txData) ? txData : Array.isArray(txData?.transactions) ? txData.transactions : []);
     } catch (err: unknown) {
       console.error("Dashboard data fetch error:", err);
-      const errorMessage = err instanceof Error && 'response' in err 
-        ? (err as ApiError).response?.data?.error?.message 
-        : "Failed to fetch dashboard data";
+      const isNetworkError = err instanceof Error && (
+        err.message === 'Network Error' ||
+        err.message?.includes('ERR_CONNECTION_RESET') ||
+        err.message?.includes('ERR_TIMED_OUT') ||
+        err.message?.includes('timeout')
+      );
+      
+      const errorMessage = isNetworkError 
+        ? "Unable to connect to server. Please check your internet connection and try again."
+        : err instanceof Error && 'response' in err 
+          ? (err as ApiError).response?.data?.error?.message 
+          : "Failed to fetch dashboard data";
+      
       setError(errorMessage || "Failed to fetch dashboard data");
+      
+      // Set empty arrays on network errors to prevent UI crashes
+      if (isNetworkError) {
+        setAccounts([]);
+        setTransactions([]);
+      }
     } finally {
       setIsLoading(false);
     }

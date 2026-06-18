@@ -22,6 +22,8 @@ services:
         value: 24h
       - key: CLIENT_URL
         value: https://stark-h310.onrender.com
+      - key: FIREBASE_SERVICE_ACCOUNT_KEY_PATH
+        sync: false
 
   # STARK Client (React)
   - type: web
@@ -36,6 +38,18 @@ services:
         value: https://stark-api-04gm.onrender.com/api/v1
       - key: VITE_SOCKET_URL
         value: https://stark-api-04gm.onrender.com
+      - key: VITE_FIREBASE_API_KEY
+        sync: false
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: VITE_FIREBASE_PROJECT_ID
+        sync: false
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        sync: false
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        sync: false
+      - key: VITE_FIREBASE_APP_ID
+        sync: false
       - key: VITE_TAWK_PROPERTY_ID
         value: 6a02f560d752791c35103528
       - key: VITE_TAWK_WIDGET_ID

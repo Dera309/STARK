@@ -377,18 +377,30 @@ export const manageAccountStatus = async (req: AuthRequest, res: Response, next:
     const { id } = req.params;
     const { status } = req.body;
 
+    console.log('Managing account status:', { id, status });
+
     if (!['ACTIVE', 'FROZEN', 'CLOSED'].includes(status)) {
+      console.log('Invalid status provided:', status);
       throw UnprocessableEntity('Invalid account status. Must be ACTIVE, FROZEN, or CLOSED.');
     }
 
     const account = await Account.findById(id);
-    if (!account) throw NotFound('Account not found');
+    if (!account) {
+      console.log('Account not found with ID:', id);
+      throw NotFound('Account not found');
+    }
+
+    console.log('Current account status:', account.status);
+    console.log('Updating account status to:', status);
 
     account.status = status;
     await account.save();
 
+    console.log('Account status updated successfully');
+
     res.status(200).json({ message: `Account status updated to ${status}`, account });
   } catch (error) {
+    console.error('Error in manageAccountStatus:', error);
     next(error);
   }
 };

@@ -4,8 +4,9 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  passwordHash: string;
+  passwordHash?: string; // Made optional for Firebase users
   phone: string;
+  firebaseUid?: string; // Firebase user ID
   kycStatus: 'NONE' | 'PENDING' | 'VERIFIED' | 'REJECTED';
   kycTier: 0 | 1 | 2 | 3;
   status: 'ACTIVE' | 'SUSPENDED' | 'PENDING_KYC';
