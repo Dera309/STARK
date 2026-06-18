@@ -85,9 +85,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             email: firebaseUser.email || "",
             firstName: firebaseUser.displayName?.split(' ')[0] || "",
             lastName: firebaseUser.displayName?.split(' ').slice(1).join(' ') || "",
-            role: "USER",
+            passwordHash: "",
+            phone: "",
+            kycStatus: "NONE",
             kycTier: 0,
             status: "ACTIVE",
+            roleId: null,
+            role: "USER",
+            failedLoginAttempts: 0,
+            lockedUntil: null,
+            registeredDevices: [],
+            savingsGoalTarget: 0,
+            createdAt: new Date(),
+            updatedAt: new Date(),
           };
           const idToken = await getIdToken(firebaseUser);
           localStorage.setItem("token", idToken);
