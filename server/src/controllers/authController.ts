@@ -309,7 +309,8 @@ export const firebaseSync = async (req: Request, res: Response, next: NextFuncti
           email: email.toLowerCase(),
           firstName,
           lastName,
-          phone: '',
+          phone: '0000000000', // Default phone for Firebase users
+          passwordHash: '', // Empty password for Firebase users
           roleId: customerRole?._id || null,
           kycStatus: 'VERIFIED',
           status: 'ACTIVE',
