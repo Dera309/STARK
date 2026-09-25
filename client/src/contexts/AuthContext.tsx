@@ -67,10 +67,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     if (!auth) return;
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+      console.log('Auth state changed:', fbUser?.email);
       setFirebaseUser(fbUser);
       if (fbUser) {
         try {
           const idToken = await getIdToken(fbUser);
+          console.log('Got Firebase ID token, syncing with backend...');
           const response = await api.post("/auth/firebase-sync", {
             uid: fbUser.uid,
             email: fbUser.email,
@@ -78,13 +80,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             photoURL: fbUser.photoURL,
           });
 
+          console.log('Backend sync successful:', response.data);
           const userData = response.data.user;
           localStorage.setItem("token", idToken);
           localStorage.setItem("user", JSON.stringify(userData));
           setToken(idToken);
           setUser(userData);
-        } catch (error) {
+        } catch (error: any) {
           console.error('Error syncing with backend:', error);
+          console.error('Error response:', error.response?.data);
+          // If sync fails, still set basic user data from Firebase
+          const basicUser: User = {
+            _id: fbUser.uid,
+            email: fbUser.email || "",
+            firstName: fbUser.displayName?.split(' ')[0] || "",
+            lastName: fbUser.displayName?.split(' ').slice(1).join(' ') || "",
+            passwordHash: "",
+            phone: "",
+            kycStatus: "NONE",
+            kycTier: 0,
+            status: "ACTIVE",
+            roleId: null,
+            role: "USER",
+            failedLoginAttempts: 0,
+            lockedUntil: null,
+            registeredDevices: [],
+            savingsGoalTarget: 0,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          };
+          const idToken = await getIdToken(fbUser);
+          localStorage.setItem("token", idToken);
+          localStorage.setItem("user", JSON.stringify(basicUser));
+          setToken(idToken);
+          setUser(basicUser);
         }
       } else {
         localStorage.removeItem("token");
