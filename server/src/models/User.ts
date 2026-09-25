@@ -48,6 +48,11 @@ userSchema.pre('save', async function (next) {
     return next();
   }
 
+  // Skip hashing for Firebase users with empty password
+  if (!user.passwordHash || user.passwordHash === '') {
+    return next();
+  }
+
   try {
     const salt = await bcrypt.genSalt(10);
     user.passwordHash = await bcrypt.hash(user.passwordHash, salt);
