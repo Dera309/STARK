@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { auth } from "../../config/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import api from "../../services/api";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -13,45 +12,25 @@ const Login: React.FC = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
     try {
-      console.log('Attempting Firebase login with:', email);
-      console.log('Firebase auth instance:', auth);
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('Firebase login successful:', userCredential.user.email);
-      console.log('Firebase user UID:', userCredential.user.uid);
+      console.log('Attempting login with:', email);
+      const response = await api.post("/auth/login", { email, password });
+      console.log('Login successful:', response.data);
       
-      // AuthContext will handle the sync with backend via onAuthStateChanged
+      const { user, token } = response.data;
+      login(user, token);
+      
       const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || "/dashboard";
       navigate(from, { replace: true });
     } catch (err: any) {
-      console.error('Firebase login error:', err);
-      console.error('Firebase error code:', err.code);
-      console.error('Firebase error message:', err.message);
-      let errorMessage = "Login failed. Please check your credentials.";
-      
-      if (err.code === 'auth/user-not-found') {
-        errorMessage = "No account found with this email. Please sign up first.";
-      } else if (err.code === 'auth/wrong-password') {
-        errorMessage = "Incorrect password. Please try again.";
-      } else if (err.code === 'auth/invalid-email') {
-        errorMessage = "Invalid email address.";
-      } else if (err.code === 'auth/user-disabled') {
-        errorMessage = "This account has been disabled.";
-      } else if (err.code === 'auth/too-many-requests') {
-        errorMessage = "Too many failed attempts. Please try again later.";
-      } else if (err.code === 'auth/operation-not-allowed') {
-        errorMessage = "Email/password authentication is not enabled. Please contact support.";
-      } else if (err.code === 'auth/invalid-credential') {
-        errorMessage = "Invalid email or password. Please check your credentials.";
-      } else {
-        errorMessage = `Login failed: ${err.message || 'Unknown error'}`;
-      }
-      
+      console.error('Login error:', err);
+      const errorMessage = err.response?.data?.message || "Login failed. Please check your credentials.";
       setError(errorMessage);
     } finally {
       setLoading(false);

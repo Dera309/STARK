@@ -1,15 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 import { User } from "../types";
 import api from "../services/api";
-import { auth } from "../config/firebase";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut as firebaseSignOut,
-  onAuthStateChanged,
-  User as FirebaseUser,
-  getIdToken,
-} from "firebase/auth";
 
 interface AuthContextType {
   user: User | null;
@@ -19,7 +10,6 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isAdmin: boolean;
   isLoading: boolean;
-  firebaseUser: FirebaseUser | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -34,14 +24,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   });
   const [token, setToken] = useState<string | null>(() => localStorage.getItem("token"));
-  const [isLoading, setIsLoading] = useState(true);
-  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const logout = useCallback(async () => {
     try {
-      if (auth) {
-        await firebaseSignOut(auth).catch(() => {});
-      }
       await api.post("/auth/logout").catch(() => {});
     } catch {
       // ignore — still clear client state
@@ -50,7 +36,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       localStorage.removeItem("user");
       setToken(null);
       setUser(null);
-      setFirebaseUser(null);
       // Hard redirect so all component state is cleared
       window.location.href = "/login";
     }
@@ -64,69 +49,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    if (!auth) return;
-    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
-      console.log('Auth state changed:', fbUser?.email);
-      setFirebaseUser(fbUser);
-      if (fbUser) {
-        try {
-          const idToken = await getIdToken(fbUser);
-          console.log('Got Firebase ID token, syncing with backend...');
-          const response = await api.post("/auth/firebase-sync", {
-            uid: fbUser.uid,
-            email: fbUser.email,
-            displayName: fbUser.displayName,
-            photoURL: fbUser.photoURL,
-          });
-
-          console.log('Backend sync successful:', response.data);
-          const userData = response.data.user;
-          localStorage.setItem("token", idToken);
-          localStorage.setItem("user", JSON.stringify(userData));
-          setToken(idToken);
-          setUser(userData);
-        } catch (error: any) {
-          console.error('Error syncing with backend:', error);
-          console.error('Error response:', error.response?.data);
-          // If sync fails, still set basic user data from Firebase
-          const basicUser: User = {
-            _id: fbUser.uid,
-            email: fbUser.email || "",
-            firstName: fbUser.displayName?.split(' ')[0] || "",
-            lastName: fbUser.displayName?.split(' ').slice(1).join(' ') || "",
-            passwordHash: "",
-            phone: "",
-            kycStatus: "NONE",
-            kycTier: 0,
-            status: "ACTIVE",
-            roleId: null,
-            role: "USER",
-            failedLoginAttempts: 0,
-            lockedUntil: null,
-            registeredDevices: [],
-            savingsGoalTarget: 0,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          };
-          const idToken = await getIdToken(fbUser);
-          localStorage.setItem("token", idToken);
-          localStorage.setItem("user", JSON.stringify(basicUser));
-          setToken(idToken);
-          setUser(basicUser);
-        }
-      } else {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        setToken(null);
-        setUser(null);
-      }
-      setIsLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   const value = {
     user,
     token,
@@ -135,7 +57,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     isAuthenticated: !!token,
     isAdmin: user?.role?.toUpperCase() === "ADMIN",
     isLoading,
-    firebaseUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

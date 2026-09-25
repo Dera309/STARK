@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { auth } from "../../config/firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useAuth } from "../../contexts/AuthContext";
+import api from "../../services/api";
 
 const Register: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -15,6 +15,7 @@ const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,39 +24,23 @@ const Register: React.FC = () => {
     if (password.length < 8) { setError("Password must be at least 8 characters."); return; }
     setLoading(true);
     try {
-      console.log('Attempting Firebase registration with:', email);
-      console.log('Firebase auth instance:', auth);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log('Firebase registration successful:', userCredential.user.email);
-      console.log('Firebase user UID:', userCredential.user.uid);
+      console.log('Attempting registration with:', email);
+      const response = await api.post("/auth/register", { 
+        firstName, 
+        lastName, 
+        email, 
+        phone, 
+        password 
+      });
+      console.log('Registration successful:', response.data);
       
-      // Update display name with first and last name
-      const displayName = `${firstName} ${lastName}`.trim();
-      await updateProfile(userCredential.user, { displayName });
-      console.log('Display name updated:', displayName);
+      const { user, token } = response.data;
+      login(user, token);
       
-      console.log('Firebase registration complete, navigating to dashboard');
-      
-      // AuthContext will handle the sync with backend via onAuthStateChanged
       navigate("/dashboard", { replace: true });
     } catch (err: any) {
-      console.error('Firebase registration error:', err);
-      console.error('Firebase error code:', err.code);
-      console.error('Firebase error message:', err.message);
-      let errorMessage = "Registration failed. Please try again.";
-      
-      if (err.code === 'auth/email-already-in-use') {
-        errorMessage = "An account with this email already exists.";
-      } else if (err.code === 'auth/invalid-email') {
-        errorMessage = "Invalid email address.";
-      } else if (err.code === 'auth/weak-password') {
-        errorMessage = "Password is too weak. Please use a stronger password.";
-      } else if (err.code === 'auth/operation-not-allowed') {
-        errorMessage = "Email/password accounts are not enabled. Please contact support.";
-      } else {
-        errorMessage = `Registration failed: ${err.message || 'Unknown error'}`;
-      }
-      
+      console.error('Registration error:', err);
+      const errorMessage = err.response?.data?.message || "Registration failed. Please try again.";
       setError(errorMessage);
     } finally {
       setLoading(false);
