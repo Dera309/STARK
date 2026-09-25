@@ -25,25 +25,35 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    try {
+      const stored = localStorage.getItem("user");
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  });
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem("token"));
   const [isLoading, setIsLoading] = useState(true);
   const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
 
   const logout = useCallback(async () => {
     try {
-      await firebaseSignOut(auth);
-      await api.post("/auth/logout");
+      if (auth) {
+        await firebaseSignOut(auth).catch(() => {});
+      }
+      await api.post("/auth/logout").catch(() => {});
     } catch {
       // ignore — still clear client state
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setToken(null);
+      setUser(null);
+      setFirebaseUser(null);
+      // Hard redirect so all component state is cleared
+      window.location.href = "/login";
     }
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setToken(null);
-    setUser(null);
-    setFirebaseUser(null);
-    // Hard redirect so all component state is cleared
-    window.location.href = "/login";
   }, []);
 
   const login = (userData: User, authToken: string) => {
@@ -55,21 +65,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      console.log('Firebase auth state changed:', firebaseUser?.email);
-      setFirebaseUser(firebaseUser);
-
-      if (firebaseUser) {
+    if (!auth) return;
+    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+      setFirebaseUser(fbUser);
+      if (fbUser) {
         try {
-          // Get Firebase ID token
-          const idToken = await getIdToken(firebaseUser);
-          
-          // Sync with backend to get user data
+          const idToken = await getIdToken(fbUser);
           const response = await api.post("/auth/firebase-sync", {
-            uid: firebaseUser.uid,
-            email: firebaseUser.email,
-            displayName: firebaseUser.displayName,
-            photoURL: firebaseUser.photoURL,
+            uid: fbUser.uid,
+            email: fbUser.email,
+            displayName: fbUser.displayName,
+            photoURL: fbUser.photoURL,
           });
 
           const userData = response.data.user;
@@ -79,31 +85,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           setUser(userData);
         } catch (error) {
           console.error('Error syncing with backend:', error);
-          // Still set basic user data from Firebase
-          const basicUser: User = {
-            _id: firebaseUser.uid,
-            email: firebaseUser.email || "",
-            firstName: firebaseUser.displayName?.split(' ')[0] || "",
-            lastName: firebaseUser.displayName?.split(' ').slice(1).join(' ') || "",
-            passwordHash: "",
-            phone: "",
-            kycStatus: "NONE",
-            kycTier: 0,
-            status: "ACTIVE",
-            roleId: null,
-            role: "USER",
-            failedLoginAttempts: 0,
-            lockedUntil: null,
-            registeredDevices: [],
-            savingsGoalTarget: 0,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          };
-          const idToken = await getIdToken(firebaseUser);
-          localStorage.setItem("token", idToken);
-          localStorage.setItem("user", JSON.stringify(basicUser));
-          setToken(idToken);
-          setUser(basicUser);
         }
       } else {
         localStorage.removeItem("token");
