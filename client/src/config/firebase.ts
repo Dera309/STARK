@@ -26,6 +26,7 @@ if (typeof window !== 'undefined') {
       console.log('Firebase already initialized');
     }
     auth = getAuth(app);
+    console.log('Firebase Auth initialized:', auth);
   } catch (error) {
     console.error('Error initializing Firebase:', error);
     throw error;
