@@ -24,18 +24,24 @@ const Register: React.FC = () => {
     setLoading(true);
     try {
       console.log('Attempting Firebase registration with:', email);
+      console.log('Firebase auth instance:', auth);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('Firebase registration successful:', userCredential.user.email);
+      console.log('Firebase user UID:', userCredential.user.uid);
       
       // Update display name with first and last name
       const displayName = `${firstName} ${lastName}`.trim();
       await updateProfile(userCredential.user, { displayName });
+      console.log('Display name updated:', displayName);
       
-      console.log('Firebase registration successful:', userCredential.user.email);
+      console.log('Firebase registration complete, navigating to dashboard');
       
       // AuthContext will handle the sync with backend via onAuthStateChanged
       navigate("/dashboard", { replace: true });
     } catch (err: any) {
       console.error('Firebase registration error:', err);
+      console.error('Firebase error code:', err.code);
+      console.error('Firebase error message:', err.message);
       let errorMessage = "Registration failed. Please try again.";
       
       if (err.code === 'auth/email-already-in-use') {
@@ -45,7 +51,9 @@ const Register: React.FC = () => {
       } else if (err.code === 'auth/weak-password') {
         errorMessage = "Password is too weak. Please use a stronger password.";
       } else if (err.code === 'auth/operation-not-allowed') {
-        errorMessage = "Email/password accounts are not enabled.";
+        errorMessage = "Email/password accounts are not enabled. Please contact support.";
+      } else {
+        errorMessage = `Registration failed: ${err.message || 'Unknown error'}`;
       }
       
       setError(errorMessage);

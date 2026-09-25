@@ -20,26 +20,36 @@ const Login: React.FC = () => {
     setLoading(true);
     try {
       console.log('Attempting Firebase login with:', email);
+      console.log('Firebase auth instance:', auth);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log('Firebase login successful:', userCredential.user.email);
+      console.log('Firebase user UID:', userCredential.user.uid);
       
       // AuthContext will handle the sync with backend via onAuthStateChanged
       const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || "/dashboard";
       navigate(from, { replace: true });
     } catch (err: any) {
       console.error('Firebase login error:', err);
+      console.error('Firebase error code:', err.code);
+      console.error('Firebase error message:', err.message);
       let errorMessage = "Login failed. Please check your credentials.";
       
       if (err.code === 'auth/user-not-found') {
-        errorMessage = "No account found with this email.";
+        errorMessage = "No account found with this email. Please sign up first.";
       } else if (err.code === 'auth/wrong-password') {
-        errorMessage = "Incorrect password.";
+        errorMessage = "Incorrect password. Please try again.";
       } else if (err.code === 'auth/invalid-email') {
         errorMessage = "Invalid email address.";
       } else if (err.code === 'auth/user-disabled') {
         errorMessage = "This account has been disabled.";
       } else if (err.code === 'auth/too-many-requests') {
         errorMessage = "Too many failed attempts. Please try again later.";
+      } else if (err.code === 'auth/operation-not-allowed') {
+        errorMessage = "Email/password authentication is not enabled. Please contact support.";
+      } else if (err.code === 'auth/invalid-credential') {
+        errorMessage = "Invalid email or password. Please check your credentials.";
+      } else {
+        errorMessage = `Login failed: ${err.message || 'Unknown error'}`;
       }
       
       setError(errorMessage);
