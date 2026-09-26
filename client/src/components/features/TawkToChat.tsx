@@ -50,48 +50,26 @@ const TawkToChat: React.FC = () => {
     }
   };
 
-  // Configure Tawk.to widget position before it loads
-  useEffect(() => {
-    (window as any).Tawk_API = (window as any).Tawk_API || {};
-    (window as any).Tawk_API.customStyle = {
-      visibility: {
-        desktop: {
-          position: 'cr',
-          xOffset: 20,
-          yOffset: 100
-        },
-        mobile: {
-          position: 'cr',
-          xOffset: 20,
-          yOffset: 100
-        }
-      }
-    };
-
-    (window as any).Tawk_API.onLoad = function() {
-      console.log('Tawk.to onLoad callback triggered');
-      // Try to reposition the widget after it loads as backup
-      setTimeout(() => {
-        const widgetContainer = document.querySelector('[class*="tawk"]');
-        if (widgetContainer) {
-          console.log('Tawk.to: Repositioning widget container');
-          (widgetContainer as HTMLElement).style.top = '100px';
-          (widgetContainer as HTMLElement).style.bottom = 'auto';
-          (widgetContainer as HTMLElement).style.right = '20px';
-          (widgetContainer as HTMLElement).style.zIndex = '9999';
-        } else {
-          console.warn('Tawk.to: Widget container not found for repositioning');
-        }
-      }, 2000);
-    };
-  }, []);
-
   return (
     <TawkMessengerReact
       propertyId={propertyId}
       widgetId={widgetId}
       ref={tawkRef}
       onLoad={handleLoad}
+      customStyle={{
+        visibility: {
+          desktop: {
+            position: 'cr',
+            xOffset: 20,
+            yOffset: 100
+          },
+          mobile: {
+            position: 'cr',
+            xOffset: 20,
+            yOffset: 100
+          }
+        }
+      }}
     />
   );
 };

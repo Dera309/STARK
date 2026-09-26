@@ -10,6 +10,20 @@ declare module "@tawk.to/tawk-messenger-react" {
     widgetId: string;
     ref?: RefObject<TawkMessengerRef>;
     onLoad?: () => void;
+    customStyle?: {
+      visibility?: {
+        desktop?: {
+          position?: string;
+          xOffset?: number;
+          yOffset?: number;
+        };
+        mobile?: {
+          position?: string;
+          xOffset?: number;
+          yOffset?: number;
+        };
+      };
+    };
   }
 
   const TawkMessengerReact: ComponentClass<TawkMessengerReactProps>;
