@@ -3,7 +3,6 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import NotificationCenter from "../features/NotificationCenter";
-import TawkToChat from "../features/TawkToChat";
 import ThemeToggle from "../ui/ThemeToggle";
 import PremiumBottomNav from "../ui/PremiumBottomNav";
 import socketService from "../../services/socket";
@@ -84,7 +83,6 @@ const CustomerLayout: React.FC = () => {
                 {item.label}
               </NavLink>
             ))}
-            <TawkToChat />
           </nav>
         </div>
 
