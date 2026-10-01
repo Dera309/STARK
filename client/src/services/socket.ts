@@ -19,15 +19,16 @@ class SocketService {
       query: { userId },
       transports: ["websocket", "polling"],
       withCredentials: true,
-      timeout: 60000,
+      timeout: 10000,
       reconnection: true,
-      reconnectionAttempts: Infinity,
-      reconnectionDelay: 2000,
-      reconnectionDelayMax: 10000,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
       forceNew: true,
     });
 
     this.socket.on("connect", () => {
+      console.log("Socket connected successfully");
       this.socket?.emit("join", `user:${userId}`);
     });
 
@@ -35,8 +36,8 @@ class SocketService {
       console.error("Socket connection error:", error);
     });
 
-    this.socket.on("disconnect", (_reason: string) => {
-      // Socket disconnected
+    this.socket.on("disconnect", (reason) => {
+      console.log("Socket disconnected:", reason);
     });
   }
 
